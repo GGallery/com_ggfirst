@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <updates>
 	<update>
-		<name>gglpm</name>
+		<name>ggfirst</name>
 		<description></description>
-		<element>com_ggpm</element>
+		<element>com_ggfirst</element>
 		<type>component</type>
 		<folder></folder>
 		<version>1.0.00</version>
