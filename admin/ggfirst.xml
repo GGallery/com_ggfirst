@@ -15,7 +15,7 @@
 	<description>GGFIRST component</description>
 
 	<updateservers>
-		<server type="extension" element="com_ggpm" name="ggpm" priority="1">https://raw.githubusercontent.com/GGallery/com_ggpm/master/ggpmupdate.xml</server>
+		<server type="extension" element="com_first" name="ggfirst" priority="1">https://raw.githubusercontent.com/GGallery/com_ggfirst/master/ggfirstupdate.xml</server>
 	</updateservers>
 
 	<install>
@@ -32,7 +32,7 @@
 
 	<files folder="site">
 		<filename>index.html</filename>
-		<filename>ggpm.php</filename>
+		<filename>ggfirst.php</filename>
 		<filename>router.php</filename>
 		<filename>controller.php</filename>
 
@@ -46,11 +46,11 @@
 	</files>
 
 	<administration>
-		<menu link='index.php?option=com_ggpm'>GGFIRST</menu>
+		<menu link='index.php?option=com_ggfirst'>GGFIRST</menu>
 
 		<files folder="admin">
 			<filename>index.html</filename>
-			<filename>ggpm.php</filename>
+			<filename>ggfirst.php</filename>
 			<filename>controller.php</filename>
 
 			<folder>controllers</folder>
