@@ -15,7 +15,7 @@ require_once JPATH_COMPONENT . '/models/clienti.php';
  *
  * @since  1.5.19
  */
-class ggpmControllerDipendenti extends JControllerLegacy
+class ggpmControllerClienti extends JControllerLegacy
 {
     protected $_db;
     private $_app;
@@ -28,16 +28,19 @@ class ggpmControllerDipendenti extends JControllerLegacy
         $this->_app = JFactory::getApplication();
         $this->_filterparam = new stdClass();
         $this->_filterparam->id=JRequest::getVar('id');
-        $this->_filterparam->nome=JRequest::getVar('nome');
-        $this->_filterparam->cognome=JRequest::getVar('cognome');
-        $this->_filterparam->valore_orario=JRequest::getVar('valore_orario');
-        $this->_filterparam->monte_ore=JRequest::getVar('monte_ore');
+        $this->_filterparam->denominazione=JRequest::getVar('denominazione');
+        $this->_filterparam->riferimento=JRequest::getVar('riferimento');
+        $this->_filterparam->email=JRequest::getVar('email');
+        $this->_filterparam->indirizzo=JRequest::getVar('indirizzo');
+        $this->_filterparam->cap=JRequest::getVar('cap');
+        $this->_filterparam->citta=JRequest::getVar('citta');
+        $this->_filterparam->piva=JRequest::getVar('piva');
 
     }
     public function insert(){
 
-        $model=new ggpmModelDipendenti();
-        if($model->insert($this->_filterparam->nome,$this->_filterparam->cognome,$this->_filterparam->valore_orario,$this->_filterparam->monte_ore)) {
+        $model=new ggpmModelClienti();
+        if($model->insert($this->_filterparam->denominazione,$this->_filterparam->riferimento,$this->_filterparam->email,$this->_filterparam->indirizzo,$this->_filterparam->cap,$this->_filterparam->citta,$this->_filterparam->piva)) {
             echo "1";
         }else{
             echo "0";
@@ -48,7 +51,7 @@ class ggpmControllerDipendenti extends JControllerLegacy
 
     public function delete(){
 
-        $model=new ggpmModelDipendenti();
+        $model=new ggpmModelClienti();
         if($model->delete($this->_filterparam->id)) {
             echo "1";
         }else{
@@ -59,8 +62,8 @@ class ggpmControllerDipendenti extends JControllerLegacy
     }
     public function modify(){
 
-        $model=new ggpmModelDipendenti();
-        if($model->modify($this->_filterparam->id, $this->_filterparam->nome,$this->_filterparam->cognome,$this->_filterparam->valore_orario,$this->_filterparam->monte_ore)) {
+        $model=new ggpmModelClienti();
+        if($model->modify($this->_filterparam->id, $this->_filterparam->denominazione,$this->_filterparam->riferimento,$this->_filterparam->email,$this->_filterparam->indirizzo,$this->_filterparam->cap,$this->_filterparam->citta,$this->_filterparam->piva)) {
             echo "1";
         }else{
             echo "0";
@@ -69,15 +72,5 @@ class ggpmControllerDipendenti extends JControllerLegacy
 
     }
 
-    public function getdipendentevaloreorario(){
-
-        $model=new ggpmModelDipendenti();
-        $dipendente=$model->getDipendenti($this->_filterparam->id);
-
-        echo $dipendente[0]['valore_orario'];
-        $this->_app->close();
-
-
-    }
 
 }

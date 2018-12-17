@@ -16,11 +16,11 @@ jimport('joomla.application.component.view');
 
 jimport('joomla.application.component.helper');
 
-require_once JPATH_COMPONENT . '/models/ruoli.php';
 
-class ggpmViewDipendenti extends JViewLegacy {
 
-    public $dipendenti,$ruoli;
+class ggpmViewClienti extends JViewLegacy {
+
+    public $clienti;
 
 
     function display($tpl = null)
@@ -29,9 +29,8 @@ class ggpmViewDipendenti extends JViewLegacy {
         JHtml::_('stylesheet', 'components/com_ggpm/libraries/open-iconic/font/css/open-iconic-bootstrap.css');
         JHtml::_('stylesheet', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous');
 
-        $this->dipendenti=$this->getModel()->getDipendenti();
-        $modelRuoli=new ggpmModelRuoli();
-        $this->ruoli=$modelRuoli->getRuoli();
+        $this->clienti=$this->getModel()->getClienti();
+
         parent::display($tpl);
     }
 }
