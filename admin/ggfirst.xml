@@ -15,7 +15,7 @@
 	<description>GGFIRST component</description>
 
 	<updateservers>
-		<server type="extension" element="com_first" name="ggfirst" priority="1">https://raw.githubusercontent.com/GGallery/com_ggfirst/master/ggfirstupdate.xml</server>
+		<server type="extension" element="com_ggfirst" name="ggfirst" priority="1">https://raw.githubusercontent.com/GGallery/com_ggfirst/master/ggfirstupdate.xml</server>
 	</updateservers>
 
 	<install>
