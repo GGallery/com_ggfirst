@@ -36,7 +36,7 @@ defined('_JEXEC') or die;
 
 
 <div class="table-responsive">
-    <h2>PRIMA - GESTIONE CORSI - ANAGRAFICA STUDENTI</h2>
+    <h2>PRIMA - GESTIONE CORSI - ANAGRAFICA DOCENTI</h2>
     <div><input type="text" id="tosearch"><button id="dosearch" style="margin-left: 20px;"><span class="oi oi-magnifying-glass"></span></button></div>
     <table class="table table-striped table-bordered data-page-length='8'">
         <thead>
@@ -52,23 +52,25 @@ defined('_JEXEC') or die;
         <tbody>
 
         <?php
-        foreach ($this->studenti[0] as $studente) {
+        foreach ($this->docenti[0] as $docente) {
 
             ?>
                 <tr>
-                    <td class="nome"><span class="start_span" id="_nome"><?php echo $studente['nome']; ?></span>
-                    <td class="cognome"><span class="start_span" id="_cognome"><?php echo $studente['cognome']; ?></span>
-                    <td class="citta"><span class="start_span" id="_citta"><?php echo $studente['citta']; ?></span>
-                    <td class="data_nascita"><span class="start_span" id="_data_nascita"><?php echo $studente['data_nascita']; ?></span>
+                    <td class="nome"><span class="start_span" id="_nome"><?php echo $docente['nome']; ?></span>
+                    <td class="cognome"><span class="start_span" id="_cognome"><?php echo $docente['cognome']; ?></span>
+                    <td class="citta"><span class="start_span" id="_citta"><?php echo $docente['citta']; ?></span>
+                    <td class="data_nascita"><span class="start_span" id="_data_nascita"><?php echo $docente['data_nascita']; ?></span>
 
 
                     <td class="bottoni">
-                        <button><span class="modify_button oi oi-pencil" title="modifica cliente" aria-hidden="true" onclick="modifica(<?php echo $studente['id']; ?>,'<?php echo $studente['nome']; ?>',
-                                    '<?php echo $studente['cognome']; ?>','<?php echo $studente['indirizzo']; ?>','<?php echo $studente['cap']; ?>','<?php echo $studente['citta']; ?>',
-                                    '<?php echo $studente['provincia']; ?>','<?php echo $studente['codice_fiscale']; ?>','<?php echo $studente['data_nascita']; ?>','<?php echo $studente['luogo_nascita']; ?>',
-                                    '<?php echo $studente['prov_nascita']; ?>','<?php echo $studente['telefono']; ?>','<?php echo $studente['cellulare']; ?>','<?php echo $studente['email']; ?>',
-                                    '<?php echo $studente['idcliente']; ?>')"></span></button>
-                        <button onclick="deleteclick(<?php echo $studente['id']; ?>)"><span class="oi oi-delete red" title="cancella utente" aria-hidden="true"></span></button>
+                        <button><span class="modify_button oi oi-pencil" title="modifica docente" aria-hidden="true" onclick="modifica(<?php echo $docente['id']; ?>,'<?php echo $docente['nome']; ?>',
+                                    '<?php echo $docente['cognome']; ?>','<?php echo $docente['indirizzo']; ?>','<?php echo $docente['cap']; ?>','<?php echo $docente['citta']; ?>',
+                                    '<?php echo $docente['provincia']; ?>','<?php echo $docente['codice_fiscale']; ?>','<?php echo $docente['data_nascita']; ?>','<?php echo $docente['luogo_nascita']; ?>',
+                                    '<?php echo $docente['prov_nascita']; ?>','<?php echo $docente['telefono']; ?>','<?php echo $docente['cellulare']; ?>','<?php echo $docente['email']; ?>',
+                                    '<?php echo $docente['materie']; ?>')">
+
+                            </span></button>
+                        <button onclick="deleteclick(<?php echo $docente['id']; ?>)"><span class="oi oi-delete red" title="cancella utente" aria-hidden="true"></span></button>
                     </td>
                 </tr>
 
@@ -78,7 +80,7 @@ defined('_JEXEC') or die;
         <tr>
             <td><div class="pagination">
             <?php $k=1;
-            for($i=0; $i<$this->studenti[1];$i=$i+10){
+            for($i=0; $i<$this->docenti[1];$i=$i+10){
                 echo "<a href=index.php?option=com_ggfirst&view=studenti&offset=".(($k-1)*10)."&limit=10>".$k."</a>";
                 $k++;
             }?>
@@ -90,7 +92,7 @@ defined('_JEXEC') or die;
 </div>
 
 <div class="form-group form-group-sm">
-    <div  class="row insertbox"><div class="col-xs-12 col-md-12"><b>INSERISCI UN NUOVO STUDENTE</b></div></div>
+    <div  class="row insertbox"><div class="col-xs-12 col-md-12"><b>INSERISCI UN NUOVO DOCENTE</b></div></div>
 
     <div  class="row insertbox">
 
@@ -107,7 +109,7 @@ defined('_JEXEC') or die;
         <div class="col-xs-3 col-md-3 text-info"><h5>Telefono</h5> <input class="form-control form-control-sm" type="text" id="telefono"></div>
         <div class="col-xs-3 col-md-3 text-info"><h5>Cellulare</h5> <input class="form-control form-control-sm" type="text" id="cellulare"></div>
         <div class="col-xs-4 col-md-4 text-info"><h5>Email:</h5> <input class="form-control form-control-sm" type="text" id="email"></div>
-        <div class="col-xs-4 col-md-4 text-info"><h5>Cliente:</h5><select id="idcliente"><?php foreach ($this->clienti as $cliente){echo "<option value=".$cliente['id'].">".$cliente['denominazione']."</option>";}?></select></div>
+        <div class="col-xs-4 col-md-4 text-info"><h5>Materie:</h5><textarea class="form-control form-control-sm" rows="5" cols="10" id="materie"></textarea></div>
     </div>
 
     <div  class="row insertbox">
@@ -124,11 +126,11 @@ defined('_JEXEC') or die;
 
     jQuery("#dosearch").click(function (event) {
 
-        console.log("/index.php?option=com_ggfirst&view=studenti&search="+jQuery("#tosearch").val());
-        window.open("index.php?option=com_ggfirst&view=studenti&search="+jQuery("#tosearch").val(),'_self');
+        console.log("/index.php?option=com_ggfirst&view=docenti&search="+jQuery("#tosearch").val());
+        window.open("index.php?option=com_ggfirst&view=docenti&search="+jQuery("#tosearch").val(),'_self');
     });
 
-    function modifica(id,nome,cognome,indirizzo,cap,citta,provincia,codice_fiscale,data_nascita,luogo_nascita,prov_nascita,telefono,cellulare,email,idcliente){
+    function modifica(id,nome,cognome,indirizzo,cap,citta,provincia,codice_fiscale,data_nascita,luogo_nascita,prov_nascita,telefono,cellulare,email,materie){
 
         console.log(id+" "+nome);
         actual_id=id;
@@ -145,7 +147,7 @@ defined('_JEXEC') or die;
         jQuery("#telefono").val(telefono);
         jQuery("#cellulare").val(cellulare);
         jQuery("#email").val(email);
-        jQuery("#idcliente").val(idcliente);
+        jQuery("#materie").val(materie);
         jQuery("#insertnewcliente").html('CONFERMA MODIFICHE');
         actual_operation="modify";
 
@@ -157,7 +159,7 @@ defined('_JEXEC') or die;
          jQuery.ajax({
              method: "POST",
              cache: false,
-             url: 'index.php?option=com_ggfirst&task=studenti.insert'
+             url: 'index.php?option=com_ggfirst&task=docenti.insert'
              + '&nome=' + jQuery("#nome").val()
              + '&cognome=' + jQuery("#cognome").val() +
              '&provincia=' + jQuery("#provincia").val()
@@ -171,7 +173,7 @@ defined('_JEXEC') or die;
              + '&telefono=' + jQuery("#telefono").val()
              + '&cellulare=' + jQuery("#cellulare").val()
              + '&email=' + jQuery("#email").val()
-             + '&idcliente=' + jQuery("#idcliente").val()
+             + '&materie=' + jQuery("#materie").val()
 
 
          }).done(function () {
@@ -187,7 +189,7 @@ defined('_JEXEC') or die;
             jQuery.ajax({
                 method: "POST",
                 cache: false,
-                url: 'index.php?option=com_ggfirst&task=studenti.modify&' +
+                url: 'index.php?option=com_ggfirst&task=docenti.modify&' +
                 'id=' + actual_id
                 +'&nome='+jQuery("#nome").val()
                 +'&cognome='+jQuery("#cognome").val()+
@@ -201,7 +203,8 @@ defined('_JEXEC') or die;
                 +'&prov_nascita='+jQuery("#prov_nascita").val()
                 +'&telefono='+jQuery("#telefono").val()
                 +'&cellulare='+jQuery("#cellulare").val()
-                +'&idcliente='+jQuery("#idcliente").val()
+                +'&email=' + jQuery("#email").val()
+                +'&materie='+jQuery("#materie").val()
 
 
 
@@ -225,7 +228,7 @@ defined('_JEXEC') or die;
         jQuery.ajax({
             method: "POST",
             cache: false,
-            url: 'index.php?option=com_ggfirst&task=studenti.modify&' +
+            url: 'index.php?option=com_ggfirst&task=docenti.modify&' +
             'id=' + id
             +'&nome='+jQuery("#nome").val()
             +'&cognome='+jQuery("#cognome").val()+
@@ -239,7 +242,7 @@ defined('_JEXEC') or die;
             +'&prov_nascita='+jQuery("#prov_nascita").val()
             +'&telefono='+jQuery("#telefono").val()
             +'&cellulare='+jQuery("#cellulare").val()
-
+            +'&materie='+jQuery("#materie").val()
 
 
         }).done(function () {
@@ -261,7 +264,7 @@ defined('_JEXEC') or die;
             jQuery.ajax({
                 method: "POST",
                 cache: false,
-                url: 'index.php?option=com_ggfirst&task=studenti.delete&id=' + id.toString()
+                url: 'index.php?option=com_ggfirst&task=docenti.delete&id=' + id.toString()
 
             }).done(function () {
 

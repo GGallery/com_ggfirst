@@ -35,6 +35,7 @@ class ggpmControllerCrediti extends JControllerLegacy
         $this->_filterparam->aggiornamento=JRequest::getVar('aggiornamento');
         $this->_filterparam->periodicita=JRequest::getVar('periodicita');
         $this->_filterparam->elearning=JRequest::getVar('elearning');
+        $this->_filterparam->id_corso=JRequest::getVar('id_corso');
 
     }
     public function insert(){
@@ -72,5 +73,26 @@ class ggpmControllerCrediti extends JControllerLegacy
 
     }
 
+    public function insert_map(){
 
+        $model=new ggpmModelCrediti();
+        if($model->insert_map($this->_filterparam->id_corso,$this->_filterparam->id)) {
+            echo "1";
+        }else{
+            echo "0";
+        }
+        $this->_app->close();
+
+    }
+    public function delete_map(){
+
+        $model=new ggpmModelCrediti();
+        if($model->delete_map($this->_filterparam->id)) {
+            echo "1";
+        }else{
+            echo "0";
+        }
+        $this->_app->close();
+
+    }
 }

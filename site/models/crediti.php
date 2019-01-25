@@ -75,7 +75,26 @@ class ggpmModelCrediti  extends JModelLegacy {
         return $dipendenti;
     }
 
+    public function insert_map($id_corso, $id_credito){
 
+        $object = new StdClass;
+        $object->id_corso=$id_corso;
+        $object->id_credito=$id_credito;
+        $object->timestamp=Date('Y-m-d h:i:s',time());
+        $result=$this->_db->insertObject('first_gg_corsi_crediti_map',$object);
+        return $result;
+
+        return $result;
+    }
+    public function delete_map($id){
+
+
+        $sql="delete from first_gg_corsi_crediti_map where id=".$id;
+        $this->_db->setQuery($sql);
+        $result=$this->_db->execute();
+
+        return $result;
+    }
 
 }
 
