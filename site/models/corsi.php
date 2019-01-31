@@ -62,8 +62,9 @@ class ggpmModelCorsi  extends JModelLegacy {
     public function getCorsi($id=null, $titolo=null, $offset=0, $limit=10){
 
         $query=$this->_db->getQuery(true);
-        $query->select('*');
+        $query->select('*, if((select count(*) from first_gg_partecipanti where id_corso=c.id)>=(select minimo_partecipanti from first_gg_preventivi where id_corso=c.id),1,0) as corso_attivo');
         $query->from('first_gg_corsi as c');
+
         if($id!=null)
             $query->where('id='.$id);
         if($titolo!=null)
