@@ -71,6 +71,7 @@ class ggpmViewLezioni extends JViewLegacy {
                         if ($lezione) {
 
                             array_push($corsorow, $lezione);
+
                         } else {
 
                             array_push($corsorow, null);
@@ -80,6 +81,7 @@ class ggpmViewLezioni extends JViewLegacy {
 
 
             array_push($calendario,$corsorow);
+
         }
         foreach ($this->aule[0] as $aula){
             $aularow=[$aula['denominazione']];
@@ -100,7 +102,7 @@ class ggpmViewLezioni extends JViewLegacy {
 
             array_push($calendarioaule,$aularow);
         }
-
+        //var_dump($calendario);die;
     return [$calendarrow,$calendario,$calendarioaule];
     }
 }

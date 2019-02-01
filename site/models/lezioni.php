@@ -72,7 +72,8 @@ class ggpmModelLezioni  extends JModelLegacy {
     public function getLezioni($id_corso=null,$id_aula=null,$data=null){
 
         $query=$this->_db->getQuery(true);
-        $query->select('d.nome as nome,d.cognome as cognome,a.denominazione as denominazione, c.titolo as titolo, l.data as data, l.id_corso as id_corso, l.titolo as tiolo_lezione, l.ora_inizio as ora_inizio, l.ora_fine as ora_fine');
+        $query->select('d.nome as nome,d.cognome as cognome,a.denominazione as denominazione, l.id_docente as id_docente,a.id as id_aula,l.note as note, 
+                        c.titolo as titolo, l.data as data, l.id_corso as id_corso, l.titolo as titolo_lezione, l.ora_inizio as ora_inizio, l.ora_fine as ora_fine, l.id as id_lezione');
         $query->from('first_gg_lezioni as l');
         $query->join('inner','first_gg_docenti as d on l.id_docente=d.id ');
         $query->join('inner','first_gg_aule as a on l.id_aula=a.id ');

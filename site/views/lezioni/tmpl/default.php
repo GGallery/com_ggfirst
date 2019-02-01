@@ -48,13 +48,19 @@ defined('_JEXEC') or die;
                 <tr>
                     <?php foreach ($row as $cell){?>
 
-                        <td><?php if($cell){
-                            if(isset($cell[0]['denominazione'])) {
-                                echo $cell[0]['denominazione'] . '<br>' . $cell[0]['tiolo_lezione']. '<br>' . $cell[0]['cognome']. '<br>' . $cell[0]['ora_inizio'].'-'.$cell[0]['ora_fine'];
-                            }else{
-                                echo $cell;
+                        <td><?php if(is_array($cell)){
+                            foreach ($cell as $c) {
+                                if (isset($c['denominazione'])) {
+                                    echo $c['denominazione'] . '<br>' . $c['titolo_lezione'] . '<br>' . $c['cognome'] . '<br>' . $c['ora_inizio'] . '-' . $c['ora_fine']. '<br>';
+                                } else {
+                                    echo $cell;
+                                }
                             }
-                        }?></td>
+                        }else if($cell){
+
+                                    echo $cell;
+
+                            }?></td>
                     <?php }?>
                 </tr>
         <?php }?>
@@ -75,7 +81,18 @@ defined('_JEXEC') or die;
 
                     <td><?php if($cell){
                             if(isset($cell[0]['titolo'])) {
-                                echo $cell[0]['titolo'] . '<br>' . $cell[0]['tiolo_lezione']. '<br>'. $cell[0]['cognome'] .  '<br>' .$cell[0]['ora_inizio'].'-'.$cell[0]['ora_fine'];
+                                echo '<A onclick="modifica('
+                                    .$cell[0]['id_lezione'].','
+                                    .$cell[0]['id_corso'].','
+                                    .$cell[0]['id_docente'].','
+                                    .$cell[0]['id_aula'].',\''
+                                    .$cell[0]['data'].'\',\''
+                                    .$cell[0]['ora_inizio'].'\',\''
+                                    .$cell[0]['ora_fine'].'\',\''
+                                    .$cell[0]['titolo_lezione'].'\',\''
+                                    .$cell[0]['note'].'\''
+                                    .')">
+                                '.$cell[0]['titolo'] . '</A><br>' . $cell[0]['titolo_lezione']. '<br>'. $cell[0]['cognome'] .  '<br>' .$cell[0]['ora_inizio'].'-'.$cell[0]['ora_fine'];
                             }else{
                                 echo $cell;
                             }
@@ -114,15 +131,9 @@ defined('_JEXEC') or die;
     var actual_operation="insert";
     var actual_id;
 
-    jQuery("#dosearch").click(function (event) {
-
-        console.log("/index.php?option=com_ggfirst&view=studenti&search="+jQuery("#tosearch").val());
-        window.open("index.php?option=com_ggfirst&view=studenti&search="+jQuery("#tosearch").val(),'_self');
-    });
 
     function modifica(id,id_corso,id_docente,id_aula,data,ora_inizio,ora_fine,titolo,note){
 
-        console.log(id+" "+nome);
         actual_id=id;
         jQuery("#corso").val(id_corso);
         jQuery("#docente").val(id_docente);
