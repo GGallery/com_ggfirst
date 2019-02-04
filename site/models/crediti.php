@@ -75,6 +75,21 @@ class ggpmModelCrediti  extends JModelLegacy {
         return $dipendenti;
     }
 
+    public function getCorsiCrediti($id=null){
+
+        $query=$this->_db->getQuery(true);
+        $query->select('cm.id as id, concat( c.titolo,\' \',cr.ruolo,\' \', cr.rischio) as credito');
+        $query->from('first_gg_crediti as cr');
+        $query->join('inner','first_gg_corsi_crediti_map as cm on cm.id_credito=cr.id');
+        $query->join('inner','first_gg_corsi as c on cm.id_corso=c.id');
+        if($id!=null)
+            $query->where('id='.$id);
+
+        $this->_db->setQuery($query);
+        $dipendenti=$this->_db->loadAssocList();
+        return $dipendenti;
+    }
+
     public function insert_map($id_corso, $id_credito){
 
         $object = new StdClass;
