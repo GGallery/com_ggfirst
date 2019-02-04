@@ -63,7 +63,7 @@ class ggpmViewLezioni extends JViewLegacy {
 
 
         foreach ($this->corsi[0] as $corso){
-            $corsorow=[$corso['titolo']];
+            $corsorow=[[$corso['titolo'],$corso['corso_attivo']]];
             foreach ($datecalendario as $dt){
 
                 $lezione = $this->getModel()->getLezioni($corso['id'],null,date_format($dt,'Y-m-d'));

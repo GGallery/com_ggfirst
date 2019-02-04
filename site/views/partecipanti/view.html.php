@@ -17,6 +17,7 @@ jimport('joomla.application.component.view');
 jimport('joomla.application.component.helper');
 
 require_once JPATH_COMPONENT . '/models/studenti.php';
+require_once JPATH_COMPONENT . '/models/corsi.php';
 
 class ggpmViewPartecipanti extends JViewLegacy {
 
@@ -25,6 +26,7 @@ class ggpmViewPartecipanti extends JViewLegacy {
     public $offset;
     public $limit;
     public $id_corso;
+    public $corso;
 
 
 
@@ -55,6 +57,8 @@ class ggpmViewPartecipanti extends JViewLegacy {
             }
             $studentiModel = new ggpmModelStudenti();
             $this->studenti = $studentiModel->getStudenti(null,null,null,null);
+            $corsiModel=new ggpmModelCorsi();
+            $this->corso=$corsiModel->getCorsi($this->id_corso,null,null,null);
 
             parent::display($tpl);
         }

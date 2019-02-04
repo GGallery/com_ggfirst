@@ -78,7 +78,7 @@ defined('_JEXEC') or die;
 
             ?>
                 <tr>
-                    <td class="titolo"><span class="start_span" id="_nome"><a href="index.php?option=com_ggfirst&view=partecipanti&id_corso=<?php echo $corso['id']; ?>"><?php echo $corso['titolo']; ?></a></span><?php if($corso['corso_attivo']==1) echo '&nbsp;&nbsp;&nbsp;<span class="oi oi-bookmark red"></span>'?>
+                    <td class="titolo"><span class="start_span" id="_nome"><a href="index.php?option=com_ggfirst&view=partecipanti&id_corso=<?php echo $corso['id']; ?>"><?php echo $corso['titolo']; ?></a></span><span><?php if($corso['corso_attivo']==1) echo '&nbsp;&nbsp;&nbsp;<span class="oi oi-bookmark red"></span>'?>
                     <td class="data_inizio"><span class="start_span" id="_cognome"><?php echo $corso['data_inizio']; ?></span>
                     <td class="data_fine"><span class="start_span" id="_citta"><?php echo $corso['data_fine']; ?></span>
                     <td id="contenitore_crediti">

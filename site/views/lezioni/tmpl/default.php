@@ -44,24 +44,28 @@ defined('_JEXEC') or die;
                 <td><?php  if($cell){echo $cell->format('d/m/Y');}?></td>
             <?php }?>
         </tr>
-        <?php foreach ($this->calendario[1] as $row){?>
+        <?php
+
+        foreach ($this->calendario[1] as $row){
+            $i=0;?>
                 <tr>
                     <?php foreach ($row as $cell){?>
 
-                        <td><?php if(is_array($cell)){
-                            foreach ($cell as $c) {
-                                if (isset($c['denominazione'])) {
-                                    echo $c['denominazione'] . '<br>' . $c['titolo_lezione'] . '<br>' . $c['cognome'] . '<br>' . $c['ora_inizio'] . '-' . $c['ora_fine']. '<br>';
-                                } else {
-                                    echo $cell;
+                        <td><?php if($i>0){
+                            if(is_array($cell)) {
+                                foreach ($cell as $c) {
+
+                                    echo $c['denominazione'] . '<br>' . $c['titolo_lezione'] . '<br>' . $c['cognome'] . '<br>' . $c['ora_inizio'] . '-' . $c['ora_fine'] . '<br>';
+                                    //echo $cell[0]['titolo'];if($cell[0]['corso_attivo']==1) echo '<span class="oi oi-bookmark red"></span>';
+
                                 }
                             }
-                        }else if($cell){
+                        }else{
 
-                                    echo $cell;
+                                echo $cell[0];if($cell[1]==1) echo '&nbsp;&nbsp;&nbsp;<span class="oi oi-bookmark red"></span>';
 
                             }?></td>
-                    <?php }?>
+                    <?php $i++;}?>
                 </tr>
         <?php }?>
     </table>
@@ -79,23 +83,30 @@ defined('_JEXEC') or die;
             <tr>
                 <?php foreach ($row as $cell){?>
 
-                    <td><?php if($cell){
-                            if(isset($cell[0]['titolo'])) {
+                    <td><?php if(is_array($cell)){
+                        foreach ($cell as $c) {
+                            if (isset($c['titolo'])) {
                                 echo '<A onclick="modifica('
-                                    .$cell[0]['id_lezione'].','
-                                    .$cell[0]['id_corso'].','
-                                    .$cell[0]['id_docente'].','
-                                    .$cell[0]['id_aula'].',\''
-                                    .$cell[0]['data'].'\',\''
-                                    .$cell[0]['ora_inizio'].'\',\''
-                                    .$cell[0]['ora_fine'].'\',\''
-                                    .$cell[0]['titolo_lezione'].'\',\''
-                                    .$cell[0]['note'].'\''
-                                    .')">
-                                '.$cell[0]['titolo'] . '</A><br>' . $cell[0]['titolo_lezione']. '<br>'. $cell[0]['cognome'] .  '<br>' .$cell[0]['ora_inizio'].'-'.$cell[0]['ora_fine'];
-                            }else{
+                                    . $c['id_lezione'] . ','
+                                    . $c['id_corso'] . ','
+                                    . $c['id_docente'] . ','
+                                    . $c['id_aula'] . ',\''
+                                    . $c['data'] . '\',\''
+                                    . $c['ora_inizio'] . '\',\''
+                                    . $c['ora_fine'] . '\',\''
+                                    . $c['titolo_lezione'] . '\',\''
+                                    . $c['note'] . '\''
+                                    . ')">
+                                ' . $c['titolo'] . '</A><br>' . $c['titolo_lezione'] . '<br>' . $c['cognome'] . '<br>' . $c['ora_inizio'] . '-' . $c['ora_fine'].'<br>';
+
+                            } else {
                                 echo $cell;
                             }
+                        }
+                        }else if($cell){
+
+                            echo $cell;
+
                         }?></td>
                 <?php }?>
             </tr>
