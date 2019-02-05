@@ -137,7 +137,8 @@ defined('_JEXEC') or die;
         <div class="col-xs-3 col-md-3 text-info"><h5>Certificatore:</h5> <input type=text class="form-control form-control-sm" id="certificatore"></div>
         <div class="col-xs-3 col-md-3 text-info"><h5>Credito:</h5>
             <select id="credito">
-            <?php foreach ($this->crediti as $credito){echo "<option value=".$credito['id'].">".$credito['credito']."</option>";}?>
+                <option aggiornamento=null value="null">scegli un credito</option>
+            <?php foreach ($this->crediti as $credito){echo "<option aggiornamento=".$credito['aggiornamento']." value='".$credito['id']."'>".$credito['credito']."</option>";}?>
         </select>
         </div>
         <div class="col-xs-3 col-md-3 text-info"><h5>Scadenza:</h5> <input class="form-control form-control-sm" type="date" id="scadenza"></div>
@@ -154,6 +155,33 @@ defined('_JEXEC') or die;
 <script type="text/javascript">
 
     var change_operation=null;
+
+    jQuery('#credito').change(function(){
+
+
+        var aggiornamento=jQuery('#credito option:selected').attr('aggiornamento');
+        console.log(aggiornamento);
+        if(jQuery('#data_attestato').val()!=null){
+
+            data_=new Date(jQuery('#data_attestato').val());
+            console.log(data_);
+            data__=new Date(data_.setFullYear(data_.getFullYear()+(aggiornamento/12)));
+            anno=data__.getFullYear().toString();
+            mese=(data__.getMonth()+1).toString();
+            giorno=data__.getDate().toString();
+            if(mese.length==1){
+                mese="0"+mese;
+            }
+            if(giorno.length==1){
+                giorno='0'+giorno;
+            }
+
+            jQuery('#scadenza').val(anno+'-'+mese+'-'+giorno);
+
+        }
+
+    });
+
     function insertclick(){
 
         jQuery.ajax({
