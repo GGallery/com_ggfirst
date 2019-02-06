@@ -76,16 +76,18 @@ class ggpmModelAttestati  extends JModelLegacy {
         if($id_studente!=null)
             $query->where('id_studente='.$id_studente);
         if($numero!=null)
-            $query->where('numero '.$numero);
+            $query->where('numero=\''.$numero.'\'');
         if($data_attestato!=null)
-            $query->where('data_attestato='.$data_attestato);
+            $query->where('data_attestato=\''.$data_attestato.'\'');
         if($certificatore!=null)
             $query->where('certificatore like\''.$certificatore.'\'');
         if($id_credito_map!=null)
             $query->where('id_credito_map='.$id_credito_map);
         if($scadenza_data_maggiore!=null && $scadenza_data_minore!=null)
-            $query->where('scadenza=<\''.$scadenza_data_maggiore.'\' and scadenza=>\''.$scadenza_data_minore.'\'');
+            $query->where('scadenza<=\''.$scadenza_data_maggiore.'\' and scadenza>=\''.$scadenza_data_minore.'\'');
+        //echo $query;die;
         $this->_db->setQuery($query);
+
         $attestati=$this->_db->loadAssocList();
         return $attestati;
     }

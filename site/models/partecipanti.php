@@ -56,7 +56,7 @@ class ggpmModelPartecipanti  extends JModelLegacy {
     public function getPartecipanti($id=null, $id_corso,$cognome=null, $offset=0, $limit=10){
 
         $query=$this->_db->getQuery(true);
-        $query->select('p.id as id,s.nome as nome, s.cognome as cognome, s.citta as citta, s.data_nascita as data_nascita, c.titolo as titolo, pr.minimo_partecipanti as minimo');
+        $query->select('p.id as id,s.nome as nome, s.cognome as cognome, s.citta as citta, s.data_nascita as data_nascita, c.titolo as titolo, pr.minimo_partecipanti as minimo, s.id as id_studente');
         $query->from('first_gg_studenti as s');
         $query->join('inner','first_gg_partecipanti as p on s.id=p.id_studente');
         $query->join('inner','first_gg_corsi as c on c.id=p.id_corso');

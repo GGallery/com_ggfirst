@@ -11,27 +11,10 @@ defined('_JEXEC') or die;
         margin-left: 3px;
     }
 
-    .nome{
+    .contenitori_filtro{
 
-        width: 25%;
-    }
 
-    .cognome{
-
-        width: 25%;
-    }
-
-    .valore_orario{
-
-        width: 10%;
-    }
-    .monte_ore{
-
-        width: 10%;
-    }
-    #contenitore_ruoli{
-
-        width: 10%;
+        width:100%;
 
     }
 
@@ -69,6 +52,22 @@ defined('_JEXEC') or die;
     <table class="table table-striped table-bordered ">
         <thead>
         <tr>
+            <th style="width: 15%;"><select id="filtrocredito" class="contenitori_filtro">
+                    <option value="">filtra per credito</option>
+                    <?php foreach ($this->crediti as $credito){echo "<option value='".$credito['id']."'>".$credito['credito']."</option>";}?>
+                </select></th>
+            <th style="width: 15%;">  <select id="filtrostudente" class="contenitori_filtro">
+                    <option value="">filtra per studente</option>
+                    <?php foreach ($this->studenti[0] as $studente){echo "<option value=".$studente['id'].">".$studente['cognome']." ".$studente['nome']." ".$studente['citta']."</option>";}?>
+                </select></th>
+            <th style="width: 15%;"><input  id="filtronumero" class="contenitori_filtro" type="text"></th>
+            <th style="width: 15%;"><input id="filtrodata_attestato" class="contenitori_filtro" type="date"></th>
+            <th style="width: 15%;"><input  id="filtrocertificatore" class="contenitori_filtro" type="text"></th>
+            <th style="width: 15%;"><input id="filtrodata_scadenza_minore" class="contenitori_filtro" type="date"><input id="filtrodata_scadenza_maggiore" class="contenitori_filtro" type="date"></th>
+
+            <th ><button id="dosearch"><span class="oi oi-magnifying-glass"></span></button></th>
+        </tr>
+        <tr>
             <th style="width: 15%;">CREDITO</th>
             <th style="width: 15%;">STUDENTE</th>
             <th style="width: 15%;">NUMERO</th>
@@ -97,7 +96,7 @@ defined('_JEXEC') or die;
                         <input  id="input_numero_<?php echo $attestato['id']; ?>" class="start_hidden_input form-control form-control-sm" type="text" value="<?php echo $attestato['numero']; ?>"></td>
 
                     <td class="durata"><span class="start_span" id="span_data_attestato_<?php echo $attestato['id']; ?>"><?php echo $attestato['data_attestato']; ?></span>
-                        <input id="input_data_attestato_<?php echo $attestato['id']; ?>" class="start_hidden_input form-control form-control-sm" type="text" value="<?php echo $attestato['data_attestato']; ?>"></td>
+                        <input id="input_data_attestato_<?php echo $attestato['id']; ?>" class="start_hidden_input form-control form-control-sm" type="date" value="<?php echo $attestato['data_attestato']; ?>"></td>
 
 
                     <td class="informazioni"><span class="start_span" id="span_certificatore_<?php echo $attestato['id']; ?>"><?php echo $attestato['certificatore']; ?></span>
@@ -129,7 +128,8 @@ defined('_JEXEC') or die;
         <div class="col-xs-3 col-md-3 text-info"><h5>Studente:</h5>
 
             <select id="studente">
-                <?php foreach ($this->studenti[0] as $studente){echo "<option value=".$studente['id'].">".$studente['cognome']." ".$studente['nome']." ".$studente['citta']."</option>";}?>
+                <option value="">scegli uno studente</option>
+                <?php foreach ($this->studenti[0] as $studente){if($studente['id']==$this->preselected_id_studente){$selected='selected';}else{$selected='';};echo "<option ".$selected." value=".$studente['id'].">".$studente['cognome']." ".$studente['nome']." ".$studente['citta']."</option>";}?>
             </select></div>
 
         <div class="col-xs-3 col-md-3 text-info"><h5>Numero:</h5> <input class="form-control form-control-sm" type="text" id="numero" size="5"></div>
@@ -155,6 +155,21 @@ defined('_JEXEC') or die;
 <script type="text/javascript">
 
     var change_operation=null;
+
+    jQuery("#dosearch").click(function (event) {
+
+
+        url="index.php?option=com_ggfirst&view=attestati"+
+            "&id_credito_map="+jQuery("#filtrocredito").val()+
+            "&id_studente="+jQuery("#filtrostudente").val()+
+            "&numero="+jQuery("#filtronumero").val()+
+            "&data_attestato="+jQuery("#filtrodata_attestato").val()+
+            "&certificatore="+jQuery("#filtrocertificatore").val()+
+            "&scadenza_data_minore="+jQuery("#filtrodata_scadenza_minore").val()+
+            "&scadenza_data_maggiore="+jQuery("#filtrodata_scadenza_maggiore").val()
+
+        window.open(url,'_self');
+    });
 
     jQuery('#credito').change(function(){
 

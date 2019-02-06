@@ -31,6 +31,11 @@ defined('_JEXEC') or die;
         color:red;
     }
 
+    .blue{
+
+        color:blue;
+    }
+
 </style>
 </head>
 
@@ -71,6 +76,7 @@ defined('_JEXEC') or die;
                     <td class="bottoni">
 
                         <button onclick="deleteclick(<?php echo $partecipante['id']; ?>)"><span class="oi oi-delete red" title="cancella utente" aria-hidden="true"></span></button>
+                        <button onclick="openattestati(<?php echo $partecipante['id_studente']; ?>)"><span class="oi oi-document blue" title="lancia attestato" aria-hidden="true"></span></button>
                     </td>
                 </tr>
 
@@ -147,7 +153,11 @@ defined('_JEXEC') or die;
 
     }
 
+    function openattestati(id){
 
+        window.open("index.php?option=com_ggfirst&view=attestati&preselected_id_studente="+id,'_self');
+
+    }
     function deleteclick(id) {
 
         if(confirm('attenzione, stai cancellando un partecipante')==true) {

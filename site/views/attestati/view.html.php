@@ -21,7 +21,7 @@ require_once JPATH_COMPONENT . '/models/crediti.php';
 
 class ggpmViewAttestati extends JViewLegacy {
 
-    public $attestati,$studenti;
+    public $attestati,$studenti,$crediti, $preselected_id_studente;
 
 
     function display($tpl = null)
@@ -30,7 +30,55 @@ class ggpmViewAttestati extends JViewLegacy {
         JHtml::_('stylesheet', 'components/com_ggpm/libraries/open-iconic/font/css/open-iconic-bootstrap.css');
         JHtml::_('stylesheet', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous');
 
-        $this->attestati=$this->getModel()->getAttestati();
+        if (JRequest::getVar('id_credito_map') != null) {
+            $id_credito_map = JRequest::getVar('id_credito_map');
+        } else {
+            $id_credito_map = null;
+        }
+
+        if (JRequest::getVar('id_studente') != null) {
+            $id_studente = JRequest::getVar('id_studente');
+        } else {
+            $id_studente = null;
+        }
+
+        if (JRequest::getVar('numero') != null) {
+            $numero = JRequest::getVar('numero');
+        } else {
+            $numero = null;
+        }
+
+        if (JRequest::getVar('data_attestato') != null) {
+            $data_attestato = JRequest::getVar('data_attestato');
+        } else {
+            $data_attestato = null;
+        }
+
+        if (JRequest::getVar('certificatore') != null) {
+            $certificatore = JRequest::getVar('certificatore');
+        } else {
+            $certificatore = null;
+        }
+
+        if (JRequest::getVar('scadenza_data_minore') != null) {
+            $scadenza_data_minore = JRequest::getVar('scadenza_data_minore');
+        } else {
+            $scadenza_data_minore = null;
+        }
+
+        if (JRequest::getVar('scadenza_data_maggiore') != null) {
+            $scadenza_data_maggiore = JRequest::getVar('scadenza_data_maggiore');
+        } else {
+            $scadenza_data_maggiore = null;
+        }
+
+        if (JRequest::getVar('preselected_id_studente') != null) {
+            $this->preselected_id_studente = JRequest::getVar('preselected_id_studente');
+        } else {
+            $this->preselected_id_studente = null;
+        }
+
+        $this->attestati=$this->getModel()->getAttestati(null,$id_studente,$numero,$data_attestato,$certificatore,$id_credito_map, $scadenza_data_minore,$scadenza_data_maggiore);
         $studentiModel=new ggpmModelStudenti();
         $this->studenti=$studentiModel->getStudenti();
         $creditiModel=new ggpmModelCrediti();
