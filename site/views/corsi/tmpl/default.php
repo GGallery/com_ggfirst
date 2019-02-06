@@ -87,7 +87,7 @@ defined('_JEXEC') or die;
 
                             if($credito['ruolo']!=null) {
                                 echo ' <div class="row">
-                                            <div class="col-md-8">' . $credito['ruolo'] . '</div>
+                                            <div class="col-md-8">' . $credito['ruolo'] .' '.$credito['rischio']. '</div>
                                             <div class="col-md-4" onclick=deletecreditoclick(' . $credito['credito_id'] . ')><span class="oi oi-puzzle-piece red delete_ruolo" title="cancella credito" aria-hidden="true"></span></div>
                                       </div>';
                             }

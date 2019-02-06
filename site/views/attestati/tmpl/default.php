@@ -71,9 +71,9 @@ defined('_JEXEC') or die;
             <th style="width: 15%;">CREDITO</th>
             <th style="width: 15%;">STUDENTE</th>
             <th style="width: 15%;">NUMERO</th>
-            <th style="width: 15%;">DATA</th>
+            <th style="width: 10%;">DATA</th>
             <th style="width: 15%;">CERTIFICATORE</th>
-            <th style="width: 15%;">SCADENZA</th>
+            <th style="width: 20%;">SCADENZA</th>
             
             <th ></th>
         </tr>
@@ -112,6 +112,7 @@ defined('_JEXEC') or die;
                         <button><span class="modify_button oi oi-pencil" title="modifica attestato" aria-hidden="true" id="<?php echo $attestato['id']; ?>"></span></button>
                         <button class="confirm_button" id="confirm_button_<?php echo $attestato['id']; ?>"><span class="oi oi-thumb-up" title="conferma modifiche" aria-hidden="true" id="confirm_span_<?php echo $attestato['id']; ?>"></span></button>
                         <button onclick="deleteclick(<?php echo $attestato['id']; ?>)"><span class="oi oi-delete red" title="cancella utente" aria-hidden="true"></span></button>
+                        <button onclick="openattestato('<?php echo $attestato['nome']; ?>','<?php echo $attestato['cognome']; ?>','<?php echo $attestato['data_attestato']; ?>')"><span class="oi oi-document green" title="apri attestato" aria-hidden="true"></span></button>
                     </td>
                 </tr>
                 <?php
@@ -155,6 +156,17 @@ defined('_JEXEC') or die;
 <script type="text/javascript">
 
     var change_operation=null;
+
+    function openattestato(nome,cognome,data_attestato) {
+
+        url="index.php?option=com_ggfirst&task=pdf.generateAttestato"+
+            "&nome="+nome+
+            "&cognome="+cognome+
+            "&id_attestato=4"+
+            "&data_attestato="+data_attestato
+        window.open(url,'_self');
+
+    }
 
     jQuery("#dosearch").click(function (event) {
 

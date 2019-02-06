@@ -76,7 +76,7 @@ defined('_JEXEC') or die;
                     <td class="bottoni">
 
                         <button onclick="deleteclick(<?php echo $partecipante['id']; ?>)"><span class="oi oi-delete red" title="cancella utente" aria-hidden="true"></span></button>
-                        <button onclick="openattestati(<?php echo $partecipante['id_studente']; ?>)"><span class="oi oi-document blue" title="lancia attestato" aria-hidden="true"></span></button>
+                        <button onclick="openattestati(<?php echo $partecipante['id_studente']; ?>)"><span class="oi oi-plus blue" title="lancia attestato" aria-hidden="true"></span></button>
                     </td>
                 </tr>
 
