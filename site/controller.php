@@ -10,7 +10,7 @@ jimport('joomla.application.component.controller');
 jimport('joomla.access.access');
 
 
-class ggpmController extends JControllerLegacy {
+class ggfirstController extends JControllerLegacy {
 
     private $_user;
     private $_japp;

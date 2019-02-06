@@ -15,7 +15,7 @@ require_once JPATH_COMPONENT . '/models/attestati.php';
  *
  * @since  1.5.19
  */
-class ggpmControllerAttestati extends JControllerLegacy
+class ggfirstControllerAttestati extends JControllerLegacy
 {
     protected $_db;
     private $_app;
@@ -39,7 +39,7 @@ class ggpmControllerAttestati extends JControllerLegacy
     }
     public function insert(){
 
-        $model=new ggpmModelAttestati();
+        $model=new ggfirstModelAttestati();
         if($model->insert($this->_filterparam->id_studente,$this->_filterparam->numero,$this->_filterparam->data_attestato,$this->_filterparam->certificatore,$this->_filterparam->id_credito_map,$this->_filterparam->scadenza)) {
             echo "1";
         }else{
@@ -51,7 +51,7 @@ class ggpmControllerAttestati extends JControllerLegacy
 
     public function delete(){
 
-        $model=new ggpmModelAttestati();
+        $model=new ggfirstModelAttestati();
         if($model->delete($this->_filterparam->id)) {
             echo "1";
         }else{
@@ -62,7 +62,7 @@ class ggpmControllerAttestati extends JControllerLegacy
     }
     public function modify(){
 
-        $model=new ggpmModelAttestati();
+        $model=new ggfirstModelAttestati();
         if($model->modify($this->_filterparam->id, $this->_filterparam->id_studente,$this->_filterparam->numero,$this->_filterparam->data_attestato,$this->_filterparam->certificatore,$this->_filterparam->id_credito_map,$this->_filterparam->scadenza)) {
             echo "1";
         }else{

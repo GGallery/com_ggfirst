@@ -29,7 +29,7 @@ if($controller = JRequest::getCmd('controller'))
 }
 
 // Create the controller
- $controller = JControllerLegacy::getInstance('ggpm');
+ $controller = JControllerLegacy::getInstance('ggfirst');
 
 //$classname	= 'gglmsController' . ucfirst($controller);
 //$controller = new $classname();

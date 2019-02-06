@@ -15,7 +15,7 @@ require_once JPATH_COMPONENT . '/models/aule.php';
  *
  * @since  1.5.19
  */
-class ggpmControllerAule extends JControllerLegacy
+class ggfirstControllerAule extends JControllerLegacy
 {
     protected $_db;
     private $_app;
@@ -36,7 +36,7 @@ class ggpmControllerAule extends JControllerLegacy
     }
     public function insert(){
 
-        $model=new ggpmModelAule();
+        $model=new ggfirstModelAule();
         if($model->insert($this->_filterparam->denominazione,$this->_filterparam->indirizzo,$this->_filterparam->citta,$this->_filterparam->note)) {
             echo "1";
         }else{
@@ -48,7 +48,7 @@ class ggpmControllerAule extends JControllerLegacy
 
     public function delete(){
 
-        $model=new ggpmModelAule();
+        $model=new ggfirstModelAule();
         if($model->delete($this->_filterparam->id)) {
             echo "1";
         }else{
@@ -59,7 +59,7 @@ class ggpmControllerAule extends JControllerLegacy
     }
     public function modify(){
 
-        $model=new ggpmModelAule();
+        $model=new ggfirstModelAule();
         if($model->modify($this->_filterparam->id,$this->_filterparam->denominazione,$this->_filterparam->indirizzo,$this->_filterparam->citta,$this->_filterparam->note)) {
             echo "1";
         }else{

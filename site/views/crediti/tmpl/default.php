@@ -123,7 +123,7 @@ defined('_JEXEC') or die;
     </table>
 </div>
 <div class="form-group form-group-sm">
-    <div  class="row insertbox"><div class="col-xs-12 col-md-12"><b>INSERISCI UN NUOVO CLIENTE</b></div></div>
+    <div  class="row insertbox"><div class="col-xs-12 col-md-12"><b>INSERISCI UN NUOVO CREDITO</b></div></div>
 
     <div  class="row insertbox">
 

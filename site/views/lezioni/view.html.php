@@ -19,7 +19,7 @@ jimport('joomla.application.component.helper');
 require_once JPATH_COMPONENT . '/models/docenti.php';
 require_once JPATH_COMPONENT . '/models/aule.php';
 require_once JPATH_COMPONENT . '/models/corsi.php';
-class ggpmViewLezioni extends JViewLegacy {
+class ggfirstViewLezioni extends JViewLegacy {
 
     public $lezioni,$docenti,$aule,$corsi;
 
@@ -29,15 +29,15 @@ class ggpmViewLezioni extends JViewLegacy {
 
     function display($tpl = null)
     {
-        //JHtml::_('stylesheet', 'components/com_ggpm/libraries/css/bootstrap.min.css');
+        //JHtml::_('stylesheet', 'components/com_ggfirst/libraries/css/bootstrap.min.css');
         JHtml::_('stylesheet', 'components/com_ggfirst/libraries/open-iconic/font/css/open-iconic-bootstrap.css');
         JHtml::_('stylesheet', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous');
         $this->lezioni = $this->getModel()->getLezioni();
-        $auleModel=new ggpmModelAule();
+        $auleModel=new ggfirstModelAule();
         $this->aule=$auleModel->getAule();
-        $docentiModel=new ggpmModelDocenti();
+        $docentiModel=new ggfirstModelDocenti();
         $this->docenti=$docentiModel->getDocenti();
-        $corsiModel=new ggpmModelCorsi();
+        $corsiModel=new ggfirstModelCorsi();
         $this->corsi=$corsiModel->getCorsi();
         $this->calendario=$this->createCalendario();
         parent::display($tpl);

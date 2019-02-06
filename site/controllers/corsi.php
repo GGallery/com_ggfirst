@@ -15,7 +15,7 @@ require_once JPATH_COMPONENT . '/models/corsi.php';
  *
  * @since  1.5.19
  */
-class ggpmControllerCorsi extends JControllerLegacy
+class ggfirstControllerCorsi extends JControllerLegacy
 {
     protected $_db;
     private $_app;
@@ -36,7 +36,7 @@ class ggpmControllerCorsi extends JControllerLegacy
     }
     public function insert(){
 
-        $model=new ggpmModelCorsi();
+        $model=new ggfirstModelCorsi();
         if($model->insert($this->_filterparam->titolo,$this->_filterparam->data_inizio,$this->_filterparam->data_fine)) {
             echo "1";
         }else{
@@ -48,7 +48,7 @@ class ggpmControllerCorsi extends JControllerLegacy
 
     public function delete(){
 
-        $model=new ggpmModelCorsi();
+        $model=new ggfirstModelCorsi();
         if($model->delete($this->_filterparam->id)) {
             echo "1";
         }else{
@@ -59,7 +59,7 @@ class ggpmControllerCorsi extends JControllerLegacy
     }
     public function modify(){
 
-        $model=new ggpmModelCorsi();
+        $model=new ggfirstModelCorsi();
         if($model->modify($this->_filterparam->id,
             $this->_filterparam->titolo,$this->_filterparam->data_inizio,$this->_filterparam->data_fine)) {
             echo "1";

@@ -15,7 +15,7 @@ require_once JPATH_COMPONENT . '/models/partecipanti.php';
  *
  * @since  1.5.19
  */
-class ggpmControllerPartecipanti extends JControllerLegacy
+class ggfirstControllerPartecipanti extends JControllerLegacy
 {
     protected $_db;
     private $_app;
@@ -35,7 +35,7 @@ class ggpmControllerPartecipanti extends JControllerLegacy
     }
     public function insert(){
 
-        $model=new ggpmModelPartecipanti();
+        $model=new ggfirstModelPartecipanti();
         if($model->insert($this->_filterparam->id_corso,$this->_filterparam->id_studente)) {
             echo "1";
         }else{
@@ -47,7 +47,7 @@ class ggpmControllerPartecipanti extends JControllerLegacy
 
     public function delete(){
 
-        $model=new ggpmModelPartecipanti();
+        $model=new ggfirstModelPartecipanti();
         if($model->delete($this->_filterparam->id)) {
             echo "1";
         }else{

@@ -15,7 +15,7 @@ require_once JPATH_COMPONENT . '/models/crediti.php';
  *
  * @since  1.5.19
  */
-class ggpmControllerCrediti extends JControllerLegacy
+class ggfirstControllerCrediti extends JControllerLegacy
 {
     protected $_db;
     private $_app;
@@ -40,7 +40,7 @@ class ggpmControllerCrediti extends JControllerLegacy
     }
     public function insert(){
 
-        $model=new ggpmModelCrediti();
+        $model=new ggfirstModelCrediti();
         if($model->insert($this->_filterparam->ruolo,$this->_filterparam->rischio,$this->_filterparam->durata,$this->_filterparam->informazioni,$this->_filterparam->aggiornamento,$this->_filterparam->periodicita,$this->_filterparam->elearning)) {
             echo "1";
         }else{
@@ -52,7 +52,7 @@ class ggpmControllerCrediti extends JControllerLegacy
 
     public function delete(){
 
-        $model=new ggpmModelCrediti();
+        $model=new ggfirstModelCrediti();
         if($model->delete($this->_filterparam->id)) {
             echo "1";
         }else{
@@ -63,7 +63,7 @@ class ggpmControllerCrediti extends JControllerLegacy
     }
     public function modify(){
 
-        $model=new ggpmModelCrediti();
+        $model=new ggfirstModelCrediti();
         if($model->modify($this->_filterparam->id, $this->_filterparam->ruolo,$this->_filterparam->rischio,$this->_filterparam->durata,$this->_filterparam->informazioni,$this->_filterparam->aggiornamento,$this->_filterparam->periodicita,$this->_filterparam->elearning)) {
             echo "1";
         }else{
@@ -75,7 +75,7 @@ class ggpmControllerCrediti extends JControllerLegacy
 
     public function insert_map(){
 
-        $model=new ggpmModelCrediti();
+        $model=new ggfirstModelCrediti();
         if($model->insert_map($this->_filterparam->id_corso,$this->_filterparam->id)) {
             echo "1";
         }else{
@@ -86,7 +86,7 @@ class ggpmControllerCrediti extends JControllerLegacy
     }
     public function delete_map(){
 
-        $model=new ggpmModelCrediti();
+        $model=new ggfirstModelCrediti();
         if($model->delete_map($this->_filterparam->id)) {
             echo "1";
         }else{

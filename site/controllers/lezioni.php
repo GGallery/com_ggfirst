@@ -15,7 +15,7 @@ require_once JPATH_COMPONENT . '/models/lezioni.php';
  *
  * @since  1.5.19
  */
-class ggpmControllerLezioni extends JControllerLegacy
+class ggfirstControllerLezioni extends JControllerLegacy
 {
     protected $_db;
     private $_app;
@@ -41,7 +41,7 @@ class ggpmControllerLezioni extends JControllerLegacy
     }
     public function insert(){
 
-        $model=new ggpmModelLezioni();
+        $model=new ggfirstModelLezioni();
         if($model->insert($this->_filterparam->id_corso,$this->_filterparam->id_docente,$this->_filterparam->id_aula,$this->_filterparam->data,$this->_filterparam->ora_inizio,
             $this->_filterparam->ora_fine,$this->_filterparam->titolo,$this->_filterparam->note)) {
             echo "1";
@@ -54,7 +54,7 @@ class ggpmControllerLezioni extends JControllerLegacy
 
     public function delete(){
 
-        $model=new ggpmModelLezioni();
+        $model=new ggfirstModelLezioni();
         if($model->delete($this->_filterparam->id)) {
             echo "1";
         }else{
@@ -65,7 +65,7 @@ class ggpmControllerLezioni extends JControllerLegacy
     }
     public function modify(){
 
-        $model=new ggpmModelLezioni();
+        $model=new ggfirstModelLezioni();
         if($model->modify($this->_filterparam->id,
             $this->_filterparam->id_corso,$this->_filterparam->id_docente,$this->_filterparam->id_aula,$this->_filterparam->data,$this->_filterparam->ora_inizio,
             $this->_filterparam->ora_fine,$this->_filterparam->titolo,$this->_filterparam->note)) {

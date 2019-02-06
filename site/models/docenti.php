@@ -7,7 +7,7 @@
  */
 
 
-class ggpmModelDocenti  extends JModelLegacy {
+class ggfirstModelDocenti  extends JModelLegacy {
 
     protected $_db;
     private $_params;

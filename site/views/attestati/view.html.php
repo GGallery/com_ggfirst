@@ -19,15 +19,15 @@ jimport('joomla.application.component.helper');
 require_once JPATH_COMPONENT . '/models/studenti.php';
 require_once JPATH_COMPONENT . '/models/crediti.php';
 
-class ggpmViewAttestati extends JViewLegacy {
+class ggfirstViewAttestati extends JViewLegacy {
 
     public $attestati,$studenti,$crediti, $preselected_id_studente;
 
 
     function display($tpl = null)
     {
-        //JHtml::_('stylesheet', 'components/com_ggpm/libraries/css/bootstrap.min.css');
-        JHtml::_('stylesheet', 'components/com_ggpm/libraries/open-iconic/font/css/open-iconic-bootstrap.css');
+        //JHtml::_('stylesheet', 'components/com_ggfirst/libraries/css/bootstrap.min.css');
+        JHtml::_('stylesheet', 'components/com_ggfirst/libraries/open-iconic/font/css/open-iconic-bootstrap.css');
         JHtml::_('stylesheet', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous');
 
         if (JRequest::getVar('id_credito_map') != null) {
@@ -73,15 +73,15 @@ class ggpmViewAttestati extends JViewLegacy {
         }
 
         if (JRequest::getVar('preselected_id_studente') != null) {
-            $this->preselected_id_studente = JRequest::getVar('preselected_id_studente');
+            $preselected_id_studente = JRequest::getVar('preselected_id_studente');
         } else {
-            $this->preselected_id_studente = null;
+            $preselected_id_studente = null;
         }
 
         $this->attestati=$this->getModel()->getAttestati(null,$id_studente,$numero,$data_attestato,$certificatore,$id_credito_map, $scadenza_data_minore,$scadenza_data_maggiore);
-        $studentiModel=new ggpmModelStudenti();
+        $studentiModel=new ggfirstModelStudenti();
         $this->studenti=$studentiModel->getStudenti();
-        $creditiModel=new ggpmModelCrediti();
+        $creditiModel=new ggfirstModelCrediti();
         $this->crediti=$creditiModel->getCorsiCrediti();
         parent::display($tpl);
     }

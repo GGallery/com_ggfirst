@@ -15,7 +15,7 @@ require_once JPATH_COMPONENT . '/models/clienti.php';
  *
  * @since  1.5.19
  */
-class ggpmControllerClienti extends JControllerLegacy
+class ggfirstControllerClienti extends JControllerLegacy
 {
     protected $_db;
     private $_app;
@@ -39,7 +39,7 @@ class ggpmControllerClienti extends JControllerLegacy
     }
     public function insert(){
 
-        $model=new ggpmModelClienti();
+        $model=new ggfirstModelClienti();
         if($model->insert($this->_filterparam->denominazione,$this->_filterparam->riferimento,$this->_filterparam->email,$this->_filterparam->indirizzo,$this->_filterparam->cap,$this->_filterparam->citta,$this->_filterparam->piva)) {
             echo "1";
         }else{
@@ -51,7 +51,7 @@ class ggpmControllerClienti extends JControllerLegacy
 
     public function delete(){
 
-        $model=new ggpmModelClienti();
+        $model=new ggfirstModelClienti();
         if($model->delete($this->_filterparam->id)) {
             echo "1";
         }else{
@@ -62,7 +62,7 @@ class ggpmControllerClienti extends JControllerLegacy
     }
     public function modify(){
 
-        $model=new ggpmModelClienti();
+        $model=new ggfirstModelClienti();
         if($model->modify($this->_filterparam->id, $this->_filterparam->denominazione,$this->_filterparam->riferimento,$this->_filterparam->email,$this->_filterparam->indirizzo,$this->_filterparam->cap,$this->_filterparam->citta,$this->_filterparam->piva)) {
             echo "1";
         }else{
