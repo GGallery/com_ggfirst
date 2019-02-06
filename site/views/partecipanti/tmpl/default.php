@@ -47,7 +47,7 @@ defined('_JEXEC') or die;
         foreach ($this->corso[0][0]['crediti'] as $credito) {
             echo '<p><span><h6>'.$credito['ruolo'] . ' - ' . $credito['rischio'] . '</h6></span></p>';
         }
-    }?></h1><h2>partecipanti attuali <b><?php echo count($this->partecipanti[0])?></b>su <b><?php echo $this->partecipanti[0][0]['minimo']?></b></h2>
+    }?></h1><h2>partecipanti attuali <b><?php echo count($this->partecipanti[0])?></b>su <b><?php if(isset($this->partecipanti[0][0]['minimo']))echo $this->partecipanti[0][0]['minimo'];?></b></h2>
     <div><input type="text" id="tosearch"><button id="dosearch" style="margin-left: 20px;"><span class="oi oi-magnifying-glass"></span></button></div>
     <table class="table table-striped table-bordered data-page-length='8'">
         <thead>

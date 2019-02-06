@@ -106,7 +106,7 @@ defined('_JEXEC') or die;
                         </div>
                     </td>
                     <td class="bottoni">
-                        <button><span class="modify_button oi oi-pencil" title="modifica corso" aria-hidden="true" onclick="modifica(<?php echo $corso['id']; ?>,'<?php echo $corso['titolo']; ?>','<?php echo $corso['data_inizio']; ?>','<?php echo $corso['data_fine']; ?>')"></span></button>
+                        <button onclick="modifica(<?php echo $corso['id']; ?>,'<?php echo $corso['titolo']; ?>','<?php echo $corso['data_inizio']; ?>','<?php echo $corso['data_fine']; ?>')"><span class="modify_button oi oi-pencil" title="modifica corso" aria-hidden="true" ></span></button>
                         <button class="confirm_button" id="confirm_button_<?php echo $corso['id']; ?>"><span class="oi oi-thumb-up" title="conferma modifiche" aria-hidden="true" id="confirm_span_<?php echo $corso['id']; ?>"></span></button>
                         <button onclick="deleteclick(<?php echo $corso['id']; ?>)"><span class="oi oi-delete red" title="cancella utente" aria-hidden="true"></span></button>
                         <button><span class="add_credito oi oi-puzzle-piece green" title="aggiungi credito" aria-hidden="true" id="add_credito_<?php echo $corso['id']; ?>"></span></button></td>

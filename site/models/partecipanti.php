@@ -65,7 +65,8 @@ class ggfirstModelPartecipanti  extends JModelLegacy {
             $query->where('p.id='.$id);
         if($cognome!=null)
             $query->where('s.cognome like \'%'.$cognome.'%\'');
-
+        if($id_corso!=null)
+            $query->where('p.id_corso='.$id_corso);
         $this->_db->setQuery($query);
         $rowscount=count($this->_db->loadAssocList());
         $query->setLimit($limit,$offset);
