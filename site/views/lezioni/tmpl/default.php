@@ -44,41 +44,6 @@ defined('_JEXEC') or die;
                 <td><?php  if($cell){echo $cell->format('d/m/Y');}?></td>
             <?php }?>
         </tr>
-        <?php
-
-        foreach ($this->calendario[1] as $row){
-            $i=0;?>
-                <tr>
-                    <?php foreach ($row as $cell){?>
-
-                        <td><?php if($i>0){
-                            if(is_array($cell)) {
-                                foreach ($cell as $c) {
-
-                                    echo $c['denominazione'] . '<br>' . $c['titolo_lezione'] . '<br>' . $c['cognome'] . '<br>' . $c['ora_inizio'] . '-' . $c['ora_fine'] . '<br>';
-                                    //echo $cell[0]['titolo'];if($cell[0]['corso_attivo']==1) echo '<span class="oi oi-bookmark red"></span>';
-
-                                }
-                            }
-                        }else{
-
-                                echo $cell[0];if($cell[1]==1) echo '&nbsp;&nbsp;&nbsp;<span class="oi oi-bookmark red"></span>';
-
-                            }?></td>
-                    <?php $i++;}?>
-                </tr>
-        <?php }?>
-    </table>
-</div>
-<div class="table-responsive">
-    <h2>PRIMA - CALENDARIO CORSI</h2>
-
-    <table class="table table-striped table-bordered data-page-length='8'">
-        <tr>
-            <?php foreach ($this->calendario[0] as $cell){?>
-                <td><?php  if($cell){echo $cell->format('d/m/Y');}?></td>
-            <?php }?>
-        </tr>
         <?php foreach ($this->calendario[2] as $row){?>
             <tr>
                 <?php foreach ($row as $cell){?>

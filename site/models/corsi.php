@@ -24,15 +24,27 @@ class ggfirstModelCorsi  extends JModelLegacy {
 
     }
 
-    public function insert($titolo,$data_inizio,$data_fine){
+    public function insert($titolo){
 
 
         $object = new StdClass;
         $object->titolo=$titolo;
-        $object->data_inizio=$data_inizio;
-        $object->data_fine=$data_fine;
+
         $object->timestamp=Date('Y-m-d h:i:s',time());
         $result=$this->_db->insertObject('first_gg_corsi',$object);
+        return $result;
+    }
+
+    public function insertedizioni($id_corso,$codice_edizione,$stato,$minimo_partecipanti){
+
+
+        $object = new StdClass;
+        $object->id_corso=$id_corso;
+        $object->codice_edizione=$codice_edizione;
+        $object->stato=$stato;
+        $object->minimo_partecipanti=$minimo_partecipanti;
+        $object->timestamp=Date('Y-m-d h:i:s',time());
+        $result=$this->_db->insertObject('first_gg_edizioni',$object);
         return $result;
     }
 
@@ -46,12 +58,10 @@ class ggfirstModelCorsi  extends JModelLegacy {
         return $result;
     }
 
-    public function modify($id,$titolo,$data_inizio,$data_fine){
+    public function modify($id,$titolo){
 
 
-        $sql="update first_gg_corsi set titolo='".$titolo."', 
-        data_inizio='".$data_inizio."', 
-        data_fine='".$data_fine."' where id=".$id;
+        $sql="update first_gg_corsi set titolo='".$titolo."' where id=".$id;
 
         $this->_db->setQuery($sql);
         $result=$this->_db->execute();
@@ -59,10 +69,10 @@ class ggfirstModelCorsi  extends JModelLegacy {
         return $result;
     }
 
-    public function getCorsi($id=null, $titolo=null, $offset=0, $limit=10){
+    public function getCorsi($id=null, $titolo=null){
 
         $query=$this->_db->getQuery(true);
-        $query->select('*, if((select count(*) from first_gg_partecipanti where id_corso=c.id)>=(select minimo_partecipanti from first_gg_preventivi where id_corso=c.id),1,0) as corso_attivo');
+        $query->select('*');
         $query->from('first_gg_corsi as c');
 
         if($id!=null)
@@ -72,7 +82,7 @@ class ggfirstModelCorsi  extends JModelLegacy {
 
         $this->_db->setQuery($query);
         $rowscount=count($this->_db->loadAssocList());
-        $query->setLimit($limit,$offset);
+
         //echo $query;die;
         $this->_db->setQuery($query);
         $corsi=$this->_db->loadAssocList();
@@ -90,7 +100,47 @@ class ggfirstModelCorsi  extends JModelLegacy {
         return [$corsi,$rowscount];
     }
 
+    public function getEdizioni($id=null, $id_corso=null){
 
+        $query=$this->_db->getQuery(true);
+        $query->select('*');
+        $query->from('first_gg_edizioni as c');
+
+        if($id!=null)
+            $query->where('id='.$id);
+        if($id_corso!=null)
+            $query->where('id_corso='.$id_corso);
+
+        $this->_db->setQuery($query);
+        $rowscount=count($this->_db->loadAssocList());
+
+        //echo $query;die;
+        $this->_db->setQuery($query);
+        $edizioni=$this->_db->loadAssocList();
+        foreach ($edizioni as &$edizione){
+            $query=$this->_db->getQuery(true);
+            $query->select('*');
+            $query->from('first_gg_lezioni as l');
+
+            $query->where('l.id_edizione='.$edizione['id']);
+            $this->_db->setQuery($query);
+            $crediti=$this->_db->loadAssocList();
+            $edizione['lezioni']=$crediti;
+        }
+
+        return [$edizioni,$rowscount];
+    }
+
+    public function getStati(){
+
+        $query=$this->_db->getQuery(true);
+        $query->select('*');
+        $query->from('first_gg_stato_edizioni');
+        $this->_db->setQuery($query);
+        $stati=$this->_db->loadAssocList();
+        return $stati;
+
+    }
 
 }
 

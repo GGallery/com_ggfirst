@@ -29,15 +29,31 @@ class ggfirstControllerCorsi extends JControllerLegacy
         $this->_filterparam = new stdClass();
         $this->_filterparam->id=JRequest::getVar('id');
         $this->_filterparam->titolo=JRequest::getVar('titolo');
-        $this->_filterparam->data_inizio=JRequest::getVar('data_inizio');
-        $this->_filterparam->data_fine=JRequest::getVar('data_fine');
+        $this->_filterparam->id_corso=JRequest::getVar('id_corso');
+        $this->_filterparam->codice_edizione=JRequest::getVar('codice_edizione');
+        $this->_filterparam->stato=JRequest::getVar('stato');
+        $this->_filterparam->minimo_partecipanti=JRequest::getVar('minimo_partecipanti');
+
+
 
 
     }
     public function insert(){
 
         $model=new ggfirstModelCorsi();
-        if($model->insert($this->_filterparam->titolo,$this->_filterparam->data_inizio,$this->_filterparam->data_fine)) {
+        if($model->insert($this->_filterparam->titolo)) {
+            echo "1";
+        }else{
+            echo "0";
+        }
+        $this->_app->close();
+
+    }
+
+    public function insertedizione(){
+
+        $model=new ggfirstModelCorsi();
+        if($model->insertedizioni($this->_filterparam->id_corso,$this->_filterparam->codice_edizione,$this->_filterparam->stato,$this->_filterparam->minimo_partecipanti)) {
             echo "1";
         }else{
             echo "0";
@@ -61,7 +77,7 @@ class ggfirstControllerCorsi extends JControllerLegacy
 
         $model=new ggfirstModelCorsi();
         if($model->modify($this->_filterparam->id,
-            $this->_filterparam->titolo,$this->_filterparam->data_inizio,$this->_filterparam->data_fine)) {
+            $this->_filterparam->titolo)) {
             echo "1";
         }else{
             echo "0";

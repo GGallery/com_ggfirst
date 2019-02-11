@@ -5,10 +5,26 @@ defined('_JEXEC') or die;
 
 <head>
 <style>
+
+    .insertlezionibox{
+
+        background-color: #689f55;
+        margin-left: 3px;
+        margin-right: 0px;
+    }
+
+    .inserteditionbox{
+
+        background-color: #ff9933;
+        margin-left: 3px;
+        margin-right: 0px;
+
+    }
     .insertbox{
 
         background-color: #d9edf7;
         margin-left: 3px;
+        margin-right: 0px;
     }
 
     .pagination {
@@ -56,47 +72,77 @@ defined('_JEXEC') or die;
 </head>
 
 
-<div class="table-responsive">
+<div class="table-responsive" style="overflow-x: hidden">
     <h2>PRIMA - GESTIONE CORSI - ANAGRAFICA CORSI</h2>
-    <div><input type="text" id="tosearch"><button id="dosearch" style="margin-left: 20px;"><span class="oi oi-magnifying-glass"></span></button></div>
-    <table class="table table-striped table-bordered data-page-length='8'">
+</div>
+
+    <div class="form-group form-group-sm">
+        <div  class="row insertbox"><div class="col-xs-10 col-md-10"><b>INSERISCI UN NUOVO CORSO</b></div></div>
+            <div  class="row insertbox">
+                <div class="col-xs-4 col-md-4 text-info"><h5></h5>
+                    <input class="form-control form-control-sm" type="text" id="titolo">
+
+                </div>
+
+                <div class="col-xs-4 col-md-4 text-info"><h5></h5>
+
+                    <button  class="form-control btn btn-outline-secondary btn-sm" id="insertnewcorso" value="conferma" onclick="insertclick()" type="button">CONFERMA</button>
+                </div>
+
+        </div>
+    </div>
+
+
+
+<!-- AREA EDIZIONI -------------------------------- -->
+
+<div  class="table-responsive inserteditionbox" style="overflow-x: hidden">
+    <div style="padding: 8px 16px;">
+        <select  id="input_corso_iniziale">
+            <option value="">scegli un corso</option>
+            <?php foreach ($this->corsiAll[0] as $corso){echo "<option value=".$corso['id'].' '.$selected.">".$corso['titolo']."</option>";}?>
+        </select>
+        <button onclick="open_edizioni()"><span
+                    class="modify_button oi oi-pencil" title="mostra edizioni" aria-hidden="true"></span>
+        </button>
+    </div>
+    <table id="table_edizioni" class="table table-striped table-bordered data-page-length='8'" style="display: none">
         <thead>
         <tr>
-            <th style="width: 15%;">TITOLO</th>
-            <th style="width: 15%;">DATA INIZIO</th>
-            <th style="width: 15%;">DATA FINE</th>
-            <th style="width: 15%;">CREDITI</th>
+            <th style="width: 30%">TITOLO</th>
 
-           <th ></th>
+            <th style="width: 30%">CREDITI</th>
+
+           <th style="width: 20%"></th>
         </tr>
         </thead>
 
         <tbody>
 
         <?php
-        foreach ($this->corsi[0] as $corso) {
+        if(isset($this->corso[0])) {
+            foreach ($this->corso[0] as $corso) {
 
-            ?>
+                ?>
                 <tr>
-                    <td class="titolo"><span class="start_span" id="_nome"><a href="index.php?option=com_ggfirst&view=partecipanti&id_corso=<?php echo $corso['id']; ?>"><?php echo $corso['titolo']; ?></a></span><span><?php if($corso['corso_attivo']==1) echo '&nbsp;&nbsp;&nbsp;<span class="oi oi-bookmark red"></span>'?>
-                    <td class="data_inizio"><span class="start_span" id="_cognome"><?php echo $corso['data_inizio']; ?></span>
-                    <td class="data_fine"><span class="start_span" id="_citta"><?php echo $corso['data_fine']; ?></span>
+                    <td class="titolo"><span class="start_span" id="_nome"><?php echo $corso['titolo']; ?></a></span>
                     <td id="contenitore_crediti">
 
                         <?php foreach ($corso['crediti'] as $credito) {
 
-                            if($credito['ruolo']!=null) {
+                            if ($credito['ruolo'] != null) {
                                 echo ' <div class="row">
-                                            <div class="col-md-8">' . $credito['ruolo'] .' '.$credito['rischio']. '</div>
+                                            <div class="col-md-8">' . $credito['ruolo'] . ' ' . $credito['rischio'] . '</div>
                                             <div class="col-md-4" onclick=deletecreditoclick(' . $credito['credito_id'] . ')><span class="oi oi-puzzle-piece red delete_ruolo" title="cancella credito" aria-hidden="true"></span></div>
                                       </div>';
                             }
-                        }?>
-                        <div ><select class="start_hidden_input select_nuovo_credito" id="nuovo_credito_<?php echo $corso['id']; ?>">
+                        } ?>
+                        <div><select class="start_hidden_input select_nuovo_credito"
+                                     id="nuovo_credito_<?php echo $corso['id']; ?>">
                                 <option value='0'>aggiungi un credito</option>
-                                <?php foreach ($this->crediti as $credito){
+                                <?php foreach ($this->crediti as $credito) {
 
-                                    echo '<option value='.$credito['id'].'>'.$credito['ruolo'].' - ' .$credito['rischio'].'</option>';
+                                    echo '<option value=' . $credito['id'] . '>' . $credito['ruolo'] . ' - ' . $credito['rischio'] . '</option>';
                                 }
 
                                 ?>
@@ -106,57 +152,189 @@ defined('_JEXEC') or die;
                         </div>
                     </td>
                     <td class="bottoni">
-                        <button onclick="modifica(<?php echo $corso['id']; ?>,'<?php echo $corso['titolo']; ?>','<?php echo $corso['data_inizio']; ?>','<?php echo $corso['data_fine']; ?>')"><span class="modify_button oi oi-pencil" title="modifica corso" aria-hidden="true" ></span></button>
-                        <button class="confirm_button" id="confirm_button_<?php echo $corso['id']; ?>"><span class="oi oi-thumb-up" title="conferma modifiche" aria-hidden="true" id="confirm_span_<?php echo $corso['id']; ?>"></span></button>
-                        <button onclick="deleteclick(<?php echo $corso['id']; ?>)"><span class="oi oi-delete red" title="cancella utente" aria-hidden="true"></span></button>
-                        <button><span class="add_credito oi oi-puzzle-piece green" title="aggiungi credito" aria-hidden="true" id="add_credito_<?php echo $corso['id']; ?>"></span></button></td>
+                        <button onclick="modifica(<?php echo $corso['id']; ?>,'<?php echo $corso['titolo']; ?>')"><span
+                                    class="modify_button oi oi-pencil" title="modifica corso" aria-hidden="true"></span>
+                        </button>
+                        <button class="confirm_button" id="confirm_button_<?php echo $corso['id']; ?>"><span
+                                    class="oi oi-thumb-up" title="conferma modifiche" aria-hidden="true"
+                                    id="confirm_span_<?php echo $corso['id']; ?>"></span></button>
+                        <button onclick="deleteclick(<?php echo $corso['id']; ?>)"><span class="oi oi-delete red"
+                                                                                         title="cancella utente"
+                                                                                         aria-hidden="true"></span>
+                        </button>
+                        <button><span class="add_credito oi oi-puzzle-piece green" title="aggiungi credito"
+                                      aria-hidden="true" id="add_credito_<?php echo $corso['id']; ?>"></span></button>
+                    </td>
 
                     </td>
                 </tr>
 
                 <?php
             }
+        }
         ?>
-        <tr>
-            <td><div class="pagination">
-            <?php $k=1;
-            for($i=0; $i<$this->corsi[1];$i=$i+10){
-                echo "<a href=index.php?option=com_ggfirst&view=corsi&offset=".(($k-1)*10)."&limit=10>".$k."</a>";
-                $k++;
-            }?>
-                </div>
-            </td>
-        </tr>
+
         </tbody>
     </table>
 </div>
 
 <div class="form-group form-group-sm">
-    <div  class="row insertbox"><div class="col-xs-12 col-md-12"><b>INSERISCI UN NUOVO CORSO</b></div></div>
+    <div  class="row inserteditionbox"><div class="col-xs-10 col-md-10"><b>INSERISCI UNA NUOVA EDIZIONE PER <span style="color: red"><?php echo $corso['titolo']?></span></b></div></div>
+    <div  class="row inserteditionbox" style="padding-bottom: 8px;">
+        <div class="col-xs-4 col-md-4 text-info"><h5>Codice:</h5>
+            <input class="form-control form-control-sm" type="text" id="codice_edizione">
+        </div>
+        <div class="col-xs-4 col-md-4 text-info"><h5>Stato:</h5>
+            <select class="inserteditionbox" id="stato">
+                <option value="">scegli uno stato</option>
+                <?php foreach ($this->stati as $stato){echo "<option value=".$stato['id'].">".$stato['descrizione']."</option>";}?>
+            </select>
+        </div>
+        <div class="col-xs-4 col-md-4 text-info"><h5>Minimo partecipanti:</h5>
+            <input class="form-control form-control-sm" type="text" id="minimo_partecipanti">
+        </div>
+        <div class="col-xs-4 col-md-4 text-info">
 
-    <div  class="row insertbox">
+        </div>
+        <div class="col-xs-4 col-md-4 text-info">
+            <button  class="form-control btn btn-outline-secondary btn-sm" id="insertnewcorso" value="conferma" onclick="insertedizioneclick()" type="button">CONFERMA</button>
+        </div>
+        <div class="col-xs-4 col-md-4 text-info">
 
-        <div class="col-xs-3 col-md-3 text-info"><h5>Titolo:</h5> <input class="form-control form-control-sm" type="text" id="titolo"></div>
-        <div class="col-xs-3 col-md-3 text-info"><h5>Data Inizio:</h5> <input class="form-control form-control-sm" type="date" id="data_inizio"></div>
-        <div class="col-xs-6 col-md-6 text-info"><h5>Data Fine:</h5> <input class="form-control form-control-sm" type="date" id="data_fine"></div>
         </div>
 
-    <div  class="row insertbox">
-        <div class="col-xs-0 col-md-4"></div>
-        <div class="col-xs-12 col-md-4 text-center"><button  class="form-control btn btn-outline-secondary btn-sm" id="insertnewcorso" value="conferma" onclick="insertclick()" type="button">CONFERMA</button>
-        </div><div class="col-xs-0 col-md-4"></div>
     </div>
 </div>
+
+<!-- AREA LEZIONI ---------------------------------   -->
+
+<div class="table-responsive insertlezionibox" style="overflow-x: hidden">
+    <div style="padding: 8px 16px;">
+        <select  id="input_edizione_iniziale">
+            <option value="">scegli una edizione</option>
+            <?php foreach ($this->edizioni[0] as $edizione){echo "<option value=".$edizione['id'].' '.$selected.">".$edizione['codice_edizione']."</option>";}?>
+        </select>
+        <button onclick="open_lezioni()"><span
+                    class="modify_button oi oi-pencil" title="mostra lezioni" aria-hidden="true"></span>
+        </button>
+    </div>
+    <table id="table_lezioni" class="table table-striped table-bordered data-page-length='8'" style="display: none">
+        <thead>
+        <tr>
+            <th style="width: 30%">CODICE</th>
+
+            <th style="width: 30%">STATO</th>
+
+            <th style="width: 20%">MINIMO PARTECIPANTI</th>
+
+            <th style="width: 20%"></th>
+        </tr>
+        </thead>
+
+        <tbody>
+
+        <?php
+        if(isset($this->edizioni[0])) {
+            foreach ($this->edizioni[0] as $edizione) {
+
+                ?>
+                <tr>
+                    <td class="titolo"><span class="start_span" id="_codice_edizione"><?php echo $edizione['codice_edizione']; ?></a></span>
+                    <td id="contenitore_stato">
+
+
+                        <div><select id="nuovo_stato_<?php echo $edizione['id']; ?>">
+                                <option value='1' <?php if($edizione['stato']==1) echo 'selected';?>>aperto</option>
+                                <option value='2' <?php if($edizione['stato']==2) echo 'selected';?>>chiuso</option>
+                              </select>
+                        </div>
+                    </td>
+                    <td class="titolo"><span class="start_span" id="_minimo_partecipanti"><?php echo $edizione['minimo_partecipanti']; ?></a></span>
+
+                    <td class="bottoni">
+                        <button onclick="modifica_edizione(<?php echo $edizione['id']; ?>,'<?php echo $edizione['codice_edizione']; ?>','<?php echo $edizione['stato']; ?>','<?php echo $edizione['minimo_partecipanti']; ?>')"><span
+                                    class="modify_button oi oi-pencil" title="modifica corso" aria-hidden="true"></span>
+                        </button>
+                        <button class="confirm_button" id="confirm_button_<?php echo $edizione['id']; ?>"><span
+                                    class="oi oi-thumb-up" title="conferma modifiche" aria-hidden="true"
+                                    id="confirm_span_<?php echo $edizione['id']; ?>"></span></button>
+                        <button onclick="deleteclick(<?php echo $edizione['id']; ?>)"><span class="oi oi-delete red"
+                                                                                         title="cancella edizione"
+                                                                                         aria-hidden="true"></span>
+                        </button>
+
+                    </td>
+
+                </tr>
+
+                <?php
+            }
+        }
+        ?>
+
+        </tbody>
+    </table>
+</div>
+
+<div class="form-group form-group-sm">
+    <div  class="row insertlezionibox"><div class="col-xs-10 col-md-10"><b>INSERISCI UNA NUOVA DATA PER <?php  if(isset($this->edizione[0][0]['codice_edizione'])) echo $this->edizione[0][0]['codice_edizione']; ?></b></div></div>
+    <div  class="row insertlezionibox" style="padding-bottom: 8px;">
+        <div class="col-xs-4 col-md-4 text-info"><h5>Docente:</h5><select id="docente"><?php foreach ($this->docenti[0] as $docente){echo "<option value=".$docente['id'].">".$docente['cognome']."</option>";}?></select></div>
+        <div class="col-xs-4 col-md-4 text-info"><h5>Aula:</h5><select id="aula"><?php foreach ($this->aule[0] as $aula){echo "<option value=".$aula['id'].">".$aula['denominazione']."</option>";}?></select></div>
+        <div class="col-xs-3 col-md-3 text-info"><h5>Data:</h5> <input class="form-control form-control-sm" type="date" id="data"></div>
+        <div class="col-xs-3 col-md-3 text-info"><h5>Ora Inizio:</h5> <input class="form-control form-control-sm" type="time" id="ora_inizio"></div>
+        <div class="col-xs-3 col-md-3 text-info"><h5>Ora Fine:</h5> <input class="form-control form-control-sm" type="time" id="ora_fine"></div>
+        <div class="col-xs-3 col-md-3 text-info"><h5>Titolo:</h5> <input class="form-control form-control-sm" type="text" id="titolo" size="25"></div>
+        <div class="col-xs-3 col-md-3 text-info"><h5>Note:</h5> <TEXTAREA class="form-control form-control-sm" id="note"></TEXTAREA></div>
+        <div class="col-xs-4 col-md-4 text-info">
+
+        </div>
+        <div class="col-xs-4 col-md-4 text-info" style="padding-top: 10px;">
+            <button  class="form-control btn btn-outline-light btn-sm" id="insertnewcorso" value="conferma" onclick="insertlezioneclick()" type="button">CONFERMA</button>
+        </div>
+        <div class="col-xs-4 col-md-4 text-info">
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
 
 <script type="text/javascript">
 
     var actual_operation='insert';
     var actual_id;
 
-    jQuery("#dosearch").click(function (event) {
+    function open_edizioni(){
 
-        console.log("/index.php?option=com_ggfirst&view=corsi&search="+jQuery("#tosearch").val());
-        window.open("index.php?option=com_ggfirst&view=corsi&search="+jQuery("#tosearch").val(),'_self');
+        jQuery("#table_edizioni").toggle();
+    }
+
+    function open_lezioni(){
+
+        jQuery("#table_lezioni").toggle();
+    }
+
+    jQuery("#input_edizione_iniziale").change(function () {
+
+        url="index.php?option=com_ggfirst&view=corsi&id_corso=<?php echo $corso['id']; ?>&id_edizione="+jQuery("#input_edizione_iniziale").val();
+
+        window.open(url,'_self');
+    });
+
+
+    jQuery("#input_corso_iniziale").change(function () {
+
+        url="index.php?option=com_ggfirst&view=corsi&id_corso="+jQuery("#input_corso_iniziale").val();
+
+        window.open(url,'_self');
     });
 
     function modifica(id,titolo,data_inizio,data_fine){
@@ -164,8 +342,7 @@ defined('_JEXEC') or die;
 
         actual_id=id;
         jQuery("#titolo").val(titolo);
-        jQuery("#data_inizio").val(data_inizio);
-        jQuery("#data_fine").val(data_fine);
+
         jQuery("#insertnewcorso").html('CONFERMA MODIFICHE');
         actual_operation="modify";
 
@@ -181,8 +358,7 @@ defined('_JEXEC') or die;
                 cache: false,
                 url: 'index.php?option=com_ggfirst&task=corsi.insert'
                 + '&titolo=' + jQuery("#titolo").val()
-                + '&data_inizio=' + jQuery("#data_inizio").val() +
-                '&data_fine=' + jQuery("#data_fine").val()
+
 
 
             }).done(function () {
@@ -200,8 +376,77 @@ defined('_JEXEC') or die;
                 url: 'index.php?option=com_ggfirst&task=corsi.modify&' +
                 'id=' + actual_id
                 + '&titolo=' + jQuery("#titolo").val()
-                + '&data_inizio=' + jQuery("#data_inizio").val() +
-                '&data_fine=' + jQuery("#data_fine").val()
+
+
+            }).done(function () {
+
+                alert("modifiche riuscite");
+                location.reload();
+
+
+            });
+        }
+
+    }
+
+    <?php if(isset($this->edizione)){?>
+    function insertlezioneclick(){
+
+
+        jQuery.ajax({
+            method: "POST",
+            cache: false,
+            url: 'index.php?option=com_ggfirst&task=lezioni.insert'
+            + '&id_edizione=<?php echo $this->edizione[0][0]['id']?>'
+            + '&id_docente=' + jQuery("#docente").val()
+            + '&id_aula=' + jQuery("#aula").val()
+            + '&data=' + jQuery("#data").val()
+            + '&ora_inizio=' + jQuery("#ora_inizio").val()
+            + '&ora_fine=' + jQuery("#ora_fine").val()
+            + '&titolo=' + jQuery("#titolo").val()
+            + '&note=' + jQuery("#note").val()
+
+
+        }).done(function () {
+
+            alert("inserimento riuscito");
+            location.reload();
+
+
+        });
+
+    }
+<?php }?>
+    function insertedizioneclick(){
+
+
+        if(actual_operation=="insert") {
+            jQuery.ajax({
+                method: "POST",
+                cache: false,
+                url: 'index.php?option=com_ggfirst&task=corsi.insertedizione'
+                + '&id_corso=' + <?php echo $corso['id']; ?>
+                + '&codice_edizione=' + jQuery("#codice_edizione").val()
+                + '&stato=' + jQuery("#stato").val()
+                + '&minimo_partecipanti=' + jQuery("#minimo_partecipanti").val()
+
+
+            }).done(function () {
+
+                alert("inserimento riuscito");
+                location.reload();
+
+
+            });
+        }
+        if(actual_operation=="modify") {
+            jQuery.ajax({
+                method: "POST",
+                cache: false,
+                url: 'index.php?option=com_ggfirst&task=corsi.modify&' +
+                'id=' + actual_id
+                + '&titolo=' + jQuery("#titolo").val()
+
 
             }).done(function () {
 

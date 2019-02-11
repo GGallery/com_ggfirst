@@ -19,6 +19,8 @@ jimport('joomla.application.component.helper');
 require_once JPATH_COMPONENT . '/models/docenti.php';
 require_once JPATH_COMPONENT . '/models/aule.php';
 require_once JPATH_COMPONENT . '/models/corsi.php';
+
+
 class ggfirstViewLezioni extends JViewLegacy {
 
     public $lezioni,$docenti,$aule,$corsi;
@@ -39,6 +41,7 @@ class ggfirstViewLezioni extends JViewLegacy {
         $this->docenti=$docentiModel->getDocenti();
         $corsiModel=new ggfirstModelCorsi();
         $this->corsi=$corsiModel->getCorsi();
+        $this->edizioni=$corsiModel->getEdizioni();
         $this->calendario=$this->createCalendario();
         parent::display($tpl);
     }
@@ -62,8 +65,9 @@ class ggfirstViewLezioni extends JViewLegacy {
         }
 
 
-        foreach ($this->corsi[0] as $corso){
+       /* foreach ($this->corsi[0] as $corso){
             $corsorow=[[$corso['titolo'],$corso['corso_attivo']]];
+
             foreach ($datecalendario as $dt){
 
                 $lezione = $this->getModel()->getLezioni($corso['id'],null,date_format($dt,'Y-m-d'));
@@ -82,12 +86,12 @@ class ggfirstViewLezioni extends JViewLegacy {
 
             array_push($calendario,$corsorow);
 
-        }
+        }*/
         foreach ($this->aule[0] as $aula){
             $aularow=[$aula['denominazione']];
             foreach ($datecalendario as $dt){
 
-                $lezione = $this->getModel()->getLezioni(null,$aula['id'],date_format($dt,'Y-m-d'));
+                $lezione = $this->getModel()->getLezioni(null,null,$aula['id'],date_format($dt,'Y-m-d'));
 
                 if ($lezione) {
 

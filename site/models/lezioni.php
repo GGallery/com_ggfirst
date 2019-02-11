@@ -24,11 +24,11 @@ class ggfirstModelLezioni  extends JModelLegacy {
 
     }
 
-    public function insert($id_corso,$id_docente,$id_aula,$data,$ora_inizio,$ora_fine,$titolo,$note){
+    public function insert($id_edizione,$id_docente,$id_aula,$data,$ora_inizio,$ora_fine,$titolo,$note){
 
 
         $object = new StdClass;
-        $object->id_corso=$id_corso;
+        $object->id_edizione=$id_edizione;
         $object->id_docente=$id_docente;
         $object->id_aula=$id_aula;
         $object->data=$data;
@@ -51,10 +51,10 @@ class ggfirstModelLezioni  extends JModelLegacy {
         return $result;
     }
 
-    public function modify($id,$id_corso,$id_docente,$id_aula,$data,$ora_inizio,$ora_fine,$titolo,$note){
+    public function modify($id,$id_edizione,$id_docente,$id_aula,$data,$ora_inizio,$ora_fine,$titolo,$note){
 
 
-        $sql="update first_gg_lezioni set id_corso='".$id_corso."', 
+        $sql="update first_gg_lezioni set id_edizione='".$id_edizione."', 
         id_docente='".$id_docente."', 
         id_aula='".$id_aula."', 
         data='".$data."', 
@@ -69,24 +69,29 @@ class ggfirstModelLezioni  extends JModelLegacy {
         return $result;
     }
 
-    public function getLezioni($id_corso=null,$id_aula=null,$data=null){
+    public function getLezioni($id_corso=null,$id_edizione=null,$id_aula=null,$data=null){
 
         $query=$this->_db->getQuery(true);
-        $query->select('d.nome as nome,d.cognome as cognome,a.denominazione as denominazione, l.id_docente as id_docente,a.id as id_aula,l.note as note, 
-                        c.titolo as titolo, l.data as data, l.id_corso as id_corso, l.titolo as titolo_lezione, l.ora_inizio as ora_inizio, l.ora_fine as ora_fine, l.id as id_lezione,
-                        if((select count(*) from first_gg_partecipanti where id_corso=c.id)>=(select minimo_partecipanti from first_gg_preventivi where id_corso=c.id),1,0) as corso_attivo');
+        $query->select('d.nome as nome,d.cognome as cognome,a.denominazione as denominazione, l.id_docente as id_docente,a.id as id_aula,l.note as note,c.titolo as titolo,c.id as id_corso, 
+                        e.codice_edizione as codice, l.data as data, l.id_edizione as id_edizione, l.titolo as titolo_lezione, l.ora_inizio as ora_inizio, l.ora_fine as ora_fine, l.id as id_lezione,
+                        if((select count(*) from first_gg_partecipanti where id_edizione=l.id_edizione)>=(select minimo_partecipanti from first_gg_edizioni where id=l.id_edizione),1,0) as corso_attivo');
         $query->from('first_gg_lezioni as l');
         $query->join('inner','first_gg_docenti as d on l.id_docente=d.id ');
         $query->join('inner','first_gg_aule as a on l.id_aula=a.id ');
-        $query->join('inner','first_gg_corsi as c on l.id_corso=c.id ');
-        if($id_corso)
-            $query->where('c.id='.$id_corso);
+        $query->join('inner','first_gg_edizioni as e on l.id_edizione=e.id ');
+        $query->join('inner','first_gg_corsi as c on c.id=e.id_corso');
+        if($id_edizione)
+            $query->where('e.id='.$id_edizione);
         if($id_aula)
             $query->where('a.id='.$id_aula);
         if($data)
             $query->where('l.data=\''.$data.'\'');
+        if($id_corso)
+            $query->where('c.id='.$id_corso);
         $query->order('c.id,l.data ASC');
+
         $this->_db->setQuery($query);
+
         $lezioni=$this->_db->loadAssocList();
 
         return $lezioni;
