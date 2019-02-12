@@ -19,13 +19,14 @@ jimport('joomla.application.component.helper');
 require_once JPATH_COMPONENT . '/models/studenti.php';
 require_once JPATH_COMPONENT . '/models/corsi.php';
 
+
 class ggfirstViewPartecipanti extends JViewLegacy {
 
     public $partecipanti;
     public $studenti;
     public $offset;
     public $limit;
-    public $id_corso;
+    public $id_edizione;
     public $corso;
 
 
@@ -36,8 +37,8 @@ class ggfirstViewPartecipanti extends JViewLegacy {
         JHtml::_('stylesheet', 'components/com_ggfirst/libraries/open-iconic/font/css/open-iconic-bootstrap.css');
         JHtml::_('stylesheet', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous');
 
-        if (JRequest::getVar('id_corso') != null) {
-            $this->id_corso=JRequest::getVar('id_corso');
+        if (JRequest::getVar('id_edizione') != null) {
+            $this->id_edizione=JRequest::getVar('id_edizione');
             if (JRequest::getVar('offset') != null) {
                 $offset = JRequest::getVar('offset');
             } else {
@@ -51,17 +52,18 @@ class ggfirstViewPartecipanti extends JViewLegacy {
 
             if (JRequest::getVar('search') != null) {
                 $cognome = JRequest::getVar('search');
-                $this->partecipanti = $this->getModel()->getPartecipanti(null,$this->id_corso, $cognome, $offset, $limit);
+                $this->partecipanti = $this->getModel()->getPartecipanti(null,$this->id_edizione, $cognome, $offset, $limit);
             } else {
-                $this->partecipanti = $this->getModel()->getPartecipanti(null,$this->id_corso, null, $offset, $limit);
+                $this->partecipanti = $this->getModel()->getPartecipanti(null,$this->id_edizione, null, $offset, $limit);
             }
             $studentiModel = new ggfirstModelStudenti();
             $this->studenti = $studentiModel->getStudenti(null,null,null,null);
             $corsiModel=new ggfirstModelCorsi();
-            $this->corso=$corsiModel->getCorsi($this->id_corso,null,null,null);
+            //$this->corso=$corsiModel->getCorsi($this->id_corso,null,null,null);
+            $this->edizione=$corsiModel->getEdizioni($this->id_edizione,null);
 
-            parent::display($tpl);
         }
+        parent::display($tpl);
     }
 }
     

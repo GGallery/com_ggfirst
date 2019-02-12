@@ -19,7 +19,7 @@ jimport('joomla.application.component.helper');
 require_once JPATH_COMPONENT . '/models/docenti.php';
 require_once JPATH_COMPONENT . '/models/aule.php';
 require_once JPATH_COMPONENT . '/models/corsi.php';
-
+require_once JPATH_COMPONENT . '/models/luoghi.php';
 
 class ggfirstViewLezioni extends JViewLegacy {
 
@@ -37,6 +37,8 @@ class ggfirstViewLezioni extends JViewLegacy {
         $this->lezioni = $this->getModel()->getLezioni();
         $auleModel=new ggfirstModelAule();
         $this->aule=$auleModel->getAule();
+        $luoghiModel=new ggfirstModelLuoghi();
+        $this->luoghi=$luoghiModel->getLuoghi();
         $docentiModel=new ggfirstModelDocenti();
         $this->docenti=$docentiModel->getDocenti();
         $corsiModel=new ggfirstModelCorsi();
@@ -87,26 +89,27 @@ class ggfirstViewLezioni extends JViewLegacy {
             array_push($calendario,$corsorow);
 
         }*/
-        foreach ($this->aule[0] as $aula){
-            $aularow=[$aula['denominazione']];
+        foreach ($this->luoghi[0] as $luogo){
+            $luogorow=[$luogo['denominazione']];
             foreach ($datecalendario as $dt){
 
-                $lezione = $this->getModel()->getLezioni(null,null,$aula['id'],date_format($dt,'Y-m-d'));
+                $lezione = $this->getModel()->getLezioni(null,null,$luogo['id'],date_format($dt,'Y-m-d'));
 
                 if ($lezione) {
 
-                    array_push($aularow, $lezione);
+                   array_push($luogorow, $lezione);
+
                 } else {
 
-                    array_push($aularow, null);
+                    array_push($luogorow, null);
                 }
 
             }
 
 
-            array_push($calendarioaule,$aularow);
+            array_push($calendarioaule,$luogorow);
         }
-        //var_dump($calendario);die;
+        //var_dump($calendarioaule);die;
     return [$calendarrow,$calendario,$calendarioaule];
     }
 }

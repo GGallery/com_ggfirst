@@ -7,7 +7,7 @@
  */
 
 
-class ggfirstModelAule  extends JModelLegacy {
+class ggfirstModelLuoghi  extends JModelLegacy {
 
     protected $_db;
     private $_params;
@@ -24,33 +24,38 @@ class ggfirstModelAule  extends JModelLegacy {
 
     }
 
-    public function insert($denominazione){
+    public function insert($denominazione,$indirizzo,$citta,$note){
 
 
         $object = new StdClass;
         $object->denominazione=$denominazione;
-
+        $object->indirizzo=$indirizzo;
+        $object->note=$note;
+        $object->citta=$citta;
 
         $object->timestamp=Date('Y-m-d h:i:s',time());
 
-        $result=$this->_db->insertObject('first_gg_aule',$object);
+        $result=$this->_db->insertObject('first_gg_luoghi',$object);
         return $result;
     }
 
     public function delete($id){
 
 
-        $sql="delete from first_gg_aule where id=".$id;
+        $sql="delete from first_gg_luoghi where id=".$id;
         $this->_db->setQuery($sql);
         $result=$this->_db->execute();
 
         return $result;
     }
 
-    public function modify($id,$denominazione){
+    public function modify($id,$denominazione,$indirizzo,$citta,$note){
 
 
-        $sql="update first_gg_aule set denominazione='".$denominazione."' where id=".$id;
+        $sql="update first_gg_luoghi set denominazione='".$denominazione."', 
+        indirizzo='".$indirizzo."', 
+        note='".$note."', 
+        citta='".$citta."' where id=".$id;
 
         $this->_db->setQuery($sql);
 
@@ -59,11 +64,11 @@ class ggfirstModelAule  extends JModelLegacy {
         return $result;
     }
 
-    public function getAule($id=null, $denominazione=null, $offset=0, $limit=10){
+    public function getLuoghi($id=null, $denominazione=null, $offset=0, $limit=10){
 
         $query=$this->_db->getQuery(true);
         $query->select('*');
-        $query->from('first_gg_aule');
+        $query->from('first_gg_luoghi');
         if($id!=null)
             $query->where('id='.$id);
         if($denominazione!=null)

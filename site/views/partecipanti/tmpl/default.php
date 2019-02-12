@@ -42,11 +42,9 @@ defined('_JEXEC') or die;
 
 <div class="table-responsive">
     <h2>PRIMA - GESTIONE CORSI - ANAGRAFICA PARTECIPANTI</h2>
-    <h1><?php if($this->corso!=null){
-        echo $this->corso[0][0]['titolo'].'<br>';
-        foreach ($this->corso[0][0]['crediti'] as $credito) {
-            echo '<p><span><h6>'.$credito['ruolo'] . ' - ' . $credito['rischio'] . '</h6></span></p>';
-        }
+    <h1><?php if($this->edizione!=null){
+        echo $this->edizione[0][0]['codice_edizione'].'<br>';
+
     }?></h1><h2>partecipanti attuali <b><?php echo count($this->partecipanti[0])?></b>su <b><?php if(isset($this->partecipanti[0][0]['minimo']))echo $this->partecipanti[0][0]['minimo'];?></b></h2>
     <div><input type="text" id="tosearch"><button id="dosearch" style="margin-left: 20px;"><span class="oi oi-magnifying-glass"></span></button></div>
     <table class="table table-striped table-bordered data-page-length='8'">
@@ -123,7 +121,7 @@ defined('_JEXEC') or die;
     jQuery("#dosearch").click(function (event) {
 
 
-        window.open("index.php?option=com_ggfirst&view=partecipanti&id_corso=<?php echo $this->id_corso?>&search="+jQuery("#tosearch").val(),'_self');
+        window.open("index.php?option=com_ggfirst&view=partecipanti&id_edizione=<?php echo $this->id_edizione?>&search="+jQuery("#tosearch").val(),'_self');
     });
 
 
@@ -134,7 +132,7 @@ defined('_JEXEC') or die;
              method: "POST",
              cache: false,
              url: 'index.php?option=com_ggfirst&task=partecipanti.insert'
-             + '&id_corso=' + <?php echo $this->id_corso?>
+             + '&id_edizione=' + <?php echo $this->id_edizione?>
              + '&id_studente=' + jQuery("#studente").val()
 
 

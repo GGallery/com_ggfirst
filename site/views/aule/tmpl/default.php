@@ -70,9 +70,7 @@ defined('_JEXEC') or die;
         <thead>
         <tr>
             <th style="width: 15%;">DENOMINAZIONE</th>
-            <th style="width: 15%;">INDIRIZZO</th>
-            <th style="width: 15%;">CITTA</th>
-            <th style="width: 15%;">NOTE</th>
+
            
             <th ></th>
         </tr>
@@ -90,14 +88,6 @@ defined('_JEXEC') or die;
                     <td class="denominazione"><span class="start_span" id="span_denominazione_<?php echo $aula['id']; ?>"><?php echo $aula['denominazione']; ?></span>
                         <input id="input_denominazione_<?php echo $aula['id']; ?>" class="start_hidden_input form-control form-control-sm" type="text" value="<?php echo $aula['denominazione']; ?>"></td>
 
-                    <td class="indirizzo"><span class="start_span" id="span_indirizzo_<?php echo $aula['id']; ?>"><?php echo $aula['indirizzo']; ?></span>
-                        <input id="input_indirizzo_<?php echo $aula['id']; ?>" class="start_hidden_input form-control form-control-sm" type="text" value="<?php echo $aula['indirizzo']; ?>"></td>
-
-                    <td class="citta"><span class="start_span" id="span_citta_<?php echo $aula['id']; ?>"><?php echo $aula['citta']; ?></span>
-                        <input id="input_citta_<?php echo $aula['id']; ?>" class="start_hidden_input form-control form-control-sm" type="text" value="<?php echo $aula['citta']; ?>"></td>
-
-                    <td class="note"><span class="start_span" id="span_note_<?php echo $aula['id']; ?>"><?php echo $aula['note']; ?></span>
-                        <TEXTAREA id="input_note_<?php echo $aula['id']; ?>" class="start_hidden_input form-control form-control-sm"><?php echo $aula['note']; ?></TEXTAREA></td>
 
 
                     <td class="bottoni">
@@ -119,17 +109,14 @@ defined('_JEXEC') or die;
     <div  class="row insertbox">
 
         <div class="col-xs-4 col-md-4 text-info"><h5>Denominazione:</h5> <input class="form-control form-control-sm" type="text" id="denominazione"></div>
-        <div class="col-xs-4 col-md-4 text-info"><h5>Indirizzo</h5> <input class="form-control form-control-sm" type="text" id="indirizzo"></div>
-        <div class="col-xs-4 col-md-2 text-info"><h5>Citta:</h5> <input class="form-control form-control-sm" type="text" id="citta"></div>
-        <div class="col-xs-4 col-md-2 text-info"><h5>Note:</h5> <textarea rows=5 cols=5 class="form-control form-control-sm" id="note"></textarea></div>
 
-    </div>
 
     <div  class="row insertbox">
         <div class="col-xs-0 col-md-4"></div>
         <div class="col-xs-12 col-md-4 text-center"><button  class="form-control btn btn-outline-secondary btn-sm" id="insertnewcliente" value="conferma" onclick="insertclick()" type="button">CONFERMA</button>
         </div><div class="col-xs-0 col-md-4"></div>
     </div>
+</div>
 </div>
 
 <script type="text/javascript">
@@ -140,7 +127,7 @@ defined('_JEXEC') or die;
         jQuery.ajax({
             method: "POST",
             cache: false,
-            url: 'index.php?option=com_ggfirst&task=aule.insert&denominazione='+jQuery("#denominazione").val()+'&indirizzo='+jQuery("#indirizzo").val()+'&citta='+jQuery("#citta").val()+'&note='+jQuery("#note").val()
+            url: 'index.php?option=com_ggfirst&task=aule.insert&denominazione='+jQuery("#denominazione").val()
 
         }).done(function() {
 
@@ -158,9 +145,7 @@ console.log("modifica");
         jQuery('.start_span').show()
         var str=jQuery(event.target).attr('id').toString();
         jQuery("#input_denominazione_"+str).toggle();
-        jQuery("#input_indirizzo_"+str).toggle();
-        jQuery("#input_citta_"+str).toggle();
-        jQuery("#input_note_"+str).toggle();
+
         jQuery("#confirm_button_"+str).toggle();
 
         change_operation='modify_anagrafica';
@@ -175,14 +160,12 @@ console.log("modifica");
         console.log(str.substr(13, str.length - 13));
         var id = str.substr(13, str.length - 13);
           var denominazione = jQuery('#input_denominazione_' + id).val().toString();
-            var indirizzo = jQuery('#input_indirizzo_' + id).val().toString();
-            var citta = jQuery('#input_citta_' + id).val().toString();
-            var note= jQuery('#input_note_' + id).val().toString();
+
 
             jQuery.ajax({
                 method: "POST",
                 cache: false,
-                url: 'index.php?option=com_ggfirst&task=aule.modify&id=' + id + '&denominazione=' + denominazione + '&indirizzo=' + indirizzo + '&citta=' + citta+ '&note=' + note
+                url: 'index.php?option=com_ggfirst&task=aule.modify&id=' + id + '&denominazione=' + denominazione
 
             }).done(function () {
 
@@ -198,7 +181,7 @@ console.log("modifica");
 
     function deleteclick(id) {
 
-        if(confirm('attenzione, stai cancellando un credito')==true) {
+        if(confirm('attenzione, stai cancellando una aula')==true) {
             jQuery.ajax({
                 method: "POST",
                 cache: false,

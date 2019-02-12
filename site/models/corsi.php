@@ -103,8 +103,8 @@ class ggfirstModelCorsi  extends JModelLegacy {
     public function getEdizioni($id=null, $id_corso=null){
 
         $query=$this->_db->getQuery(true);
-        $query->select('*');
-        $query->from('first_gg_edizioni as c');
+        $query->select('*, if((select count(*) from first_gg_partecipanti where id_edizione=e.id)>=minimo_partecipanti,1,0) as edizione_attiva');
+        $query->from('first_gg_edizioni as e');
 
         if($id!=null)
             $query->where('id='.$id);

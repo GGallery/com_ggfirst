@@ -49,11 +49,14 @@ defined('_JEXEC') or die;
                 <?php foreach ($row as $cell){?>
 
                     <td><?php if(is_array($cell)){
+                        $c=$cell;
                         foreach ($cell as $c) {
-                            if (isset($c['titolo'])) {
+                            //var_dump($c);die;
+                            if (isset($c['id_lezione'])) {
                                 echo '<A onclick="modifica('
                                     . $c['id_lezione'] . ','
                                     . $c['id_corso'] . ','
+                                    . $c['id_edizione'] . ','
                                     . $c['id_docente'] . ','
                                     . $c['id_aula'] . ',\''
                                     . $c['data'] . '\',\''
@@ -62,7 +65,7 @@ defined('_JEXEC') or die;
                                     . $c['titolo_lezione'] . '\',\''
                                     . $c['note'] . '\''
                                     . ')">
-                                ' . $c['titolo'] . '</A><br>' . $c['titolo_lezione'] . '<br>' . $c['cognome'] . '<br>' . $c['ora_inizio'] . '-' . $c['ora_fine'].'<br>';
+                                ' . $c['titolo'] . '</A><br>' . $c['titolo_lezione'] . '<br>'. $c['codice_edizione'] . '<br>' . $c['cognome'] . '<br>' . $c['ora_inizio'] . '-' . $c['ora_fine'].'<br>';
 
                             } else {
                                 echo $cell;
@@ -78,14 +81,14 @@ defined('_JEXEC') or die;
         <?php }?>
     </table>
 </div>
-
+<!--
 <div class="form-group form-group-sm">
     <div  class="row insertbox"><div class="col-xs-12 col-md-12"><b>INSERISCI UNA NUOVA LEZIONE</b></div></div>
 
     <div  class="row insertbox">
-         <div class="col-xs-4 col-md-4 text-info"><h5>Corso:</h5><select id="corso"><?php foreach ($this->corsi[0] as $corso){echo "<option value=".$corso['id'].">".$corso['titolo']."</option>";}?></select></div>
-         <div class="col-xs-4 col-md-4 text-info"><h5>Docente:</h5><select id="docente"><?php foreach ($this->docenti[0] as $docente){echo "<option value=".$docente['id'].">".$docente['cognome']."</option>";}?></select></div>
-         <div class="col-xs-4 col-md-4 text-info"><h5>Aula:</h5><select id="aula"><?php foreach ($this->aule[0] as $aula){echo "<option value=".$aula['id'].">".$aula['denominazione']."</option>";}?></select></div>
+         <div class="col-xs-4 col-md-4 text-info"><h5>Corso:</h5><select id="corso"><?php// foreach ($this->corsi[0] as $corso){echo "<option value=".$corso['id'].">".$corso['titolo']."</option>";}?></select></div>
+         <div class="col-xs-4 col-md-4 text-info"><h5>Docente:</h5><select id="docente"><?php// foreach ($this->docenti[0] as $docente){echo "<option value=".$docente['id'].">".$docente['cognome']."</option>";}?></select></div>
+         <div class="col-xs-4 col-md-4 text-info"><h5>Aula:</h5><select id="aula"><?php //foreach ($this->aule[0] as $aula){echo "<option value=".$aula['id'].">".$aula['denominazione']."</option>";}?></select></div>
         <div class="col-xs-3 col-md-3 text-info"><h5>Data:</h5> <input class="form-control form-control-sm" type="date" id="data"></div>
         <div class="col-xs-3 col-md-3 text-info"><h5>Ora Inizio:</h5> <input class="form-control form-control-sm" type="time" id="ora_inizio"></div>
         <div class="col-xs-3 col-md-3 text-info"><h5>Ora Fine:</h5> <input class="form-control form-control-sm" type="time" id="ora_fine"></div>
@@ -100,6 +103,7 @@ defined('_JEXEC') or die;
         <div class="col-xs-0 col-md-4"></div>
     </div>
 </div>
+-->
 </div>
 
 <script type="text/javascript">

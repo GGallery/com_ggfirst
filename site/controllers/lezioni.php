@@ -30,6 +30,7 @@ class ggfirstControllerLezioni extends JControllerLegacy
         $this->_filterparam->id=JRequest::getVar('id');
         $this->_filterparam->id_edizione=JRequest::getVar('id_edizione');
         $this->_filterparam->id_docente=JRequest::getVar('id_docente');
+        $this->_filterparam->id_luogo=JRequest::getVar('id_luogo');
         $this->_filterparam->id_aula=JRequest::getVar('id_aula');
         $this->_filterparam->data=JRequest::getVar('data');
         $this->_filterparam->ora_inizio=JRequest::getVar('ora_inizio');
@@ -42,7 +43,7 @@ class ggfirstControllerLezioni extends JControllerLegacy
     public function insert(){
 
         $model=new ggfirstModelLezioni();
-        if($model->insert($this->_filterparam->id_edizione,$this->_filterparam->id_docente,$this->_filterparam->id_aula,$this->_filterparam->data,$this->_filterparam->ora_inizio,
+        if($model->insert($this->_filterparam->id_edizione,$this->_filterparam->id_docente,$this->_filterparam->id_luogo,$this->_filterparam->id_aula,$this->_filterparam->data,$this->_filterparam->ora_inizio,
             $this->_filterparam->ora_fine,$this->_filterparam->titolo,$this->_filterparam->note)) {
             echo "1";
         }else{
@@ -67,7 +68,7 @@ class ggfirstControllerLezioni extends JControllerLegacy
 
         $model=new ggfirstModelLezioni();
         if($model->modify($this->_filterparam->id,
-            $this->_filterparam->id_edizione,$this->_filterparam->id_docente,$this->_filterparam->id_aula,$this->_filterparam->data,$this->_filterparam->ora_inizio,
+            $this->_filterparam->id_edizione,$this->_filterparam->id_docente,$this->_filterparam->id_luogo,$this->_filterparam->id_aula,$this->_filterparam->data,$this->_filterparam->ora_inizio,
             $this->_filterparam->ora_fine,$this->_filterparam->titolo,$this->_filterparam->note)) {
             echo "1";
         }else{

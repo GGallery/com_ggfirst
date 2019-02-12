@@ -8,14 +8,14 @@
  */
 
 defined('_JEXEC') or die;
-require_once JPATH_COMPONENT . '/models/aule.php';
+require_once JPATH_COMPONENT . '/models/luoghi.php';
 
 /**
  * Controller for single contact view
  *
  * @since  1.5.19
  */
-class ggfirstControllerAule extends JControllerLegacy
+class ggfirstControllerLuoghi extends JControllerLegacy
 {
     protected $_db;
     private $_app;
@@ -29,13 +29,15 @@ class ggfirstControllerAule extends JControllerLegacy
         $this->_filterparam = new stdClass();
         $this->_filterparam->id=JRequest::getVar('id');
         $this->_filterparam->denominazione=JRequest::getVar('denominazione');
-
+        $this->_filterparam->indirizzo=JRequest::getVar('indirizzo');
+        $this->_filterparam->citta=JRequest::getVar('citta');
+        $this->_filterparam->note=JRequest::getVar('note');
 
     }
     public function insert(){
 
-        $model=new ggfirstModelAule();
-        if($model->insert($this->_filterparam->denominazione)) {
+        $model=new ggfirstModelLuoghi();
+        if($model->insert($this->_filterparam->denominazione,$this->_filterparam->indirizzo,$this->_filterparam->citta,$this->_filterparam->note)) {
             echo "1";
         }else{
             echo "0";
@@ -46,7 +48,7 @@ class ggfirstControllerAule extends JControllerLegacy
 
     public function delete(){
 
-        $model=new ggfirstModelAule();
+        $model=new ggfirstModelLuoghi();
         if($model->delete($this->_filterparam->id)) {
             echo "1";
         }else{
@@ -57,8 +59,8 @@ class ggfirstControllerAule extends JControllerLegacy
     }
     public function modify(){
 
-        $model=new ggfirstModelAule();
-        if($model->modify($this->_filterparam->id,$this->_filterparam->denominazione)) {
+        $model=new ggfirstModelLuoghi();
+        if($model->modify($this->_filterparam->id,$this->_filterparam->denominazione,$this->_filterparam->indirizzo,$this->_filterparam->citta,$this->_filterparam->note)) {
             echo "1";
         }else{
             echo "0";

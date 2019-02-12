@@ -24,7 +24,7 @@ class ggfirstModelPartecipanti  extends JModelLegacy {
 
     }
 
-    public function insert($id_corso,$id_studente){
+    public function insert($id_edizione,$id_studente){
 
         $query=$this->_db->getQuery(true);
         $query->select('max(id)');
@@ -33,7 +33,7 @@ class ggfirstModelPartecipanti  extends JModelLegacy {
         $id=$this->_db->loadResult()+1;
         $object = new StdClass;
         $object->id=$id;
-        $object->id_corso=$id_corso;
+        $object->id_edizione=$id_edizione;
         $object->id_studente=$id_studente;
         $object->timestamp=Date('Y-m-d h:i:s',time());
 
@@ -53,20 +53,20 @@ class ggfirstModelPartecipanti  extends JModelLegacy {
 
 
 
-    public function getPartecipanti($id=null, $id_corso,$cognome=null, $offset=0, $limit=10){
+    public function getPartecipanti($id=null, $id_edizione,$cognome=null, $offset=0, $limit=10){
 
         $query=$this->_db->getQuery(true);
-        $query->select('p.id as id,s.nome as nome, s.cognome as cognome, s.citta as citta, s.data_nascita as data_nascita, c.titolo as titolo, pr.minimo_partecipanti as minimo, s.id as id_studente');
+        $query->select('p.id as id,s.nome as nome, s.cognome as cognome, s.citta as citta, s.data_nascita as data_nascita, c.codice_edizione as codice_edizione, c.minimo_partecipanti as minimo, s.id as id_studente');
         $query->from('first_gg_studenti as s');
         $query->join('inner','first_gg_partecipanti as p on s.id=p.id_studente');
-        $query->join('inner','first_gg_corsi as c on c.id=p.id_corso');
-        $query->join('inner','first_gg_preventivi as pr on c.id=pr.id_corso');
+        $query->join('inner','first_gg_edizioni as c on c.id=p.id_edizione');
+
         if($id!=null)
             $query->where('p.id='.$id);
         if($cognome!=null)
             $query->where('s.cognome like \'%'.$cognome.'%\'');
-        if($id_corso!=null)
-            $query->where('p.id_corso='.$id_corso);
+        if($id_edizione!=null)
+            $query->where('p.id_edizione='.$id_edizione);
         $this->_db->setQuery($query);
         $rowscount=count($this->_db->loadAssocList());
         $query->setLimit($limit,$offset);
