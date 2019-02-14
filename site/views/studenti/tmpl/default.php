@@ -45,6 +45,7 @@ defined('_JEXEC') or die;
             <th style="width: 15%;">COGNOME</th>
            <th style="width: 15%;">CITTA'</th>
            <th style="width: 15%;">DATA DI NASCITA</th>
+           <th style="width: 15%;">ISCRITTO AD EDIZIONI:</th>
            <th ></th>
         </tr>
         </thead>
@@ -60,7 +61,7 @@ defined('_JEXEC') or die;
                     <td class="cognome"><span class="start_span" id="_cognome"><?php echo $studente['cognome']; ?></span>
                     <td class="citta"><span class="start_span" id="_citta"><?php echo $studente['citta']; ?></span>
                     <td class="data_nascita"><span class="start_span" id="_data_nascita"><?php echo $studente['data_nascita']; ?></span>
-
+                    <td class="edizioni"><UL id="_edizioni"><?php foreach ($studente["edizioni_iscritto"] as $edizione){echo '<LI>'.$edizione['titolo_corso'].'-'.$edizione['codice_edizione'].'</LI>' ;} ?></UL>
 
                     <td class="bottoni">
                         <button><span class="modify_button oi oi-pencil" title="modifica cliente" aria-hidden="true" onclick="modifica(<?php echo $studente['id']; ?>,'<?php echo $studente['nome']; ?>',

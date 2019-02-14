@@ -51,21 +51,22 @@ defined('_JEXEC') or die;
                     <td><?php if(is_array($cell)){
                         $c=$cell;
                         foreach ($cell as $c) {
-                            //var_dump($c);die;
+
                             if (isset($c['id_lezione'])) {
+                                if(!isset($c['id_aula'])){$c['id_aula']=0;}
                                 echo '<A onclick="modifica('
                                     . $c['id_lezione'] . ','
-                                    . $c['id_corso'] . ','
                                     . $c['id_edizione'] . ','
                                     . $c['id_docente'] . ','
-                                    . $c['id_aula'] . ',\''
+                                    . $c['id_aula'] . ','
+                                    . $c['id_luogo'] . ',\''
                                     . $c['data'] . '\',\''
                                     . $c['ora_inizio'] . '\',\''
                                     . $c['ora_fine'] . '\',\''
                                     . $c['titolo_lezione'] . '\',\''
                                     . $c['note'] . '\''
                                     . ')">
-                                ' . $c['titolo'] . '</A><br>' . $c['titolo_lezione'] . '<br>'. $c['codice_edizione'] . '<br>' . $c['cognome'] . '<br>' . $c['ora_inizio'] . '-' . $c['ora_fine'].'<br>';
+                                ' . $c['titolo'] . '</A><br>' . $c['titolo_lezione'] . '<br>'. $c['codice_edizione'] . '<br>' . $c['cognome'] . '<br>' . $c['ora_inizio'] . '-' . $c['ora_fine'].'<br>---<br>';
 
                             } else {
                                 echo $cell;
@@ -81,14 +82,15 @@ defined('_JEXEC') or die;
         <?php }?>
     </table>
 </div>
-<!--
+
 <div class="form-group form-group-sm">
-    <div  class="row insertbox"><div class="col-xs-12 col-md-12"><b>INSERISCI UNA NUOVA LEZIONE</b></div></div>
+    <div  class="row insertbox"><div class="col-xs-12 col-md-12"><b>MODIFICA LEZIONE</b></div></div>
 
     <div  class="row insertbox">
-         <div class="col-xs-4 col-md-4 text-info"><h5>Corso:</h5><select id="corso"><?php// foreach ($this->corsi[0] as $corso){echo "<option value=".$corso['id'].">".$corso['titolo']."</option>";}?></select></div>
-         <div class="col-xs-4 col-md-4 text-info"><h5>Docente:</h5><select id="docente"><?php// foreach ($this->docenti[0] as $docente){echo "<option value=".$docente['id'].">".$docente['cognome']."</option>";}?></select></div>
-         <div class="col-xs-4 col-md-4 text-info"><h5>Aula:</h5><select id="aula"><?php //foreach ($this->aule[0] as $aula){echo "<option value=".$aula['id'].">".$aula['denominazione']."</option>";}?></select></div>
+         <div class="col-xs-4 col-md-4 text-info"><h5>Edizione:</h5><select id="edizione"><?php foreach ($this->edizioni[0] as $edizione){echo "<option value=".$edizione['id_edizione'].">".$edizione['titolo'].' - '.$edizione['codice_edizione']."</option>";}?></select></div>
+         <div class="col-xs-4 col-md-4 text-info"><h5>Docente:</h5><select id="docente"><?php foreach ($this->docenti[0] as $docente){echo "<option value=".$docente['id'].">".$docente['cognome']."</option>";}?></select></div>
+         <div class="col-xs-4 col-md-4 text-info"><h5>Aula:</h5><select id="aula"><?php foreach ($this->aule[0] as $aula){echo "<option value=".$aula['id'].">".$aula['denominazione']."</option>";}?></select></div>
+        <div class="col-xs-4 col-md-4 text-info"><h5>Luogo:</h5><select id="luogo"><?php foreach ($this->luoghi[0] as $luogo){echo "<option value=".$luogo['id'].">".$luogo['denominazione']."</option>";}?></select></div>
         <div class="col-xs-3 col-md-3 text-info"><h5>Data:</h5> <input class="form-control form-control-sm" type="date" id="data"></div>
         <div class="col-xs-3 col-md-3 text-info"><h5>Ora Inizio:</h5> <input class="form-control form-control-sm" type="time" id="ora_inizio"></div>
         <div class="col-xs-3 col-md-3 text-info"><h5>Ora Fine:</h5> <input class="form-control form-control-sm" type="time" id="ora_fine"></div>
@@ -103,7 +105,7 @@ defined('_JEXEC') or die;
         <div class="col-xs-0 col-md-4"></div>
     </div>
 </div>
--->
+
 </div>
 
 <script type="text/javascript">
@@ -112,12 +114,13 @@ defined('_JEXEC') or die;
     var actual_id;
 
 
-    function modifica(id,id_corso,id_docente,id_aula,data,ora_inizio,ora_fine,titolo,note){
+    function modifica(id,id_edizione,id_docente,id_aula,id_luogo,data,ora_inizio,ora_fine,titolo,note){
 
         actual_id=id;
-        jQuery("#corso").val(id_corso);
+        jQuery("#edizione").val(id_edizione);
         jQuery("#docente").val(id_docente);
         jQuery("#aula").val(id_aula);
+        jQuery("#luogo").val(id_luogo);
         jQuery("#data").val(data);
         jQuery("#ora_inizio").val(ora_inizio);
         jQuery("#ora_fine").val(ora_fine);
@@ -160,9 +163,10 @@ defined('_JEXEC') or die;
                 cache: false,
                 url: 'index.php?option=com_ggfirst&task=lezioni.modify&' +
                 'id=' + actual_id
-                + '&id_corso=' + jQuery("#corso").val()
+                + '&id_edizione=' + jQuery("#edizione").val()
                 + '&id_docente=' + jQuery("#docente").val()
                 + '&id_aula=' + jQuery("#aula").val()
+                + '&id_luogo=' + jQuery("#luogo").val()
                 + '&data=' + jQuery("#data").val()
                 + '&ora_inizio=' + jQuery("#ora_inizio").val()
                 + '&ora_fine=' + jQuery("#ora_fine").val()

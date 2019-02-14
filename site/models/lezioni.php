@@ -74,7 +74,7 @@ class ggfirstModelLezioni  extends JModelLegacy {
     public function getLezioni($id_corso=null,$id_edizione=null,$id_luogo=null,$data=null){
 
         $query=$this->_db->getQuery(true);
-        $query->select('d.nome as nome,d.cognome as cognome,a.denominazione as denominazione, lu.denominazione as luogo, l.id_docente as id_docente,a.id as id_aula,l.note as note,c.titolo as titolo,c.id as id_corso, 
+        $query->select('d.nome as nome,d.cognome as cognome,a.denominazione as denominazione,lu.id as id_luogo, lu.denominazione as luogo, l.id_docente as id_docente,a.id as id_aula,l.note as note,c.titolo as titolo,c.id as id_corso, 
                         e.codice_edizione as codice_edizione, l.data as data, l.id_edizione as id_edizione, l.titolo as titolo_lezione, l.ora_inizio as ora_inizio, l.ora_fine as ora_fine, l.id as id_lezione,
                         if((select count(*) from first_gg_partecipanti where id_edizione=l.id_edizione)>=(select minimo_partecipanti from first_gg_edizioni where id=l.id_edizione),1,0) as corso_attivo');
         $query->from('first_gg_lezioni as l');

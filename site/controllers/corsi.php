@@ -86,5 +86,17 @@ class ggfirstControllerCorsi extends JControllerLegacy
 
     }
 
+    public function modify_edizione(){
+
+        $model=new ggfirstModelCorsi();
+        if($model->modify_edizione($this->_filterparam->id,$this->_filterparam->codice_edizione,$this->_filterparam->stato,$this->_filterparam->minimo_partecipanti)) {
+            echo "1";
+        }else{
+            echo "0";
+        }
+        $this->_app->close();
+
+    }
+
 
 }

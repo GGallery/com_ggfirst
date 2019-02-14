@@ -69,6 +69,19 @@ class ggfirstModelCorsi  extends JModelLegacy {
         return $result;
     }
 
+    public function modify_edizione($id,$codice_edizione,$stato,$minimo_partecipanti){
+
+        $sql="update first_gg_edizioni set codice_edizione='".$codice_edizione."', 
+                stato=".$stato.", 
+                minimo_partecipanti=".$minimo_partecipanti." where id=".$id;
+
+        $this->_db->setQuery($sql);
+
+        $result=$this->_db->execute();
+
+        return $result;
+    }
+
     public function getCorsi($id=null, $titolo=null){
 
         $query=$this->_db->getQuery(true);
@@ -103,13 +116,17 @@ class ggfirstModelCorsi  extends JModelLegacy {
     public function getEdizioni($id=null, $id_corso=null){
 
         $query=$this->_db->getQuery(true);
-        $query->select('*, if((select count(*) from first_gg_partecipanti where id_edizione=e.id)>=minimo_partecipanti,1,0) as edizione_attiva');
+        $query->select('*,e.id as id_edizione,
+        (select count(*) from first_gg_partecipanti where id_edizione=e.id) as numero_partecipanti, if((select count(*) from first_gg_partecipanti where id_edizione=e.id)>=minimo_partecipanti,1,0) as edizione_attiva, 
+        c.titolo as titolo_corso,
+            (select codice_edizione from  first_gg_edizioni where id_corso=e.id_corso order by codice_edizione desc limit 1) as ultimo_codice');
         $query->from('first_gg_edizioni as e');
+        $query->join('inner','first_gg_corsi as c on c.id=e.id_corso');
 
         if($id!=null)
-            $query->where('id='.$id);
+            $query->where('e.id='.$id);
         if($id_corso!=null)
-            $query->where('id_corso='.$id_corso);
+            $query->where('e.id_corso='.$id_corso);
 
         $this->_db->setQuery($query);
         $rowscount=count($this->_db->loadAssocList());

@@ -85,7 +85,8 @@ class ggfirstModelStudenti  extends JModelLegacy {
 
         $query=$this->_db->getQuery(true);
         $query->select('*');
-        $query->from('first_gg_studenti');
+        $query->from('first_gg_studenti as s');
+
         if($id!=null)
             $query->where('id='.$id);
         if($cognome!=null)
@@ -97,6 +98,19 @@ class ggfirstModelStudenti  extends JModelLegacy {
         //echo $query;die;
         $this->_db->setQuery($query);
         $studenti=$this->_db->loadAssocList();
+
+        foreach($studenti as &$studente){
+            $query=$this->_db->getQuery(true);
+            $query->select('c.titolo as titolo_corso,e.codice_edizione as codice_edizione');
+            $query->from('first_gg_partecipanti as p ');
+            $query->join('inner','first_gg_edizioni as e on p.id_edizione=e.id');
+            $query->join('inner','first_gg_corsi as c on c.id=e.id_corso');
+            $query->where('p.id_studente='.$studente['id']);
+            $this->_db->setQuery($query);
+            $edizioni_iscritto=$this->_db->loadAssocList();
+            $studente["edizioni_iscritto"]=$edizioni_iscritto;
+        }
+
         return [$studenti,$rowscount];
     }
 
