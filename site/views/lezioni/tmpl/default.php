@@ -40,46 +40,62 @@ defined('_JEXEC') or die;
 
     <table class="table table-striped table-bordered data-page-length='8'">
         <tr>
-            <?php foreach ($this->calendario[0] as $cell){?>
-                <td><?php  if($cell){echo $cell->format('d/m/Y');}?></td>
-            <?php }?>
+            <td><input id="data_iniziale" type="date" class="form-control form-control-sm"> </td>
+            <td><input id="data_finale" type="date" class="form-control form-control-sm"> </td>
+            <td><button id="cambia_data"><span class="modify_button oi oi-reload" title="aggiorna" aria-hidden="true"></span>
+                </button></td>
         </tr>
-        <?php foreach ($this->calendario[2] as $row){?>
-            <tr>
-                <?php foreach ($row as $cell){?>
+    </table>
+    <table class="table table-striped table-bordered data-page-length='8'">
 
-                    <td><?php if(is_array($cell)){
-                        $c=$cell;
-                        foreach ($cell as $c) {
+        <tr>
+            <?php if($this->calendario[0]){
+                foreach ($this->calendario[0] as $cell){?>
+                <td><?php  if($cell){echo $cell->format('d/m/Y');}?></td>
+            <?php }
+            }?>
+        </tr>
+        <?php if($this->calendario[2]) {
+            foreach ($this->calendario[2] as $row) {
+                ?>
+                <tr>
+                    <?php foreach ($row as $cell) { ?>
 
-                            if (isset($c['id_lezione'])) {
-                                if(!isset($c['id_aula'])){$c['id_aula']=0;}
-                                echo '<A onclick="modifica('
-                                    . $c['id_lezione'] . ','
-                                    . $c['id_edizione'] . ','
-                                    . $c['id_docente'] . ','
-                                    . $c['id_aula'] . ','
-                                    . $c['id_luogo'] . ',\''
-                                    . $c['data'] . '\',\''
-                                    . $c['ora_inizio'] . '\',\''
-                                    . $c['ora_fine'] . '\',\''
-                                    . $c['titolo_lezione'] . '\',\''
-                                    . $c['note'] . '\''
-                                    . ')">
-                                ' . $c['titolo'] . '</A><br>' . $c['titolo_lezione'] . '<br>'. $c['codice_edizione'] . '<br>' . $c['cognome'] . '<br>' . $c['ora_inizio'] . '-' . $c['ora_fine'].'<br>---<br>';
+                        <td><?php if (is_array($cell)) {
+                                $c = $cell;
+                                foreach ($cell as $c) {
 
-                            } else {
+                                    if (isset($c['id_lezione'])) {
+                                        if (!isset($c['id_aula'])) {
+                                            $c['id_aula'] = 0;
+                                        }
+                                        echo '<A onclick="modifica('
+                                            . $c['id_lezione'] . ','
+                                            . $c['id_edizione'] . ','
+                                            . $c['id_docente'] . ','
+                                            . $c['id_aula'] . ','
+                                            . $c['id_luogo'] . ',\''
+                                            . $c['data'] . '\',\''
+                                            . $c['ora_inizio'] . '\',\''
+                                            . $c['ora_fine'] . '\',\''
+                                            . $c['titolo_lezione'] . '\',\''
+                                            . $c['note'] . '\''
+                                            . ')">
+                                ' . $c['titolo'] . '</A><br>' . $c['titolo_lezione'] . '<br>' . $c['codice_edizione'] . '<br>' . $c['cognome'] . '<br>' . $c['ora_inizio'] . '-' . $c['ora_fine'] . '<br>---<br>';
+
+                                    } else {
+                                        echo $cell;
+                                    }
+                                }
+                            } else if ($cell) {
+
                                 echo $cell;
-                            }
-                        }
-                        }else if($cell){
 
-                            echo $cell;
-
-                        }?></td>
-                <?php }?>
-            </tr>
-        <?php }?>
+                            } ?></td>
+                    <?php } ?>
+                </tr>
+            <?php }
+        }?>
     </table>
 </div>
 
@@ -113,7 +129,12 @@ defined('_JEXEC') or die;
     var actual_operation="insert";
     var actual_id;
 
+    jQuery("#cambia_data").click(function(){
 
+        url="index.php?option=com_ggfirst&view=lezioni&data_iniziale="+jQuery("#data_iniziale").val()+"&data_finale="+jQuery("#data_finale").val();
+
+        window.open(url,'_self');
+    });
     function modifica(id,id_edizione,id_docente,id_aula,id_luogo,data,ora_inizio,ora_fine,titolo,note){
 
         actual_id=id;

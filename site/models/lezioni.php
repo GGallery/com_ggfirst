@@ -71,7 +71,7 @@ class ggfirstModelLezioni  extends JModelLegacy {
         return $result;
     }
 
-    public function getLezioni($id_corso=null,$id_edizione=null,$id_luogo=null,$data=null){
+    public function getLezioni($id_corso=null,$id_edizione=null,$id_luogo=null,$data=null,$data_iniziale=null,$data_finale=null){
 
         $query=$this->_db->getQuery(true);
         $query->select('d.nome as nome,d.cognome as cognome,a.denominazione as denominazione,lu.id as id_luogo, lu.denominazione as luogo, l.id_docente as id_docente,a.id as id_aula,l.note as note,c.titolo as titolo,c.id as id_corso, 
@@ -91,8 +91,12 @@ class ggfirstModelLezioni  extends JModelLegacy {
             $query->where('l.data=\''.$data.'\'');
         if($id_corso)
             $query->where('c.id='.$id_corso);
+        if($data_iniziale)
+            $query->where('l.data>=\''.$data_iniziale.'\'');
+        if($data_finale)
+            $query->where('l.data<=\''.$data_finale.'\'');
         $query->order('c.id,l.data ASC');
-
+//echo $query; die;
         $this->_db->setQuery($query);
 
         $lezioni=$this->_db->loadAssocList();
