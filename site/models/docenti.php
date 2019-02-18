@@ -24,7 +24,7 @@ class ggfirstModelDocenti  extends JModelLegacy {
 
     }
 
-    public function insert($nome,$cognome,$provincia,$codice_fiscale,$data_nascita,$luogo_nascita,$prov_nascita,$email,$indirizzo,$cap,$citta,$telefono,$cellulare,$materie){
+    public function insert($nome,$cognome,$provincia,$codice_fiscale,$data_nascita,$luogo_nascita,$prov_nascita,$email,$indirizzo,$cap,$citta,$telefono,$cellulare,$materie,$piva){
 
 
         $object = new StdClass;
@@ -42,6 +42,7 @@ class ggfirstModelDocenti  extends JModelLegacy {
         $object->telefono=$telefono;
         $object->cellulare=$cellulare;
         $object->materie=$materie;
+        $object->piva=$piva;
         $object->timestamp=Date('Y-m-d h:i:s',time());
 
         $result=$this->_db->insertObject('first_gg_docenti',$object);
@@ -58,7 +59,7 @@ class ggfirstModelDocenti  extends JModelLegacy {
         return $result;
     }
 
-    public function modify($id,$nome,$cognome,$provincia,$codice_fiscale,$data_nascita,$luogo_nascita,$prov_nascita,$email,$indirizzo,$cap,$citta,$telefono,$cellulare,$materie){
+    public function modify($id,$nome,$cognome,$provincia,$codice_fiscale,$data_nascita,$luogo_nascita,$prov_nascita,$email,$indirizzo,$cap,$citta,$telefono,$cellulare,$materie,$piva){
 
 
         $sql="update first_gg_docenti set nome='".$nome."', 
@@ -73,6 +74,7 @@ class ggfirstModelDocenti  extends JModelLegacy {
         citta='".$citta."',
         telefono='".$telefono."',
         materie='".$materie."',
+        piva='".$piva."',
         cellulare='".$cellulare."' where id=".$id;
 
         $this->_db->setQuery($sql);

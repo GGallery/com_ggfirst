@@ -43,6 +43,10 @@ defined('_JEXEC') or die;
 <div class="table-responsive">
     <h2>PRIMA - GESTIONE CORSI - ANAGRAFICA PARTECIPANTI</h2>
     <h1><?php if($this->edizione!=null){
+            echo $this->edizione[0][0]['titolo'].'<br>';
+
+        }?></h1>
+    <h1><?php if($this->edizione!=null){
         echo $this->edizione[0][0]['codice_edizione'].'<br>';
 
     }?></h1><h2>partecipanti attuali <b><?php echo count($this->partecipanti[0])?></b>su <b><?php if(isset($this->partecipanti[0][0]['minimo']))echo $this->partecipanti[0][0]['minimo'];?></b></h2>
@@ -52,7 +56,7 @@ defined('_JEXEC') or die;
         <tr>
             <th style="width: 15%;">NOME</th>
             <th style="width: 15%;">COGNOME</th>
-           <th style="width: 15%;">CITTA'</th>
+
            <th style="width: 15%;">DATA DI NASCITA</th>
            <th ></th>
         </tr>
@@ -67,7 +71,7 @@ defined('_JEXEC') or die;
                 <tr>
                     <td class="nome"><span class="start_span" id="_nome"><?php echo $partecipante['nome']; ?></span>
                     <td class="cognome"><span class="start_span" id="_cognome"><?php echo $partecipante['cognome']; ?></span>
-                    <td class="citta"><span class="start_span" id="_citta"><?php echo $partecipante['citta']; ?></span>
+
                     <td class="data_nascita"><span class="start_span" id="_data_nascita"><?php echo $partecipante['data_nascita']; ?></span>
 
 
@@ -102,7 +106,8 @@ defined('_JEXEC') or die;
         <div class="col-xs-4 col-md-4 text-info"><h5>Studente:</h5>
 
             <select id="studente">
-                <?php foreach ($this->studenti[0] as $studente){echo "<option value=".$studente['id'].">".$studente['cognome']." ".$studente['nome']." ".$studente['citta']."</option>";}?>
+                <option value="">aggiungi studente</option>
+                <?php foreach ($this->studenti[0] as $studente){echo "<option value=".$studente['id'].">".$studente['cognome']." ".$studente['nome']."</option>";}?>
             </select></div>
     </div>
 

@@ -67,7 +67,7 @@ defined('_JEXEC') or die;
                                     '<?php echo $docente['cognome']; ?>','<?php echo $docente['indirizzo']; ?>','<?php echo $docente['cap']; ?>','<?php echo $docente['citta']; ?>',
                                     '<?php echo $docente['provincia']; ?>','<?php echo $docente['codice_fiscale']; ?>','<?php echo $docente['data_nascita']; ?>','<?php echo $docente['luogo_nascita']; ?>',
                                     '<?php echo $docente['prov_nascita']; ?>','<?php echo $docente['telefono']; ?>','<?php echo $docente['cellulare']; ?>','<?php echo $docente['email']; ?>',
-                                    '<?php echo $docente['materie']; ?>')">
+                                    '<?php echo $docente['materie']; ?>','<?php echo $docente['piva']; ?>')">
 
                             </span></button>
                         <button onclick="deleteclick(<?php echo $docente['id']; ?>)"><span class="oi oi-delete red" title="cancella utente" aria-hidden="true"></span></button>
@@ -103,6 +103,7 @@ defined('_JEXEC') or die;
         <div class="col-xs-4 col-md-4 text-info"><h5>Città:</h5> <input class="form-control form-control-sm" type="text" id="citta"></div>
         <div class="col-xs-2 col-md-2 text-info"><h5>Prov.</h5> <input class="form-control form-control-sm" type="text" id="provincia"></div>
         <div class="col-xs-4 col-md-4 text-info"><h5>Cod. Fiscale</h5> <input class="form-control form-control-sm" type="text" id="codice_fiscale"></div>
+        <div class="col-xs-4 col-md-4 text-info"><h5>P. Iva</h5> <input class="form-control form-control-sm" type="text" id="piva"></div>
         <div class="col-xs-3 col-md-3 text-info"><h5>Data di nascita</h5> <input class="form-control form-control-sm" type="date" id="data_nascita"></div>
         <div class="col-xs-4 col-md-4 text-info"><h5>Luogo di Nascita</h5> <input class="form-control form-control-sm" type="text" id="luogo_nascita"></div>
         <div class="col-xs-2 col-md-2 text-info"><h5>Prov. Nasc.</h5> <input class="form-control form-control-sm" type="text" id="prov_nascita"></div>
@@ -130,7 +131,7 @@ defined('_JEXEC') or die;
         window.open("index.php?option=com_ggfirst&view=docenti&search="+jQuery("#tosearch").val(),'_self');
     });
 
-    function modifica(id,nome,cognome,indirizzo,cap,citta,provincia,codice_fiscale,data_nascita,luogo_nascita,prov_nascita,telefono,cellulare,email,materie){
+    function modifica(id,nome,cognome,indirizzo,cap,citta,provincia,codice_fiscale,data_nascita,luogo_nascita,prov_nascita,telefono,cellulare,email,materie,piva){
 
         console.log(id+" "+nome);
         actual_id=id;
@@ -148,6 +149,7 @@ defined('_JEXEC') or die;
         jQuery("#cellulare").val(cellulare);
         jQuery("#email").val(email);
         jQuery("#materie").val(materie);
+        jQuery("#piva").val(piva);
         jQuery("#insertnewcliente").html('CONFERMA MODIFICHE');
         actual_operation="modify";
 
@@ -174,6 +176,7 @@ defined('_JEXEC') or die;
              + '&cellulare=' + jQuery("#cellulare").val()
              + '&email=' + jQuery("#email").val()
              + '&materie=' + jQuery("#materie").val()
+             + '&piva=' + jQuery("#piva").val()
 
 
          }).done(function () {
@@ -205,6 +208,7 @@ defined('_JEXEC') or die;
                 +'&cellulare='+jQuery("#cellulare").val()
                 +'&email=' + jQuery("#email").val()
                 +'&materie='+jQuery("#materie").val()
+                +'&piva='+jQuery("#piva").val()
 
 
 
@@ -243,6 +247,7 @@ defined('_JEXEC') or die;
             +'&telefono='+jQuery("#telefono").val()
             +'&cellulare='+jQuery("#cellulare").val()
             +'&materie='+jQuery("#materie").val()
+            +'&piva='+jQuery("#piva").val()
 
 
         }).done(function () {

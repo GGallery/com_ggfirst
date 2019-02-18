@@ -24,7 +24,7 @@ class ggfirstModelClienti  extends JModelLegacy {
 
     }
 
-    public function insert($denominazione,$riferimento,$email,$indirizzo,$cap,$citta,$piva){
+    public function insert($denominazione,$riferimento,$email,$indirizzo,$cap,$citta,$piva,$codice_univoco,$codice_fiscale,$codice_ateco){
 
 
         $object = new StdClass;
@@ -35,6 +35,9 @@ class ggfirstModelClienti  extends JModelLegacy {
         $object->cap=$cap;
         $object->citta=$citta;
         $object->piva=$piva;
+        $object->codice_univoco=$codice_univoco;
+        $object->codice_fiscale=$codice_fiscale;
+        $object->codice_ateco=$codice_ateco;
         $object->timestamp=Date('Y-m-d h:i:s',time());
 
         $result=$this->_db->insertObject('first_gg_clienti',$object);
@@ -51,10 +54,14 @@ class ggfirstModelClienti  extends JModelLegacy {
         return $result;
     }
 
-    public function modify($id,$denominazione,$riferimento,$email,$indirizzo,$cap,$citta,$piva){
+    public function modify($id,$denominazione,$riferimento,$email,$indirizzo,$cap,$citta,$piva,$codice_univoco,$codice_fiscale,$codice_ateco){
 
 
-        $sql="update first_gg_clienti set denominazione='".$denominazione."', riferimento='".$riferimento."', email='".$email."', indirizzo='".$indirizzo."', cap='".$cap."', citta='".$citta."', piva='".$piva."' where id=".$id;
+        $sql="update first_gg_clienti set denominazione='".$denominazione."', riferimento='".$riferimento."', email='".$email."', indirizzo='".$indirizzo."', cap='".$cap."', citta='".$citta."', 
+        codice_univoco='".$codice_univoco."',
+        codice_fiscale='".$codice_fiscale."',
+        codice_ateco='".$codice_ateco."', 
+        piva='".$piva."' where id=".$id;
 
         $this->_db->setQuery($sql);
         $result=$this->_db->execute();

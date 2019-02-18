@@ -42,6 +42,7 @@ class ggfirstControllerDocenti extends JControllerLegacy
         $this->_filterparam->telefono=JRequest::getVar('telefono');
         $this->_filterparam->cellulare=JRequest::getVar('cellulare');
         $this->_filterparam->materie=JRequest::getVar('materie');
+        $this->_filterparam->piva=JRequest::getVar('piva');
 
     }
     public function insert(){
@@ -49,7 +50,7 @@ class ggfirstControllerDocenti extends JControllerLegacy
         $model=new ggfirstModelDocenti();
         if($model->insert($this->_filterparam->nome,$this->_filterparam->cognome,$this->_filterparam->provincia,$this->_filterparam->codice_fiscale,$this->_filterparam->data_nascita,
             $this->_filterparam->luogo_nascita,$this->_filterparam->prov_nascita,$this->_filterparam->email,$this->_filterparam->indirizzo,$this->_filterparam->cap,
-            $this->_filterparam->citta,$this->_filterparam->telefono,$this->_filterparam->cellulare,$this->_filterparam->materie)) {
+            $this->_filterparam->citta,$this->_filterparam->telefono,$this->_filterparam->cellulare,$this->_filterparam->materie,$this->_filterparam->piva)) {
             echo "1";
         }else{
             echo "0";
@@ -75,7 +76,7 @@ class ggfirstControllerDocenti extends JControllerLegacy
         if($model->modify($this->_filterparam->id,
             $this->_filterparam->nome,$this->_filterparam->cognome,$this->_filterparam->provincia,$this->_filterparam->codice_fiscale,$this->_filterparam->data_nascita,
             $this->_filterparam->luogo_nascita,$this->_filterparam->prov_nascita,$this->_filterparam->email,$this->_filterparam->indirizzo,$this->_filterparam->cap,
-            $this->_filterparam->citta,$this->_filterparam->telefono,$this->_filterparam->cellulare,$this->_filterparam->materie)) {
+            $this->_filterparam->citta,$this->_filterparam->telefono,$this->_filterparam->cellulare,$this->_filterparam->materie,$this->_filterparam->piva)) {
             echo "1";
         }else{
             echo "0";

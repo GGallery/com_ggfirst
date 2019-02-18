@@ -43,7 +43,7 @@ defined('_JEXEC') or die;
         <tr>
             <th style="width: 15%;">NOME</th>
             <th style="width: 15%;">COGNOME</th>
-           <th style="width: 15%;">CITTA'</th>
+
            <th style="width: 15%;">DATA DI NASCITA</th>
            <th style="width: 15%;">ISCRITTO AD EDIZIONI:</th>
            <th ></th>
@@ -59,14 +59,13 @@ defined('_JEXEC') or die;
                 <tr>
                     <td class="nome"><span class="start_span" id="_nome"><?php echo $studente['nome']; ?></span>
                     <td class="cognome"><span class="start_span" id="_cognome"><?php echo $studente['cognome']; ?></span>
-                    <td class="citta"><span class="start_span" id="_citta"><?php echo $studente['citta']; ?></span>
+
                     <td class="data_nascita"><span class="start_span" id="_data_nascita"><?php echo $studente['data_nascita']; ?></span>
                     <td class="edizioni"><UL id="_edizioni"><?php foreach ($studente["edizioni_iscritto"] as $edizione){echo '<LI>'.$edizione['titolo_corso'].'-'.$edizione['codice_edizione'].'</LI>' ;} ?></UL>
 
                     <td class="bottoni">
                         <button><span class="modify_button oi oi-pencil" title="modifica cliente" aria-hidden="true" onclick="modifica(<?php echo $studente['id']; ?>,'<?php echo $studente['nome']; ?>',
-                                    '<?php echo $studente['cognome']; ?>','<?php echo $studente['indirizzo']; ?>','<?php echo $studente['cap']; ?>','<?php echo $studente['citta']; ?>',
-                                    '<?php echo $studente['provincia']; ?>','<?php echo $studente['codice_fiscale']; ?>','<?php echo $studente['data_nascita']; ?>','<?php echo $studente['luogo_nascita']; ?>',
+                                    '<?php echo $studente['cognome']; ?>','<?php echo $studente['titolo']; ?>','<?php echo $studente['codice_fiscale']; ?>','<?php echo $studente['data_nascita']; ?>','<?php echo $studente['luogo_nascita']; ?>',
                                     '<?php echo $studente['prov_nascita']; ?>','<?php echo $studente['telefono']; ?>','<?php echo $studente['cellulare']; ?>','<?php echo $studente['email']; ?>',
                                     '<?php echo $studente['idcliente']; ?>')"></span></button>
                         <button onclick="deleteclick(<?php echo $studente['id']; ?>)"><span class="oi oi-delete red" title="cancella utente" aria-hidden="true"></span></button>
@@ -97,10 +96,8 @@ defined('_JEXEC') or die;
 
         <div class="col-xs-3 col-md-3 text-info"><h5>Nome:</h5> <input class="form-control form-control-sm" type="text" id="nome"></div>
         <div class="col-xs-3 col-md-3 text-info"><h5>Cognome:</h5> <input class="form-control form-control-sm" type="text" id="cognome"></div>
-        <div class="col-xs-6 col-md-6 text-info"><h5>Indirizzo:</h5> <input class="form-control form-control-sm" type="text" id="indirizzo"></div>
-        <div class="col-xs-2 col-md-2 text-info"><h5>CAP:</h5> <input class="form-control form-control-sm" type="text" id="cap"></div>
-        <div class="col-xs-4 col-md-4 text-info"><h5>Città:</h5> <input class="form-control form-control-sm" type="text" id="citta"></div>
-        <div class="col-xs-2 col-md-2 text-info"><h5>Prov.</h5> <input class="form-control form-control-sm" type="text" id="provincia"></div>
+        <div class="col-xs-6 col-md-6 text-info"><h5>Titolo di studio:</h5> <input class="form-control form-control-sm" type="text" id="indirizzo"></div>
+
         <div class="col-xs-4 col-md-4 text-info"><h5>Cod. Fiscale</h5> <input class="form-control form-control-sm" type="text" id="codice_fiscale"></div>
         <div class="col-xs-3 col-md-3 text-info"><h5>Data di nascita</h5> <input class="form-control form-control-sm" type="date" id="data_nascita"></div>
         <div class="col-xs-4 col-md-4 text-info"><h5>Luogo di Nascita</h5> <input class="form-control form-control-sm" type="text" id="luogo_nascita"></div>
@@ -129,16 +126,15 @@ defined('_JEXEC') or die;
         window.open("index.php?option=com_ggfirst&view=studenti&search="+jQuery("#tosearch").val(),'_self');
     });
 
-    function modifica(id,nome,cognome,indirizzo,cap,citta,provincia,codice_fiscale,data_nascita,luogo_nascita,prov_nascita,telefono,cellulare,email,idcliente){
+    function modifica(id,nome,cognome,titolo,codice_fiscale,data_nascita,luogo_nascita,prov_nascita,telefono,cellulare,email,idcliente){
 
         console.log(id+" "+nome);
         actual_id=id;
         jQuery("#nome").val(nome);
         jQuery("#cognome").val(cognome);
-        jQuery("#provincia").val(provincia);
-        jQuery("#indirizzo").val(indirizzo);
-        jQuery("#cap").val(cap);
-        jQuery("#citta").val(citta);
+
+        jQuery("#titolo").val(titolo);
+
         jQuery("#codice_fiscale").val(codice_fiscale);
         jQuery("#data_nascita").val(data_nascita);
         jQuery("#luogo_nascita").val(luogo_nascita);
@@ -160,11 +156,10 @@ defined('_JEXEC') or die;
              cache: false,
              url: 'index.php?option=com_ggfirst&task=studenti.insert'
              + '&nome=' + jQuery("#nome").val()
-             + '&cognome=' + jQuery("#cognome").val() +
-             '&provincia=' + jQuery("#provincia").val()
-             + '&indirizzo=' + jQuery("#indirizzo").val()
-             + '&cap=' + jQuery("#cap").val()
-             + '&citta=' + jQuery("#citta").val()
+             + '&cognome=' + jQuery("#cognome").val()
+
+             + '&titolo=' + jQuery("#titolo").val()
+
              + '&codice_fiscale=' + jQuery("#codice_fiscale").val()
              + '&data_nascita=' + jQuery("#data_nascita").val()
              + '&luogo_nascita=' + jQuery("#luogo_nascita").val()
@@ -191,11 +186,9 @@ defined('_JEXEC') or die;
                 url: 'index.php?option=com_ggfirst&task=studenti.modify&' +
                 'id=' + actual_id
                 +'&nome='+jQuery("#nome").val()
-                +'&cognome='+jQuery("#cognome").val()+
-                '&provincia='+jQuery("#provincia").val()
-                +'&indirizzo='+jQuery("#indirizzo").val()
-                +'&cap='+jQuery("#cap").val()
-                +'&citta='+jQuery("#citta").val()
+                +'&cognome='+jQuery("#cognome").val()
+                +'&titolo='+jQuery("#titolo").val()
+
                 +'&codice_fiscale='+jQuery("#codice_fiscale").val()
                 +'&data_nascita='+jQuery("#data_nascita").val()
                 +'&luogo_nascita='+jQuery("#luogo_nascita").val()
@@ -229,11 +222,9 @@ defined('_JEXEC') or die;
             url: 'index.php?option=com_ggfirst&task=studenti.modify&' +
             'id=' + id
             +'&nome='+jQuery("#nome").val()
-            +'&cognome='+jQuery("#cognome").val()+
-            '&provincia='+jQuery("#provincia").val()
-            +'&indirizzo='+jQuery("#indirizzo").val()
-            +'&cap='+jQuery("#cap").val()
-            +'&citta='+jQuery("#citta").val()
+            +'&cognome='+jQuery("#cognome").val()
+            +'&titolo='+jQuery("#titolo").val()
+
             +'&codice_fiscale='+jQuery("#codice_fiscale").val()
             +'&data_nascita='+jQuery("#data_nascita").val()
             +'&luogo_nascita='+jQuery("#luogo_nascita").val()

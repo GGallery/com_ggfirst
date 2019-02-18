@@ -35,12 +35,15 @@ class ggfirstControllerClienti extends JControllerLegacy
         $this->_filterparam->cap=JRequest::getVar('cap');
         $this->_filterparam->citta=JRequest::getVar('citta');
         $this->_filterparam->piva=JRequest::getVar('piva');
+        $this->_filterparam->codice_univoco=JRequest::getVar('codice_univoco');
+        $this->_filterparam->codice_fiscale=JRequest::getVar('codice_fiscale');
+        $this->_filterparam->codice_ateco=JRequest::getVar('codice_ateco');
 
     }
     public function insert(){
 
         $model=new ggfirstModelClienti();
-        if($model->insert($this->_filterparam->denominazione,$this->_filterparam->riferimento,$this->_filterparam->email,$this->_filterparam->indirizzo,$this->_filterparam->cap,$this->_filterparam->citta,$this->_filterparam->piva)) {
+        if($model->insert($this->_filterparam->denominazione,$this->_filterparam->riferimento,$this->_filterparam->email,$this->_filterparam->indirizzo,$this->_filterparam->cap,$this->_filterparam->citta,$this->_filterparam->piva,$this->_filterparam->codice_univoco,$this->_filterparam->codice_fiscale,$this->_filterparam->codice_ateco)) {
             echo "1";
         }else{
             echo "0";
@@ -63,7 +66,7 @@ class ggfirstControllerClienti extends JControllerLegacy
     public function modify(){
 
         $model=new ggfirstModelClienti();
-        if($model->modify($this->_filterparam->id, $this->_filterparam->denominazione,$this->_filterparam->riferimento,$this->_filterparam->email,$this->_filterparam->indirizzo,$this->_filterparam->cap,$this->_filterparam->citta,$this->_filterparam->piva)) {
+        if($model->modify($this->_filterparam->id, $this->_filterparam->denominazione,$this->_filterparam->riferimento,$this->_filterparam->email,$this->_filterparam->indirizzo,$this->_filterparam->cap,$this->_filterparam->citta,$this->_filterparam->piva,$this->_filterparam->codice_univoco,$this->_filterparam->codice_fiscale,$this->_filterparam->codice_ateco)) {
             echo "1";
         }else{
             echo "0";

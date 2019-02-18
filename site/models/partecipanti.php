@@ -56,11 +56,11 @@ class ggfirstModelPartecipanti  extends JModelLegacy {
     public function getPartecipanti($id=null, $id_edizione,$cognome=null, $offset=0, $limit=10){
 
         $query=$this->_db->getQuery(true);
-        $query->select('p.id as id,s.nome as nome, s.cognome as cognome, s.citta as citta, s.data_nascita as data_nascita, c.codice_edizione as codice_edizione, c.minimo_partecipanti as minimo, s.id as id_studente');
+        $query->select('p.id as id,s.nome as nome, s.cognome as cognome, s.data_nascita as data_nascita, e.codice_edizione as codice_edizione, e.minimo_partecipanti as minimo, s.id as id_studente,c.titolo as titolo');
         $query->from('first_gg_studenti as s');
         $query->join('inner','first_gg_partecipanti as p on s.id=p.id_studente');
-        $query->join('inner','first_gg_edizioni as c on c.id=p.id_edizione');
-
+        $query->join('inner','first_gg_edizioni as e on e.id=p.id_edizione');
+        $query->join('inner','first_gg_corsi as c on c.id=e.id_corso');
         if($id!=null)
             $query->where('p.id='.$id);
         if($cognome!=null)
