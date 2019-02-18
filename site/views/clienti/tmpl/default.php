@@ -66,6 +66,7 @@ defined('_JEXEC') or die;
 
 <div class="table-responsive">
     <h2>PRIMA - GESTIONE CORSI - ANAGRAFICA CLIENTI</h2>
+    <div><input type="text" id="tosearch"><button id="dosearch" style="margin-left: 20px;"><span class="oi oi-magnifying-glass"></span></button></div>
     <table class="table table-striped table-bordered ">
         <thead>
         <tr>
@@ -158,6 +159,13 @@ defined('_JEXEC') or die;
 <script type="text/javascript">
 
     var change_operation=null;
+
+    jQuery("#dosearch").click(function (event) {
+
+        console.log("/index.php?option=com_ggfirst&view=clienti&search="+jQuery("#tosearch").val());
+        window.open("index.php?option=com_ggfirst&view=clienti&search="+jQuery("#tosearch").val(),'_self');
+    });
+
     function insertclick(){
 
         jQuery.ajax({

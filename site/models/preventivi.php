@@ -24,13 +24,13 @@ class ggfirstModelPreventivi  extends JModelLegacy {
 
     }
 
-    public function insert($id_corso,$id_cliente,$minimo_partecipanti,$budget,$id_stato_preventivo){
+    public function insert($id_corso,$id_cliente,$budget,$id_stato_preventivo){
 
 
         $object = new StdClass;
         $object->id_corso=$id_corso;
         $object->id_cliente=$id_cliente;
-        $object->minimo_partecipanti=$minimo_partecipanti;
+
         $object->budget=$budget;
         $object->id_stato_preventivo=$id_stato_preventivo;
 
@@ -50,13 +50,13 @@ class ggfirstModelPreventivi  extends JModelLegacy {
         return $result;
     }
 
-    public function modify($id,$id_corso,$id_cliente,$minimo_partecipanti,$budget,$id_stato_preventivo){
+    public function modify($id,$id_corso,$id_cliente,$budget,$id_stato_preventivo){
 
 
         $sql="update first_gg_preventivi set 
         id_corso=".$id_corso.", 
         id_cliente=".$id_cliente.", 
-        minimo_partecipanti=".$minimo_partecipanti.", 
+         
         budget=".$budget.", 
         id_stato_preventivo=".$id_stato_preventivo." where id=".$id;
 
@@ -69,9 +69,12 @@ class ggfirstModelPreventivi  extends JModelLegacy {
     public function getPreventivi($id=null, $nome_corso=null, $offset=0, $limit=10,$id_stato=null){
 
         $query=$this->_db->getQuery(true);
-        $query->select('p.*,c.titolo as corso, cl.denominazione as cliente, s.stato_preventivo as stato ');
+        $query->select('p.*,c.titolo as corso, cl.denominazione as cliente, s.stato_preventivo as stato,e.minimo_partecipanti as minimo_partecipanti,
+        (select count(*) from first_gg_partecipanti where id_edizione=e.id) as numero_partecipanti, if((select count(*) from first_gg_partecipanti where id_edizione=e.id)>=minimo_partecipanti,1,0) as edizione_attiva
+        ');
         $query->from('first_gg_preventivi as p');
         $query->join('inner','first_gg_corsi as c on c.id=p.id_corso');
+        $query->join('inner','first_gg_edizioni as e on c.id=e.id_corso');
         $query->join('inner','first_gg_clienti as cl on cl.id=p.id_cliente');
         $query->join('inner','first_gg_stato_preventivi as s on s.id=p.id_stato_preventivo');
         if($id!=null)

@@ -69,13 +69,15 @@ class ggfirstModelClienti  extends JModelLegacy {
         return $result;
     }
 
-    public function getClienti($id=null){
+    public function getClienti($id=null,$denominazione=null){
 
         $query=$this->_db->getQuery(true);
         $query->select('*');
         $query->from('first_gg_clienti');
         if($id!=null)
             $query->where('id='.$id);
+        if($denominazione!=null)
+            $query->where('denominazione like \'%'.$denominazione.'%\'');
 
         $this->_db->setQuery($query);
         $dipendenti=$this->_db->loadAssocList();

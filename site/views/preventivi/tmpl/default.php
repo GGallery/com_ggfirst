@@ -61,7 +61,7 @@ defined('_JEXEC') or die;
         <tr>
             <th style="width: 15%;">CORSO</th>
             <th style="width: 15%;">CLIENTE</th>
-           <th style="width: 15%;">NUMERO MINIMO PART.</th>
+            <th style="width: 15%;">STATO ISCRIZIONI</th>
            <th style="width: 15%;">BUDGET</th>
             <th style="width: 15%;">STATO</th>
             <th ></th>
@@ -79,10 +79,8 @@ defined('_JEXEC') or die;
                         <select class="start_hidden_input form-control form-control-sm" id="input_corso_<?php echo $preventivo['id']; ?>"><?php foreach ($this->corsi[0] as $corso){$selected=($preventivo['id_corso']==$corso['id']?'selected':'null');echo "<option value=".$corso['id'].' '.$selected.">".$corso['titolo']."</option>";}?></select></td>
                     <td class="cliente"><span class="start_span" id="span_cliente_<?php echo $preventivo['id']; ?>"><?php echo $preventivo['cliente']; ?></span>
                         <select class="start_hidden_input form-control form-control-sm" id="input_cliente_<?php echo $preventivo['id']; ?>"><?php foreach ($this->clienti as $cliente){$selected=($preventivo['id_cliente']==$cliente['id']?'selected':'null');echo "<option value=".$cliente['id'].' '.$selected.">".$cliente['denominazione']."</option>";}?></select></td>
-
-                    <td class="numero"><span class="start_span" id="span_numero_<?php echo $preventivo['id']; ?>"><?php echo $preventivo['minimo_partecipanti']; ?></span>
-                        <input class="start_hidden_input form-control form-control-sm" id="input_numero_<?php echo $preventivo['id']; ?>" class="start_hidden_input form-control form-control-sm" type="text" value="<?php echo $preventivo['minimo_partecipanti']; ?>"></td>
-                    <td class="budget"><span class="start_span" id="span_budget_<?php echo $preventivo['id']; ?>"><?php echo $preventivo['budget']; ?></span>
+                    <td class="numero_partecipanti"><span class="start_span"><?php echo $preventivo['numero_partecipanti']; ?>/<?php echo $preventivo['minimo_partecipanti']; ?></span><span><?php if($preventivo['edizione_attiva']==1) echo '&nbsp;&nbsp;&nbsp;<span class="oi oi-bookmark red"></span>'?>
+                   <td class="budget"><span class="start_span" id="span_budget_<?php echo $preventivo['id']; ?>"><?php echo $preventivo['budget']; ?></span>
                         <input class="start_hidden_input form-control form-control-sm" id="input_budget_<?php echo $preventivo['id']; ?>" class="start_hidden_input form-control form-control-sm" type="text" value="<?php echo $preventivo['budget']; ?>"></td>
                     <td class="stato"><span class="start_span" id="span_stato_<?php echo $preventivo['id']; ?>"><?php echo $preventivo['stato']; ?></span>
                         <select class="start_hidden_input form-control form-control-sm" id="input_stato_<?php echo $preventivo['id']; ?>"><?php foreach ($this->stati as $stato){$selected=($preventivo['id_stato_preventivo']==$stato['id']?'selected':'null');echo "<option value=".$stato['id'].' '.$selected.">".$stato['stato_preventivo']."</option>";}?></select></td>
@@ -117,7 +115,7 @@ defined('_JEXEC') or die;
 
         <div class="col-xs-4 col-md-4 text-info"><h5>Corso:</h5><select id="corso"><option value="">scegli</option><?php foreach ($this->corsi[0] as $corso){echo "<option value=".$corso['id'].">".$corso['titolo']."</option>";}?></select></div>
         <div class="col-xs-4 col-md-4 text-info"><h5>Cliente:</h5><select id="cliente"><option value="">scegli</option><?php foreach ($this->clienti as $cliente){echo "<option value=".$cliente['id'].">".$cliente['denominazione']."</option>";}?></select></div>
-        <div class="col-xs-4 col-md-4 text-info"><h5>Num. min. part.:</h5> <input class="form-control form-control-sm" type="text" id="numero"></div>
+
         <div class="col-xs-4 col-md-4 text-info"><h5>Budget:</h5> <input class="form-control form-control-sm" type="text" id="budget"></div>
         <div class="col-xs-4 col-md-4 text-info"><h5>Stato:</h5><select id="stato"><option value="">scegli</option><?php foreach ($this->stati as $stato){echo "<option value=".$stato['id'].">".$stato['stato_preventivo']."</option>";}?></select></div>
     </div>
@@ -148,7 +146,7 @@ defined('_JEXEC') or die;
         jQuery("#input_corso_"+str).toggle();
         jQuery("#input_cliente_"+str).toggle();
         jQuery("#input_budget_"+str).toggle();
-        jQuery("#input_numero_"+str).toggle();
+
         jQuery("#input_stato_"+str).toggle();
         jQuery("#span_corso_"+str).toggle();
         jQuery("#span_cliente_"+str).toggle();
@@ -168,7 +166,7 @@ defined('_JEXEC') or die;
              url: 'index.php?option=com_ggfirst&task=preventivi.insert'
              + '&id_corso=' + jQuery("#corso").val()
              + '&id_cliente=' + jQuery("#cliente").val()
-             + '&numero=' + jQuery("#numero").val()
+
              + '&budget=' + jQuery("#budget").val()
              + '&id_stato_preventivo=' + jQuery("#stato").val()
 
@@ -205,7 +203,7 @@ defined('_JEXEC') or die;
             'id=' + id
             +'&id_corso='+jQuery("#input_corso_"+id).val()
             +'&id_cliente='+jQuery("#input_cliente_"+id).val()
-            +'&numero='+jQuery("#input_numero_"+id).val()
+
             +'&budget='+jQuery("#input_budget_"+id).val()
             +'&id_stato_preventivo='+jQuery("#input_stato_"+id).val()
 

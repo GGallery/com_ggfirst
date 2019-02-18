@@ -29,7 +29,13 @@ class ggfirstViewClienti extends JViewLegacy {
         JHtml::_('stylesheet', 'components/com_ggfirst/libraries/open-iconic/font/css/open-iconic-bootstrap.css');
         JHtml::_('stylesheet', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous');
 
-        $this->clienti=$this->getModel()->getClienti();
+        if(JRequest::getVar('search')!=null) {
+            $denominazione=JRequest::getVar('search');
+            $this->clienti=$this->getModel()->getClienti(null,$denominazione);
+        }else{
+            $this->clienti=$this->getModel()->getClienti();
+        }
+
 
         parent::display($tpl);
     }
