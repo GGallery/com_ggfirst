@@ -49,7 +49,18 @@ defined('_JEXEC') or die;
     <h1><?php if($this->edizione!=null){
         echo $this->edizione[0][0]['codice_edizione'].'<br>';
 
-    }?></h1><h2>partecipanti attuali <b><?php echo count($this->partecipanti[0])?></b>su <b><?php if(isset($this->partecipanti[0][0]['minimo']))echo $this->partecipanti[0][0]['minimo'];?></b></h2>
+    }?>
+    <?php
+        if(count($this->edizione[0][0]['lezioni'])==1){
+            echo '<span style="font-size: x-small">' .date_format(date_create($this->edizione[0][0]['lezioni'][0]['data']),'d-m-Y'). '</span>';
+        }else {
+            foreach ($this->edizione[0][0]['lezioni'] as $lezione) {
+                if (isset($lezione['data']))
+                    echo '<span style="font-size: x-small">' . date_format(date_create($lezione['data']),'d-m-Y') . '     ' . '</span>';
+            }
+        }
+
+        ?></h1><h2>partecipanti attuali <b><?php echo count($this->partecipanti[0])?></b>su <b><?php if(isset($this->partecipanti[0][0]['minimo']))echo $this->partecipanti[0][0]['minimo'];?></b></h2>
     <div><input type="text" id="tosearch"><button id="dosearch" style="margin-left: 20px;"><span class="oi oi-magnifying-glass"></span></button></div>
     <table class="table table-striped table-bordered data-page-length='8'">
         <thead>
@@ -79,6 +90,55 @@ defined('_JEXEC') or die;
 
                         <button onclick="deleteclick(<?php echo $partecipante['id']; ?>)"><span class="oi oi-delete red" title="cancella utente" aria-hidden="true"></span></button>
                         <button onclick="openattestati(<?php echo $partecipante['id_studente']; ?>)"><span class="oi oi-plus blue" title="lancia attestato" aria-hidden="true"></span></button>
+                        <button onclick="openiscrizione('<?php echo $partecipante['nome']; ?>',
+                                '<?php echo $partecipante['cognome']; ?>',
+                                '<?php echo $this->edizione[0][0]['titolo']; ?>',
+                                '<?php echo $partecipante['credito']; ?>',
+                                '<?php echo $partecipante['durata']; ?>',
+                                '<?php
+                        if(count($this->edizione[0][0]['lezioni'])==1){
+                            echo date_format(date_create($this->edizione[0][0]['lezioni'][0]['data']),'d-m-Y'). '</span>';
+                        }else {
+                            foreach ($this->edizione[0][0]['lezioni'] as $lezione) {
+                                if (isset($lezione['data']))
+                                    echo date_format(date_create($lezione['data']),'d-m-Y') ;
+                            }
+                        }
+
+                        ?>',
+                                '<?php echo date_format(date_create($this->edizione[0][0]['scadenza_iscrizione']),'d-m-Y');?>' ,
+                        '<?php
+                        if(count($this->edizione[0][0]['lezioni'])==1){
+                            echo $this->edizione[0][0]['lezioni'][0]['ora_inizio'].'  '.$this->edizione[0][0]['lezioni'][0]['ora_fine'];
+                        }else {
+
+
+                            }
+
+                        ?>',
+                                'riferimento legislativo',
+                                '<?php echo $partecipante['luogo_nascita'].' '.date_format(date_create($partecipante['data_nascita']),'d-m-Y'); ?>',
+                                '<?php echo $partecipante['codice_fiscale']; ?>',
+                                '<?php echo $partecipante['titolo_studio']; ?>',
+                                '<?php echo $partecipante['email']; ?>',
+                                'profilo',
+                                '<?php echo $partecipante['denominazione']; ?>',
+
+                                '<?php echo $partecipante['piva']; ?>',
+                                '<?php echo $partecipante['c_codice_fiscale']; ?>',
+                                '<?php echo $partecipante['codice_univoco']; ?>',
+
+
+                                '<?php echo $partecipante['email']; ?>',
+                                '<?php echo $partecipante['indirizzo']; ?>',
+                                '<?php echo $partecipante['citta']; ?>',
+                                '010 010010',
+                                '<?php echo $partecipante['riferimento']; ?>',
+                                '<?php echo $partecipante['email']; ?>',
+                                '<?php echo $partecipante['ateco']; ?>',
+
+
+                                )"><span class="oi oi-document red" title="apri iscrizione" aria-hidden="true"></span></button>
                     </td>
                 </tr>
 
@@ -161,6 +221,42 @@ defined('_JEXEC') or die;
         window.open("index.php?option=com_ggfirst&view=attestati&preselected_id_studente="+id,'_self');
 
     }
+
+    function openiscrizione(nome,cognome,titolo_corso,credito,durata,data,data_scadenza,orario,riferimento_legislativo,
+                            luogo_data,codice_fiscale,titolo_studio,email,profilo,denominazione,piva,c_codice_fiscale,codice_univoco,
+                            pec,indirizzo,citta,telefono,riferimento,email_riferimento,ateco) {
+
+        url="index.php?option=com_ggfirst&task=pdf.generateIscrizione"+
+            "&nome="+nome+
+            "&cognome="+cognome+
+            "&id_attestato=5"+
+            "&titolo_corso="+titolo_corso+
+            "&credito="+credito+
+            "&durata="+durata+
+            "&data="+data+
+            "&data_scadenza="+data_scadenza+
+            "&orario="+orario+
+            "&riferimento_legislativo="+riferimento_legislativo+
+            "&luogo_data="+luogo_data+
+            "&codice_fiscale="+codice_fiscale+
+            "&titolo_studio="+titolo_studio+
+            "&email="+email+
+            "&profilo="+profilo+
+            "&denominazione="+denominazione+
+            "&piva="+piva+
+            "&c_codice_fiscale="+c_codice_fiscale+
+            "&codice_univoco="+codice_univoco+
+            "&pec="+pec+
+            "&indirizzo="+indirizzo+
+            "&comune_provincia="+citta+
+            "&tel_fax="+telefono+
+            "&riferimento="+riferimento+
+            "&email_riferimento="+email_riferimento+
+            "&ateco="+ateco
+        window.open(url,'_self');
+
+    }
+
     function deleteclick(id) {
 
         if(confirm('attenzione, stai cancellando un partecipante')==true) {

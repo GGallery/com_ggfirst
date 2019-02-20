@@ -428,10 +428,11 @@ defined('_JEXEC') or die;
 
         var str=id.toString();
         var nuovo_titolo=jQuery("#input_titolo_"+str).val()
+        var nuovo_credito=jQuery("#nuovo_credito_"+str).val()
         jQuery.ajax({
             method: "POST",
             cache: false,
-            url: 'index.php?option=com_ggfirst&task=corsi.modify&id=' + id.toString() + '&titolo=' + nuovo_titolo
+            url: 'index.php?option=com_ggfirst&task=corsi.modify&id=' + id.toString() + '&titolo=' + nuovo_titolo+'&credito='+nuovo_credito
 
         }).done(function () {
             alert("modificato  corso");

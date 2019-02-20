@@ -33,6 +33,7 @@ class ggfirstControllerCorsi extends JControllerLegacy
         $this->_filterparam->codice_edizione=JRequest::getVar('codice_edizione');
         $this->_filterparam->stato=JRequest::getVar('stato');
         $this->_filterparam->minimo_partecipanti=JRequest::getVar('minimo_partecipanti');
+        $this->_filterparam->credito=JRequest::getVar('credito');
 
 
 
@@ -77,7 +78,7 @@ class ggfirstControllerCorsi extends JControllerLegacy
 
         $model=new ggfirstModelCorsi();
         if($model->modify($this->_filterparam->id,
-            $this->_filterparam->titolo)) {
+            $this->_filterparam->titolo,$this->_filterparam->credito)) {
             echo "1";
         }else{
             echo "0";

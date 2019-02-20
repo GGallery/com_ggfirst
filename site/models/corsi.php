@@ -58,10 +58,15 @@ class ggfirstModelCorsi  extends JModelLegacy {
         return $result;
     }
 
-    public function modify($id,$titolo){
+    public function modify($id,$titolo,$credito){
 
 
         $sql="update first_gg_corsi set titolo='".$titolo."' where id=".$id;
+
+        $this->_db->setQuery($sql);
+        $result=$this->_db->execute();
+
+        $sql="insert into first_gg_corsi_crediti_map (id_corso,id_credito,timestamp) values(".$id.",".$credito.",now())";
 
         $this->_db->setQuery($sql);
         $result=$this->_db->execute();
@@ -118,7 +123,7 @@ class ggfirstModelCorsi  extends JModelLegacy {
         $query=$this->_db->getQuery(true);
         $query->select('*,e.id as id_edizione,
         (select count(*) from first_gg_partecipanti where id_edizione=e.id) as numero_partecipanti, if((select count(*) from first_gg_partecipanti where id_edizione=e.id)>=minimo_partecipanti,1,0) as edizione_attiva, 
-        c.titolo as titolo_corso,
+        c.titolo as titolo_corso,  (select min(data)-interval 15 day from first_gg_lezioni where id_edizione=e.id) as scadenza_iscrizione,
             (select codice_edizione from  first_gg_edizioni where id_corso=e.id_corso order by codice_edizione desc limit 1) as ultimo_codice');
         $query->from('first_gg_edizioni as e');
         $query->join('inner','first_gg_corsi as c on c.id=e.id_corso');
@@ -139,10 +144,10 @@ class ggfirstModelCorsi  extends JModelLegacy {
             $query->select('*');
             $query->from('first_gg_lezioni as l');
 
-            $query->where('l.id_edizione='.$edizione['id']);
+            $query->where('l.id_edizione='.$edizione['id_edizione']);
             $this->_db->setQuery($query);
-            $crediti=$this->_db->loadAssocList();
-            $edizione['lezioni']=$crediti;
+            $lezioni=$this->_db->loadAssocList();
+            $edizione['lezioni']=$lezioni;
         }
 
         return [$edizioni,$rowscount];

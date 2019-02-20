@@ -65,7 +65,8 @@ class ggfirstModelAttestati  extends JModelLegacy {
     public function getAttestati($id=null,$id_studente=null,$numero=null,$data_attestato=null,$certificatore=null,$id_credito_map=null, $scadenza_data_minore=null,$scadenza_data_maggiore=null){
 
         $query=$this->_db->getQuery(true);
-        $query->select('a.id as id, concat( c.titolo,\' \',cr.ruolo,\' \', cr.rischio) as credito, concat(s.cognome,\' \',s.nome) as studente, s.nome as nome, s.cognome as cognome, a.numero as numero, a.data_attestato as data_attestato, a.scadenza as scadenza, a.certificatore as certificatore');
+        $query->select('a.id as id, concat( c.titolo,\' \',cr.ruolo,\' \', cr.rischio) as credito, concat(s.cognome,\' \',s.nome) as studente, s.nome as nome, s.cognome as cognome, 
+        a.numero as numero, a.data_attestato as data_attestato, a.scadenza as scadenza, a.certificatore as certificatore, c.titolo as titolo_corso, cr.durata as durata');
         $query->from('first_gg_attestati as a');
         $query->join('inner','first_gg_studenti as s on a.id_studente=s.id');
         $query->join('inner','first_gg_corsi_crediti_map as cm on a.id_credito_map=cm.id');

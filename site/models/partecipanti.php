@@ -56,17 +56,24 @@ class ggfirstModelPartecipanti  extends JModelLegacy {
     public function getPartecipanti($id=null, $id_edizione,$cognome=null, $offset=0, $limit=10){
 
         $query=$this->_db->getQuery(true);
-        $query->select('p.id as id,s.nome as nome, s.cognome as cognome, s.data_nascita as data_nascita, e.codice_edizione as codice_edizione, e.minimo_partecipanti as minimo, s.id as id_studente,c.titolo as titolo');
+        $query->select('p.id as id,s.nome as nome, s.cognome as cognome, e.codice_edizione as codice_edizione,s.luogo_nascita as luogo_nascita,s.data_nascita as data_nascita,
+                         s.codice_fiscale as codice_fiscale, s.titolo as titolo_studio,s.email as email,cli.denominazione as denominazione,cli.piva as piva,cli.codice_fiscale as c_codice_fiscale,
+                         cli.codice_univoco,cli.email as email,cli.indirizzo as indirizzo,cli.citta as citta,cli.riferimento as riferimento,cli.codice_ateco as ateco,
+        e.minimo_partecipanti as minimo, s.id as id_studente,c.titolo as titolo,concat( cr.ruolo,\' \', cr.rischio) as credito,cr.durata as durata');
         $query->from('first_gg_studenti as s');
         $query->join('inner','first_gg_partecipanti as p on s.id=p.id_studente');
         $query->join('inner','first_gg_edizioni as e on e.id=p.id_edizione');
+        $query->join('inner','first_gg_clienti as cli on s.idcliente=cli.id');
         $query->join('inner','first_gg_corsi as c on c.id=e.id_corso');
+        $query->join('inner','first_gg_corsi_crediti_map as map on map.id_corso=c.id');
+        $query->join('inner','first_gg_crediti as cr on cr.id=map.id_credito');
         if($id!=null)
             $query->where('p.id='.$id);
         if($cognome!=null)
             $query->where('s.cognome like \'%'.$cognome.'%\'');
         if($id_edizione!=null)
             $query->where('p.id_edizione='.$id_edizione);
+
         $this->_db->setQuery($query);
         $rowscount=count($this->_db->loadAssocList());
         $query->setLimit($limit,$offset);

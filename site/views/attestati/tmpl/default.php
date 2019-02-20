@@ -58,7 +58,7 @@ defined('_JEXEC') or die;
                 </select></th>
             <th style="width: 15%;">  <select id="filtrostudente" class="contenitori_filtro">
                     <option value="">filtra per studente</option>
-                    <?php foreach ($this->studenti[0] as $studente){echo "<option value=".$studente['id'].">".$studente['cognome']." ".$studente['nome']." ".$studente['citta']."</option>";}?>
+                    <?php foreach ($this->studenti[0] as $studente){echo "<option value=".$studente['id'].">".$studente['cognome']." ".$studente['nome']."</option>";}?>
                 </select></th>
             <th style="width: 15%;"><input  id="filtronumero" class="contenitori_filtro" type="text"></th>
             <th style="width: 15%;"><input id="filtrodata_attestato" class="contenitori_filtro" type="date"></th>
@@ -113,6 +113,7 @@ defined('_JEXEC') or die;
                         <button class="confirm_button" id="confirm_button_<?php echo $attestato['id']; ?>"><span class="oi oi-thumb-up" title="conferma modifiche" aria-hidden="true" id="confirm_span_<?php echo $attestato['id']; ?>"></span></button>
                         <button onclick="deleteclick(<?php echo $attestato['id']; ?>)"><span class="oi oi-delete red" title="cancella utente" aria-hidden="true"></span></button>
                         <button onclick="openattestato('<?php echo $attestato['nome']; ?>','<?php echo $attestato['cognome']; ?>','<?php echo $attestato['data_attestato']; ?>')"><span class="oi oi-document green" title="apri attestato" aria-hidden="true"></span></button>
+
                     </td>
                 </tr>
                 <?php
@@ -163,6 +164,17 @@ defined('_JEXEC') or die;
             "&nome="+nome+
             "&cognome="+cognome+
             "&id_attestato=4"+
+            "&data_attestato="+data_attestato
+        window.open(url,'_self');
+
+    }
+
+    function openiscrizione(nome,cognome,data_attestato) {
+
+        url="index.php?option=com_ggfirst&task=pdf.generateIscrizione"+
+            "&nome="+nome+
+            "&cognome="+cognome+
+            "&id_attestato=5"+
             "&data_attestato="+data_attestato
         window.open(url,'_self');
 
