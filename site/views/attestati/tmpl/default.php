@@ -140,7 +140,11 @@ defined('_JEXEC') or die;
         <div class="col-xs-3 col-md-3 text-info"><h5>Credito:</h5>
             <select id="credito">
                 <option aggiornamento=null value="null">scegli un credito</option>
-            <?php foreach ($this->crediti as $credito){echo "<option aggiornamento=".$credito['aggiornamento']." value='".$credito['id']."'>".$credito['credito']."</option>";}?>
+            <?php foreach ($this->crediti as $credito){
+                if ($credito['prossimo_codice']==null)
+                    $credito['prossimo_codice']='da_inizializzare';
+                echo "<option prossimo_codice=".$credito['prossimo_codice']."  aggiornamento=".$credito['aggiornamento']." value='".$credito['id']."'>".$credito['credito']."</option>";
+            }?>
         </select>
         </div>
         <div class="col-xs-3 col-md-3 text-info"><h5>Scadenza:</h5> <input class="form-control form-control-sm" type="date" id="scadenza"></div>
@@ -174,7 +178,7 @@ defined('_JEXEC') or die;
 
 
         url="index.php?option=com_ggfirst&view=attestati"+
-            "&id_credito_map="+jQuery("#filtrocredito").val()+
+            "&id_credito="+jQuery("#filtrocredito").val()+
             "&id_studente="+jQuery("#filtrostudente").val()+
             "&numero="+jQuery("#filtronumero").val()+
             "&data_attestato="+jQuery("#filtrodata_attestato").val()+
@@ -189,6 +193,8 @@ defined('_JEXEC') or die;
 
 
         var aggiornamento=jQuery('#credito option:selected').attr('aggiornamento');
+        var prossimo_codice=jQuery('#credito option:selected').attr('prossimo_codice');
+
         console.log(aggiornamento);
         if(jQuery('#data_attestato').val()!=null){
 
@@ -209,6 +215,10 @@ defined('_JEXEC') or die;
 
         }
 
+        if(prossimo_codice){
+            jQuery("#numero").val(prossimo_codice);
+        }
+
     });
 
     function insertclick(){
@@ -216,7 +226,7 @@ defined('_JEXEC') or die;
         jQuery.ajax({
             method: "POST",
             cache: false,
-            url: 'index.php?option=com_ggfirst&task=attestati.insert&id_studente='+jQuery("#studente").val()+'&numero='+jQuery("#numero").val()+'&data_attestato='+jQuery("#data_attestato").val()+'&certificatore='+jQuery("#certificatore").val()+'&id_credito_map='+jQuery("#credito").val()+'&scadenza='+jQuery("#scadenza").val()
+            url: 'index.php?option=com_ggfirst&task=attestati.insert&id_studente='+jQuery("#studente").val()+'&numero='+jQuery("#numero").val()+'&data_attestato='+jQuery("#data_attestato").val()+'&certificatore='+jQuery("#certificatore").val()+'&id_credito='+jQuery("#credito").val()+'&scadenza='+jQuery("#scadenza").val()
 
         }).done(function() {
 
@@ -267,7 +277,7 @@ console.log("modifica");
             var numero = jQuery('#input_numero_' + id).val().toString();
             var data_attestato = jQuery('#input_data_attestato_' + id).val().toString();
             var certificatore= jQuery('#input_certificatore_' + id).val().toString();
-            var id_credito_map = jQuery('#input_credito_' + id).val().toString();
+            var id_credito = jQuery('#input_credito_' + id).val().toString();
             var scadenza = jQuery('#input_scadenza_' + id).val().toString();
 
 
@@ -275,7 +285,7 @@ console.log("modifica");
             jQuery.ajax({
                 method: "POST",
                 cache: false,
-                url: 'index.php?option=com_ggfirst&task=attestati.modify&id=' + id + '&id_studente=' + id_studente + '&numero=' + numero + '&data_attestato=' + data_attestato + '&certificatore=' + certificatore+ '&id_credito_map=' + id_credito_map + '&scadenza=' + scadenza
+                url: 'index.php?option=com_ggfirst&task=attestati.modify&id=' + id + '&id_studente=' + id_studente + '&numero=' + numero + '&data_attestato=' + data_attestato + '&certificatore=' + certificatore+ '&id_credito=' + id_credito + '&scadenza=' + scadenza
 
             }).done(function () {
 

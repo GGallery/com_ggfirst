@@ -24,7 +24,7 @@ class ggfirstModelAttestati  extends JModelLegacy {
 
     }
 
-    public function insert($id_studente,$numero,$data_attestato,$certificatore,$id_credito_map,$scadenza){
+    public function insert($id_studente,$numero,$data_attestato,$certificatore,$id_credito,$scadenza){
 
 
         $object = new StdClass;
@@ -32,7 +32,7 @@ class ggfirstModelAttestati  extends JModelLegacy {
         $object->numero=$numero;
         $object->data_attestato=$data_attestato;
         $object->certificatore=$certificatore;
-        $object->id_credito_map=$id_credito_map;
+        $object->id_credito=$id_credito;
         $object->scadenza=$scadenza;
         $object->timestamp=Date('Y-m-d h:i:s',time());
 
@@ -51,10 +51,10 @@ class ggfirstModelAttestati  extends JModelLegacy {
         return $result;
     }
 
-    public function modify($id,$id_studente,$numero,$data_attestato,$certificatore,$id_credito_map,$scadenza){
+    public function modify($id,$id_studente,$numero,$data_attestato,$certificatore,$id_credito,$scadenza){
 
 
-        $sql="update first_gg_attestati set id_studente='".$id_studente."', numero='".$numero."', data_attestato='".$data_attestato."', certificatore='".$certificatore."', id_credito_map='".$id_credito_map."', scadenza='".$scadenza."' where id=".$id;
+        $sql="update first_gg_attestati set id_studente='".$id_studente."', numero='".$numero."', data_attestato='".$data_attestato."', certificatore='".$certificatore."', id_credito='".$id_credito."', scadenza='".$scadenza."' where id=".$id;
 
         $this->_db->setQuery($sql);
         $result=$this->_db->execute();
@@ -62,16 +62,16 @@ class ggfirstModelAttestati  extends JModelLegacy {
         return $result;
     }
 
-    public function getAttestati($id=null,$id_studente=null,$numero=null,$data_attestato=null,$certificatore=null,$id_credito_map=null, $scadenza_data_minore=null,$scadenza_data_maggiore=null){
+    public function getAttestati($id=null,$id_studente=null,$numero=null,$data_attestato=null,$certificatore=null,$id_credito=null, $scadenza_data_minore=null,$scadenza_data_maggiore=null){
 
         $query=$this->_db->getQuery(true);
-        $query->select('a.id as id, concat( c.titolo,\' \',cr.ruolo,\' \', cr.rischio) as credito, concat(s.cognome,\' \',s.nome) as studente, s.nome as nome, s.cognome as cognome, 
-        a.numero as numero, a.data_attestato as data_attestato, a.scadenza as scadenza, a.certificatore as certificatore, c.titolo as titolo_corso, cr.durata as durata');
+        $query->select('a.id as id, concat( cr.ruolo,\' \', cr.rischio) as credito, concat(s.cognome,\' \',s.nome) as studente, s.nome as nome, s.cognome as cognome, 
+        a.numero as numero, a.data_attestato as data_attestato, a.scadenza as scadenza, a.certificatore as certificatore, cr.durata as durata');
         $query->from('first_gg_attestati as a');
         $query->join('inner','first_gg_studenti as s on a.id_studente=s.id');
-        $query->join('inner','first_gg_corsi_crediti_map as cm on a.id_credito_map=cm.id');
-        $query->join('inner','first_gg_crediti as cr on cm.id_credito=cr.id');
-        $query->join('inner','first_gg_corsi as c on cm.id_corso=c.id');
+        //$query->join('inner','first_gg_corsi_crediti_map as cm on a.id_credito_map=cm.id');
+        $query->join('inner','first_gg_crediti as cr on a.id_credito=cr.id');
+        //$query->join('inner','first_gg_corsi as c on cm.id_corso=c.id');
         if($id!=null)
             $query->where('id='.$id);
         if($id_studente!=null)
@@ -82,8 +82,8 @@ class ggfirstModelAttestati  extends JModelLegacy {
             $query->where('data_attestato=\''.$data_attestato.'\'');
         if($certificatore!=null)
             $query->where('certificatore like\''.$certificatore.'\'');
-        if($id_credito_map!=null)
-            $query->where('id_credito_map='.$id_credito_map);
+        if($id_credito!=null)
+            $query->where('id_credito='.$id_credito);
         if($scadenza_data_maggiore!=null && $scadenza_data_minore!=null)
             $query->where('scadenza<=\''.$scadenza_data_maggiore.'\' and scadenza>=\''.$scadenza_data_minore.'\'');
         //echo $query;die;

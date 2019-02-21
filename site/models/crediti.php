@@ -78,10 +78,13 @@ class ggfirstModelCrediti  extends JModelLegacy {
     public function getCorsiCrediti($id=null){
 
         $query=$this->_db->getQuery(true);
-        $query->select('cm.id as id, concat( c.titolo,\' \',cr.ruolo,\' \', cr.rischio) as credito, cr.aggiornamento as aggiornamento');
+        $query->select('cr.id as id, concat(cr.ruolo,\' \', cr.rischio) as credito, cr.aggiornamento as aggiornamento,
+        concat((select SUBSTRING(numero,1,3) from first_gg_attestati where id_credito=cr.id limit 1),(select max(SUBSTRING(numero,4,1))+1 from first_gg_attestati where id_credito=cr.id)) as prossimo_codice
+
+        ');
         $query->from('first_gg_crediti as cr');
         $query->join('inner','first_gg_corsi_crediti_map as cm on cm.id_credito=cr.id');
-        $query->join('inner','first_gg_corsi as c on cm.id_corso=c.id');
+ //       $query->join('inner','first_gg_corsi as c on cm.id_corso=c.id');
         if($id!=null)
             $query->where('id='.$id);
 
