@@ -24,7 +24,7 @@ class ggfirstModelClienti  extends JModelLegacy {
 
     }
 
-    public function insert($denominazione,$riferimento,$email,$indirizzo,$cap,$citta,$piva,$codice_univoco,$codice_fiscale,$codice_ateco){
+    public function insert($denominazione,$riferimento,$email,$indirizzo,$cap,$citta,$telefono,$piva,$codice_univoco,$codice_fiscale,$codice_ateco){
 
 
         $object = new StdClass;
@@ -34,6 +34,7 @@ class ggfirstModelClienti  extends JModelLegacy {
         $object->indirizzo=$indirizzo;
         $object->cap=$cap;
         $object->citta=$citta;
+        $object->telefono=$telefono;
         $object->piva=$piva;
         $object->codice_univoco=$codice_univoco;
         $object->codice_fiscale=$codice_fiscale;
@@ -54,10 +55,10 @@ class ggfirstModelClienti  extends JModelLegacy {
         return $result;
     }
 
-    public function modify($id,$denominazione,$riferimento,$email,$indirizzo,$cap,$citta,$piva,$codice_univoco,$codice_fiscale,$codice_ateco){
+    public function modify($id,$denominazione,$riferimento,$email,$indirizzo,$cap,$citta,$telefono,$piva,$codice_univoco,$codice_fiscale,$codice_ateco){
 
 
-        $sql="update first_gg_clienti set denominazione='".$denominazione."', riferimento='".$riferimento."', email='".$email."', indirizzo='".$indirizzo."', cap='".$cap."', citta='".$citta."', 
+        $sql="update first_gg_clienti set denominazione='".$denominazione."', riferimento='".$riferimento."', email='".$email."', indirizzo='".$indirizzo."', cap='".$cap."', citta='".$citta."', telefono='".$telefono."', 
         codice_univoco='".$codice_univoco."',
         codice_fiscale='".$codice_fiscale."',
         codice_ateco='".$codice_ateco."', 

@@ -34,7 +34,7 @@ class ggfirstModelStudenti  extends JModelLegacy {
         return $result;
     }
 
-    public function insert($nome,$cognome,$codice_fiscale,$data_nascita,$luogo_nascita,$prov_nascita,$email,$titolo,$telefono,$cellulare,$idcliente){
+    public function insert($nome,$cognome,$codice_fiscale,$data_nascita,$luogo_nascita,$prov_nascita,$email,$titolo,$profilo,$telefono,$cellulare,$idcliente){
 
 
         $object = new StdClass;
@@ -47,7 +47,7 @@ class ggfirstModelStudenti  extends JModelLegacy {
         $object->prov_nascita=$prov_nascita;
         $object->email=$email;
         $object->titolo=$titolo;
-        ;
+        $object->profilo=$profilo;
         $object->telefono=$telefono;
         $object->cellulare=$cellulare;
         $object->idcliente=$idcliente;
@@ -57,7 +57,7 @@ class ggfirstModelStudenti  extends JModelLegacy {
         return $result;
     }
 
-    public function modify($id,$nome,$cognome,$codice_fiscale,$data_nascita,$luogo_nascita,$prov_nascita,$email,$titolo,$telefono,$cellulare,$idcliente){
+    public function modify($id,$nome,$cognome,$codice_fiscale,$data_nascita,$luogo_nascita,$prov_nascita,$email,$titolo,$profilo,$telefono,$cellulare,$idcliente){
 
 
         $sql="update first_gg_studenti set nome='".$nome."', 
@@ -68,7 +68,7 @@ class ggfirstModelStudenti  extends JModelLegacy {
         prov_nascita='".$prov_nascita."',
         email='".$email."',
         titolo='".$titolo."',
-        
+        profilo='".$profilo."',
         
         telefono='".$telefono."',
         idcliente='".$idcliente."',

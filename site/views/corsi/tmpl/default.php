@@ -80,6 +80,8 @@ defined('_JEXEC') or die;
     <tr>
         <th style="width: 30%">TITOLO</th>
 
+        <th style="width: 30%">RIFERIMENTO LEG.</th>
+
         <th style="width: 30%">CREDITI</th>
 
         <th style="width: 20%"></th>
@@ -94,8 +96,10 @@ defined('_JEXEC') or die;
 
             ?>
             <tr>
-                <td class="titolo"><span class="start_span" id="_nome"><?php echo $corso_['titolo']; ?></span>
+                <td class="titolo"><span class="start_span" id="_titolo"><?php echo $corso_['titolo']; ?></span>
                     <input id="input_titolo_<?php echo $corso_['id']; ?>" class="start_hidden_input form-control form-control-sm" type="text" value="<?php echo $corso_['titolo']; ?>"></td></td>
+                <td class="riferimento_legislativo"><span class="start_span" id="_riferimento_legislativo"><?php echo $corso_['riferimento_legislativo']; ?></span>
+                    <input id="input_riferimento_legislativo_<?php echo $corso_['id']; ?>" class="start_hidden_input form-control form-control-sm" type="text" value="<?php echo $corso_['riferimento_legislativo']; ?>"></td></td>
                 <td id="contenitore_crediti">
 
                     <?php foreach ($corso_['crediti'] as $credito) {
@@ -154,8 +158,11 @@ defined('_JEXEC') or die;
 
 
             <div  class="row insertbox">
-                <div class="col-xs-6 col-md-6 text-info">
+                <div class="col-xs-6 col-md-6 text-info">titolo:
                     <input  class="form-control form-control-sm" type="text" id="titolo">
+                </div>
+                <div class="col-xs-6 col-md-6 text-info">riferimento legislativo
+                    <textarea  class="form-control form-control-sm" cols=10 rows=3 id="riferimento_legislativo"></textarea>
                 </div>
                 <div class="col-xs-1 col-md-1 text-info">
                     <button  onclick="open_corsi()"><span class="modify_button oi oi-pencil" title="mostra corsi" aria-hidden="true"></span></button>
@@ -403,6 +410,7 @@ defined('_JEXEC') or die;
         jQuery("#confirm_button_"+str).toggle();
 
         jQuery("#input_titolo_"+str).toggle();
+        jQuery("#input_riferimento_legislativo_"+str).toggle();
 
 
 
@@ -429,10 +437,11 @@ defined('_JEXEC') or die;
         var str=id.toString();
         var nuovo_titolo=jQuery("#input_titolo_"+str).val()
         var nuovo_credito=jQuery("#nuovo_credito_"+str).val()
+        var nuovo_riferimento_legislativo=jQuery("#input_riferimento_legislativo_"+str).val()
         jQuery.ajax({
             method: "POST",
             cache: false,
-            url: 'index.php?option=com_ggfirst&task=corsi.modify&id=' + id.toString() + '&titolo=' + nuovo_titolo+'&credito='+nuovo_credito
+            url: 'index.php?option=com_ggfirst&task=corsi.modify&id=' + id.toString() + '&titolo=' + nuovo_titolo+'&credito='+nuovo_credito+'&riferimento_legislativo='+nuovo_riferimento_legislativo
 
         }).done(function () {
             alert("modificato  corso");
@@ -477,6 +486,7 @@ defined('_JEXEC') or die;
                 cache: false,
                 url: 'index.php?option=com_ggfirst&task=corsi.insert'
                 + '&titolo=' + jQuery("#titolo").val()
+                + '&riferimento_legislativo'+jQuery("#riferimento_legislativo").val()
 
 
 

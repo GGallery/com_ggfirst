@@ -76,6 +76,7 @@ defined('_JEXEC') or die;
             <th style="width: 15%;">INDIRIZZO</th>
             <th style="width: 15%;">CAP</th>
             <th style="width: 15%;">CITTA'</th>
+            <th style="width: 15%;">TEL.</th>
             <th style="width: 15%;">P.IVA</th>
             <th style="width: 15%;">COD.UNIVOCO</th>
             <th style="width: 15%;">COD.FISCALE</th>
@@ -109,7 +110,8 @@ defined('_JEXEC') or die;
 
                     <td class="citta"><span class="start_span" id="span_citta_<?php echo $cliente['id']; ?>"><?php echo $cliente['citta']; ?></span>
                         <input id="input_citta_<?php echo $cliente['id']; ?>" class="start_hidden_input form-control form-control-sm" type="text" value="<?php echo $cliente['citta']; ?>"></td>
-
+                    <td class="telefono"><span class="start_span" id="span_telefono_<?php echo $cliente['id']; ?>"><?php echo $cliente['telefono']; ?></span>
+                        <input id="input_telefono_<?php echo $cliente['id']; ?>" class="start_hidden_input form-control form-control-sm" type="text" value="<?php echo $cliente['telefono']; ?>"></td>
                     <td class="piva"><span class="start_span" id="span_piva_<?php echo $cliente['id']; ?>"><?php echo $cliente['piva']; ?></span>
                         <input id="input_piva_<?php echo $cliente['id']; ?>" class="start_hidden_input form-control form-control-sm" type="text" value="<?php echo $cliente['piva']; ?>"></td>
                     <td class="codice_univoco"><span class="start_span" id="span_codice_univoco_<?php echo $cliente['id']; ?>"><?php echo $cliente['codice_univoco']; ?></span>
@@ -143,6 +145,7 @@ defined('_JEXEC') or die;
         <div class="col-xs-4 col-md-2 text-info"><h5>indirizzo:</h5> <input class="form-control form-control-sm" type="text" id="indirizzo"></div>
         <div class="col-xs-4 col-md-2 text-info"><h5>cap:</h5> <input class="form-control form-control-sm" type="text" id="cap"></div>
         <div class="col-xs-4 col-md-2 text-info"><h5>citta:</h5> <input class="form-control form-control-sm" type="text" id="citta"></div>
+        <div class="col-xs-4 col-md-2 text-info"><h5>tel:</h5> <input class="form-control form-control-sm" type="text" id="telefono"></div>
         <div class="col-xs-4 col-md-2 text-info"><h5>P. IVA:</h5> <input class="form-control form-control-sm" type="text" id="piva"></div>
         <div class="col-xs-4 col-md-2 text-info"><h5>COD.UNIVOCO:</h5> <input class="form-control form-control-sm" type="text" id="codice_univoco"></div>
         <div class="col-xs-4 col-md-2 text-info"><h5>COD.FISCALE:</h5> <input class="form-control form-control-sm" type="text" id="codice_fiscale"></div>
@@ -171,7 +174,7 @@ defined('_JEXEC') or die;
         jQuery.ajax({
             method: "POST",
             cache: false,
-            url: 'index.php?option=com_ggfirst&task=clienti.insert&denominazione='+jQuery("#denominazione").val()+'&riferimento='+jQuery("#riferimento").val()+'&email='+jQuery("#email").val()+'&indirizzo='+jQuery("#indirizzo").val()+'&cap='+jQuery("#cap").val()+'&citta='+jQuery("#citta").val()+'&piva='+jQuery("#piva").val()+'&codice_univoco='+jQuery("#codice_univoco").val()+'&codice_fiscale='+jQuery("#codice_fiscale").val()+'&codice_ateco='+jQuery("#codice_ateco").val()
+            url: 'index.php?option=com_ggfirst&task=clienti.insert&denominazione='+jQuery("#denominazione").val()+'&riferimento='+jQuery("#riferimento").val()+'&email='+jQuery("#email").val()+'&indirizzo='+jQuery("#indirizzo").val()+'&cap='+jQuery("#cap").val()+'&citta='+jQuery("#citta").val()+'&telefono='+jQuery("#telefono").val()+'&piva='+jQuery("#piva").val()+'&codice_univoco='+jQuery("#codice_univoco").val()+'&codice_fiscale='+jQuery("#codice_fiscale").val()+'&codice_ateco='+jQuery("#codice_ateco").val()
 
         }).done(function() {
 
@@ -194,6 +197,7 @@ defined('_JEXEC') or die;
         jQuery("#input_indirizzo_"+str).toggle();
         jQuery("#input_cap_"+str).toggle();
         jQuery("#input_citta_"+str).toggle();
+        jQuery("#input_telefono_"+str).toggle();
         jQuery("#input_piva_"+str).toggle();
         jQuery("#input_codice_univoco_"+str).toggle();
         jQuery("#input_codice_fiscale_"+str).toggle();
@@ -206,6 +210,7 @@ defined('_JEXEC') or die;
         jQuery("#span_indirizzo_"+str).toggle();
         jQuery("#span_cap_"+str).toggle();
         jQuery("#span_citta_"+str).toggle();
+        jQuery("#span_telefono_"+str).toggle();
         jQuery("#span_piva_"+str).toggle();
         jQuery("#span_codice_univoco_"+str).toggle();
         jQuery("#span_codice_fiscale_"+str).toggle();
@@ -230,6 +235,7 @@ defined('_JEXEC') or die;
             var indirizzo = jQuery('#input_indirizzo_' + id).val().toString();
             var cap = jQuery('#input_cap_' + id).val().toString();
             var citta = jQuery('#input_citta_' + id).val().toString();
+            var telefono = jQuery('#input_telefono_' + id).val().toString();
             var piva = jQuery('#input_piva_' + id).val().toString();
             var codice_univoco=jQuery('#input_codice_univoco_' + id).val().toString();
             var codice_fiscale=jQuery('#input_codice_fiscale_' + id).val().toString();
@@ -239,7 +245,7 @@ defined('_JEXEC') or die;
             jQuery.ajax({
                 method: "POST",
                 cache: false,
-                url: 'index.php?option=com_ggfirst&task=clienti.modify&id=' + id + '&denominazione=' + denominazione + '&riferimento=' + riferimento + '&email=' + email+ '&indirizzo=' + indirizzo+ '&cap=' + cap+ '&citta=' + citta+ '&piva=' + piva+ '&codice_univoco=' + codice_univoco+ '&codice_fiscale=' + codice_fiscale+ '&codice_ateco=' + codice_ateco
+                url: 'index.php?option=com_ggfirst&task=clienti.modify&id=' + id + '&denominazione=' + denominazione + '&riferimento=' + riferimento + '&email=' + email+ '&indirizzo=' + indirizzo+ '&cap=' + cap+ '&citta=' + citta+ '&telefono=' + telefono+ '&piva=' + piva+ '&codice_univoco=' + codice_univoco+ '&codice_fiscale=' + codice_fiscale+ '&codice_ateco=' + codice_ateco
 
             }).done(function () {
 

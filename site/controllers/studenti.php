@@ -36,8 +36,8 @@ class ggfirstControllerStudenti extends JControllerLegacy
         $this->_filterparam->luogo_nascita=JRequest::getVar('luogo_nascita');
         $this->_filterparam->prov_nascita=JRequest::getVar('prov_nascita');
         $this->_filterparam->email=JRequest::getVar('email');
-        $this->_filterparam->indirizzo=JRequest::getVar('titolo');
-
+        $this->_filterparam->titolo=JRequest::getVar('titolo');
+        $this->_filterparam->profilo=JRequest::getVar('profilo');
         $this->_filterparam->telefono=JRequest::getVar('telefono');
         $this->_filterparam->cellulare=JRequest::getVar('cellulare');
         $this->_filterparam->idcliente=JRequest::getVar('idcliente');
@@ -47,7 +47,7 @@ class ggfirstControllerStudenti extends JControllerLegacy
 
         $model=new ggfirstModelStudenti();
         if($model->insert($this->_filterparam->nome,$this->_filterparam->cognome,$this->_filterparam->codice_fiscale,$this->_filterparam->data_nascita,
-            $this->_filterparam->luogo_nascita,$this->_filterparam->prov_nascita,$this->_filterparam->email,$this->_filterparam->titolo,$this->_filterparam->telefono,$this->_filterparam->cellulare,
+            $this->_filterparam->luogo_nascita,$this->_filterparam->prov_nascita,$this->_filterparam->email,$this->_filterparam->titolo,$this->_filterparam->profilo,$this->_filterparam->telefono,$this->_filterparam->cellulare,
             $this->_filterparam->idcliente)) {
             echo "1";
         }else{
@@ -73,7 +73,7 @@ class ggfirstControllerStudenti extends JControllerLegacy
         $model=new ggfirstModelStudenti();
         if($model->modify($this->_filterparam->id,
             $this->_filterparam->nome,$this->_filterparam->cognome,$this->_filterparam->codice_fiscale,$this->_filterparam->data_nascita,
-            $this->_filterparam->luogo_nascita,$this->_filterparam->prov_nascita,$this->_filterparam->email,$this->_filterparam->titolo,$this->_filterparam->telefono,$this->_filterparam->cellulare,$this->_filterparam->idcliente)) {
+            $this->_filterparam->luogo_nascita,$this->_filterparam->prov_nascita,$this->_filterparam->email,$this->_filterparam->titolo,$this->_filterparam->profilo,$this->_filterparam->telefono,$this->_filterparam->cellulare,$this->_filterparam->idcliente)) {
             echo "1";
         }else{
             echo "0";

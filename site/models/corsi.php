@@ -24,12 +24,12 @@ class ggfirstModelCorsi  extends JModelLegacy {
 
     }
 
-    public function insert($titolo){
+    public function insert($titolo,$riferimento_legislativo){
 
 
         $object = new StdClass;
         $object->titolo=$titolo;
-
+        $object->riferimento_legislativo=$riferimento_legislativo;
         $object->timestamp=Date('Y-m-d h:i:s',time());
         $result=$this->_db->insertObject('first_gg_corsi',$object);
         return $result;
@@ -58,19 +58,20 @@ class ggfirstModelCorsi  extends JModelLegacy {
         return $result;
     }
 
-    public function modify($id,$titolo,$credito){
+    public function modify($id,$titolo,$riferimento_legislativo,$credito){
 
 
-        $sql="update first_gg_corsi set titolo='".$titolo."' where id=".$id;
-
-        $this->_db->setQuery($sql);
-        $result=$this->_db->execute();
-
-        $sql="insert into first_gg_corsi_crediti_map (id_corso,id_credito,timestamp) values(".$id.",".$credito.",now())";
+        $sql="update first_gg_corsi set titolo='".$titolo."', riferimento_legislativo='".$riferimento_legislativo."' where id=".$id;
 
         $this->_db->setQuery($sql);
         $result=$this->_db->execute();
 
+        if($id && $credito) {
+            $sql_ = "insert into first_gg_corsi_crediti_map (id_corso,id_credito,timestamp) values(" . $id . "," . $credito . ",now())";
+
+            $this->_db->setQuery($sql_);
+            $result = $this->_db->execute();
+        }
         return $result;
     }
 
