@@ -116,12 +116,12 @@ defined('_JEXEC') or die;
                             }
 
                         ?>',
-                                'riferimento legislativo',
+                                '<?php echo $partecipante['riferimento_legislativo']; ?>',
                                 '<?php echo $partecipante['luogo_nascita'].' '.date_format(date_create($partecipante['data_nascita']),'d-m-Y'); ?>',
                                 '<?php echo $partecipante['codice_fiscale']; ?>',
                                 '<?php echo $partecipante['titolo_studio']; ?>',
                                 '<?php echo $partecipante['email']; ?>',
-                                'profilo',
+                                '<?php echo $partecipante['profilo']; ?>',
                                 '<?php echo $partecipante['denominazione']; ?>',
 
                                 '<?php echo $partecipante['piva']; ?>',
@@ -132,7 +132,7 @@ defined('_JEXEC') or die;
                                 '<?php echo $partecipante['email']; ?>',
                                 '<?php echo $partecipante['indirizzo']; ?>',
                                 '<?php echo $partecipante['citta']; ?>',
-                                '010 010010',
+                                '<?php echo $partecipante['telefono']; ?>',
                                 '<?php echo $partecipante['riferimento']; ?>',
                                 '<?php echo $partecipante['email']; ?>',
                                 '<?php echo $partecipante['ateco']; ?>',

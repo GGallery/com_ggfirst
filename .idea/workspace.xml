@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8ad941d7-3f6e-4d38-9ec8-9c5ef41b3868" name="Default" comment="">
+    <list default="true" id="8ad941d7-3f6e-4d38-9ec8-9c5ef41b3868" name="Default" comment="ge">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/site/controllers/clienti.php" afterPath="$PROJECT_DIR$/site/controllers/clienti.php" />
-      <change beforePath="$PROJECT_DIR$/site/controllers/corsi.php" afterPath="$PROJECT_DIR$/site/controllers/corsi.php" />
-      <change beforePath="$PROJECT_DIR$/site/controllers/studenti.php" afterPath="$PROJECT_DIR$/site/controllers/studenti.php" />
-      <change beforePath="$PROJECT_DIR$/site/models/clienti.php" afterPath="$PROJECT_DIR$/site/models/clienti.php" />
-      <change beforePath="$PROJECT_DIR$/site/models/corsi.php" afterPath="$PROJECT_DIR$/site/models/corsi.php" />
-      <change beforePath="$PROJECT_DIR$/site/models/studenti.php" afterPath="$PROJECT_DIR$/site/models/studenti.php" />
-      <change beforePath="$PROJECT_DIR$/site/views/clienti/tmpl/default.php" afterPath="$PROJECT_DIR$/site/views/clienti/tmpl/default.php" />
-      <change beforePath="$PROJECT_DIR$/site/views/corsi/tmpl/default.php" afterPath="$PROJECT_DIR$/site/views/corsi/tmpl/default.php" />
-      <change beforePath="$PROJECT_DIR$/site/views/studenti/tmpl/default.php" afterPath="$PROJECT_DIR$/site/views/studenti/tmpl/default.php" />
+      <change beforePath="$PROJECT_DIR$/site/models/partecipanti.php" afterPath="$PROJECT_DIR$/site/models/partecipanti.php" />
+      <change beforePath="$PROJECT_DIR$/site/views/partecipanti/tmpl/default.php" afterPath="$PROJECT_DIR$/site/views/partecipanti/tmpl/default.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,7 +14,55 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="5.tpl" pinned="false" current-in-tab="false">
+        <entry file="file://C:/xampp/htdocs/mediagg/contenuti/5/5.tpl">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="527">
+              <caret line="31" column="90" lean-forward="false" selection-start-line="31" selection-start-column="90" selection-end-line="31" selection-end-column="90" />
+              <folding>
+                <element signature="n#style#0;n#td#0;n#tr#1;n#table#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pdf.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/site/controllers/pdf.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="631">
+              <caret line="104" column="19" lean-forward="false" selection-start-line="104" selection-start-column="19" selection-end-line="104" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="default.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/site/views/partecipanti/tmpl/default.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="293">
+              <caret line="123" column="59" lean-forward="false" selection-start-line="123" selection-start-column="59" selection-end-line="123" selection-end-column="59" />
+              <folding>
+                <marker date="1550746687884" expanded="true" signature="875:893" ph="..." />
+                <marker date="1550746687884" expanded="true" signature="1157:1175" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="partecipanti.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/site/models/partecipanti.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="544">
+              <caret line="58" column="183" lean-forward="false" selection-start-line="58" selection-start-column="183" selection-end-line="58" selection-end-column="183" />
+              <folding>
+                <marker date="1550746728988" expanded="true" signature="1061:1104" ph="delete from first_gg_partecipanti... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -125,10 +166,8 @@
         <option value="$USER_HOME$/AppData/Local/Temp/fz3temp-2/alertcarige.php" />
         <option value="$USER_HOME$/AppData/Local/Temp/fz3temp-2/mailalertcarige.php" />
         <option value="$PROJECT_DIR$/site/models/pdf.php" />
-        <option value="$PROJECT_DIR$/site/models/partecipanti.php" />
         <option value="$PROJECT_DIR$/site/controllers/pdf.php" />
         <option value="C:/xampp/htdocs/mediagg/contenuti/5/5.tpl" />
-        <option value="$PROJECT_DIR$/site/views/partecipanti/tmpl/default.php" />
         <option value="$PROJECT_DIR$/site/views/corsi/tmpl/default.php" />
         <option value="$PROJECT_DIR$/site/models/corsi.php" />
         <option value="$PROJECT_DIR$/site/controllers/corsi.php" />
@@ -138,6 +177,8 @@
         <option value="$PROJECT_DIR$/site/views/studenti/tmpl/default.php" />
         <option value="$PROJECT_DIR$/site/controllers/studenti.php" />
         <option value="$PROJECT_DIR$/site/models/studenti.php" />
+        <option value="$PROJECT_DIR$/site/models/partecipanti.php" />
+        <option value="$PROJECT_DIR$/site/views/partecipanti/tmpl/default.php" />
       </list>
     </option>
   </component>
@@ -204,14 +245,14 @@
               <item name="com_ggfirst" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="site" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="studenti" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="partecipanti" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="com_ggfirst" type="b2602c69:ProjectViewProjectNode" />
               <item name="com_ggfirst" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="site" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="studenti" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="partecipanti" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="tmpl" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
@@ -336,14 +377,7 @@
       <workItem from="1550583198846" duration="10623000" />
       <workItem from="1550656026320" duration="2472000" />
       <workItem from="1550668466186" duration="10041000" />
-      <workItem from="1550741575546" duration="4210000" />
-    </task>
-    <task id="LOCAL-00011" summary="completato inserimento nuovo task">
-      <created>1540200578296</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1540200578296</updated>
+      <workItem from="1550741575546" duration="5003000" />
     </task>
     <task id="LOCAL-00012" summary="gestione grafica dei task">
       <created>1540308171532</created>
@@ -681,17 +715,25 @@
       <option name="project" value="LOCAL" />
       <updated>1550679802108</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="inserite: telefono cliente, profil studente, riferimento_legislativo">
+      <created>1550746306344</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1550746306344</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="635885000" />
+    <option name="totallyTimeSpent" value="636678000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1936" height="1216" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -741,7 +783,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="finale" />
     <MESSAGE value="inserita gestione interi ore (task senza resto) e calcolo monte ore utente e ore task su ore effettive gantt" />
     <MESSAGE value="refresh" />
     <MESSAGE value="refresh_" />
@@ -766,7 +807,8 @@
     <MESSAGE value="completate tutte le modifiche richieste alle anagrafiche" />
     <MESSAGE value="gestita ricerca cliente; gestita nuova valorizzazione numero partecipanti in preventivo, inserito link da corso a partecipanti" />
     <MESSAGE value="gestione completa del template modulo iscrizione" />
-    <option name="LAST_COMMIT_MESSAGE" value="gestione completa del template modulo iscrizione" />
+    <MESSAGE value="inserite: telefono cliente, profil studente, riferimento_legislativo" />
+    <option name="LAST_COMMIT_MESSAGE" value="inserite: telefono cliente, profil studente, riferimento_legislativo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -962,57 +1004,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/site/models/partecipanti.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="58" column="157" lean-forward="false" selection-start-line="58" selection-start-column="157" selection-end-line="58" selection-end-column="157" />
-          <folding>
-            <marker date="1550671826063" expanded="true" signature="1061:1104" ph="delete from first_gg_partecipanti... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/site/views/partecipanti/tmpl/default.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="108" column="120" lean-forward="false" selection-start-line="108" selection-start-column="120" selection-end-line="108" selection-end-column="120" />
-          <folding>
-            <marker date="1550679731182" expanded="true" signature="875:893" ph="..." />
-            <marker date="1550679731182" expanded="true" signature="1157:1175" ph="..." />
-            <marker date="1550679731182" expanded="true" signature="1721:1939" ph="..." />
-            <marker date="1550679731182" expanded="true" signature="1734:1922" ph="..." />
-            <marker date="1550679731182" expanded="true" signature="1956:2167" ph="..." />
-            <marker date="1550679731182" expanded="true" signature="2068:2167" ph="..." />
-            <marker date="1550679731182" expanded="true" signature="2496:2576" ph="..." />
-            <marker date="1550679731182" expanded="true" signature="5869:5897" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/site/controllers/pdf.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="104" column="19" lean-forward="false" selection-start-line="104" selection-start-column="19" selection-end-line="104" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/site/models/pdf.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="693">
-          <caret line="83" column="72" lean-forward="false" selection-start-line="83" selection-start-column="72" selection-end-line="83" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/xampp/htdocs/mediagg/contenuti/5/5.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="31" column="90" lean-forward="false" selection-start-line="31" selection-start-column="90" selection-end-line="31" selection-end-column="90" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/site/models/corsi.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="608">
@@ -1114,6 +1105,53 @@
         <state relative-caret-position="744">
           <caret line="75" column="165" lean-forward="false" selection-start-line="75" selection-start-column="165" selection-end-line="75" selection-end-column="165" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/xampp/htdocs/mediagg/contenuti/5/5.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="90" lean-forward="false" selection-start-line="31" selection-start-column="90" selection-end-line="31" selection-end-column="90" />
+          <folding>
+            <element signature="n#style#0;n#td#0;n#tr#1;n#table#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/models/pdf.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="920">
+          <caret line="83" column="72" lean-forward="false" selection-start-line="83" selection-start-column="72" selection-end-line="83" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/models/partecipanti.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="58" column="183" lean-forward="false" selection-start-line="58" selection-start-column="183" selection-end-line="58" selection-end-column="183" />
+          <folding>
+            <marker date="1550746728988" expanded="true" signature="1061:1104" ph="delete from first_gg_partecipanti... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/controllers/pdf.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="631">
+          <caret line="104" column="19" lean-forward="false" selection-start-line="104" selection-start-column="19" selection-end-line="104" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/views/partecipanti/tmpl/default.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="123" column="59" lean-forward="false" selection-start-line="123" selection-start-column="59" selection-end-line="123" selection-end-column="59" />
+          <folding>
+            <marker date="1550746687884" expanded="true" signature="875:893" ph="..." />
+            <marker date="1550746687884" expanded="true" signature="1157:1175" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
