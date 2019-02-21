@@ -169,16 +169,6 @@ defined('_JEXEC') or die;
 
     }
 
-    function openiscrizione(nome,cognome,data_attestato) {
-
-        url="index.php?option=com_ggfirst&task=pdf.generateIscrizione"+
-            "&nome="+nome+
-            "&cognome="+cognome+
-            "&id_attestato=5"+
-            "&data_attestato="+data_attestato
-        window.open(url,'_self');
-
-    }
 
     jQuery("#dosearch").click(function (event) {
 

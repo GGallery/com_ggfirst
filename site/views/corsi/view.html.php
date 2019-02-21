@@ -43,7 +43,7 @@ class ggfirstViewCorsi extends JViewLegacy {
             $this->id_corso=JRequest::getVar('id_corso');
             $this->corso = $this->getModel()->getCorsi($this->id_corso, null)[0];
             $this->edizioni = $this->getModel()->getEdizioni(null, $this->id_corso);
-            $this->prossimo_codice_edizione=substr($this->edizioni[0][0]['ultimo_codice'],0,3).(substr($this->edizioni[0][0]['ultimo_codice'],3,4)+1);
+            //$this->prossimo_codice_edizione=substr($this->edizioni[0][0]['ultimo_codice'],0,3).(substr($this->edizioni[0][0]['ultimo_codice'],3,4)+1);
             if(JRequest::getVar('id_edizione')!=null){
                 $this->edizione = $this->getModel()->getEdizioni(JRequest::getVar('id_edizione'), null);
                 $lezioniModel=new ggfirstModelLezioni();

@@ -259,7 +259,7 @@ defined('_JEXEC') or die;
     <div  class="row inserteditionbox"><div class="col-xs-10 col-md-10"><b>INSERISCI UNA NUOVA EDIZIONE PER <span style="color: red"><?php if(isset($this->corso[0]['titolo'])) echo ($this->corso[0]['titolo']);?></span></b></div></div>
     <div  class="row inserteditionbox" style="padding-bottom: 8px;">
         <div class="col-xs-4 col-md-4 text-info"><h5>Codice:</h5>
-            <input class="form-control form-control-sm" type="text" id="codice_edizione" value="<?php if($this->prossimo_codice_edizione) echo $this->prossimo_codice_edizione;?>">
+            <input class="form-control form-control-sm" type="text" id="codice_edizione">
         </div>
         <div class="col-xs-4 col-md-4 text-info"><h5>Stato:</h5>
             <select class="inserteditionbox" id="stato">
@@ -526,7 +526,7 @@ defined('_JEXEC') or die;
             method: "POST",
             cache: false,
             url: 'index.php?option=com_ggfirst&task=lezioni.insert'
-            + '&id_edizione=<?php echo $this->edizione[0][0]['id']?>'
+            + '&id_edizione=<?php echo $this->edizione[0][0]['id_edizione']?>'
             + '&id_docente=' + jQuery("#docente").val()
             + '&id_luogo=' + jQuery("#luogo").val()
             + '&id_aula=' + jQuery("#aula").val()
