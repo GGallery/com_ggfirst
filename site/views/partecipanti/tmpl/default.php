@@ -282,5 +282,14 @@ defined('_JEXEC') or die;
         }
     }
 
+    function opencsv() {
+        if(confirm('vuoi scaricare il report in csv?')==true) {
+            <?php if(isset($this->id_piano_formativo_attivo)){?>
+            window.open("index.php?option=com_ggfirst&task=partecipanti.getVerbale&id_edizione=" + <?php echo $this->id_edizione;?>,'_self');
+            <?php }?>
+
+        }
+
+    }
 </script>
 </html>

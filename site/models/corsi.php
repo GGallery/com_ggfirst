@@ -122,7 +122,7 @@ class ggfirstModelCorsi  extends JModelLegacy {
     public function getEdizioni($id=null, $id_corso=null){
 
         $query=$this->_db->getQuery(true);
-        $query->select('*,e.id as id_edizione,
+        $query->select('*,e.id as id_edizione,e.codice_edizione as codice_edizione,
         (select count(*) from first_gg_partecipanti where id_edizione=e.id) as numero_partecipanti, if((select count(*) from first_gg_partecipanti where id_edizione=e.id)>=minimo_partecipanti,1,0) as edizione_attiva, 
         c.titolo as titolo_corso,  (select min(data)-interval 15 day from first_gg_lezioni where id_edizione=e.id) as scadenza_iscrizione,
             (select codice_edizione from  first_gg_edizioni where id_corso=e.id_corso order by codice_edizione desc limit 1) as ultimo_codice');

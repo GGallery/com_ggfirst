@@ -104,6 +104,22 @@ class ggfirstModelLezioni  extends JModelLegacy {
         return $lezioni;
     }
 
+    public function getDateInizioFineEdizione($id_edizione){
+
+        $query=$this->_db->getQuery(true);
+        $query->select('min(data)as inizio,max(data) as fine');
+        $query->from('first_gg_lezioni as l');
+        $query->join('inner','first_gg_edizioni as e on l.id_edizione=e.id ');
+        $query->where('e.id='.$id_edizione);
+
+//echo $query; die;
+        $this->_db->setQuery($query);
+
+        $lezioni=$this->_db->loadAssocList();
+
+        return $lezioni[0];
+
+    }
 
 
 }
