@@ -73,15 +73,15 @@ class ggfirstViewAttestati extends JViewLegacy {
         }
 
         if (JRequest::getVar('preselected_id_studente') != null) {
-            $preselected_id_studente = JRequest::getVar('preselected_id_studente');
+            $this->preselected_id_studente = JRequest::getVar('preselected_id_studente');
         } else {
-            $preselected_id_studente = null;
+            $this->preselected_id_studente = null;
         }
 
         if (JRequest::getVar('preselected_id_credito') != null) {
-            $preselected_id_credito = JRequest::getVar('preselected_id_credito');
+            $this->preselected_id_credito = JRequest::getVar('preselected_id_credito');
         } else {
-            $preselected_id_credito = null;
+            $this->preselected_id_credito = null;
         }
 
         $this->attestati=$this->getModel()->getAttestati(null,$id_studente,$numero,$data_attestato,$certificatore,$id_credito_map, $scadenza_data_minore,$scadenza_data_maggiore);

@@ -131,7 +131,7 @@ defined('_JEXEC') or die;
 
             <select id="studente">
 
-                <?php foreach ($this->studenti[0] as $studente){if($studente['id']==$this->preselected_id_studente){$selected='selected';}else{$selected='';};echo "<option ".$selected." value=".$studente['id'].">".$studente['cognome']." ".$studente['nome']." ".$studente['citta']."</option>";}?>
+                <?php foreach ($this->studenti[0] as $studente){if($studente['id']==$this->preselected_id_studente){$selected='selected';}else{$selected='';};echo "<option ".$selected." value=".$studente['id'].">".$studente['cognome']." ".$studente['nome']."</option>";}?>
             </select></div>
 
         <div class="col-xs-3 col-md-3 text-info"><h5>Numero:</h5> <input class="form-control form-control-sm" type="text" id="numero" size="5"></div>
