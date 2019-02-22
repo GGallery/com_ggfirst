@@ -93,6 +93,22 @@ class ggfirstModelCrediti  extends JModelLegacy {
         return $dipendenti;
     }
 
+    public function getCreditiEdizione($id=null){
+
+        $query=$this->_db->getQuery(true);
+        $query->select('cr.id as id, concat(cr.ruolo,\' \', cr.rischio) as credito');
+        $query->from('first_gg_crediti as cr');
+        $query->join('inner','first_gg_corsi_crediti_map as cm on cm.id_credito=cr.id');
+        $query->join('inner','first_gg_corsi as c on cm.id_corso=c.id');
+        $query->join('inner','first_gg_edizioni as e on e.id_corso=c.id');
+        if($id!=null)
+            $query->where('e.id='.$id);
+
+        $this->_db->setQuery($query);
+        $crediti=$this->_db->loadAssocList();
+        return $crediti;
+    }
+
     public function insert_map($id_corso, $id_credito){
 
         $object = new StdClass;

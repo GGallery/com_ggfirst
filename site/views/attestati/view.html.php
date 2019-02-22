@@ -78,6 +78,12 @@ class ggfirstViewAttestati extends JViewLegacy {
             $preselected_id_studente = null;
         }
 
+        if (JRequest::getVar('preselected_id_credito') != null) {
+            $preselected_id_credito = JRequest::getVar('preselected_id_credito');
+        } else {
+            $preselected_id_credito = null;
+        }
+
         $this->attestati=$this->getModel()->getAttestati(null,$id_studente,$numero,$data_attestato,$certificatore,$id_credito_map, $scadenza_data_minore,$scadenza_data_maggiore);
         $studentiModel=new ggfirstModelStudenti();
         $this->studenti=$studentiModel->getStudenti();

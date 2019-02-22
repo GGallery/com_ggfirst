@@ -98,7 +98,7 @@ defined('_JEXEC') or die;
 
         <div class="col-xs-3 col-md-3 text-info"><h5>Nome:</h5> <input class="form-control form-control-sm" type="text" id="nome"></div>
         <div class="col-xs-3 col-md-3 text-info"><h5>Cognome:</h5> <input class="form-control form-control-sm" type="text" id="cognome"></div>
-        <div class="col-xs-6 col-md-6 text-info"><h5>Titolo di studio:</h5> <input class="form-control form-control-sm" type="text" id="indirizzo"></div>
+        <div class="col-xs-6 col-md-6 text-info"><h5>Titolo di studio:</h5> <input class="form-control form-control-sm" type="text" id="titolo"></div>
         <div class="col-xs-6 col-md-6 text-info"><h5>Profilo:</h5> <input class="form-control form-control-sm" type="text" id="profilo"></div>
         <div class="col-xs-4 col-md-4 text-info"><h5>Cod. Fiscale</h5> <input class="form-control form-control-sm" type="text" id="codice_fiscale"></div>
         <div class="col-xs-3 col-md-3 text-info"><h5>Data di nascita</h5> <input class="form-control form-control-sm" type="date" id="data_nascita"></div>

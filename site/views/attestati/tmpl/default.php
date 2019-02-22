@@ -46,7 +46,7 @@ defined('_JEXEC') or die;
 </style>
 </head>
 
-
+<body onload="carica_codice()">
 <div class="table-responsive">
     <h2>PRIMA - GESTIONE CORSI - ANAGRAFICA ATTESTATI</h2>
     <table class="table table-striped table-bordered ">
@@ -130,7 +130,7 @@ defined('_JEXEC') or die;
         <div class="col-xs-3 col-md-3 text-info"><h5>Studente:</h5>
 
             <select id="studente">
-                <option value="">scegli uno studente</option>
+
                 <?php foreach ($this->studenti[0] as $studente){if($studente['id']==$this->preselected_id_studente){$selected='selected';}else{$selected='';};echo "<option ".$selected." value=".$studente['id'].">".$studente['cognome']." ".$studente['nome']." ".$studente['citta']."</option>";}?>
             </select></div>
 
@@ -139,11 +139,13 @@ defined('_JEXEC') or die;
         <div class="col-xs-3 col-md-3 text-info"><h5>Certificatore:</h5> <input type=text class="form-control form-control-sm" id="certificatore"></div>
         <div class="col-xs-3 col-md-3 text-info"><h5>Credito:</h5>
             <select id="credito">
-                <option aggiornamento=null value="null">scegli un credito</option>
+
             <?php foreach ($this->crediti as $credito){
+                if($credito['id']==$this->preselected_id_credito){$selected='selected';}else{$selected='';};
                 if ($credito['prossimo_codice']==null)
                     $credito['prossimo_codice']='da_inizializzare';
-                echo "<option prossimo_codice=".$credito['prossimo_codice']."  aggiornamento=".$credito['aggiornamento']." value='".$credito['id']."'>".$credito['credito']."</option>";
+
+                echo "<option ".$selected." prossimo_codice=".$credito['prossimo_codice']."  aggiornamento=".$credito['aggiornamento']." value='".$credito['id']."'>".$credito['credito']."</option>";
             }?>
         </select>
         </div>
@@ -157,10 +159,16 @@ defined('_JEXEC') or die;
         </div><div class="col-xs-0 col-md-4"></div>
     </div>
 </div>
-
+</body>
 <script type="text/javascript">
 
     var change_operation=null;
+
+    function carica_codice(){
+
+        jQuery('#credito').trigger("change");
+
+    }
 
     function openattestato(nome,cognome,data_attestato) {
 
@@ -219,6 +227,27 @@ defined('_JEXEC') or die;
             jQuery("#numero").val(prossimo_codice);
         }
 
+    });
+
+    jQuery('#data_attestato').change(function(){
+
+        if(jQuery('#credito option:selected').attr('aggiornamento')) {
+            var aggiornamento = jQuery('#credito option:selected').attr('aggiornamento');
+            data_ = new Date(jQuery('#data_attestato').val());
+            console.log(data_);
+            data__ = new Date(data_.setFullYear(data_.getFullYear() + (aggiornamento / 12)));
+            anno = data__.getFullYear().toString();
+            mese = (data__.getMonth() + 1).toString();
+            giorno = data__.getDate().toString();
+            if (mese.length == 1) {
+                mese = "0" + mese;
+            }
+            if (giorno.length == 1) {
+                giorno = '0' + giorno;
+            }
+
+            jQuery('#scadenza').val(anno + '-' + mese + '-' + giorno);
+        }
     });
 
     function insertclick(){

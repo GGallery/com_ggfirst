@@ -67,7 +67,7 @@ defined('_JEXEC') or die;
         <tr>
             <th style="width: 15%;">NOME</th>
             <th style="width: 15%;">COGNOME</th>
-
+            <th style="width: 15%;">Credito</th>
            <th style="width: 15%;">DATA DI NASCITA</th>
            <th ></th>
         </tr>
@@ -82,14 +82,14 @@ defined('_JEXEC') or die;
                 <tr>
                     <td class="nome"><span class="start_span" id="_nome"><?php echo $partecipante['nome']; ?></span>
                     <td class="cognome"><span class="start_span" id="_cognome"><?php echo $partecipante['cognome']; ?></span>
-
+                    <td class="credito"><span class="start_span" id="_credito"><?php echo $partecipante['credito']; ?></span>
                     <td class="data_nascita"><span class="start_span" id="_data_nascita"><?php echo $partecipante['data_nascita']; ?></span>
 
 
                     <td class="bottoni">
 
                         <button onclick="deleteclick(<?php echo $partecipante['id']; ?>)"><span class="oi oi-delete red" title="cancella utente" aria-hidden="true"></span></button>
-                        <button onclick="openattestati(<?php echo $partecipante['id_studente']; ?>)"><span class="oi oi-plus blue" title="lancia attestato" aria-hidden="true"></span></button>
+                        <button onclick="openattestati(<?php echo $partecipante['id_studente']; ?>,<?php echo $partecipante['id_credito']; ?>)"><span class="oi oi-plus blue" title="lancia attestato" aria-hidden="true"></span></button>
                         <button onclick="openiscrizione('<?php echo $partecipante['nome']; ?>',
                                 '<?php echo $partecipante['cognome']; ?>',
                                 '<?php echo $this->edizione[0][0]['titolo']; ?>',
@@ -169,6 +169,12 @@ defined('_JEXEC') or die;
                 <option value="">aggiungi studente</option>
                 <?php foreach ($this->studenti[0] as $studente){echo "<option value=".$studente['id'].">".$studente['cognome']." ".$studente['nome']."</option>";}?>
             </select></div>
+        <div class="col-xs-4 col-md-4 text-info"><h5>Credito:</h5>
+        <select id="credito">
+            <option value="">scegli credito</option>
+            <?php foreach ( $this->crediti as $credito){echo "<option value=".$credito['id'].">".$credito['credito']."</option>";}?>
+        </select></div>
+
     </div>
 
     <div  class="row insertbox">
@@ -199,6 +205,7 @@ defined('_JEXEC') or die;
              url: 'index.php?option=com_ggfirst&task=partecipanti.insert'
              + '&id_edizione=' + <?php echo $this->id_edizione?>
              + '&id_studente=' + jQuery("#studente").val()
+             + '&id_credito=' + jQuery("#credito").val()
 
 
 
@@ -216,9 +223,9 @@ defined('_JEXEC') or die;
 
     }
 
-    function openattestati(id){
+    function openattestati(id_studente,id_credito){
 
-        window.open("index.php?option=com_ggfirst&view=attestati&preselected_id_studente="+id,'_self');
+        window.open("index.php?option=com_ggfirst&view=attestati&preselected_id_studente="+id_studente+'&preselected_id_credito='+id_credito,'_self');
 
     }
 

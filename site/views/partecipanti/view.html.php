@@ -18,12 +18,14 @@ jimport('joomla.application.component.helper');
 
 require_once JPATH_COMPONENT . '/models/studenti.php';
 require_once JPATH_COMPONENT . '/models/corsi.php';
+require_once JPATH_COMPONENT . '/models/crediti.php';
 
 
 class ggfirstViewPartecipanti extends JViewLegacy {
 
     public $partecipanti;
     public $studenti;
+    public $crediti;
     public $offset;
     public $limit;
     public $id_edizione;
@@ -61,6 +63,8 @@ class ggfirstViewPartecipanti extends JViewLegacy {
             $corsiModel=new ggfirstModelCorsi();
             //$this->corso=$corsiModel->getCorsi($this->id_corso,null,null,null);
             $this->edizione=$corsiModel->getEdizioni($this->id_edizione,null);
+            $creditiModel=new ggfirstModelCrediti();
+            $this->crediti=$creditiModel->getCreditiEdizione($this->id_edizione);
 
         }
         parent::display($tpl);

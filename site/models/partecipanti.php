@@ -24,7 +24,7 @@ class ggfirstModelPartecipanti  extends JModelLegacy {
 
     }
 
-    public function insert($id_edizione,$id_studente){
+    public function insert($id_edizione,$id_studente,$id_credito){
 
         $query=$this->_db->getQuery(true);
         $query->select('max(id)');
@@ -35,6 +35,7 @@ class ggfirstModelPartecipanti  extends JModelLegacy {
         $object->id=$id;
         $object->id_edizione=$id_edizione;
         $object->id_studente=$id_studente;
+        $object->id_credito=$id_credito;
         $object->timestamp=Date('Y-m-d h:i:s',time());
 
         $result=$this->_db->insertObject('first_gg_partecipanti',$object);
@@ -59,14 +60,14 @@ class ggfirstModelPartecipanti  extends JModelLegacy {
         $query->select('p.id as id,s.nome as nome, s.cognome as cognome, e.codice_edizione as codice_edizione,s.luogo_nascita as luogo_nascita,s.data_nascita as data_nascita,s.profilo as profilo,
                          s.codice_fiscale as codice_fiscale, s.titolo as titolo_studio,s.email as email,cli.denominazione as denominazione,cli.piva as piva,cli.codice_fiscale as c_codice_fiscale,
                          cli.codice_univoco,cli.email as email,cli.indirizzo as indirizzo,cli.citta as citta,cli.riferimento as riferimento,cli.codice_ateco as ateco,cli.telefono as telefono,c.riferimento_legislativo as riferimento_legislativo,
-        e.minimo_partecipanti as minimo, s.id as id_studente,c.titolo as titolo,concat( cr.ruolo,\' \', cr.rischio) as credito,cr.durata as durata');
+        e.minimo_partecipanti as minimo, s.id as id_studente,c.titolo as titolo,concat( cr.ruolo,\' \', cr.rischio) as credito,cr.durata as durata, cr.id as id_credito');
         $query->from('first_gg_studenti as s');
         $query->join('inner','first_gg_partecipanti as p on s.id=p.id_studente');
         $query->join('inner','first_gg_edizioni as e on e.id=p.id_edizione');
         $query->join('inner','first_gg_clienti as cli on s.idcliente=cli.id');
         $query->join('inner','first_gg_corsi as c on c.id=e.id_corso');
-        $query->join('inner','first_gg_corsi_crediti_map as map on map.id_corso=c.id');
-        $query->join('inner','first_gg_crediti as cr on cr.id=map.id_credito');
+        //$query->join('inner','first_gg_corsi_crediti_map as map on map.id_corso=c.id');
+        $query->join('inner','first_gg_crediti as cr on cr.id=p.id_credito');
         if($id!=null)
             $query->where('p.id='.$id);
         if($cognome!=null)
