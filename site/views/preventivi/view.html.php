@@ -46,17 +46,22 @@ class ggfirstViewPreventivi extends JViewLegacy {
         }else{
             $limit=10;
         }
-        $this->preventivi = $this->getModel()->getPreventivi(null, null, $offset, $limit,null);
+        $this->preventivi = $this->getModel()->getPreventivi(null, null, null,$offset, $limit,null);
 
         if(JRequest::getVar('search')!=null) {
             $nome_corso=JRequest::getVar('search');
-            $this->preventivi = $this->getModel()->getPreventivi(null, $nome_corso, $offset, $limit,null);
+            $this->preventivi = $this->getModel()->getPreventivi(null, $nome_corso, null, $offset, $limit,null);
+        }
+
+        if(JRequest::getVar('search_cliente')!=null) {
+            $nome_cliente=JRequest::getVar('search_cliente');
+            $this->preventivi = $this->getModel()->getPreventivi(null, null, $nome_cliente, $offset, $limit,null);
         }
 
 
         if(JRequest::getVar('search_stato')!=null) {
             $id_stato=JRequest::getVar('search_stato');
-            $this->preventivi = $this->getModel()->getPreventivi(null, null, $offset, $limit,$id_stato);
+            $this->preventivi = $this->getModel()->getPreventivi(null, null, null, $offset, $limit,$id_stato);
 
         }
 

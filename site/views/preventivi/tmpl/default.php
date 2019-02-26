@@ -45,8 +45,10 @@ defined('_JEXEC') or die;
 
         <tr>
             <td style="width: 50%">
-            filtra per nome del corso: <input type="text" id="tosearch"><button id="dosearch" style="margin-left: 20px;"><span class="oi oi-magnifying-glass"></span></button>
+            filtra per nome del corso: <input type="text" id="tosearch"><button id="dosearch" style="margin-left: 20px;"><span class="oi oi-magnifying-glass"></span></button><br>
+            filtra per nome del cliente: <input type="text" id="tosearch_cliente"><button id="dosearch_cliente" style="margin-left: 20px;"><span class="oi oi-magnifying-glass"></span></button>
             </td>
+
             <td style="width: 50%">
             <select style="width: 50%" class="form-control form-control-sm" id="filter_stato"><option value="">scegli</option><option value="">tutti</option><?php foreach ($this->stati as $stato){echo "<option value=".$stato['id'].">".$stato['stato_preventivo']."</option>";}?></select>
 
@@ -131,6 +133,12 @@ defined('_JEXEC') or die;
 
 
     var actual_id;
+
+    jQuery("#dosearch_cliente").click(function (event) {
+
+        console.log("/index.php?option=com_ggfirst&view=preventivi&search="+jQuery("#tosearch").val());
+        window.open("index.php?option=com_ggfirst&view=preventivi&search_cliente="+jQuery("#tosearch_cliente").val(),'_self');
+    });
 
     jQuery("#dosearch").click(function (event) {
 

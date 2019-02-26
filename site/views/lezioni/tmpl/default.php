@@ -69,7 +69,12 @@ defined('_JEXEC') or die;
                                         if (!isset($c['id_aula'])) {
                                             $c['id_aula'] = 0;
                                         }
-                                        echo '<A onclick="modifica('
+                                        echo '<br>' . $c['titolo'] .
+                                            '<br>' . $c['titolo_lezione'] .
+                                            '<br>' . $c['codice_edizione'] .
+                                            '<br>' . $c['cognome'] .
+                                            '<br>' . $c['ora_inizio'] . '-' . $c['ora_fine'].
+                                            '&nbsp<span class="modify_button oi oi-pencil" title="modifica lezione" aria-hidden="true" onclick="modifica('
                                             . $c['id_lezione'] . ','
                                             . $c['id_edizione'] . ','
                                             . $c['id_docente'] . ','
@@ -81,7 +86,8 @@ defined('_JEXEC') or die;
                                             . $c['titolo_lezione'] . '\',\''
                                             . $c['note'] . '\''
                                             . ')">
-                                ' . $c['titolo'] . '</A><br>' . $c['titolo_lezione'] . '<br>' . $c['codice_edizione'] . '<br>' . $c['cognome'] . '<br>' . $c['ora_inizio'] . '-' . $c['ora_fine'] . '<br>---<br>';
+                                </span>&nbsp<span class="modify_button oi oi-delete red" title="caccella lezione" aria-hidden="true" onclick="deleteclick('. $c['id_lezione'].')">
+                                </span><br>---<br>';
 
                                     } else {
                                         echo $cell;
@@ -209,7 +215,7 @@ defined('_JEXEC') or die;
 
     function deleteclick(id) {
 
-        if(confirm('attenzione, stai cancellando uno studente')==true) {
+        if(confirm('attenzione, stai cancellando una lezione')==true) {
             jQuery.ajax({
                 method: "POST",
                 cache: false,

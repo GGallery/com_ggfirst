@@ -66,7 +66,7 @@ class ggfirstModelPreventivi  extends JModelLegacy {
         return $result;
     }
 
-    public function getPreventivi($id=null, $nome_corso=null, $offset=0, $limit=10,$id_stato=null){
+    public function getPreventivi($id=null, $nome_corso=null, $nome_cliente=null, $offset=0, $limit=10,$id_stato=null){
 
         $query=$this->_db->getQuery(true);
         $query->select('p.*,c.titolo as corso, cl.denominazione as cliente, s.stato_preventivo as stato,e.minimo_partecipanti as minimo_partecipanti,
@@ -81,6 +81,8 @@ class ggfirstModelPreventivi  extends JModelLegacy {
             $query->where('id='.$id);
         if($nome_corso!=null)
             $query->where("c.titolo like '%".$nome_corso."%'");
+        if($nome_cliente!=null)
+            $query->where("cl.denominazione like '%".$nome_cliente."%'");
         if($id_stato!=null)
             $query->where("s.id=".$id_stato);
         $this->_db->setQuery($query);

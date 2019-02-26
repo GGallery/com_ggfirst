@@ -162,7 +162,7 @@ defined('_JEXEC') or die;
                     <input  class="form-control form-control-sm" type="text" id="titolo">
                 </div>
                 <div class="col-xs-6 col-md-6 text-info">riferimento legislativo
-                    <textarea  class="form-control form-control-sm" cols=10 rows=3 id="riferimento_legislativo"></textarea>
+                    <textarea  class="form-control form-control-sm" cols=10 rows=1 id="riferimento_legislativo"></textarea>
                 </div>
                 <div class="col-xs-1 col-md-1 text-info">
                     <button  onclick="open_corsi()"><span class="modify_button oi oi-pencil" title="mostra corsi" aria-hidden="true"></span></button>
@@ -214,7 +214,7 @@ defined('_JEXEC') or die;
                 ?>
                 <tr>
                     <td class="titolo">
-                        <span class="start_span" id="_titolo_corso"><b><?php echo $edizione['titolo_corso']; ?></b></span>&nbsp;
+                        <span class="start_span" id="_titolo_corso"><b><?php echo $edizione['titolo_corso']; ?></b>&nbsp<?php echo $edizione['codice_edizione']; ?></span>&nbsp;
                         <span class="start_span" id="span_codice_edizione_<?php echo $edizione['id_edizione']; ?>"><a href="index.php?option=com_ggfirst&view=partecipanti&id_edizione=<?php echo $edizione['id_edizione']; ?>"<?php echo $edizione['codice_edizione']; ?></a></span><span><?php if($edizione['edizione_attiva']==1) echo '&nbsp;&nbsp;&nbsp;<span class="oi oi-bookmark red"></span>'?>
                             <input id="input_codice_edizione_<?php echo $edizione['id_edizione']; ?>" class="start_hidden_input form-control form-control-sm" type="text" value="<?php echo $edizione['codice_edizione']; ?>">
                             <span class="start_span" id="_numero_partecipanti_<?php echo $edizione['id_edizione']; ?>"><b><?php echo $edizione['numero_partecipanti']; ?></b></span>/<span class="start_span" id="_numero_partecipanti"><b><?php echo $edizione['minimo_partecipanti']; ?>

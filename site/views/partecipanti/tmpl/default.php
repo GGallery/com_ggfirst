@@ -61,7 +61,12 @@ defined('_JEXEC') or die;
         }
 
         ?></h1><h2>partecipanti attuali <b><?php echo count($this->partecipanti[0])?></b>su <b><?php if(isset($this->partecipanti[0][0]['minimo']))echo $this->partecipanti[0][0]['minimo'];?></b></h2>
+
+    <div><button style="margin-bottom: 10px;" class="link" onclick="scaricaverbale()">scarica verbale</button></div>
+
     <div><input type="text" id="tosearch"><button id="dosearch" style="margin-left: 20px;"><span class="oi oi-magnifying-glass"></span></button></div>
+
+
     <table class="table table-striped table-bordered data-page-length='8'">
         <thead>
         <tr>
@@ -186,7 +191,9 @@ defined('_JEXEC') or die;
 
 <script type="text/javascript">
 
-
+    function scaricaverbale() {
+        window.open("index.php?option=com_ggfirst&task=partecipanti.getverbale&id_edizione=<?php echo $this->id_edizione?>");
+    }
 
 
     jQuery("#dosearch").click(function (event) {

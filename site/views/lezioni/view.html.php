@@ -38,6 +38,9 @@ class ggfirstViewLezioni extends JViewLegacy {
         if($data_iniziale==null)
             $data_iniziale=date("Y-m-d");
         $data_finale=JRequest::getVar('data_finale');
+        if($data_finale==null)
+            $data_finale=date_format(date_add(date_create(date("Y-m-d")),date_interval_create_from_date_string('15 days')),'Y-m-d');
+
         $this->lezioni = $this->getModel()->getLezioni(null,null,null,null,$data_iniziale,$data_finale);
         $auleModel=new ggfirstModelAule();
         $this->aule=$auleModel->getAule();
@@ -73,28 +76,6 @@ class ggfirstViewLezioni extends JViewLegacy {
             }
 
 
-            /* foreach ($this->corsi[0] as $corso){
-                 $corsorow=[[$corso['titolo'],$corso['corso_attivo']]];
-
-                 foreach ($datecalendario as $dt){
-
-                     $lezione = $this->getModel()->getLezioni($corso['id'],null,date_format($dt,'Y-m-d'));
-
-                             if ($lezione) {
-
-                                 array_push($corsorow, $lezione);
-
-                             } else {
-
-                                 array_push($corsorow, null);
-                             }
-
-                         }
-
-
-                 array_push($calendario,$corsorow);
-
-             }*/
             foreach ($this->luoghi[0] as $luogo) {
                 $luogorow = [$luogo['denominazione']];
                 foreach ($datecalendario as $dt) {
