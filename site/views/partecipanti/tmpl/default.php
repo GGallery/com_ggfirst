@@ -94,7 +94,7 @@ defined('_JEXEC') or die;
                     <td class="bottoni">
 
                         <button onclick="deleteclick(<?php echo $partecipante['id']; ?>)"><span class="oi oi-delete red" title="cancella utente" aria-hidden="true"></span></button>
-                        <button onclick="openattestati(<?php echo $partecipante['id_studente']; ?>,<?php echo $partecipante['id_credito']; ?>)"><span class="oi oi-plus blue" title="lancia attestato" aria-hidden="true"></span></button>
+                        <button onclick="openattestati(<?php echo $partecipante['id_studente']; ?>,<?php echo $partecipante['id_credito']; ?>,<?php echo $partecipante['id_corso']; ?>)"><span class="oi oi-plus blue" title="lancia attestato" aria-hidden="true"></span></button>
                         <button onclick="openiscrizione('<?php echo $partecipante['nome']; ?>',
                                 '<?php echo $partecipante['cognome']; ?>',
                                 '<?php echo $this->edizione[0][0]['titolo']; ?>',
@@ -230,9 +230,9 @@ defined('_JEXEC') or die;
 
     }
 
-    function openattestati(id_studente,id_credito){
+    function openattestati(id_studente,id_credito,id_corso){
 
-        window.open("index.php?option=com_ggfirst&view=attestati&preselected_id_studente="+id_studente+'&preselected_id_credito='+id_credito,'_self');
+        window.open("index.php?option=com_ggfirst&view=attestati&preselected_id_studente="+id_studente+'&preselected_id_credito='+id_credito+'&preselected_id_corso='+id_corso,'_self');
 
     }
 

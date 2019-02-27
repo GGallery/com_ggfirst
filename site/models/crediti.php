@@ -65,8 +65,8 @@ class ggfirstModelCrediti  extends JModelLegacy {
     public function getCrediti($id=null){
 
         $query=$this->_db->getQuery(true);
-        $query->select('*');
-        $query->from('first_gg_crediti');
+        $query->select('*,concat(cr.ruolo,\' \', cr.rischio) as credito');
+        $query->from('first_gg_crediti as cr');
         if($id!=null)
             $query->where('id='.$id);
 
@@ -75,11 +75,11 @@ class ggfirstModelCrediti  extends JModelLegacy {
         return $dipendenti;
     }
 
-    public function getCorsiCrediti($id=null){
+    public function getCreditiAggiornamento($id=null){
 
         $query=$this->_db->getQuery(true);
         $query->select('cr.id as id, concat(cr.ruolo,\' \', cr.rischio) as credito, cr.aggiornamento as aggiornamento,
-        concat((select SUBSTRING(numero,1,3) from first_gg_attestati where id_credito=cr.id limit 1),(select max(SUBSTRING(numero,4,1))+1 from first_gg_attestati where id_credito=cr.id)) as prossimo_codice
+        concat((select SUBSTRING(numero,1,3) from first_gg_attestati where id_corsi_crediti_map=cm.id limit 1),(select max(SUBSTRING(numero,4,1))+1 from first_gg_attestati where id_corsi_crediti_map=cm.id)) as prossimo_codice
 
         ');
         $query->from('first_gg_crediti as cr');
@@ -90,6 +90,7 @@ class ggfirstModelCrediti  extends JModelLegacy {
 
         $this->_db->setQuery($query);
         $dipendenti=$this->_db->loadAssocList();
+
         return $dipendenti;
     }
 

@@ -69,6 +69,7 @@ defined('_JEXEC') or die;
         </tr>
         <tr>
             <th style="width: 15%;">CREDITO</th>
+            <th style="width: 15%;">CORSO</th>
             <th style="width: 15%;">STUDENTE</th>
             <th style="width: 15%;">NUMERO</th>
             <th style="width: 10%;">DATA</th>
@@ -88,6 +89,8 @@ defined('_JEXEC') or die;
                 <tr>
                     <td class="aggiornamento"><span class="start_span" id="span_credito_<?php echo $attestato['id']; ?>"><?php echo $attestato['credito']; ?></span>
                         <input id="input_credito_<?php echo $attestato['id']; ?>" class="start_hidden_input form-control form-control-sm" type="text" value="<?php echo $attestato['credito']; ?>"></td>
+                    <td class="aggiornamento"><span class="start_span" id="span_corso_<?php echo $attestato['id']; ?>"><?php echo $attestato['titolo']; ?></span>
+                        <input id="input_corso_<?php echo $attestato['id']; ?>" class="start_hidden_input form-control form-control-sm" type="text" value="<?php echo $attestato['titolo']; ?>"></td>
 
                     <td class="ruolo"><span class="start_span" id="span_studente_<?php echo $attestato['id']; ?>"><?php echo $attestato['studente']; ?></span>
                         <input id="input_studente_<?php echo $attestato['id']; ?>" class="start_hidden_input form-control form-control-sm" type="text" value="<?php echo $attestato['studente']; ?>"></td>
@@ -140,14 +143,22 @@ defined('_JEXEC') or die;
         <div class="col-xs-3 col-md-3 text-info"><h5>Credito:</h5>
             <select id="credito">
 
-            <?php foreach ($this->crediti as $credito){
+            <?php foreach ($this->creditiaggiornamenti as $credito){
                 if($credito['id']==$this->preselected_id_credito){$selected='selected';}else{$selected='';};
-                if ($credito['prossimo_codice']==null)
-                    $credito['prossimo_codice']='da_inizializzare';
-
-                echo "<option ".$selected." prossimo_codice=".$credito['prossimo_codice']."  aggiornamento=".$credito['aggiornamento']." value='".$credito['id']."'>".$credito['credito']."</option>";
+                if($credito['prossimo_codice']==null){$credito['prossimo_codice']='inizializza_nuovo_codice';};
+                echo "<option ".$selected." prossimo_codice=".$credito['prossimo_codice'].
+                    "  aggiornamento=".$credito['aggiornamento']." value='".$credito['id']."'>".$credito['credito']."</option>";
             }?>
         </select>
+        </div>
+        <div class="col-xs-3 col-md-3 text-info"><h5>Corsi:</h5>
+            <select id="corso">
+
+                <?php foreach ($this->corsi[0] as $corso){
+                    if($corso['id']==$this->preselected_id_corso){$selected='selected';}else{$selected='';};
+                    echo "<option ".$selected."  value='".$corso['id']."'>".$corso['titolo']."</option>";
+                }?>
+            </select>
         </div>
         <div class="col-xs-3 col-md-3 text-info"><h5>Scadenza:</h5> <input class="form-control form-control-sm" type="date" id="scadenza"></div>
 
@@ -255,7 +266,13 @@ defined('_JEXEC') or die;
         jQuery.ajax({
             method: "POST",
             cache: false,
-            url: 'index.php?option=com_ggfirst&task=attestati.insert&id_studente='+jQuery("#studente").val()+'&numero='+jQuery("#numero").val()+'&data_attestato='+jQuery("#data_attestato").val()+'&certificatore='+jQuery("#certificatore").val()+'&id_credito='+jQuery("#credito").val()+'&scadenza='+jQuery("#scadenza").val()
+            url: 'index.php?option=com_ggfirst&task=attestati.insert&id_studente='+jQuery("#studente").val()+
+            '&numero='+jQuery("#numero").val()+
+            '&data_attestato='+jQuery("#data_attestato").val()+
+            '&certificatore='+jQuery("#certificatore").val()+
+            '&id_credito='+jQuery("#credito").val()+
+            '&id_corso='+jQuery("#corso").val()+
+            '&scadenza='+jQuery("#scadenza").val()
 
         }).done(function() {
 
@@ -272,20 +289,22 @@ console.log("modifica");
         jQuery('.start_hidden_input').hide()
         jQuery('.start_span').show()
         var str=jQuery(event.target).attr('id').toString();
-        jQuery("#input_studente_"+str).toggle();
+        //jQuery("#input_studente_"+str).toggle();
         jQuery("#input_numero_"+str).toggle();
         jQuery("#input_data_attestato_"+str).toggle();
         jQuery("#input_certificatore_"+str).toggle();
-        jQuery("#input_credito_"+str).toggle();
+        //jQuery("#input_credito_"+str).toggle();
+        //jQuery("#input_corso_"+str).toggle();
         jQuery("#input_scadenza_"+str).toggle();
 
         jQuery("#input_breakline_"+str).toggle();
         jQuery("#confirm_button_"+str).toggle();
-        jQuery("#span_studente_"+str).toggle();
+        //jQuery("#span_studente_"+str).toggle();
         jQuery("#span_numero_"+str).toggle();
         jQuery("#span_data_attestato_"+str).toggle();
         jQuery("#span_certificatore_"+str).toggle();
-        jQuery("#span_credito_"+str).toggle();
+        //jQuery("#span_credito_"+str).toggle();
+        //jQuery("#span_corso_"+str).toggle();
         jQuery("#span_scadenza_"+str).toggle();
 
         change_operation='modify_anagrafica';
@@ -302,11 +321,11 @@ console.log("modifica");
 
 
 
-            var id_studente = jQuery('#input_studente_' + id).val().toString();
+
             var numero = jQuery('#input_numero_' + id).val().toString();
             var data_attestato = jQuery('#input_data_attestato_' + id).val().toString();
             var certificatore= jQuery('#input_certificatore_' + id).val().toString();
-            var id_credito = jQuery('#input_credito_' + id).val().toString();
+
             var scadenza = jQuery('#input_scadenza_' + id).val().toString();
 
 
@@ -314,7 +333,8 @@ console.log("modifica");
             jQuery.ajax({
                 method: "POST",
                 cache: false,
-                url: 'index.php?option=com_ggfirst&task=attestati.modify&id=' + id + '&id_studente=' + id_studente + '&numero=' + numero + '&data_attestato=' + data_attestato + '&certificatore=' + certificatore+ '&id_credito=' + id_credito + '&scadenza=' + scadenza
+                url: 'index.php?option=com_ggfirst&task=attestati.modify&id=' + id + '&numero=' + numero + '&data_attestato=' + data_attestato +
+                '&certificatore=' + certificatore+ '&scadenza=' + scadenza
 
             }).done(function () {
 

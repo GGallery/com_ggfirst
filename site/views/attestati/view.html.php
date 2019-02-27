@@ -18,10 +18,11 @@ jimport('joomla.application.component.helper');
 
 require_once JPATH_COMPONENT . '/models/studenti.php';
 require_once JPATH_COMPONENT . '/models/crediti.php';
+require_once JPATH_COMPONENT . '/models/corsi.php';
 
 class ggfirstViewAttestati extends JViewLegacy {
 
-    public $attestati,$studenti,$crediti, $preselected_id_studente;
+    public $attestati,$studenti,$crediti,$corsi,$preselected_id_credito,$preselected_id_corso,$preselected_id_studente;
 
 
     function display($tpl = null)
@@ -30,10 +31,10 @@ class ggfirstViewAttestati extends JViewLegacy {
         JHtml::_('stylesheet', 'components/com_ggfirst/libraries/open-iconic/font/css/open-iconic-bootstrap.css');
         JHtml::_('stylesheet', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous');
 
-        if (JRequest::getVar('id_credito_map') != null) {
-            $id_credito_map = JRequest::getVar('id_credito_map');
+        if (JRequest::getVar('id_credito') != null) {
+            $id_credito = JRequest::getVar('id_credito');
         } else {
-            $id_credito_map = null;
+            $id_credito = null;
         }
 
         if (JRequest::getVar('id_studente') != null) {
@@ -84,11 +85,21 @@ class ggfirstViewAttestati extends JViewLegacy {
             $this->preselected_id_credito = null;
         }
 
-        $this->attestati=$this->getModel()->getAttestati(null,$id_studente,$numero,$data_attestato,$certificatore,$id_credito_map, $scadenza_data_minore,$scadenza_data_maggiore);
+        if (JRequest::getVar('preselected_id_corso') != null) {
+            $this->preselected_id_corso = JRequest::getVar('preselected_id_corso');
+        } else {
+            $this->preselected_id_corso = null;
+        }
+
+        $this->attestati=$this->getModel()->getAttestati(null,$id_studente,$numero,$data_attestato,$certificatore, $id_credito, null,$scadenza_data_minore,$scadenza_data_maggiore);
         $studentiModel=new ggfirstModelStudenti();
         $this->studenti=$studentiModel->getStudenti();
         $creditiModel=new ggfirstModelCrediti();
-        $this->crediti=$creditiModel->getCorsiCrediti();
+        $this->crediti=$creditiModel->getCrediti();
+        $this->creditiaggiornamenti=$creditiModel->getCreditiAggiornamento();
+
+        $corsiModel=new ggfirstModelCorsi();
+        $this->corsi=$corsiModel->getCorsi();
         parent::display($tpl);
     }
 }
