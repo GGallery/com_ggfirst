@@ -94,7 +94,9 @@ defined('_JEXEC') or die;
                     <td class="bottoni">
 
                         <button onclick="deleteclick(<?php echo $partecipante['id']; ?>)"><span class="oi oi-delete red" title="cancella utente" aria-hidden="true"></span></button>
-                        <button onclick="openattestati(<?php echo $partecipante['id_studente']; ?>,<?php echo $partecipante['id_credito']; ?>,<?php echo $partecipante['id_corso']; ?>)"><span class="oi oi-plus blue" title="lancia attestato" aria-hidden="true"></span></button>
+                        <?php if($partecipante['attestato_esistente']==0){?>
+                            <button onclick="openattestati(<?php echo $partecipante['id_studente']; ?>,<?php echo $partecipante['id_credito']; ?>,<?php echo $partecipante['id_corso']; ?>)"><span class="oi oi-plus blue" title="lancia attestato" aria-hidden="true"></span></button>
+                        <?php }?>
                         <button onclick="openiscrizione('<?php echo $partecipante['nome']; ?>',
                                 '<?php echo $partecipante['cognome']; ?>',
                                 '<?php echo $this->edizione[0][0]['titolo']; ?>',
