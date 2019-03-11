@@ -34,7 +34,7 @@ class ggfirstModelPdf extends JModelLegacy {
     }
 
 
-    public function _generate_attestato($user, $orientamento,$id_attestato, $data_attestato) {
+    public function _generate_attestato($user, $orientamento,$id_template, $data_attestato) {
         try {
             require_once JPATH_COMPONENT . '/libraries/pdf/certificatePDF.class.php';
             $orientation=$orientamento;
@@ -42,11 +42,11 @@ class ggfirstModelPdf extends JModelLegacy {
 
 
             $info['data_superamento']=$data_attestato;
-            $info['path_id'] = $id_attestato;
+            $info['path_id'] = $id_template;
             $info['path'] = $_SERVER['DOCUMENT_ROOT'].'/mediagg/contenuti/';
             $info['content_path'] = $info['path'] . $info['path_id'];
 
-            $template = "file:" . $_SERVER['DOCUMENT_ROOT'].'/mediagg/contenuti/'. $id_attestato . "/" . $id_attestato . ".tpl";
+            $template = "file:" . $_SERVER['DOCUMENT_ROOT'].'/mediagg/contenuti/'. $id_template . "/" . $id_template . ".tpl";
 
             $pdf->add_data((array)$user);
             $pdf->add_data($info);

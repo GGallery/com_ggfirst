@@ -30,7 +30,7 @@ class ggfirstControllerPdf extends JControllerLegacy
         $this->_params = $this->_japp->getParams();
         $this->_filterparam = new stdClass();
         $this->_filterparam->data_attestato=JRequest::getVar('data_attestato');
-        $this->_filterparam->id_attestato=JRequest::getVar('id_attestato');
+        $this->_filterparam->id_template=JRequest::getVar('id_template');
         $this->_filterparam->nome=JRequest::getVar('nome');
         $this->_filterparam->cognome=JRequest::getVar('cognome');
         $this->_filterparam->titolo_corso=JRequest::getVar('titolo_corso');
@@ -79,7 +79,7 @@ class ggfirstControllerPdf extends JControllerLegacy
             $user['cognome']=$this->_filterparam->cognome;
             //$this->_filterparam->data_attestato='2018-02-06';
             //$this->_filterparam->id_attestato=4;
-            $model->_generate_attestato($user, $orientamento,$this->_filterparam->id_attestato, $this->_filterparam->data_attestato);
+            $model->_generate_attestato($user, $orientamento,$this->_filterparam->id_template, $this->_filterparam->data_attestato);
 
         }catch (Exception $e){
 

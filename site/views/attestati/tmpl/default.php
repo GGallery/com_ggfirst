@@ -186,7 +186,7 @@ defined('_JEXEC') or die;
         url="index.php?option=com_ggfirst&task=pdf.generateAttestato"+
             "&nome="+nome+
             "&cognome="+cognome+
-            "&id_attestato=4"+
+            "&id_template=4"+
             "&data_attestato="+data_attestato
         window.open(url,'_self');
 
