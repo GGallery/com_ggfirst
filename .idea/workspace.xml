@@ -5,7 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/site/controllers/pdf.php" afterPath="$PROJECT_DIR$/site/controllers/pdf.php" />
       <change beforePath="$PROJECT_DIR$/site/models/pdf.php" afterPath="$PROJECT_DIR$/site/models/pdf.php" />
-      <change beforePath="$PROJECT_DIR$/site/views/attestati/tmpl/default.php" afterPath="$PROJECT_DIR$/site/views/attestati/tmpl/default.php" />
+      <change beforePath="$PROJECT_DIR$/site/views/partecipanti/tmpl/default.php" afterPath="$PROJECT_DIR$/site/views/partecipanti/tmpl/default.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -133,16 +133,16 @@
         <option value="$PROJECT_DIR$/site/controllers/attestati.php" />
         <option value="$PROJECT_DIR$/site/models/attestati.php" />
         <option value="$PROJECT_DIR$/site/models/partecipanti.php" />
-        <option value="$PROJECT_DIR$/site/views/partecipanti/tmpl/default.php" />
         <option value="$USER_HOME$/AppData/Local/Temp/fz3temp-2/configuration.php" />
         <option value="$PROJECT_DIR$/site/views/questionario/tmpl/questionario.xml" />
         <option value="$PROJECT_DIR$/site/models/questionario.php" />
         <option value="$PROJECT_DIR$/site/controllers/questionario.php" />
         <option value="$PROJECT_DIR$/site/views/questionario/tmpl/default.php" />
         <option value="$PROJECT_DIR$/site/views/questionario/view.html.php" />
-        <option value="$PROJECT_DIR$/site/models/pdf.php" />
-        <option value="$PROJECT_DIR$/site/controllers/pdf.php" />
         <option value="$PROJECT_DIR$/site/views/attestati/tmpl/default.php" />
+        <option value="$PROJECT_DIR$/site/views/partecipanti/tmpl/default.php" />
+        <option value="$PROJECT_DIR$/site/controllers/pdf.php" />
+        <option value="$PROJECT_DIR$/site/models/pdf.php" />
       </list>
     </option>
   </component>
@@ -210,14 +210,14 @@
               <item name="com_ggfirst" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="site" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="attestati" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="partecipanti" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="com_ggfirst" type="b2602c69:ProjectViewProjectNode" />
               <item name="com_ggfirst" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="site" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="attestati" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="partecipanti" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="tmpl" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
@@ -354,14 +354,7 @@
       <workItem from="1551709565434" duration="717000" />
       <workItem from="1552037446167" duration="2298000" />
       <workItem from="1552051565964" duration="8911000" />
-      <workItem from="1552294374036" duration="1263000" />
-    </task>
-    <task id="LOCAL-00022" summary="inserita gestione ore da spalmare su task">
-      <created>1541003873636</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1541003873636</updated>
+      <workItem from="1552294374036" duration="1802000" />
     </task>
     <task id="LOCAL-00023" summary="stable">
       <created>1541428870347</created>
@@ -699,11 +692,18 @@
       <option name="project" value="LOCAL" />
       <updated>1552060810603</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="inrtoduzione id_template vs id_attestato">
+      <created>1552295700238</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1552295700239</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="697360000" />
+    <option name="totallyTimeSpent" value="697899000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -760,7 +760,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="mvc calendario aggiunto flag corso pronto" />
     <MESSAGE value="gestione attestati da finire" />
     <MESSAGE value="gestione data scadenza" />
     <MESSAGE value="gestione completa dei filtri attestati e collegamento tra partecipante ed attestato" />
@@ -785,7 +784,8 @@
     <MESSAGE value="nuova gestione dell'attestato come credit_map e non credit" />
     <MESSAGE value="gestita già esistenza dell'attestato" />
     <MESSAGE value="implmentazione questionario" />
-    <option name="LAST_COMMIT_MESSAGE" value="implmentazione questionario" />
+    <MESSAGE value="inrtoduzione id_template vs id_attestato" />
+    <option name="LAST_COMMIT_MESSAGE" value="inrtoduzione id_template vs id_attestato" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -945,20 +945,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/site/controllers/partecipanti.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="79" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/site/views/partecipanti/tmpl/default.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="356">
-          <caret line="193" column="0" lean-forward="false" selection-start-line="193" selection-start-column="0" selection-end-line="193" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/site/models/attestati.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="512">
@@ -1014,6 +1000,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="884">
           <caret line="63" column="248" lean-forward="false" selection-start-line="63" selection-start-column="229" selection-end-line="63" selection-end-column="248" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1065,14 +1052,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/site/controllers/pdf.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="32" column="59" lean-forward="true" selection-start-line="32" selection-start-column="59" selection-end-line="32" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/site/views/attestati/tmpl/default.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -1084,7 +1063,34 @@
     <entry file="file://$PROJECT_DIR$/site/models/pdf.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
-          <caret line="48" column="116" lean-forward="false" selection-start-line="48" selection-start-column="116" selection-end-line="48" selection-end-column="116" />
+          <caret line="78" column="116" lean-forward="false" selection-start-line="78" selection-start-column="116" selection-end-line="78" selection-end-column="116" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/controllers/pdf.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="489">
+          <caret line="124" column="94" lean-forward="false" selection-start-line="124" selection-start-column="94" selection-end-line="124" selection-end-column="94" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/views/partecipanti/tmpl/default.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="247" column="25" lean-forward="false" selection-start-line="247" selection-start-column="25" selection-end-line="247" selection-end-column="25" />
+          <folding>
+            <marker date="1552296101275" expanded="true" signature="875:893" ph="..." />
+            <marker date="1552296101275" expanded="true" signature="1157:1175" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/controllers/partecipanti.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="79" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
           <folding />
         </state>
       </provider>

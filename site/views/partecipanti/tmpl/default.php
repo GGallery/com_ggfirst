@@ -245,7 +245,7 @@ defined('_JEXEC') or die;
         url="index.php?option=com_ggfirst&task=pdf.generateIscrizione"+
             "&nome="+nome+
             "&cognome="+cognome+
-            "&id_attestato=5"+
+            "&id_template=5"+
             "&titolo_corso="+titolo_corso+
             "&credito="+credito+
             "&durata="+durata+

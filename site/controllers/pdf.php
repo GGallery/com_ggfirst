@@ -122,7 +122,7 @@ class ggfirstControllerPdf extends JControllerLegacy
             $user['f_email_referente']=$this->_filterparam->email_riferimento;
             $user['f_ateco']=$this->_filterparam->ateco;
 
-            $model->_generate_iscrizione($user, $orientamento,$this->_filterparam->id_attestato, $this->_filterparam->data_attestato);
+            $model->_generate_iscrizione($user, $orientamento,$this->_filterparam->id_template, $this->_filterparam->data_attestato);
 
         }catch (Exception $e){
 
