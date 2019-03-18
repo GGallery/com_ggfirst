@@ -33,13 +33,14 @@ class ggfirstControllerPartecipanti extends JControllerLegacy
         $this->_filterparam->id_edizione=JRequest::getVar('id_edizione');
         $this->_filterparam->id_studente=JRequest::getVar('id_studente');
         $this->_filterparam->id_credito=JRequest::getVar('id_credito');
+        $this->_filterparam->id_figura=JRequest::getVar('id_figura');
 
 
     }
     public function insert(){
 
         $model=new ggfirstModelPartecipanti();
-        if($model->insert($this->_filterparam->id_edizione,$this->_filterparam->id_studente,$this->_filterparam->id_credito)) {
+        if($model->insert($this->_filterparam->id_edizione,$this->_filterparam->id_studente,$this->_filterparam->id_credito,$this->_filterparam->id_figura)) {
             echo "1";
         }else{
             echo "0";

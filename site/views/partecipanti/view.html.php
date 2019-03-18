@@ -65,6 +65,8 @@ class ggfirstViewPartecipanti extends JViewLegacy {
             $this->edizione=$corsiModel->getEdizioni($this->id_edizione,null);
             $creditiModel=new ggfirstModelCrediti();
             $this->crediti=$creditiModel->getCreditiEdizione($this->id_edizione);
+            $this->figure=$this->getModel()->getFigure();
+
 
         }
         parent::display($tpl);

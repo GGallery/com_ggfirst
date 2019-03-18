@@ -74,6 +74,7 @@ defined('_JEXEC') or die;
             <th style="width: 15%;">COGNOME</th>
             <th style="width: 15%;">Credito</th>
            <th style="width: 15%;">DATA DI NASCITA</th>
+            <th style="width: 15%;">FIGURA</th>
            <th ></th>
         </tr>
         </thead>
@@ -89,6 +90,7 @@ defined('_JEXEC') or die;
                     <td class="cognome"><span class="start_span" id="_cognome"><?php echo $partecipante['cognome']; ?></span>
                     <td class="credito"><span class="start_span" id="_credito"><?php echo $partecipante['credito']; ?></span>
                     <td class="data_nascita"><span class="start_span" id="_data_nascita"><?php echo $partecipante['data_nascita']; ?></span>
+                    <td class="data_nascita"><span class="start_span" id="_figura"><?php echo $partecipante['figura']; ?></span>
 
 
                     <td class="bottoni">
@@ -181,7 +183,11 @@ defined('_JEXEC') or die;
             <option value="">scegli credito</option>
             <?php foreach ( $this->crediti as $credito){echo "<option value=".$credito['id'].">".$credito['credito']."</option>";}?>
         </select></div>
-
+        <div class="col-xs-4 col-md-4 text-info"><h5>Figura di riferimento:</h5>
+        <select id="figura">
+            <option value="">scegli figura di riferimento</option>
+            <?php foreach ( $this->figure as $figura){echo "<option value=".$figura['id'].">".$figura['figura']."</option>";}?>
+        </select></div>
     </div>
 
     <div  class="row insertbox">
@@ -215,6 +221,7 @@ defined('_JEXEC') or die;
              + '&id_edizione=' + <?php echo $this->id_edizione?>
              + '&id_studente=' + jQuery("#studente").val()
              + '&id_credito=' + jQuery("#credito").val()
+             + '&id_figura=' + jQuery("#figura").val()
 
 
 
