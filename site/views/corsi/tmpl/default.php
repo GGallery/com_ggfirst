@@ -4,6 +4,7 @@ defined('_JEXEC') or die;
 
 
 <head>
+    <script src="https://cdn.ckeditor.com/4.11.3/standard/ckeditor.js"></script>
 <style>
 
     .insertlezionibox{
@@ -127,14 +128,14 @@ defined('_JEXEC') or die;
                     </div>
                 </td>
                 <td class="bottoni">
-                    <button onclick="modifica_corso(<?php echo $corso_['id']; ?>)"><span
+                    <button onclick="modifica_corso(<?php echo $corso_['id']; ?>,'<?php echo $corso_['titolo']; ?>','<?php echo $corso_['riferimento_legislativo']; ?>','<?php echo urldecode($corso_['programma']); ?>')"><span
                                 class="modify_button oi oi-pencil" title="modifica corso" aria-hidden="true"></span>
                     </button>
                     <button class="confirm_button" id="confirm_button_<?php echo $corso_['id']; ?>">
-                        <span class="oi oi-thumb-up" title="conferma modifiche" aria-hidden="true" onclick="conferma_modifica_corso(<?php echo $corso_['id']; ?>)"></span>
+                        <span class="oi oi-thumb-up" title="conferma aggiunta credito" aria-hidden="true" onclick="conferma_aggiunta_credito(<?php echo $corso_['id']; ?>)"></span>
                     </button>
                     <button onclick="deleteclick(<?php echo $corso_['id']; ?>)"><span class="oi oi-delete red"
-                                                                                      title="cancella utente"
+                                                                                      title="cancella corso"
                                                                                       aria-hidden="true"></span>
                     </button>
                     <button><span class="add_credito oi oi-puzzle-piece green" title="aggiungi credito"
@@ -151,9 +152,15 @@ defined('_JEXEC') or die;
 
     </tbody>
 </table>
+
     <div class="form-group form-group-sm">
+        <div class="col-xs-2 col-md-2 text-info" style="padding-bottom: 10px;">
+            <button  onclick="open_corsi()"><span class="modify_button oi oi-pencil" title="mostra corsi" aria-hidden="true">apri corsi</span></button>
+
+        </div>
         <div  class="row insertbox"><div class="col-xs-10 col-md-10"><b>INSERISCI UN NUOVO CORSO</b>
             </div>
+
         </div>
 
 
@@ -164,11 +171,14 @@ defined('_JEXEC') or die;
                 <div class="col-xs-6 col-md-6 text-info">riferimento legislativo
                     <textarea  class="form-control form-control-sm" cols=10 rows=1 id="riferimento_legislativo"></textarea>
                 </div>
-                <div class="col-xs-1 col-md-1 text-info">
-                    <button  onclick="open_corsi()"><span class="modify_button oi oi-pencil" title="mostra corsi" aria-hidden="true"></span></button>
-
+                <div class="col-xs-12 col-md-12 text-info">programma
+                    <textarea  class="form-control form-control-sm" id="programma"></textarea>
                 </div>
+                <?php
 
+                //$editor = JFactory::getEditor();
+                //echo $editor->display('content', '', '550', '400', '60', '20', false,'programma1');
+                ?>
                 <div class="col-xs-5 col-md-5 text-info">
 
                     <button  class="form-control btn btn-outline-secondary btn-sm" id="insertnewcorso" value="conferma" onclick="insertclick()" type="button">CONFERMA</button>
@@ -318,7 +328,9 @@ defined('_JEXEC') or die;
 
 
 
-
+<script>
+    CKEDITOR.replace( 'programma' );
+</script>
 
 
 
@@ -328,6 +340,7 @@ defined('_JEXEC') or die;
 
     var actual_operation='insert';
     var actual_id;
+    var id_corso_in_modify;
 
     function open_corsi(){
 
@@ -401,16 +414,21 @@ defined('_JEXEC') or die;
         window.open(url,'_self');
     });
 
-    function modifica_corso(id){
+    function modifica_corso(id,titolo,riferimento_legislativo,programma){
 
-
-        var str=id.toString();
-        jQuery('.start_hidden_input').hide()
+        actual_operation="modify"
+        id_corso_in_modify=id.toString();
+        /*jQuery('.start_hidden_input').hide()
         jQuery('.start_span').show()
         jQuery("#confirm_button_"+str).toggle();
 
         jQuery("#input_titolo_"+str).toggle();
-        jQuery("#input_riferimento_legislativo_"+str).toggle();
+        jQuery("#input_riferimento_legislativo_"+str).toggle();*/
+        jQuery("#titolo").val(titolo);
+        jQuery("#riferimento_legislativo").val(riferimento_legislativo);
+        CKEDITOR.instances.programma.setData(programma);
+
+
 
 
 
@@ -432,19 +450,16 @@ defined('_JEXEC') or die;
 
     }
 
-    function conferma_modifica_corso(id){
+    function conferma_aggiunta_credito(id){
 
-        var str=id.toString();
-        var nuovo_titolo=jQuery("#input_titolo_"+str).val()
-        var nuovo_credito=jQuery("#nuovo_credito_"+str).val()
-        var nuovo_riferimento_legislativo=jQuery("#input_riferimento_legislativo_"+str).val()
+        var id_credito=jQuery("#nuovo_credito_"+id).val();
         jQuery.ajax({
             method: "POST",
             cache: false,
-            url: 'index.php?option=com_ggfirst&task=corsi.modify&id=' + id.toString() + '&titolo=' + nuovo_titolo+'&credito='+nuovo_credito+'&riferimento_legislativo='+nuovo_riferimento_legislativo
+            url: 'index.php?option=com_ggfirst&task=crediti.insert_map&id_corso=' + id.toString() + '&id=' + id_credito
 
         }).done(function () {
-            alert("modificato  corso");
+            alert("modificata  edizione");
             location.reload();
         }).fail(function ($xhr) {
             var data = $xhr.responseJSON;
@@ -486,8 +501,8 @@ defined('_JEXEC') or die;
                 cache: false,
                 url: 'index.php?option=com_ggfirst&task=corsi.insert'
                 + '&titolo=' + jQuery("#titolo").val()
-                + '&riferimento_legislativo'+jQuery("#riferimento_legislativo").val()
-
+                + '&riferimento_legislativo='+jQuery("#riferimento_legislativo").val()
+                + '&programma='+encodeURI(CKEDITOR.instances.programma.getData().replace(/\n|\r/g, ""))//jQuery("#programma1").val()//
 
 
             }).done(function () {
@@ -499,20 +514,24 @@ defined('_JEXEC') or die;
             });
         }
         if(actual_operation=="modify") {
+
+            var nuovo_titolo=jQuery("#titolo").val()
+            var nuovo_riferimento_legislativo=jQuery("#riferimento_legislativo").val()
+            var programma=encodeURI(CKEDITOR.instances.programma.getData().replace(/\n|\r/g, ""))
+
+
             jQuery.ajax({
                 method: "POST",
                 cache: false,
-                url: 'index.php?option=com_ggfirst&task=corsi.modify&' +
-                'id=' + actual_id
-                + '&titolo=' + jQuery("#titolo").val()
-
+                url: 'index.php?option=com_ggfirst&task=corsi.modify&id='
+                + id_corso_in_modify + '&titolo=' + nuovo_titolo+'&riferimento_legislativo='+nuovo_riferimento_legislativo+'&programma='+programma
 
             }).done(function () {
-
-                alert("modifiche riuscite");
+                alert("modificato  corso");
                 location.reload();
-
-
+            }).fail(function ($xhr) {
+                var data = $xhr.responseJSON;
+                console.log(data);
             });
         }
 

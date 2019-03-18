@@ -24,12 +24,13 @@ class ggfirstModelCorsi  extends JModelLegacy {
 
     }
 
-    public function insert($titolo,$riferimento_legislativo){
+    public function insert($titolo,$riferimento_legislativo,$programma){
 
 
         $object = new StdClass;
         $object->titolo=$titolo;
         $object->riferimento_legislativo=$riferimento_legislativo;
+        $object->programma=$programma;
         $object->timestamp=Date('Y-m-d h:i:s',time());
         $result=$this->_db->insertObject('first_gg_corsi',$object);
         return $result;
@@ -58,21 +59,28 @@ class ggfirstModelCorsi  extends JModelLegacy {
         return $result;
     }
 
-    public function modify($id,$titolo,$riferimento_legislativo,$credito){
+    public function modify($id,$titolo,$riferimento_legislativo,$programma){
 
 
-        $sql="update first_gg_corsi set titolo='".$titolo."', riferimento_legislativo='".$riferimento_legislativo."' where id=".$id;
+        $sql="update first_gg_corsi set titolo='".$titolo."', riferimento_legislativo='".$riferimento_legislativo."', programma='".$programma."' where id=".$id;
 
         $this->_db->setQuery($sql);
         $result=$this->_db->execute();
 
-        if($id && $credito) {
-            $sql_ = "insert into first_gg_corsi_crediti_map (id_corso,id_credito,timestamp) values(" . $id . "," . $credito . ",now())";
+       /* if($id && $credito) {
 
-            $this->_db->setQuery($sql_);
-            $result = $this->_db->execute();
-        }
+        }*/
         return $result;
+    }
+
+    public function insert_credito_corso($id_corso,$id_credito){
+
+        $sql_ = "insert into first_gg_corsi_crediti_map (id_corso,id_credito,timestamp) values(" . $id_corso . "," . $id_credito . ",now())";
+
+        $this->_db->setQuery($sql_);
+        $result = $this->_db->execute();
+        return $result;
+
     }
 
     public function modify_edizione($id,$codice_edizione,$stato,$minimo_partecipanti){
@@ -123,7 +131,8 @@ class ggfirstModelCorsi  extends JModelLegacy {
 
         $query=$this->_db->getQuery(true);
         $query->select('*,e.id as id_edizione,e.codice_edizione as codice_edizione,
-        (select count(*) from first_gg_partecipanti where id_edizione=e.id) as numero_partecipanti, if((select count(*) from first_gg_partecipanti where id_edizione=e.id)>=minimo_partecipanti,1,0) as edizione_attiva, 
+        (select count(*) from first_gg_partecipanti where id_edizione=e.id) as numero_partecipanti, 
+        if((select count(*) from first_gg_partecipanti where id_edizione=e.id)>=minimo_partecipanti,1,0) as edizione_attiva, 
         c.titolo as titolo_corso,  (select min(data)-interval 15 day from first_gg_lezioni where id_edizione=e.id) as scadenza_iscrizione,
             (select codice_edizione from  first_gg_edizioni where id_corso=e.id_corso order by codice_edizione desc limit 1) as ultimo_codice');
         $query->from('first_gg_edizioni as e');

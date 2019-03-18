@@ -35,15 +35,15 @@ class ggfirstControllerCorsi extends JControllerLegacy
         $this->_filterparam->minimo_partecipanti=JRequest::getVar('minimo_partecipanti');
         $this->_filterparam->credito=JRequest::getVar('credito');
         $this->_filterparam->riferimento_legislativo=JRequest::getVar('riferimento_legislativo');
-
+        $this->_filterparam->programma=JRequest::getVar('programma','', 'get', 'string', JREQUEST_ALLOWHTML);
 
 
 
     }
     public function insert(){
-
+//var_dump($this->_filterparam->programma);die;
         $model=new ggfirstModelCorsi();
-        if($model->insert($this->_filterparam->titolo)) {
+        if($model->insert($this->_filterparam->titolo,$this->_filterparam->riferimento_legislativo,$this->_filterparam->programma)) {
             echo "1";
         }else{
             echo "0";
@@ -79,7 +79,7 @@ class ggfirstControllerCorsi extends JControllerLegacy
 
         $model=new ggfirstModelCorsi();
         if($model->modify($this->_filterparam->id,
-            $this->_filterparam->titolo,$this->_filterparam->riferimento_legislativo,$this->_filterparam->credito)) {
+            $this->_filterparam->titolo,$this->_filterparam->riferimento_legislativo,$this->_filterparam->programma)) {
             echo "1";
         }else{
             echo "0";
@@ -98,6 +98,17 @@ class ggfirstControllerCorsi extends JControllerLegacy
         }
         $this->_app->close();
 
+    }
+
+    public function insert_credito_corso(){
+
+        $model=new ggfirstModelCorsi();
+        if($model->insert_credito_corso($this->_filterparam->id,$this->_filterparam->credito)) {
+            echo "1";
+        }else{
+            echo "0";
+        }
+        $this->_app->close();
     }
 
 

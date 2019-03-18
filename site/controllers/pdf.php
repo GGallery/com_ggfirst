@@ -29,6 +29,7 @@ class ggfirstControllerPdf extends JControllerLegacy
         $this->_japp = JFactory::getApplication();
         $this->_params = $this->_japp->getParams();
         $this->_filterparam = new stdClass();
+        $this->_filterparam->id_attestato=JRequest::getVar('id_attestato');
         $this->_filterparam->data_attestato=JRequest::getVar('data_attestato');
         $this->_filterparam->id_template=JRequest::getVar('id_template');
         $this->_filterparam->nome=JRequest::getVar('nome');
@@ -131,5 +132,23 @@ class ggfirstControllerPdf extends JControllerLegacy
         $this->_japp->close();
     }
 
+    public function generate_attestato() {
+
+        try {
+
+
+            $model = $this->getModel('pdf');
+
+            $orientamento = "P";
+
+
+            $model->generate_attestato($this->_filterparam->id_attestato, $orientamento,$this->_filterparam->id_template);
+
+        }catch (Exception $e){
+
+            DEBUGG::log($e, 'Exception in generateAttestato ', 1);
+        }
+        $this->_japp->close();
+    }
 
 }

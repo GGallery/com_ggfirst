@@ -115,7 +115,7 @@ defined('_JEXEC') or die;
                         <button><span class="modify_button oi oi-pencil" title="modifica attestato" aria-hidden="true" id="<?php echo $attestato['id']; ?>"></span></button>
                         <button class="confirm_button" id="confirm_button_<?php echo $attestato['id']; ?>"><span class="oi oi-thumb-up" title="conferma modifiche" aria-hidden="true" id="confirm_span_<?php echo $attestato['id']; ?>"></span></button>
                         <button onclick="deleteclick(<?php echo $attestato['id']; ?>)"><span class="oi oi-delete red" title="cancella utente" aria-hidden="true"></span></button>
-                        <button onclick="openattestato('<?php echo $attestato['nome']; ?>','<?php echo $attestato['cognome']; ?>','<?php echo $attestato['data_attestato']; ?>')"><span class="oi oi-document green" title="apri attestato" aria-hidden="true"></span></button>
+                        <button onclick="openattestato('<?php echo $attestato['id']; ?>',37)"><span class="oi oi-document green" title="apri attestato" aria-hidden="true"></span></button>
 
                     </td>
                 </tr>
@@ -175,13 +175,20 @@ defined('_JEXEC') or die;
 
     var change_operation=null;
 
+    function openattestato(id_attestato,id_template) {
+
+        url="http://localhost/gglaboratorio/index.php?option=com_ggfirst&task=pdf.generate_attestato&id_attestato="+id_attestato+"&id_template="+id_template
+        window.open(url,'_self');
+
+    }
+
     function carica_codice(){
 
         jQuery('#credito').trigger("change");
 
     }
 
-    function openattestato(nome,cognome,data_attestato) {
+    function openattestato37(nome,cognome,data_attestato) {
 
         url="index.php?option=com_ggfirst&task=pdf.generateAttestato"+
             "&nome="+nome+
