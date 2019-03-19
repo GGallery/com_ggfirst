@@ -35,13 +35,14 @@ class ggfirstControllerAttestati extends JControllerLegacy
         $this->_filterparam->id_credito=JRequest::getVar('id_credito');
         $this->_filterparam->id_corso=JRequest::getVar('id_corso');
         $this->_filterparam->scadenza=JRequest::getVar('scadenza');
-
+        $this->_filterparam->settore=JRequest::getVar('settore');
+        $this->_filterparam->rischio_attestato=JRequest::getVar('rischio_attestato');
 
     }
     public function insert(){
 
         $model=new ggfirstModelAttestati();
-        if($model->insert($this->_filterparam->id_studente,$this->_filterparam->numero,$this->_filterparam->data_attestato,$this->_filterparam->certificatore,$this->_filterparam->id_credito,$this->_filterparam->id_corso,$this->_filterparam->scadenza)) {
+        if($model->insert($this->_filterparam->id_studente,$this->_filterparam->numero,$this->_filterparam->data_attestato,$this->_filterparam->certificatore,$this->_filterparam->id_credito,$this->_filterparam->id_corso,$this->_filterparam->scadenza,$this->_filterparam->settore,$this->_filterparam->rischio_attestato)) {
             echo "1";
         }else{
             echo "0";
@@ -64,7 +65,7 @@ class ggfirstControllerAttestati extends JControllerLegacy
     public function modify(){
 
         $model=new ggfirstModelAttestati();
-        if($model->modify($this->_filterparam->id, $this->_filterparam->numero,$this->_filterparam->data_attestato,$this->_filterparam->certificatore,$this->_filterparam->scadenza)) {
+        if($model->modify($this->_filterparam->id, $this->_filterparam->numero,$this->_filterparam->data_attestato,$this->_filterparam->certificatore,$this->_filterparam->scadenza,$this->_filterparam->settore,$this->_filterparam->rischio_attestato)) {
             echo "1";
         }else{
             echo "0";

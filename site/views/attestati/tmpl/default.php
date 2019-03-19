@@ -75,6 +75,8 @@ defined('_JEXEC') or die;
             <th style="width: 10%;">DATA</th>
             <th style="width: 15%;">CERTIFICATORE</th>
             <th style="width: 20%;">SCADENZA</th>
+            <th style="width: 20%;">SETTORE</th>
+            <th style="width: 20%;">RISCHIO</th>
             
             <th ></th>
         </tr>
@@ -110,12 +112,19 @@ defined('_JEXEC') or die;
                     <td class="periodicita"><span class="start_span" id="span_scadenza_<?php echo $attestato['id']; ?>"><?php echo $attestato['scadenza']; ?></span>
                         <input id="input_scadenza_<?php echo $attestato['id']; ?>" class="start_hidden_input form-control form-control-sm" type="text" value="<?php echo $attestato['scadenza']; ?>"></td>
 
+                    <td class="periodicita"><span class="start_span" id="span_settore_<?php echo $attestato['id']; ?>"><?php echo $attestato['settore']; ?></span>
+                        <input id="input_scadenza_<?php echo $attestato['id']; ?>" class="start_hidden_input form-control form-control-sm" type="text" value="<?php echo $attestato['settore']; ?>"></td>
+                    <td class="periodicita"><span class="start_span" id="span_rischio_attestato_<?php echo $attestato['id']; ?>"><?php echo $attestato['rischio_attestato']; ?></span>
+                        <input id="input_scadenza_<?php echo $attestato['id']; ?>" class="start_hidden_input form-control form-control-sm" type="text" value="<?php echo $attestato['rischio_attestato']; ?>"></td>
+
 
                     <td class="bottoni">
                         <button><span class="modify_button oi oi-pencil" title="modifica attestato" aria-hidden="true" id="<?php echo $attestato['id']; ?>"></span></button>
                         <button class="confirm_button" id="confirm_button_<?php echo $attestato['id']; ?>"><span class="oi oi-thumb-up" title="conferma modifiche" aria-hidden="true" id="confirm_span_<?php echo $attestato['id']; ?>"></span></button>
                         <button onclick="deleteclick(<?php echo $attestato['id']; ?>)"><span class="oi oi-delete red" title="cancella utente" aria-hidden="true"></span></button>
-                        <button onclick="openattestato('<?php echo $attestato['id']; ?>',37)"><span class="oi oi-document green" title="apri attestato" aria-hidden="true"></span></button>
+                        <button onclick="openattestato('<?php echo $attestato['id']; ?>','37')"><span class="oi oi-document green" title="apri attestato MOD 37" aria-hidden="true"></span></button>
+                        <button onclick="openattestato('<?php echo $attestato['id']; ?>','37a')"><span class="oi oi-document green" title="apri attestato MOD 37A" aria-hidden="true"></span></button>
+                        <button onclick="openattestato('<?php echo $attestato['id']; ?>','37b')"><span class="oi oi-document green" title="apri attestato MOD 37B" aria-hidden="true"></span></button>
 
                     </td>
                 </tr>
@@ -161,6 +170,8 @@ defined('_JEXEC') or die;
             </select>
         </div>
         <div class="col-xs-3 col-md-3 text-info"><h5>Scadenza:</h5> <input class="form-control form-control-sm" type="date" id="scadenza"></div>
+        <div class="col-xs-3 col-md-3 text-info"><h5>Settore:</h5> <input type=text class="form-control form-control-sm" id="settore"></div>
+        <div class="col-xs-3 col-md-3 text-info"><h5>Rischio:</h5> <input type=text class="form-control form-control-sm" id="rischio_attestato"></div>
 
     </div>
 
@@ -188,16 +199,6 @@ defined('_JEXEC') or die;
 
     }
 
-    function openattestato37(nome,cognome,data_attestato) {
-
-        url="index.php?option=com_ggfirst&task=pdf.generateAttestato"+
-            "&nome="+nome+
-            "&cognome="+cognome+
-            "&id_template=4"+
-            "&data_attestato="+data_attestato
-        window.open(url,'_self');
-
-    }
 
 
     jQuery("#dosearch").click(function (event) {
@@ -247,131 +248,133 @@ defined('_JEXEC') or die;
 
     });
 
-    jQuery('#data_attestato').change(function(){
+        jQuery('#data_attestato').change(function(){
 
-        if(jQuery('#credito option:selected').attr('aggiornamento')) {
-            var aggiornamento = jQuery('#credito option:selected').attr('aggiornamento');
-            data_ = new Date(jQuery('#data_attestato').val());
-            console.log(data_);
-            data__ = new Date(data_.setFullYear(data_.getFullYear() + (aggiornamento / 12)));
-            anno = data__.getFullYear().toString();
-            mese = (data__.getMonth() + 1).toString();
-            giorno = data__.getDate().toString();
-            if (mese.length == 1) {
-                mese = "0" + mese;
+            if(jQuery('#credito option:selected').attr('aggiornamento')) {
+                var aggiornamento = jQuery('#credito option:selected').attr('aggiornamento');
+                data_ = new Date(jQuery('#data_attestato').val());
+                console.log(data_);
+                data__ = new Date(data_.setFullYear(data_.getFullYear() + (aggiornamento / 12)));
+                anno = data__.getFullYear().toString();
+                mese = (data__.getMonth() + 1).toString();
+                giorno = data__.getDate().toString();
+                if (mese.length == 1) {
+                    mese = "0" + mese;
+                }
+                if (giorno.length == 1) {
+                    giorno = '0' + giorno;
+                }
+
+                jQuery('#scadenza').val(anno + '-' + mese + '-' + giorno);
             }
-            if (giorno.length == 1) {
-                giorno = '0' + giorno;
-            }
-
-            jQuery('#scadenza').val(anno + '-' + mese + '-' + giorno);
-        }
-    });
-
-    function insertclick(){
-
-        jQuery.ajax({
-            method: "POST",
-            cache: false,
-            url: 'index.php?option=com_ggfirst&task=attestati.insert&id_studente='+jQuery("#studente").val()+
-            '&numero='+jQuery("#numero").val()+
-            '&data_attestato='+jQuery("#data_attestato").val()+
-            '&certificatore='+jQuery("#certificatore").val()+
-            '&id_credito='+jQuery("#credito").val()+
-            '&id_corso='+jQuery("#corso").val()+
-            '&scadenza='+jQuery("#scadenza").val()
-
-        }).done(function() {
-
-            alert("inserimento riuscito");
-            location.reload();
-
-
         });
-    }
 
-    //questa funzione intercetta l'evento click sui pulsanti di modifica, e trasforma i campi testo della riga in campi input. Prima però riporta tutti a testo
-    jQuery(".modify_button").click(function (event) {
-console.log("modifica");
-        jQuery('.start_hidden_input').hide()
-        jQuery('.start_span').show()
-        var str=jQuery(event.target).attr('id').toString();
-        //jQuery("#input_studente_"+str).toggle();
-        jQuery("#input_numero_"+str).toggle();
-        jQuery("#input_data_attestato_"+str).toggle();
-        jQuery("#input_certificatore_"+str).toggle();
-        //jQuery("#input_credito_"+str).toggle();
-        //jQuery("#input_corso_"+str).toggle();
-        jQuery("#input_scadenza_"+str).toggle();
+            function insertclick(){
 
-        jQuery("#input_breakline_"+str).toggle();
-        jQuery("#confirm_button_"+str).toggle();
-        //jQuery("#span_studente_"+str).toggle();
-        jQuery("#span_numero_"+str).toggle();
-        jQuery("#span_data_attestato_"+str).toggle();
-        jQuery("#span_certificatore_"+str).toggle();
-        //jQuery("#span_credito_"+str).toggle();
-        //jQuery("#span_corso_"+str).toggle();
-        jQuery("#span_scadenza_"+str).toggle();
+                jQuery.ajax({
+                    method: "POST",
+                    cache: false,
+                    url: 'index.php?option=com_ggfirst&task=attestati.insert&id_studente='+jQuery("#studente").val()+
+                    '&numero='+jQuery("#numero").val()+
+                    '&data_attestato='+jQuery("#data_attestato").val()+
+                    '&certificatore='+jQuery("#certificatore").val()+
+                    '&id_credito='+jQuery("#credito").val()+
+                    '&id_corso='+jQuery("#corso").val()+
+                    '&scadenza='+jQuery("#scadenza").val()+
+                    '&settore='+jQuery("#settore").val()+
+                    '&rischio_attestato='+jQuery("#rischio_attestato").val()
 
-        change_operation='modify_anagrafica';
-    });
+                }).done(function() {
+
+                    alert("inserimento riuscito");
+                    location.reload();
 
 
+                });
+            }
 
-    //QUESTA E' LA PROCEDURA DI INVIO DEI DATI MODIFICATI
-    jQuery(".oi-thumb-up").click(function (event) {
+                //questa funzione intercetta l'evento click sui pulsanti di modifica, e trasforma i campi testo della riga in campi input. Prima però riporta tutti a testo
+                jQuery(".modify_button").click(function (event) {
+            console.log("modifica");
+                    jQuery('.start_hidden_input').hide()
+                    jQuery('.start_span').show()
+                    var str=jQuery(event.target).attr('id').toString();
+                    //jQuery("#input_studente_"+str).toggle();
+                    jQuery("#input_numero_"+str).toggle();
+                    jQuery("#input_data_attestato_"+str).toggle();
+                    jQuery("#input_certificatore_"+str).toggle();
+                    //jQuery("#input_credito_"+str).toggle();
+                    //jQuery("#input_corso_"+str).toggle();
+                    jQuery("#input_scadenza_"+str).toggle();
 
-        var str = jQuery(event.target).attr('id').toString();
-        console.log(str.substr(13, str.length - 13));
-        var id = str.substr(13, str.length - 13);
+                    jQuery("#input_breakline_"+str).toggle();
+                    jQuery("#confirm_button_"+str).toggle();
+                    //jQuery("#span_studente_"+str).toggle();
+                    jQuery("#span_numero_"+str).toggle();
+                    jQuery("#span_data_attestato_"+str).toggle();
+                    jQuery("#span_certificatore_"+str).toggle();
+                    //jQuery("#span_credito_"+str).toggle();
+                    //jQuery("#span_corso_"+str).toggle();
+                    jQuery("#span_scadenza_"+str).toggle();
 
-
-
-
-            var numero = jQuery('#input_numero_' + id).val().toString();
-            var data_attestato = jQuery('#input_data_attestato_' + id).val().toString();
-            var certificatore= jQuery('#input_certificatore_' + id).val().toString();
-
-            var scadenza = jQuery('#input_scadenza_' + id).val().toString();
-
-
-
-            jQuery.ajax({
-                method: "POST",
-                cache: false,
-                url: 'index.php?option=com_ggfirst&task=attestati.modify&id=' + id + '&numero=' + numero + '&data_attestato=' + data_attestato +
-                '&certificatore=' + certificatore+ '&scadenza=' + scadenza
-
-            }).done(function () {
-
-                alert("modifiche riuscite");
-                location.reload();
-
-
-            });
+                    change_operation='modify_anagrafica';
+                });
 
 
-    });
+
+                //QUESTA E' LA PROCEDURA DI INVIO DEI DATI MODIFICATI
+                jQuery(".oi-thumb-up").click(function (event) {
+
+                    var str = jQuery(event.target).attr('id').toString();
+                    console.log(str.substr(13, str.length - 13));
+                    var id = str.substr(13, str.length - 13);
 
 
-    function deleteclick(id) {
-
-        if(confirm('attenzione, stai cancellando un attestato')==true) {
-            jQuery.ajax({
-                method: "POST",
-                cache: false,
-                url: 'index.php?option=com_ggfirst&task=attestati.delete&id=' + id.toString()
-
-            }).done(function () {
-
-                alert("cancellazione riuscita");
-                location.reload();
 
 
-            });
-        }
-    }
+                        var numero = jQuery('#input_numero_' + id).val().toString();
+                        var data_attestato = jQuery('#input_data_attestato_' + id).val().toString();
+                        var certificatore= jQuery('#input_certificatore_' + id).val().toString();
+
+                        var scadenza = jQuery('#input_scadenza_' + id).val().toString();
+
+
+
+                        jQuery.ajax({
+                            method: "POST",
+                            cache: false,
+                            url: 'index.php?option=com_ggfirst&task=attestati.modify&id=' + id + '&numero=' + numero + '&data_attestato=' + data_attestato +
+                            '&certificatore=' + certificatore+ '&scadenza=' + scadenza
+
+                        }).done(function () {
+
+                            alert("modifiche riuscite");
+                            location.reload();
+
+
+                        });
+
+
+                });
+
+
+                function deleteclick(id) {
+
+                    if(confirm('attenzione, stai cancellando un attestato')==true) {
+                        jQuery.ajax({
+                            method: "POST",
+                            cache: false,
+                            url: 'index.php?option=com_ggfirst&task=attestati.delete&id=' + id.toString()
+
+                        }).done(function () {
+
+                            alert("cancellazione riuscita");
+                            location.reload();
+
+
+                        });
+                    }
+                }
 
 </script>
 </html>

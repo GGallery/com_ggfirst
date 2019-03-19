@@ -115,6 +115,13 @@ class ggfirstModelPdf extends JModelLegacy {
                     DATE_FORMAT(now(),\'%d/%m/%Y\') as \'c_data_oggi\',
                     a.numero as \'a_numero\',
                     c.programma as \'c_programma\',
+                    (
+                    select f.figura from first_gg_partecipanti as p 
+                    inner join first_gg_figure as f on f.id=p.id_figura 
+                    inner join first_gg_edizioni as e on p.id_edizione=e.id
+                    inner join first_gg_corsi as c on c.id=e.id_corso
+                    where p.id_studente=s.id
+                    ) as \'p_figura\',CONCAT(cr.ruolo,\' \',cr.rischio) as \'c_credito\', a.settore as \'c_settore\',a.rischio_attestato as \'c_rischio_attestato\',
                     a.id as \'a_id\'');
             $query->from('first_gg_attestati as a');
             $query->join('inner','first_gg_studenti as s on a.id_studente=s.id');
@@ -123,8 +130,10 @@ class ggfirstModelPdf extends JModelLegacy {
             $query->join('inner','first_gg_crediti as cr on m.id_credito=cr.id');
             $query->where('a.id='.$id);
             $this->_db->setQuery($query);
-            //echo $query;die;
+
+
             $data=$this->_db->loadAssocList();
+
             $pdf->add_data($data[0]);
             $pdf->add_data($info);
 

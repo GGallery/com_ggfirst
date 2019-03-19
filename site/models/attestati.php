@@ -24,7 +24,7 @@ class ggfirstModelAttestati  extends JModelLegacy {
 
     }
 
-    public function insert($id_studente,$numero,$data_attestato,$certificatore,$id_credito,$id_corso,$scadenza){
+    public function insert($id_studente,$numero,$data_attestato,$certificatore,$id_credito,$id_corso,$scadenza,$settore,$rischio_attestato){
 
         $query=$this->_db->getQuery(true);
         $query->select('id');
@@ -42,6 +42,8 @@ class ggfirstModelAttestati  extends JModelLegacy {
         $object->certificatore=$certificatore;
         $object->id_corsi_crediti_map=$id_corsi_crediti_map;
         $object->scadenza=$scadenza;
+        $object->settore=$settore;
+        $object->rischio_attestato=$rischio_attestato;
         $object->timestamp=Date('Y-m-d h:i:s',time());
 
         $result=$this->_db->insertObject('first_gg_attestati',$object);
@@ -59,10 +61,12 @@ class ggfirstModelAttestati  extends JModelLegacy {
         return $result;
     }
 
-    public function modify($id,$numero,$data_attestato,$certificatore,$scadenza){
+    public function modify($id,$numero,$data_attestato,$certificatore,$scadenza,$settore,$rischio_attestato){
 
 
-        $sql="update first_gg_attestati set numero='".$numero."', data_attestato='".$data_attestato."', certificatore='".$certificatore."', scadenza='".$scadenza."' where id=".$id;
+        $sql="update first_gg_attestati set numero='".$numero."', data_attestato='".$data_attestato."', certificatore='".$certificatore."', scadenza='".$scadenza."', 
+        settore='".$settore."',rischio_attestato='".$rischio_attestato."'
+        where id=".$id;
 
         $this->_db->setQuery($sql);
         $result=$this->_db->execute();
@@ -74,7 +78,7 @@ class ggfirstModelAttestati  extends JModelLegacy {
 
         $query=$this->_db->getQuery(true);
         $query->select('a.id as id, concat( cr.ruolo,\' \', cr.rischio) as credito, concat(s.cognome,\' \',s.nome) as studente, s.nome as nome, s.cognome as cognome, 
-        a.numero as numero, a.data_attestato as data_attestato, a.scadenza as scadenza, a.certificatore as certificatore, cr.durata as durata, c.titolo as titolo');
+        a.numero as numero, a.data_attestato as data_attestato, a.scadenza as scadenza, a.certificatore as certificatore, cr.durata as durata, c.titolo as titolo, a.settore as settore, a.rischio_attestato as rischio_attestato');
         $query->from('first_gg_attestati as a');
         $query->join('inner','first_gg_studenti as s on a.id_studente=s.id');
         $query->join('inner','first_gg_corsi_crediti_map as cm on a.id_corsi_crediti_map=cm.id');
