@@ -155,7 +155,7 @@ defined('_JEXEC') or die;
 
     <div class="form-group form-group-sm">
         <div class="col-xs-2 col-md-2 text-info" style="padding-bottom: 10px;">
-            <button  onclick="open_corsi()"><span class="modify_button oi oi-pencil" title="mostra corsi" aria-hidden="true">apri corsi</span></button>
+            <button  onclick="open_corsi()"><span class="modify_button oi oi-pencil" title="mostra corsi" aria-hidden="true">edit corsi</span></button>
 
         </div>
         <div  class="row insertbox"><div class="col-xs-10 col-md-10"><b>INSERISCI UN NUOVO CORSO</b>
@@ -197,7 +197,7 @@ defined('_JEXEC') or die;
             <option value="">scegli un corso</option>
             <?php foreach ($this->corsiAll[0] as $corso__){echo "<option value=".$corso__['id'].">".$corso__['titolo']."</option>";}?>
         </select>
-        <button onclick="open_edizioni()"><span
+        <button onclick="open_edizioni()">edit edizioni<span
                     class="modify_button oi oi-pencil" title="mostra edizioni" aria-hidden="true"></span>
         </button>
     </div>

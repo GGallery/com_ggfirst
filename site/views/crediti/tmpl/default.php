@@ -74,7 +74,7 @@ defined('_JEXEC') or die;
             <th style="width: 15%;">DURATA</th>
             <th style="width: 15%;">INFORMAZIONI UTILI</th>
             <th style="width: 15%;">AGGIORNAMENTO</th>
-            <th style="width: 15%;">PERIDICIA'</th>
+            <th style="width: 15%;">PERIODICITA'</th>
             <th style="width: 15%;">E-LEARNING</th>
             <th ></th>
         </tr>

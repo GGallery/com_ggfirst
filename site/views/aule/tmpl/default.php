@@ -113,7 +113,7 @@ defined('_JEXEC') or die;
 
     <div  class="row insertbox">
         <div class="col-xs-0 col-md-4"></div>
-        <div class="col-xs-12 col-md-4 text-center"><button  class="form-control btn btn-outline-secondary btn-sm" id="insertnewcliente" value="conferma" onclick="insertclick()" type="button">CONFERMA</button>
+        <div class="col-xs-12 col-md-12 text-center"><button  class="form-control btn btn-outline-secondary btn-sm" id="insertnewcliente" value="conferma" onclick="insertclick()" type="button">CONFERMA</button>
         </div><div class="col-xs-0 col-md-4"></div>
     </div>
 </div>
