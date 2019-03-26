@@ -57,6 +57,7 @@ class ggfirstControllerPdf extends JControllerLegacy
         $this->_filterparam->riferimento=JRequest::getVar('riferimento');
         $this->_filterparam->email_riferimento=JRequest::getVar('email_riferimento');
         $this->_filterparam->ateco=JRequest::getVar('ateco');
+        $this->_filterparam->figura=JRequest::getVar('figura');
 
 
         define('SMARTY_DIR', JPATH_COMPONENT.'/libraries/smarty/smarty/');
@@ -122,6 +123,7 @@ class ggfirstControllerPdf extends JControllerLegacy
             $user['f_referente']=$this->_filterparam->riferimento;
             $user['f_email_referente']=$this->_filterparam->email_riferimento;
             $user['f_ateco']=$this->_filterparam->ateco;
+            $user['p_figura']=$this->_filterparam->figura;
 
             $model->_generate_iscrizione($user, $orientamento,$this->_filterparam->id_template, $this->_filterparam->data_attestato);
 

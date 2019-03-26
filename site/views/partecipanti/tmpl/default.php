@@ -144,7 +144,8 @@ defined('_JEXEC') or die;
                                 '<?php echo $partecipante['telefono']; ?>',
                                 '<?php echo $partecipante['riferimento']; ?>',
                                 '<?php echo $partecipante['email']; ?>',
-                                '<?php echo $partecipante['ateco']; ?>',
+                                '<?php echo $partecipante['figura']; ?>',
+                                '<?php echo $partecipante['ateco']; ?>'
 
 
                                 )"><span class="oi oi-document red" title="apri iscrizione" aria-hidden="true"></span></button>
@@ -247,12 +248,12 @@ defined('_JEXEC') or die;
 
     function openiscrizione(nome,cognome,titolo_corso,credito,durata,data,data_scadenza,orario,riferimento_legislativo,
                             luogo_data,codice_fiscale,titolo_studio,email,profilo,denominazione,piva,c_codice_fiscale,codice_univoco,
-                            pec,indirizzo,citta,telefono,riferimento,email_riferimento,ateco) {
+                            pec,indirizzo,citta,telefono,riferimento,email_riferimento,figura,ateco) {
 
         url="index.php?option=com_ggfirst&task=pdf.generateIscrizione"+
             "&nome="+nome+
             "&cognome="+cognome+
-            "&id_template=5"+
+            "&id_template=iscrizione"+
             "&titolo_corso="+titolo_corso+
             "&credito="+credito+
             "&durata="+durata+
@@ -275,6 +276,7 @@ defined('_JEXEC') or die;
             "&tel_fax="+telefono+
             "&riferimento="+riferimento+
             "&email_riferimento="+email_riferimento+
+            "&figura="+figura+
             "&ateco="+ateco
         window.open(url,'_self');
 
