@@ -74,7 +74,10 @@ defined('_JEXEC') or die;
                                             '<br>' . $c['codice_edizione'] .
                                             '<br>' . $c['cognome'] .
                                             '<br>' . $c['ora_inizio'] . '-' . $c['ora_fine'].
-                                            '&nbsp<span class="modify_button oi oi-pencil" title="modifica lezione" aria-hidden="true" onclick="modifica('
+                                            '&nbsp<span class="modify_button oi oi-document green" title="apri registro" aria-hidden="true" onclick="openregistro('
+                                            . $c['id_lezione']
+                                            .')">
+                                            &nbsp<span class="modify_button oi oi-pencil" title="modifica lezione" aria-hidden="true" onclick="modifica('
                                             . $c['id_lezione'] . ','
                                             . $c['id_edizione'] . ','
                                             . $c['id_docente'] . ','
@@ -86,7 +89,7 @@ defined('_JEXEC') or die;
                                             . $c['titolo_lezione'] . '\',\''
                                             . $c['note'] . '\''
                                             . ')">
-                                </span>&nbsp<span class="modify_button oi oi-delete red" title="caccella lezione" aria-hidden="true" onclick="deleteclick('. $c['id_lezione'].')">
+                                </span>&nbsp<span class="modify_button oi oi-delete red" title="cancella lezione" aria-hidden="true" onclick="deleteclick('. $c['id_lezione'].')">
                                 </span><br>---<br>';
 
                                     } else {
@@ -229,6 +232,10 @@ defined('_JEXEC') or die;
 
             });
         }
+    }
+
+    function openregistro(id) {
+        window.open("index.php?option=com_ggfirst&task=pdf.generateregistro&id_lezione="+id);
     }
 
 </script>

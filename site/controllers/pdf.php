@@ -58,6 +58,7 @@ class ggfirstControllerPdf extends JControllerLegacy
         $this->_filterparam->email_riferimento=JRequest::getVar('email_riferimento');
         $this->_filterparam->ateco=JRequest::getVar('ateco');
         $this->_filterparam->figura=JRequest::getVar('figura');
+        $this->_filterparam->id_lezione=JRequest::getVar('id_lezione');
 
 
         define('SMARTY_DIR', JPATH_COMPONENT.'/libraries/smarty/smarty/');
@@ -67,6 +68,21 @@ class ggfirstControllerPdf extends JControllerLegacy
         define('SMARTY_CONFIG_DIR', JPATH_COMPONENT.'/models/');
         define('SMARTY_PLUGINS_DIRS', JPATH_COMPONENT.'/libraries/smarty/extras/');
 
+    }
+    public function generateRegistro() {
+
+        try {
+
+
+            $model = $this->getModel('pdf');
+
+            $model->_generate_registro($this->_filterparam->id_lezione);
+
+        }catch (Exception $e){
+
+            DEBUGG::log($e, 'Exception in generateAttestato ', 1);
+        }
+        $this->_japp->close();
     }
 
     public function generateAttestato() {

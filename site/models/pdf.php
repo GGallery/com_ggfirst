@@ -65,6 +65,51 @@ class ggfirstModelPdf extends JModelLegacy {
         return 0;
     }
 
+    public function _generate_registro($id_lezione) {
+        try {
+            require_once JPATH_COMPONENT . '/libraries/pdf/certificatePDF.class.php';
+            $orientation='P';
+            $pdf = new certificatePDF($orientation);
+
+            $id_template='registro';
+
+            $info['path_id'] = 'registro';
+            $info['path'] = $_SERVER['DOCUMENT_ROOT'].'/mediagg/contenuti/';
+            $info['content_path'] = $info['path'] . $info['path_id'];
+
+            $template = "file:" . $_SERVER['DOCUMENT_ROOT'].'/mediagg/contenuti/'. $id_template . "/" . $id_template . ".tpl";
+            $query=$this->_db->getQuery(true);
+            $query->select('d.nome as nome_docente, d.cognome as cognome_docente,s.nome as nome_studente,s.cognome as cognome_studente,l.`data` as data_lezione,l.ora_inizio,l.ora_inizio,au.denominazione,l.titolo');
+            $query->from('first_gg_lezioni as l');
+            $query->join('inner','first_gg_docenti as d on l.id_docente=d.id');
+            $query->join('inner','first_gg_edizioni as e on l.id_edizione=e.id');
+            $query->join('inner','first_gg_partecipanti as p on p.id_edizione=e.id');
+            $query->join('inner','first_gg_studenti as s on p.id_studente=s.id');
+            $query->join('inner','first_gg_aule as au on au.id=l.id_aula');
+            $query->where('l.id='.$id_lezione);
+            $this->_db->setQuery($query);
+
+
+            $data=$this->_db->loadAssocList();
+            $pdf->add_data((array)$data);
+            $pdf->add_data($info);
+
+            $pdf->add_data($data[0]);
+            $pdf->add_data($info);
+
+            $nomefile = $data[0]['titolo']."_registro_" . $data[0]['data_lezione'] . ".pdf";
+//echo $template;die;
+            $pdf->fetch_pdf_template($template, null, true, false, 0);
+            $pdf->Output($nomefile, 'D');
+
+            return 1;
+        } catch (Exception $e) {
+            // FB::log($e);
+            echo $e;
+        }
+        return 0;
+    }
+
     public function _generate_iscrizione($user, $orientamento,$id_template, $data_attestato) {
         try {
             require_once JPATH_COMPONENT . '/libraries/pdf/certificatePDF.class.php';
