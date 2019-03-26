@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ad941d7-3f6e-4d38-9ec8-9c5ef41b3868" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/site/libraries/tpl/iscrizione.tpl" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/site/controllers/pdf.php" afterPath="$PROJECT_DIR$/site/controllers/pdf.php" />
-      <change beforePath="$PROJECT_DIR$/site/views/partecipanti/tmpl/default.php" afterPath="$PROJECT_DIR$/site/views/partecipanti/tmpl/default.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,25 +14,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="registro.tpl" pinned="false" current-in-tab="false">
+      <file leaf-file-name="registro.tpl" pinned="false" current-in-tab="true">
         <entry file="file://C:/xampp/htdocs/mediagg/contenuti/registro/registro.tpl">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-408">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="782">
+              <caret line="46" column="17" lean-forward="false" selection-start-line="46" selection-start-column="17" selection-end-line="46" selection-end-column="17" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="default.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/site/views/partecipanti/tmpl/default.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="922">
-              <caret line="147" column="71" lean-forward="true" selection-start-line="147" selection-start-column="71" selection-end-line="147" selection-end-column="71" />
-              <folding>
-                <marker date="1553612027983" expanded="true" signature="875:893" ph="..." />
-                <marker date="1553612027983" expanded="true" signature="1157:1175" ph="..." />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -44,31 +30,6 @@
             <state relative-caret-position="748">
               <caret line="125" column="58" lean-forward="false" selection-start-line="125" selection-start-column="58" selection-end-line="125" selection-end-column="58" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pdf.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/site/models/pdf.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1382">
-              <caret line="132" column="0" lean-forward="false" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
-              <folding>
-                <marker date="1553004576263" expanded="true" signature="3619:4847" ph="select s.nom... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="iscrizione.tpl" pinned="false" current-in-tab="true">
-        <entry file="file://C:/xampp/htdocs/mediagg/contenuti/iscrizione/iscrizione.tpl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="55" column="75" lean-forward="false" selection-start-line="55" selection-start-column="75" selection-end-line="55" selection-end-column="75" />
-              <folding>
-                <element signature="n#style#0;n#td#0;n#tr#7;n#table#0;n#td#0;n#tr#0;n#table#4;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#1;n#tr#7;n#table#0;n#td#0;n#tr#0;n#table#4;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -139,7 +100,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$USER_HOME$/AppData/Local/Temp/fz3temp-2/api.php" />
         <option value="$USER_HOME$/AppData/Local/Temp/fz3temp-2/alertcarige.php" />
         <option value="$USER_HOME$/AppData/Local/Temp/fz3temp-2/mailalertcarige.php" />
         <option value="$PROJECT_DIR$/site/controllers/clienti.php" />
@@ -190,6 +150,7 @@
         <option value="$PROJECT_DIR$/site/controllers/pdf.php" />
         <option value="$PROJECT_DIR$/site/views/partecipanti/tmpl/default.php" />
         <option value="C:/xampp/htdocs/mediagg/contenuti/iscrizione/iscrizione.tpl" />
+        <option value="C:/xampp/htdocs/mediagg/contenuti/registro/registro.tpl" />
       </list>
     </option>
   </component>
@@ -239,6 +200,19 @@
               <item name="com_ggfirst" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="site" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="controllers" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="com_ggfirst" type="b2602c69:ProjectViewProjectNode" />
+              <item name="com_ggfirst" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="site" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="libraries" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="com_ggfirst" type="b2602c69:ProjectViewProjectNode" />
+              <item name="com_ggfirst" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="site" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="libraries" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="tpl" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="com_ggfirst" type="b2602c69:ProjectViewProjectNode" />
@@ -417,14 +391,7 @@
       <workItem from="1552921518189" duration="876000" />
       <workItem from="1552988872429" duration="10220000" />
       <workItem from="1553089375461" duration="1176000" />
-      <workItem from="1553610105940" duration="2750000" />
-    </task>
-    <task id="LOCAL-00028" summary="finale">
-      <created>1542381771062</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1542381771064</updated>
+      <workItem from="1553610105940" duration="3470000" />
     </task>
     <task id="LOCAL-00029" summary="finale">
       <created>1542626926866</created>
@@ -762,18 +729,24 @@
       <option name="project" value="LOCAL" />
       <updated>1553090543254</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="inserita gestione della figura che diventa direttamente segno di spunta nel tpl iscrizione">
+      <created>1553612903884</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1553612903884</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="759628000" />
+    <option name="totallyTimeSpent" value="760348000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1936" height="1216" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.221875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.221875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32840723" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -823,7 +796,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="gestione link attestato individuale" />
     <MESSAGE value="corretto baco partecipanti" />
     <MESSAGE value="nuova vista corso per caricamento contemporaneo di nuovo corso, edizione e lezione. Manca un controllo diretto con il calendaio" />
     <MESSAGE value="cambiato tutto: caricamento solo da corsi ora le edizioni e i partecipanti su edizioni" />
@@ -848,7 +820,8 @@
     <MESSAGE value="inserita gestione figura riferimento" />
     <MESSAGE value="completati tpl" />
     <MESSAGE value="debug vari" />
-    <option name="LAST_COMMIT_MESSAGE" value="debug vari" />
+    <MESSAGE value="inserita gestione della figura che diventa direttamente segno di spunta nel tpl iscrizione" />
+    <option name="LAST_COMMIT_MESSAGE" value="inserita gestione della figura che diventa direttamente segno di spunta nel tpl iscrizione" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1118,11 +1091,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/xampp/htdocs/mediagg/contenuti/registro/registro.tpl">
+    <entry file="file://C:/xampp/htdocs/mediagg/contenuti/iscrizione/iscrizione.tpl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-408">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="578">
+          <caret line="55" column="75" lean-forward="false" selection-start-line="55" selection-start-column="75" selection-end-line="55" selection-end-column="75" />
+          <folding>
+            <element signature="n#style#0;n#td#0;n#tr#7;n#table#0;n#td#0;n#tr#0;n#table#4;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#7;n#table#0;n#td#0;n#tr#0;n#table#4;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1133,6 +1109,14 @@
           <folding>
             <marker date="1553004576263" expanded="true" signature="3619:4847" ph="select s.nom... " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/controllers/pdf.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="125" column="58" lean-forward="false" selection-start-line="125" selection-start-column="58" selection-end-line="125" selection-end-column="58" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1147,22 +1131,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/site/controllers/pdf.php">
+    <entry file="file://C:/xampp/htdocs/mediagg/contenuti/registro/registro.tpl">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="125" column="58" lean-forward="false" selection-start-line="125" selection-start-column="58" selection-end-line="125" selection-end-column="58" />
+        <state relative-caret-position="782">
+          <caret line="46" column="17" lean-forward="false" selection-start-line="46" selection-start-column="17" selection-end-line="46" selection-end-column="17" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/xampp/htdocs/mediagg/contenuti/iscrizione/iscrizione.tpl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="55" column="75" lean-forward="false" selection-start-line="55" selection-start-column="75" selection-end-line="55" selection-end-column="75" />
-          <folding>
-            <element signature="n#style#0;n#td#0;n#tr#7;n#table#0;n#td#0;n#tr#0;n#table#4;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#7;n#table#0;n#td#0;n#tr#0;n#table#4;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
