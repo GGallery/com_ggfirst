@@ -165,7 +165,9 @@ class ggfirstModelPdf extends JModelLegacy {
                     inner join first_gg_figure as f on f.id=p.id_figura 
                     inner join first_gg_edizioni as e on p.id_edizione=e.id
                     inner join first_gg_corsi as c on c.id=e.id_corso
-                    where p.id_studente=s.id
+                    inner join first_gg_corsi_crediti_map as m on c.id=m.id_corso
+                    inner join first_gg_attestati as a on a.id_corsi_crediti_map=m.id and a.id_studente=14
+                    where p.id_studente=s.id and a.id='.$id.'
                     ) as \'p_figura\',CONCAT(cr.ruolo,\' \',cr.rischio) as \'c_credito\', a.settore as \'c_settore\',a.rischio_attestato as \'c_rischio_attestato\',
                     a.id as \'a_id\'');
             $query->from('first_gg_attestati as a');
@@ -175,7 +177,7 @@ class ggfirstModelPdf extends JModelLegacy {
             $query->join('inner','first_gg_crediti as cr on m.id_credito=cr.id');
             $query->where('a.id='.$id);
             $this->_db->setQuery($query);
-
+//echo $query;die;
 
             $data=$this->_db->loadAssocList();
 

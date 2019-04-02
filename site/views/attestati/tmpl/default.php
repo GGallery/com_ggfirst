@@ -56,6 +56,7 @@ defined('_JEXEC') or die;
                     <option value="">filtra per credito</option>
                     <?php foreach ($this->crediti as $credito){echo "<option value='".$credito['id']."'>".$credito['credito']."</option>";}?>
                 </select></th>
+            <th></th>
             <th style="width: 15%;">  <select id="filtrostudente" class="contenitori_filtro">
                     <option value="">filtra per studente</option>
                     <?php foreach ($this->studenti[0] as $studente){echo "<option value=".$studente['id'].">".$studente['cognome']." ".$studente['nome']."</option>";}?>
@@ -65,7 +66,7 @@ defined('_JEXEC') or die;
             <th style="width: 15%;"><input  id="filtrocertificatore" class="contenitori_filtro" type="text"></th>
             <th style="width: 15%;"><input id="filtrodata_scadenza_minore" class="contenitori_filtro" type="date"><input id="filtrodata_scadenza_maggiore" class="contenitori_filtro" type="date"></th>
 
-            <th ><button id="dosearch"><span class="oi oi-magnifying-glass"></span></button></th>
+            <th colspan="3"><button id="dosearch"><span class="oi oi-magnifying-glass"></span></button></th>
         </tr>
         <tr>
             <th style="width: 15%;">CREDITO</th>
