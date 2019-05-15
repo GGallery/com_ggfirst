@@ -3,12 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8ad941d7-3f6e-4d38-9ec8-9c5ef41b3868" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/site/controllers/clienti.php" afterPath="$PROJECT_DIR$/site/controllers/clienti.php" />
-      <change beforePath="$PROJECT_DIR$/site/controllers/pdf.php" afterPath="$PROJECT_DIR$/site/controllers/pdf.php" />
-      <change beforePath="$PROJECT_DIR$/site/models/partecipanti.php" afterPath="$PROJECT_DIR$/site/models/partecipanti.php" />
-      <change beforePath="$PROJECT_DIR$/site/models/pdf.php" afterPath="$PROJECT_DIR$/site/models/pdf.php" />
-      <change beforePath="$PROJECT_DIR$/site/views/corsi/tmpl/default.php" afterPath="$PROJECT_DIR$/site/views/corsi/tmpl/default.php" />
-      <change beforePath="$PROJECT_DIR$/site/views/corsi/view.html.php" afterPath="$PROJECT_DIR$/site/views/corsi/view.html.php" />
       <change beforePath="$PROJECT_DIR$/site/views/lezioni/tmpl/default.php" afterPath="$PROJECT_DIR$/site/views/lezioni/tmpl/default.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,50 +14,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="pdf.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/site/controllers/pdf.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="60" column="60" lean-forward="false" selection-start-line="60" selection-start-column="60" selection-end-line="60" selection-end-column="60" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pdf.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/site/models/pdf.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="557">
-              <caret line="98" column="92" lean-forward="false" selection-start-line="98" selection-start-column="92" selection-end-line="98" selection-end-column="92" />
-              <folding>
-                <marker date="1557934123920" expanded="true" signature="6604:8038" ph="select s.nom... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="registro.tpl" pinned="false" current-in-tab="true">
-        <entry file="file://C:/xampp/htdocs/mediagg/contenuti/registro/registro.tpl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="43" column="7" lean-forward="true" selection-start-line="43" selection-start-column="7" selection-end-line="43" selection-end-column="7" />
-              <folding>
-                <element signature="n#style#0;n#table#0;n#body#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#table#1;n#body#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="default.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="default.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/site/views/lezioni/tmpl/default.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="78" column="48" lean-forward="false" selection-start-line="78" selection-start-column="48" selection-end-line="78" selection-end-column="48" />
+            <state relative-caret-position="234">
+              <caret line="60" column="20" lean-forward="true" selection-start-line="60" selection-start-column="20" selection-end-line="60" selection-end-column="20" />
               <folding>
-                <marker date="1557930930167" expanded="true" signature="2519:3649" ph="..." />
-                <marker date="1557930930167" expanded="true" signature="3419:3459" ph="..." />
-                <marker date="1557930930167" expanded="true" signature="3598:3638" ph="..." />
+                <marker date="1557935703747" expanded="true" signature="2578:3708" ph="..." />
+                <marker date="1557935703747" expanded="true" signature="3478:3518" ph="..." />
+                <marker date="1557935703747" expanded="true" signature="3657:3697" ph="..." />
               </folding>
             </state>
           </provider>
@@ -183,9 +142,9 @@
         <option value="$PROJECT_DIR$/site/views/corsi/tmpl/default.php" />
         <option value="$PROJECT_DIR$/site/models/lezioni.php" />
         <option value="$PROJECT_DIR$/site/controllers/pdf.php" />
-        <option value="$PROJECT_DIR$/site/views/lezioni/tmpl/default.php" />
         <option value="$PROJECT_DIR$/site/models/pdf.php" />
         <option value="C:/xampp/htdocs/mediagg/contenuti/registro/registro.tpl" />
+        <option value="$PROJECT_DIR$/site/views/lezioni/tmpl/default.php" />
       </list>
     </option>
   </component>
@@ -416,14 +375,7 @@
       <workItem from="1553610105940" duration="6589000" />
       <workItem from="1554188588222" duration="4194000" />
       <workItem from="1554288642904" duration="1014000" />
-      <workItem from="1557925533957" duration="8311000" />
-    </task>
-    <task id="LOCAL-00032" summary="refresh">
-      <created>1544799783077</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1544799783077</updated>
+      <workItem from="1557925533957" duration="9686000" />
     </task>
     <task id="LOCAL-00033" summary="refresh">
       <created>1544800141529</created>
@@ -761,11 +713,18 @@
       <option name="project" value="LOCAL" />
       <updated>1554193651486</updated>
     </task>
-    <option name="localTasksCounter" value="81" />
+    <task id="LOCAL-00081" summary="aggiunto template registro della lezione">
+      <created>1557934447451</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1557934447451</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="776986000" />
+    <option name="totallyTimeSpent" value="778361000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1936" height="1216" extended-state="6" />
@@ -822,7 +781,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="cambiato tutto: caricamento solo da corsi ora le edizioni e i partecipanti su edizioni" />
     <MESSAGE value="completata gestione gorsi e lezioni" />
     <MESSAGE value="gestito intervallo di date nella lezioni" />
     <MESSAGE value="completate tutte le modifiche richieste alle anagrafiche" />
@@ -847,7 +805,8 @@
     <MESSAGE value="inserita gestione della figura che diventa direttamente segno di spunta nel tpl iscrizione" />
     <MESSAGE value="portati i dati al tpl registro" />
     <MESSAGE value="modificata query di popolamento della select attestati-&gt;crediti e subquery &quot;figura&quot; di creazione attestato" />
-    <option name="LAST_COMMIT_MESSAGE" value="modificata query di popolamento della select attestati-&gt;crediti e subquery &quot;figura&quot; di creazione attestato" />
+    <MESSAGE value="aggiunto template registro della lezione" />
+    <option name="LAST_COMMIT_MESSAGE" value="aggiunto template registro della lezione" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1145,31 +1104,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/site/controllers/pdf.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="60" column="60" lean-forward="false" selection-start-line="60" selection-start-column="60" selection-end-line="60" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/site/libraries/pdf/certificatePDF.class.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
           <caret line="39" column="20" lean-forward="false" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="20" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/site/views/lezioni/tmpl/default.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="78" column="48" lean-forward="false" selection-start-line="78" selection-start-column="48" selection-end-line="78" selection-end-column="48" />
-          <folding>
-            <marker date="1557930930167" expanded="true" signature="2519:3649" ph="..." />
-            <marker date="1557930930167" expanded="true" signature="3419:3459" ph="..." />
-            <marker date="1557930930167" expanded="true" signature="3598:3638" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1186,8 +1125,8 @@
         <state relative-caret-position="-732">
           <caret line="10" column="19" lean-forward="true" selection-start-line="10" selection-start-column="19" selection-end-line="10" selection-end-column="19" />
           <folding>
-            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#0;n#td#0;n#tr#0;n#table#4;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#table#0;n#td#0;n#tr#0;n#table#4;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1197,9 +1136,20 @@
         <state relative-caret-position="829">
           <caret line="91" column="22" lean-forward="true" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="22" />
           <folding>
-            <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#1;n#table#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#2;n#tr#1;n#table#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#body#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#td#1;n#tr#1;n#table#0;n#body#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#td#2;n#tr#1;n#table#0;n#body#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/xampp/htdocs/mediagg/contenuti/registro/registro.tpl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="761">
+          <caret line="70" column="85" lean-forward="false" selection-start-line="70" selection-start-column="85" selection-end-line="70" selection-end-column="85" />
+          <folding>
+            <element signature="n#style#0;n#table#0;n#body#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#table#1;n#body#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1214,13 +1164,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/xampp/htdocs/mediagg/contenuti/registro/registro.tpl">
+    <entry file="file://$PROJECT_DIR$/site/controllers/pdf.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="43" column="7" lean-forward="true" selection-start-line="43" selection-start-column="7" selection-end-line="43" selection-end-column="7" />
+        <state relative-caret-position="319">
+          <caret line="60" column="60" lean-forward="false" selection-start-line="60" selection-start-column="60" selection-end-line="60" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/views/lezioni/tmpl/default.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="60" column="20" lean-forward="true" selection-start-line="60" selection-start-column="20" selection-end-line="60" selection-end-column="20" />
           <folding>
-            <element signature="n#style#0;n#table#0;n#body#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#table#1;n#body#0;n#!!top" expanded="true" />
+            <marker date="1557935703747" expanded="true" signature="2578:3708" ph="..." />
+            <marker date="1557935703747" expanded="true" signature="3478:3518" ph="..." />
+            <marker date="1557935703747" expanded="true" signature="3657:3697" ph="..." />
           </folding>
         </state>
       </provider>

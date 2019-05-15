@@ -61,10 +61,10 @@ defined('_JEXEC') or die;
                 <tr>
                     <?php foreach ($row as $cell) { ?>
 
-                        <td><?php if (is_array($cell)) {
+                        <td><table><?php if (is_array($cell)) {
                                 $c = $cell;
                                 foreach ($cell as $c) {
-
+                                    echo '<tr><td>';
                                     if (isset($c['id_lezione'])) {
                                         if (!isset($c['id_aula'])) {
                                             $c['id_aula'] = 0;
@@ -95,12 +95,13 @@ defined('_JEXEC') or die;
                                     } else {
                                         echo $cell;
                                     }
+                                    echo '</td></tr>';
                                 }
                             } else if ($cell) {
 
                                 echo $cell;
 
-                            } ?></td>
+                            } ?></table></td>
                     <?php } ?>
                 </tr>
             <?php }
