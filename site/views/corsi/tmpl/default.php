@@ -537,7 +537,7 @@ defined('_JEXEC') or die;
 
     }
 
-    <?php if(isset($this->edizione)){?>
+
     function insertlezioneclick(){
 
 
@@ -545,7 +545,7 @@ defined('_JEXEC') or die;
             method: "POST",
             cache: false,
             url: 'index.php?option=com_ggfirst&task=lezioni.insert'
-            + '&id_edizione=<?php echo $this->edizione[0][0]['id_edizione']?>'
+            + '&id_edizione='+ jQuery("#input_edizione_iniziale").val()
             + '&id_docente=' + jQuery("#docente").val()
             + '&id_luogo=' + jQuery("#luogo").val()
             + '&id_aula=' + jQuery("#aula").val()
@@ -565,7 +565,7 @@ defined('_JEXEC') or die;
         });
 
     }
-<?php }?>
+
 
 
     jQuery(".add_credito").click(function (event) {

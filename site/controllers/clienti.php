@@ -76,5 +76,13 @@ class ggfirstControllerClienti extends JControllerLegacy
 
     }
 
+    public function getClienti(){
+        $model=new ggfirstModelClienti();
+        $result=$model->getClienti();
+        echo json_encode($result);
+        $this->_app->close();
+
+    }
+
 
 }

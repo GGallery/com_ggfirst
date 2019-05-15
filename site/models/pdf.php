@@ -65,7 +65,7 @@ class ggfirstModelPdf extends JModelLegacy {
         return 0;
     }
 
-    public function _generate_registro($id_lezione) {
+    public function generate_registro($data_lezione) {
         try {
             require_once JPATH_COMPONENT . '/libraries/pdf/certificatePDF.class.php';
             $orientation='P';
@@ -79,25 +79,47 @@ class ggfirstModelPdf extends JModelLegacy {
 
             $template = "file:" . $_SERVER['DOCUMENT_ROOT'].'/mediagg/contenuti/'. $id_template . "/" . $id_template . ".tpl";
             $query=$this->_db->getQuery(true);
-            $query->select('d.nome as nome_docente, d.cognome as cognome_docente,s.nome as nome_studente,s.cognome as cognome_studente,l.`data` as data_lezione,l.ora_inizio,l.ora_inizio,au.denominazione,l.titolo');
+            $query->select('distinct d.nome as nome_docente, d.cognome as cognome_docente,l.`data` as data_lezione,l.ora_inizio,l.ora_inizio,au.denominazione,l.titolo,c.titolo as corso ');
             $query->from('first_gg_lezioni as l');
             $query->join('inner','first_gg_docenti as d on l.id_docente=d.id');
             $query->join('inner','first_gg_edizioni as e on l.id_edizione=e.id');
+            $query->join('inner','first_gg_corsi as c on c.id=e.id_corso');
             $query->join('inner','first_gg_partecipanti as p on p.id_edizione=e.id');
             $query->join('inner','first_gg_studenti as s on p.id_studente=s.id');
             $query->join('inner','first_gg_aule as au on au.id=l.id_aula');
-            $query->where('l.id='.$id_lezione);
+            $query->where('l.data=\''.$data_lezione.'\'');
+            //echo $query;die;
             $this->_db->setQuery($query);
 
 
-            $data=$this->_db->loadAssocList();
+            $data_=$this->_db->loadAssocList();
+            $data['lezioni']=$data_;
+
+            $query_=$this->_db->getQuery(true);
+            $query_->select(' distinct s.nome as nome_studente,s.cognome as cognome_studente');
+            $query_->from('first_gg_lezioni as l');
+            $query_->join('inner','first_gg_docenti as d on l.id_docente=d.id');
+            $query_->join('inner','first_gg_edizioni as e on l.id_edizione=e.id');
+            $query_->join('inner','first_gg_partecipanti as p on p.id_edizione=e.id');
+            $query_->join('inner','first_gg_studenti as s on p.id_studente=s.id');
+            $query_->join('inner','first_gg_aule as au on au.id=l.id_aula');
+            $query_->where('l.data=\''.$data_lezione.'\'');
+            //echo $query;die;
+            $this->_db->setQuery($query_);
+
+
+            $data__=$this->_db->loadAssocList();
+            $data['studenti']=$data__;
+
+            $data['info']=$info;
+
             $pdf->add_data((array)$data);
-            $pdf->add_data($info);
+            //$pdf->add_data((aaray)$info);
 
-            $pdf->add_data($data[0]);
-            $pdf->add_data($info);
+            //$pdf->add_data($data[0]);
+            //$pdf->add_data($info);
 
-            $nomefile = $data[0]['titolo']."_registro_" . $data[0]['data_lezione'] . ".pdf";
+            $nomefile = $data_[0]['titolo']."_registro_" . $data_[0]['data_lezione'] . ".pdf";
 //echo $template;die;
             $pdf->fetch_pdf_template($template, null, true, false, 0);
             $pdf->Output($nomefile, 'D');
