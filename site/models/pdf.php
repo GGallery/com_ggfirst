@@ -65,7 +65,7 @@ class ggfirstModelPdf extends JModelLegacy {
         return 0;
     }
 
-    public function generate_registro($data_lezione) {
+    public function generate_registro($l_id,$data_lezione,$id_edizione,$tipo="D") {//L=lezione D=giornata
         try {
             require_once JPATH_COMPONENT . '/libraries/pdf/certificatePDF.class.php';
             $orientation='P';
@@ -74,20 +74,27 @@ class ggfirstModelPdf extends JModelLegacy {
             $id_template='registro';
 
             $info['path_id'] = 'registro';
+            // '/ggcpm/mediagg/contenuti/ QUESTA E' BUONA SU PRIMA
             $info['path'] = $_SERVER['DOCUMENT_ROOT'].'/mediagg/contenuti/';
             $info['content_path'] = $info['path'] . $info['path_id'];
 
             $template = "file:" . $_SERVER['DOCUMENT_ROOT'].'/mediagg/contenuti/'. $id_template . "/" . $id_template . ".tpl";
             $query=$this->_db->getQuery(true);
-            $query->select('distinct d.nome as nome_docente, d.cognome as cognome_docente,l.`data` as data_lezione,l.ora_inizio,l.ora_inizio,au.denominazione,l.titolo,c.titolo as corso ');
+            $query->select('distinct l.id_docente as cognome_docente,date_format(l.`data`,\'%d/%m/%Y\') as data_lezione,l.ora_inizio,l.ora_inizio,au.denominazione,l.titolo,c.titolo as corso ');
             $query->from('first_gg_lezioni as l');
-            $query->join('inner','first_gg_docenti as d on l.id_docente=d.id');
+            //$query->join('inner','first_gg_docenti as d on l.id_docente=d.id');
             $query->join('inner','first_gg_edizioni as e on l.id_edizione=e.id');
             $query->join('inner','first_gg_corsi as c on c.id=e.id_corso');
             $query->join('inner','first_gg_partecipanti as p on p.id_edizione=e.id');
             $query->join('inner','first_gg_studenti as s on p.id_studente=s.id');
             $query->join('inner','first_gg_aule as au on au.id=l.id_aula');
-            $query->where('l.data=\''.$data_lezione.'\'');
+            if($tipo=="D") {
+                $query->where('l.data=\'' . $data_lezione . '\'');
+                $query->where('l.id_edizione=\'' . $id_edizione . '\'');
+            }
+            if($tipo=="L")
+                $query->where('l.id=\''.$l_id.'\'');
+            $query->order('l.ora_inizio ASC');
             //echo $query;die;
             $this->_db->setQuery($query);
 
@@ -98,13 +105,18 @@ class ggfirstModelPdf extends JModelLegacy {
             $query_=$this->_db->getQuery(true);
             $query_->select(' distinct s.nome as nome_studente,s.cognome as cognome_studente');
             $query_->from('first_gg_lezioni as l');
-            $query_->join('inner','first_gg_docenti as d on l.id_docente=d.id');
+            //$query_->join('inner','first_gg_docenti as d on l.id_docente=d.id');
             $query_->join('inner','first_gg_edizioni as e on l.id_edizione=e.id');
             $query_->join('inner','first_gg_partecipanti as p on p.id_edizione=e.id');
             $query_->join('inner','first_gg_studenti as s on p.id_studente=s.id');
-            $query_->join('inner','first_gg_aule as au on au.id=l.id_aula');
-            $query_->where('l.data=\''.$data_lezione.'\'');
-            //echo $query;die;
+            //$query_->join('inner','first_gg_aule as au on au.id=l.id_aula');
+            if($tipo=="D") {
+                $query_->where('l.data=\'' . $data_lezione . '\'');
+                $query_->where('l.id_edizione=\'' . $id_edizione . '\'');
+            }
+            if($tipo=="L")
+                $query_->where('l.id=\''.$l_id.'\'');
+            //echo $query_;die;
             $this->_db->setQuery($query_);
 
 

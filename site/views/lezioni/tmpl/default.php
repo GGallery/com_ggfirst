@@ -70,17 +70,28 @@ defined('_JEXEC') or die;
                                             $c['id_aula'] = 0;
                                         }
                                         echo '<br>' . $c['titolo'] .
+
+                                            '&nbsp<span class="modify_button oi oi-document text-warning" title="apri registro di giornata" aria-hidden="true" onclick="openregistro('
+                                            .$c['id_lezione'].','
+                                            .'\''. $c['data'].'\','
+                                            . $c['id_edizione'] . ',\'D\''
+
+                                            .')"></span>'.
+
                                             '<br>' . $c['titolo_lezione'] .
                                             '<br>' . $c['codice_edizione'] .
                                             '<br>' . $c['cognome'] .
                                             '<br>' . $c['ora_inizio'] . '-' . $c['ora_fine'].
-                                            '&nbsp<span class="modify_button oi oi-document green" title="apri registro" aria-hidden="true" onclick="openregistro(\''
-                                            . $c['data']
-                                            .'\')">
+                                            '&nbsp<span class="modify_button oi oi-document green" title="apri registro" aria-hidden="true" onclick="openregistro('
+                                            .$c['id_lezione'].','
+                                            .'\''. $c['data'].'\','
+                                            . $c['id_edizione'] . ',\'L\''
+
+                                            .')"></span>
                                             &nbsp<span class="modify_button oi oi-pencil" title="modifica lezione" aria-hidden="true" onclick="modifica('
                                             . $c['id_lezione'] . ','
-                                            . $c['id_edizione'] . ','
-                                            . $c['id_docente'] . ','
+                                            . $c['id_edizione'] . ',\''
+                                            . $c['id_docente'] . '\','
                                             . $c['id_aula'] . ','
                                             . $c['id_luogo'] . ',\''
                                             . $c['data'] . '\',\''
@@ -114,7 +125,7 @@ defined('_JEXEC') or die;
 
     <div  class="row insertbox">
          <div class="col-xs-4 col-md-4 text-info"><h5>Edizione:</h5><select id="edizione"><?php foreach ($this->edizioni[0] as $edizione){echo "<option value=".$edizione['id_edizione'].">".$edizione['titolo'].' - '.$edizione['codice_edizione']."</option>";}?></select></div>
-         <div class="col-xs-4 col-md-4 text-info"><h5>Docente:</h5><select id="docente"><?php foreach ($this->docenti[0] as $docente){echo "<option value=".$docente['id'].">".$docente['cognome']."</option>";}?></select></div>
+         <div class="col-xs-4 col-md-4 text-info"><h5>Docente:</h5><input class="form-control form-control-sm" type="text" id="docente"></div>
          <div class="col-xs-4 col-md-4 text-info"><h5>Aula:</h5><select id="aula"><?php foreach ($this->aule[0] as $aula){echo "<option value=".$aula['id'].">".$aula['denominazione']."</option>";}?></select></div>
         <div class="col-xs-4 col-md-4 text-info"><h5>Luogo:</h5><select id="luogo"><?php foreach ($this->luoghi[0] as $luogo){echo "<option value=".$luogo['id'].">".$luogo['denominazione']."</option>";}?></select></div>
         <div class="col-xs-3 col-md-3 text-info"><h5>Data:</h5> <input class="form-control form-control-sm" type="date" id="data"></div>
@@ -145,8 +156,9 @@ defined('_JEXEC') or die;
 
         window.open(url,'_self');
     });
-    function modifica(id,id_edizione,id_docente,id_aula,id_luogo,data,ora_inizio,ora_fine,titolo,note){
 
+    function modifica(id,id_edizione,id_docente,id_aula,id_luogo,data,ora_inizio,ora_fine,titolo,note){
+    console.log("qui");
         actual_id=id;
         jQuery("#edizione").val(id_edizione);
         jQuery("#docente").val(id_docente);
@@ -162,6 +174,7 @@ defined('_JEXEC') or die;
 
 
     }
+
     function insertclick(){
 
      if(actual_operation=="insert") {
@@ -235,8 +248,8 @@ defined('_JEXEC') or die;
         }
     }
 
-    function openregistro(data_lezione) {
-        window.open("index.php?option=com_ggfirst&task=pdf.generateregistro&data_lezione="+data_lezione);
+    function openregistro(l_id,data_lezione,id_edizione,tipo) {
+        window.open("index.php?option=com_ggfirst&task=pdf.generateregistro&l_id="+l_id+"&data_lezione="+data_lezione+"&id_edizione="+id_edizione+"&tipo="+tipo);
     }
 
 </script>

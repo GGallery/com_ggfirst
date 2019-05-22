@@ -309,7 +309,7 @@ defined('_JEXEC') or die;
 <div class="form-group form-group-sm">
     <div  class="row insertlezionibox"><div class="col-xs-10 col-md-10"><b>INSERISCI UNA NUOVA DATA PER <?php  if(isset($this->edizione[0][0]['codice_edizione'])) echo $this->edizione[0][0]['codice_edizione']; ?></b></div></div>
     <div  class="row insertlezionibox" style="padding-bottom: 8px;">
-        <div class="col-xs-3 col-md-3 text-info"><h5>Docente:</h5><select id="docente"><?php foreach ($this->docenti[0] as $docente){echo "<option value=".$docente['id'].">".$docente['cognome']."</option>";}?></select></div>
+        <div class="col-xs-3 col-md-3 text-info"><h5>Docente:</h5><select id="docente" multiple><?php foreach ($this->docenti[0] as $docente){echo "<option value=".$docente['id'].">".$docente['cognome']."</option>";}?></select></div>
         <div class="col-xs-3 col-md-3 text-info"><h5>Luogo:</h5><select id="luogo"><?php foreach ($this->luoghi[0] as $luogo){echo "<option value=".$luogo['id'].">".$luogo['denominazione']."</option>";}?></select></div>
         <div class="col-xs-3 col-md-3 text-info"><h5>Aula:</h5><select id="aula"><?php foreach ($this->aule[0] as $aula){echo "<option value=".$aula['id'].">".$aula['denominazione']."</option>";}?></select></div>
         <div class="col-xs-3 col-md-3 text-info"><h5>Data:</h5> <input class="form-control form-control-sm" type="date" id="data"></div>
@@ -540,13 +540,19 @@ defined('_JEXEC') or die;
 
     function insertlezioneclick(){
 
+        var array_docenti=jQuery("#docente").val();
+        var docenti_id_string='';
+        for(var k=0; k<array_docenti.length;k++){
+            virgola=(k>0)?',':'';
 
+            docenti_id_string=docenti_id_string+virgola+jQuery("#docente option[value='"+array_docenti[k]+"']").text();
+        }
         jQuery.ajax({
             method: "POST",
             cache: false,
             url: 'index.php?option=com_ggfirst&task=lezioni.insert'
             + '&id_edizione='+ jQuery("#input_edizione_iniziale").val()
-            + '&id_docente=' + jQuery("#docente").val()
+            + '&id_docente=' + docenti_id_string
             + '&id_luogo=' + jQuery("#luogo").val()
             + '&id_aula=' + jQuery("#aula").val()
             + '&data=' + jQuery("#data").val()

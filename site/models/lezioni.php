@@ -37,7 +37,7 @@ class ggfirstModelLezioni  extends JModelLegacy {
         $object->ora_fine=$ora_fine;
         $object->titolo=$titolo;
         $object->note=$note;
-        $object->timestamp=Date('Y-m-d h:i:s',time());
+        $object->timestamp=Date('Y-m-d h:i:s');
         $result=$this->_db->insertObject('first_gg_lezioni',$object);
         return $result;
     }
@@ -74,11 +74,11 @@ class ggfirstModelLezioni  extends JModelLegacy {
     public function getLezioni($id_corso=null,$id_edizione=null,$id_luogo=null,$data=null,$data_iniziale=null,$data_finale=null){
 
         $query=$this->_db->getQuery(true);
-        $query->select('d.nome as nome,d.cognome as cognome,a.denominazione as denominazione,lu.id as id_luogo, lu.denominazione as luogo, l.id_docente as id_docente,a.id as id_aula,l.note as note,c.titolo as titolo,c.id as id_corso, 
+        $query->select('l.id_docente as cognome,a.denominazione as denominazione,lu.id as id_luogo, lu.denominazione as luogo, l.id_docente as id_docente,a.id as id_aula,l.note as note,c.titolo as titolo,c.id as id_corso, 
                         e.codice_edizione as codice_edizione, l.data as data, l.id_edizione as id_edizione, l.titolo as titolo_lezione, l.ora_inizio as ora_inizio, l.ora_fine as ora_fine, l.id as id_lezione,
                         if((select count(*) from first_gg_partecipanti where id_edizione=l.id_edizione)>=(select minimo_partecipanti from first_gg_edizioni where id=l.id_edizione),1,0) as corso_attivo');
         $query->from('first_gg_lezioni as l');
-        $query->join('inner','first_gg_docenti as d on l.id_docente=d.id ');
+        //$query->join('inner','first_gg_docenti as d on l.id_docente=d.id ');
         $query->join('inner','first_gg_luoghi as lu on l.id_luogo=lu.id ');
         $query->join('left','first_gg_aule as a on l.id_aula=a.id ');
         $query->join('inner','first_gg_edizioni as e on l.id_edizione=e.id ');
@@ -95,7 +95,7 @@ class ggfirstModelLezioni  extends JModelLegacy {
             $query->where('l.data>=\''.$data_iniziale.'\'');
         if($data_finale)
             $query->where('l.data<=\''.$data_finale.'\'');
-        $query->order('c.id,l.data ASC');
+        $query->order('c.id,l.data ASC,l.ora_inizio ASC');
 //echo $query; die;
         $this->_db->setQuery($query);
 

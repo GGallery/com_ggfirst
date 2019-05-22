@@ -59,6 +59,9 @@ class ggfirstControllerPdf extends JControllerLegacy
         $this->_filterparam->ateco=JRequest::getVar('ateco');
         $this->_filterparam->figura=JRequest::getVar('figura');
         $this->_filterparam->data_lezione=JRequest::getVar('data_lezione');
+        $this->_filterparam->l_id=JRequest::getVar('l_id');
+        $this->_filterparam->id_edizione=JRequest::getVar('id_edizione');
+        $this->_filterparam->tipo=JRequest::getVar('tipo');
 
 
         define('SMARTY_DIR', JPATH_COMPONENT.'/libraries/smarty/smarty/');
@@ -76,7 +79,7 @@ class ggfirstControllerPdf extends JControllerLegacy
 
             $model = $this->getModel('pdf');
 
-            $model->generate_registro($this->_filterparam->data_lezione);
+            $model->generate_registro($this->_filterparam->l_id,$this->_filterparam->data_lezione,$this->_filterparam->id_edizione,$this->_filterparam->tipo);
 
         }catch (Exception $e){
 
