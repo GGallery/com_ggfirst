@@ -33,7 +33,7 @@ class ggfirstControllerCrediti extends JControllerLegacy
         $this->_filterparam->durata=JRequest::getVar('durata');
         $this->_filterparam->informazioni=JRequest::getVar('informazioni');
         $this->_filterparam->aggiornamento=JRequest::getVar('aggiornamento');
-        $this->_filterparam->periodicita=JRequest::getVar('periodicita');
+
         $this->_filterparam->elearning=JRequest::getVar('elearning');
         $this->_filterparam->id_corso=JRequest::getVar('id_corso');
 
@@ -41,7 +41,7 @@ class ggfirstControllerCrediti extends JControllerLegacy
     public function insert(){
 
         $model=new ggfirstModelCrediti();
-        if($model->insert($this->_filterparam->ruolo,$this->_filterparam->rischio,$this->_filterparam->durata,$this->_filterparam->informazioni,$this->_filterparam->aggiornamento,$this->_filterparam->periodicita,$this->_filterparam->elearning)) {
+        if($model->insert($this->_filterparam->ruolo,$this->_filterparam->rischio,$this->_filterparam->durata,$this->_filterparam->informazioni,$this->_filterparam->aggiornamento,$this->_filterparam->elearning)) {
             echo "1";
         }else{
             echo "0";
@@ -64,7 +64,7 @@ class ggfirstControllerCrediti extends JControllerLegacy
     public function modify(){
 
         $model=new ggfirstModelCrediti();
-        if($model->modify($this->_filterparam->id, $this->_filterparam->ruolo,$this->_filterparam->rischio,$this->_filterparam->durata,$this->_filterparam->informazioni,$this->_filterparam->aggiornamento,$this->_filterparam->periodicita,$this->_filterparam->elearning)) {
+        if($model->modify($this->_filterparam->id, $this->_filterparam->ruolo,$this->_filterparam->rischio,$this->_filterparam->durata,$this->_filterparam->informazioni,$this->_filterparam->aggiornamento,$this->_filterparam->elearning)) {
             echo "1";
         }else{
             echo "0";

@@ -78,7 +78,7 @@ class ggfirstModelAttestati  extends JModelLegacy {
 
         $query=$this->_db->getQuery(true);
         $query->select('a.id as id, concat( cr.ruolo,\' \', cr.rischio) as credito, concat(s.cognome,\' \',s.nome) as studente, s.nome as nome, s.cognome as cognome, 
-        a.numero as numero, a.data_attestato as data_attestato, a.scadenza as scadenza, a.certificatore as certificatore, cr.durata as durata, c.titolo as titolo, a.settore as settore, a.rischio_attestato as rischio_attestato');
+        a.numero as numero, date_format(a.data_attestato,\'%d/%m/%Y\') as data_attestato, date_format(a.scadenza,\'%d/%m/%Y\') as scadenza, a.certificatore as certificatore, cr.durata as durata, c.titolo as titolo, a.settore as settore, a.rischio_attestato as rischio_attestato');
         $query->from('first_gg_attestati as a');
         $query->join('inner','first_gg_studenti as s on a.id_studente=s.id');
         $query->join('inner','first_gg_corsi_crediti_map as cm on a.id_corsi_crediti_map=cm.id');

@@ -24,7 +24,7 @@ class ggfirstModelCrediti  extends JModelLegacy {
 
     }
 
-    public function insert($ruolo,$rischio,$durata,$informazioni,$aggiornamento,$periodicita,$elearning){
+    public function insert($ruolo,$rischio,$durata,$informazioni,$aggiornamento,$elearning){
 
 
         $object = new StdClass;
@@ -33,7 +33,7 @@ class ggfirstModelCrediti  extends JModelLegacy {
         $object->durata=$durata;
         $object->informazioni=$informazioni;
         $object->aggiornamento=$aggiornamento;
-        $object->periodicita=$periodicita;
+
         $object->elearning=$elearning;
         $object->timestamp=Date('Y-m-d h:i:s',time());
 
@@ -51,10 +51,10 @@ class ggfirstModelCrediti  extends JModelLegacy {
         return $result;
     }
 
-    public function modify($id,$ruolo,$rischio,$durata,$informazioni,$aggiornamento,$periodicita,$elearning){
+    public function modify($id,$ruolo,$rischio,$durata,$informazioni,$aggiornamento,$elearning){
 
 
-        $sql="update first_gg_crediti set ruolo='".$ruolo."', rischio='".$rischio."', durata='".$durata."', informazioni='".$informazioni."', aggiornamento='".$aggiornamento."', periodicita='".$periodicita."', elearning='".$elearning."' where id=".$id;
+        $sql="update first_gg_crediti set ruolo='".$ruolo."', rischio='".$rischio."', durata='".$durata."', informazioni='".$informazioni."', aggiornamento='".$aggiornamento."', elearning='".$elearning."' where id=".$id;
 
         $this->_db->setQuery($sql);
         $result=$this->_db->execute();

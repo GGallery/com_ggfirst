@@ -60,6 +60,12 @@ defined('_JEXEC') or die;
         font-size: smaller;
     }
 
+    .table td, .table th {
+        padding:1%;
+        width: 8%;
+        font-size: smaller;
+    }
+
 </style>
 </head>
 
@@ -70,17 +76,17 @@ defined('_JEXEC') or die;
     <table class="table table-striped table-bordered ">
         <thead>
         <tr>
-            <th style="width: 15%;">DENOMINAZIONE</th>
-            <th style="width: 15%;">RIFERIMENTO</th>
-            <th style="width: 15%;">EMAIL</th>
-            <th style="width: 15%;">INDIRIZZO</th>
-            <th style="width: 15%;">CAP</th>
-            <th style="width: 15%;">CITTA'</th>
-            <th style="width: 15%;">TEL.</th>
-            <th style="width: 15%;">P.IVA</th>
-            <th style="width: 15%;">COD.UNIVOCO</th>
-            <th style="width: 15%;">COD.FISCALE</th>
-            <th style="width: 15%;">COD.ATECO</th>
+            <th >DENOMINAZIONE</th>
+            <th >RIFERIMENTO</th>
+            <th >EMAIL</th>
+            <th >INDIRIZZO</th>
+            <th >CAP</th>
+            <th >CITTA'</th>
+            <th >TEL.</th>
+            <th >P.IVA</th>
+            <th >COD.UNIVOCO</th>
+            <th >COD.FISCALE</th>
+            <th >COD.ATECO</th>
             <th ></th>
         </tr>
         </thead>

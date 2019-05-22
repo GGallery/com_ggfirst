@@ -3,11 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="8ad941d7-3f6e-4d38-9ec8-9c5ef41b3868" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/site/controllers/pdf.php" afterPath="$PROJECT_DIR$/site/controllers/pdf.php" />
-      <change beforePath="$PROJECT_DIR$/site/models/lezioni.php" afterPath="$PROJECT_DIR$/site/models/lezioni.php" />
-      <change beforePath="$PROJECT_DIR$/site/models/pdf.php" afterPath="$PROJECT_DIR$/site/models/pdf.php" />
-      <change beforePath="$PROJECT_DIR$/site/views/corsi/tmpl/default.php" afterPath="$PROJECT_DIR$/site/views/corsi/tmpl/default.php" />
-      <change beforePath="$PROJECT_DIR$/site/views/lezioni/tmpl/default.php" afterPath="$PROJECT_DIR$/site/views/lezioni/tmpl/default.php" />
+      <change beforePath="$PROJECT_DIR$/site/controllers/crediti.php" afterPath="$PROJECT_DIR$/site/controllers/crediti.php" />
+      <change beforePath="$PROJECT_DIR$/site/models/attestati.php" afterPath="$PROJECT_DIR$/site/models/attestati.php" />
+      <change beforePath="$PROJECT_DIR$/site/models/crediti.php" afterPath="$PROJECT_DIR$/site/models/crediti.php" />
+      <change beforePath="$PROJECT_DIR$/site/views/attestati/tmpl/default.php" afterPath="$PROJECT_DIR$/site/views/attestati/tmpl/default.php" />
+      <change beforePath="$PROJECT_DIR$/site/views/clienti/tmpl/default.php" afterPath="$PROJECT_DIR$/site/views/clienti/tmpl/default.php" />
+      <change beforePath="$PROJECT_DIR$/site/views/crediti/tmpl/default.php" afterPath="$PROJECT_DIR$/site/views/crediti/tmpl/default.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,91 +19,70 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="default.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/site/views/lezioni/tmpl/default.php">
+      <file leaf-file-name="crediti.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/site/models/crediti.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="455">
-              <caret line="74" column="65" lean-forward="false" selection-start-line="74" selection-start-column="65" selection-end-line="74" selection-end-column="65" />
+            <state relative-caret-position="-217">
+              <caret line="26" column="79" lean-forward="false" selection-start-line="26" selection-start-column="79" selection-end-line="26" selection-end-column="79" />
               <folding>
-                <marker date="1558516940537" expanded="true" signature="3181:3411" ph="..." />
-                <marker date="1558516940537" expanded="true" signature="3181:3483" ph="..." />
-                <marker date="1558516940537" expanded="true" signature="3181:3533" ph="..." />
-                <marker date="1558516940537" expanded="true" signature="3181:4322" ph="..." />
-                <marker date="1558516940537" expanded="true" signature="4092:4132" ph="..." />
-                <marker date="1558516940537" expanded="true" signature="4271:4311" ph="..." />
-                <marker date="1558516940537" expanded="true" signature="4834:5140" ph="..." />
-                <marker date="1558516940537" expanded="true" signature="4969:5140" ph="..." />
-                <marker date="1558516940537" expanded="true" signature="6588:6907" ph="..." />
-                <marker date="1558516940537" expanded="true" signature="6955:7231" ph="..." />
+                <marker date="1558527752578" expanded="true" signature="1007:1045" ph="delete from first_gg_crediti... " />
+                <marker date="1558527752578" expanded="true" signature="1272:1472" ph="update first_gg_crediti... " />
+                <marker date="1558527752578" expanded="true" signature="3860:3908" ph="delete from first_gg_corsi_crediti_map... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="crediti.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/site/controllers/crediti.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1254">
+              <caret line="98" column="0" lean-forward="true" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="default.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/site/views/attestati/tmpl/default.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="658">
+              <caret line="82" column="29" lean-forward="true" selection-start-line="82" selection-start-column="29" selection-end-line="82" selection-end-column="29" />
+              <folding>
+                <element signature="n#style#0;n#th#9;n#tr#1;n#thead#0;n#table#0;n#div#0;n#body#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="default.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/site/views/corsi/tmpl/default.php">
+        <entry file="file://$PROJECT_DIR$/site/views/clienti/tmpl/default.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3434">
-              <caret line="536" column="0" lean-forward="false" selection-start-line="536" selection-start-column="0" selection-end-line="536" selection-end-column="0" />
+            <state relative-caret-position="289">
+              <caret line="65" column="27" lean-forward="false" selection-start-line="65" selection-start-column="27" selection-end-line="65" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="attestati.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/site/models/attestati.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1275">
+              <caret line="80" column="102" lean-forward="false" selection-start-line="80" selection-start-column="102" selection-end-line="80" selection-end-column="102" />
               <folding>
-                <marker date="1558452330399" expanded="true" signature="2514:2963" ph="..." />
-                <marker date="1558452330399" expanded="true" signature="2766:2918" ph="..." />
-                <marker date="1558452330399" expanded="true" signature="8286:8292" ph=" " />
-                <marker date="1558452330399" expanded="true" signature="8292:8298" ph=" " />
-                <marker date="1558452330399" expanded="true" signature="8298:8304" ph=" " />
+                <marker date="1558528511252" expanded="true" signature="1487:1527" ph="delete from first_gg_attestati... " />
+                <marker date="1558528511252" expanded="true" signature="1767:2011" ph="update first_gg_attestati... " />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="lezioni.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/site/models/lezioni.php">
+      <file leaf-file-name="default.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/site/views/crediti/tmpl/default.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="799">
-              <caret line="97" column="58" lean-forward="false" selection-start-line="97" selection-start-column="8" selection-end-line="97" selection-end-column="58" />
-              <folding>
-                <marker date="1558515408656" expanded="true" signature="1115:1153" ph="delete from first_gg_lezioni... " />
-                <marker date="1558515408656" expanded="true" signature="1402:1735" ph="update first_gg_lezioni... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pdf.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/site/models/pdf.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="76" column="42" lean-forward="false" selection-start-line="76" selection-start-column="42" selection-end-line="76" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pdf.php" pinned="false" current-in-tab="true">
-        <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-2/pdf.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="489">
-              <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pdf.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/site/controllers/pdf.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="761">
-              <caret line="74" column="40" lean-forward="false" selection-start-line="74" selection-start-column="40" selection-end-line="74" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="registro.tpl" pinned="false" current-in-tab="false">
-        <entry file="file://C:/xampp/htdocs/mediagg/contenuti/registro/registro.tpl">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="920">
-              <caret line="78" column="17" lean-forward="false" selection-start-line="78" selection-start-column="17" selection-end-line="78" selection-end-column="17" />
+            <state relative-caret-position="259">
+              <caret line="147" column="27" lean-forward="true" selection-start-line="147" selection-start-column="27" selection-end-line="147" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -112,8 +92,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>modifica_corso</find>
-      <find>conferma_corso</find>
       <find>modifica_edizione</find>
       <find>conferma_modifica_corso</find>
       <find>conferma_modifica_edizione</find>
@@ -142,6 +120,8 @@
       <find>'model'</find>
       <find>preselected_id_studente</find>
       <find>insertle</find>
+      <find>periodicita</find>
+      <find>/com_ggpm/libraries/js/bootstrap.min.js</find>
     </findStrings>
     <replaceStrings>
       <replace>jQuery</replace>
@@ -174,10 +154,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$USER_HOME$/AppData/Local/Temp/fz3temp-2/mailalertcarige.php" />
-        <option value="$PROJECT_DIR$/site/views/clienti/tmpl/default.php" />
-        <option value="$PROJECT_DIR$/site/models/clienti.php" />
-        <option value="$PROJECT_DIR$/site/controllers/studenti.php" />
         <option value="$PROJECT_DIR$/site/models/studenti.php" />
         <option value="$USER_HOME$/AppData/Local/Temp/fz3temp-2/115.tpl" />
         <option value="$PROJECT_DIR$/site/views/studenti/tmpl/default.php" />
@@ -200,21 +176,16 @@
         <option value="C:/xampp/htdocs/mediagg/contenuti/4/attestato.html" />
         <option value="C:/xampp/htdocs/mediagg/contenuti/4/4.tpl" />
         <option value="$PROJECT_DIR$/site/controllers/corsi.php" />
-        <option value="$PROJECT_DIR$/site/controllers/crediti.php" />
         <option value="$PROJECT_DIR$/site/models/corsi.php" />
         <option value="$PROJECT_DIR$/site/controllers/partecipanti.php" />
         <option value="$PROJECT_DIR$/site/views/partecipanti/view.html.php" />
         <option value="C:/xampp/htdocs/mediagg/contenuti/37/37.tpl" />
         <option value="$PROJECT_DIR$/site/controllers/attestati.php" />
-        <option value="$PROJECT_DIR$/site/models/attestati.php" />
         <option value="C:/xampp/htdocs/mediagg/contenuti/37a/37a.tpl" />
         <option value="C:/xampp/htdocs/mediagg/contenuti/37b/37b.tpl" />
         <option value="$PROJECT_DIR$/site/views/aule/tmpl/default.php" />
-        <option value="$PROJECT_DIR$/site/views/crediti/tmpl/default.php" />
         <option value="$PROJECT_DIR$/site/views/partecipanti/tmpl/default.php" />
         <option value="C:/xampp/htdocs/mediagg/contenuti/iscrizione/iscrizione.tpl" />
-        <option value="$PROJECT_DIR$/site/views/attestati/tmpl/default.php" />
-        <option value="$PROJECT_DIR$/site/models/crediti.php" />
         <option value="$PROJECT_DIR$/site/controllers/clienti.php" />
         <option value="$PROJECT_DIR$/site/models/partecipanti.php" />
         <option value="$PROJECT_DIR$/site/views/corsi/view.html.php" />
@@ -225,6 +196,15 @@
         <option value="$PROJECT_DIR$/site/views/lezioni/tmpl/default.php" />
         <option value="$PROJECT_DIR$/site/models/pdf.php" />
         <option value="$USER_HOME$/AppData/Local/Temp/fz3temp-2/pdf.php" />
+        <option value="$PROJECT_DIR$/site/controllers/crediti.php" />
+        <option value="$PROJECT_DIR$/site/views/crediti/tmpl/default.php" />
+        <option value="$PROJECT_DIR$/site/models/crediti.php" />
+        <option value="$PROJECT_DIR$/site/models/attestati.php" />
+        <option value="$PROJECT_DIR$/site/views/attestati/tmpl/default.php" />
+        <option value="$PROJECT_DIR$/site/views/clienti/tmpl/default.php" />
+        <option value="$USER_HOME$/AppData/Local/Temp/fz3temp-2/view.html.php" />
+        <option value="$USER_HOME$/AppData/Local/Temp/fz3temp-2/controller.php" />
+        <option value="$USER_HOME$/AppData/Local/Temp/fz3temp-2/default.php" />
       </list>
     </option>
   </component>
@@ -236,10 +216,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1358" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1216" />
+    <option name="x" value="1089" />
+    <option name="y" value="119" />
+    <option name="width" value="1365" />
+    <option name="height" value="727" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -292,14 +272,14 @@
               <item name="com_ggfirst" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="site" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="corsi" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="attestati" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="com_ggfirst" type="b2602c69:ProjectViewProjectNode" />
               <item name="com_ggfirst" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="site" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="corsi" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="attestati" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="tmpl" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -307,14 +287,29 @@
               <item name="com_ggfirst" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="site" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="lezioni" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="clienti" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="com_ggfirst" type="b2602c69:ProjectViewProjectNode" />
               <item name="com_ggfirst" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="site" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="lezioni" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="clienti" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="tmpl" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="com_ggfirst" type="b2602c69:ProjectViewProjectNode" />
+              <item name="com_ggfirst" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="site" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="crediti" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="com_ggfirst" type="b2602c69:ProjectViewProjectNode" />
+              <item name="com_ggfirst" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="site" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="crediti" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="tmpl" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
@@ -472,14 +467,7 @@
       <workItem from="1554288642904" duration="1014000" />
       <workItem from="1557925533957" duration="9760000" />
       <workItem from="1558447553426" duration="4864000" />
-      <workItem from="1558509051963" duration="8274000" />
-    </task>
-    <task id="LOCAL-00034" summary="refresh">
-      <created>1545052880797</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1545052880797</updated>
+      <workItem from="1558509051963" duration="14706000" />
     </task>
     <task id="LOCAL-00035" summary="refresh_">
       <created>1545052978837</created>
@@ -817,26 +805,34 @@
       <option name="project" value="LOCAL" />
       <updated>1557935816966</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="doppio registro e più docenti">
+      <created>1558521051466</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1558521051467</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="791573000" />
+    <option name="totallyTimeSpent" value="798005000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1358" y="-8" width="1936" height="1216" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32840723" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293247" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293247" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -845,7 +841,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293247" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -878,7 +873,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="gestito intervallo di date nella lezioni" />
     <MESSAGE value="completate tutte le modifiche richieste alle anagrafiche" />
     <MESSAGE value="gestita ricerca cliente; gestita nuova valorizzazione numero partecipanti in preventivo, inserito link da corso a partecipanti" />
     <MESSAGE value="gestione completa del template modulo iscrizione" />
@@ -903,7 +897,8 @@
     <MESSAGE value="modificata query di popolamento della select attestati-&gt;crediti e subquery &quot;figura&quot; di creazione attestato" />
     <MESSAGE value="aggiunto template registro della lezione" />
     <MESSAGE value="risolto baco view lezione nello stesso giorno stessa data" />
-    <option name="LAST_COMMIT_MESSAGE" value="risolto baco view lezione nello stesso giorno stessa data" />
+    <MESSAGE value="doppio registro e più docenti" />
+    <option name="LAST_COMMIT_MESSAGE" value="doppio registro e più docenti" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -912,21 +907,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/site/views/questionario/tmpl/default.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="109" column="33" lean-forward="false" selection-start-line="109" selection-start-column="33" selection-end-line="109" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/site/models/questionario.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="20" column="8" lean-forward="false" selection-start-line="20" selection-start-column="8" selection-end-line="20" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/xampp/htdocs/mediagg/contenuti/2/attestato.html" />
     <entry file="file://C:/xampp/htdocs/mediagg/contenuti/2/2.tpl" />
     <entry file="file://C:/xampp/htdocs/mediagg/contenuti/3/3.tpl" />
     <entry file="file://C:/xampp/htdocs/mediagg/contenuti/3/attestato.html" />
@@ -947,13 +927,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/site/models/attestati.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="80" column="225" lean-forward="false" selection-start-line="80" selection-start-column="225" selection-end-line="80" selection-end-column="225" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/site/views/aule/tmpl/default.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
@@ -961,38 +934,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/site/views/crediti/tmpl/default.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="68" column="55" lean-forward="false" selection-start-line="68" selection-start-column="55" selection-end-line="68" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/site/views/lezioni/view.html.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="612">
           <caret line="77" column="0" lean-forward="false" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/site/models/crediti.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="556">
-          <caret line="88" column="0" lean-forward="false" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/site/views/attestati/view.html.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="886">
-          <caret line="98" column="61" lean-forward="false" selection-start-line="98" selection-start-column="61" selection-end-line="98" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/site/views/attestati/tmpl/default.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-888">
-          <caret line="85" column="15" lean-forward="false" selection-start-line="85" selection-start-column="15" selection-end-line="85" selection-end-column="15" />
         </state>
       </provider>
     </entry>
@@ -1049,13 +994,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-480">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/site/controllers/crediti.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1008">
-          <caret line="78" column="83" lean-forward="false" selection-start-line="78" selection-start-column="83" selection-end-line="78" selection-end-column="83" />
         </state>
       </provider>
     </entry>
@@ -1158,62 +1096,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/site/views/corsi/tmpl/default.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3434">
-          <caret line="536" column="0" lean-forward="false" selection-start-line="536" selection-start-column="0" selection-end-line="536" selection-end-column="0" />
-          <folding>
-            <marker date="1558452330399" expanded="true" signature="2514:2963" ph="..." />
-            <marker date="1558452330399" expanded="true" signature="2766:2918" ph="..." />
-            <marker date="1558452330399" expanded="true" signature="8286:8292" ph=" " />
-            <marker date="1558452330399" expanded="true" signature="8292:8298" ph=" " />
-            <marker date="1558452330399" expanded="true" signature="8298:8304" ph=" " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/site/controllers/pdf.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="761">
           <caret line="74" column="40" lean-forward="false" selection-start-line="74" selection-start-column="40" selection-end-line="74" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/site/views/lezioni/tmpl/default.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="74" column="65" lean-forward="false" selection-start-line="74" selection-start-column="65" selection-end-line="74" selection-end-column="65" />
-          <folding>
-            <marker date="1558516940537" expanded="true" signature="3181:3411" ph="..." />
-            <marker date="1558516940537" expanded="true" signature="3181:3483" ph="..." />
-            <marker date="1558516940537" expanded="true" signature="3181:3533" ph="..." />
-            <marker date="1558516940537" expanded="true" signature="3181:4322" ph="..." />
-            <marker date="1558516940537" expanded="true" signature="4092:4132" ph="..." />
-            <marker date="1558516940537" expanded="true" signature="4271:4311" ph="..." />
-            <marker date="1558516940537" expanded="true" signature="4834:5140" ph="..." />
-            <marker date="1558516940537" expanded="true" signature="4969:5140" ph="..." />
-            <marker date="1558516940537" expanded="true" signature="6588:6907" ph="..." />
-            <marker date="1558516940537" expanded="true" signature="6955:7231" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/site/models/lezioni.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="97" column="58" lean-forward="false" selection-start-line="97" selection-start-column="8" selection-end-line="97" selection-end-column="58" />
-          <folding>
-            <marker date="1558515408656" expanded="true" signature="1115:1153" ph="delete from first_gg_lezioni... " />
-            <marker date="1558515408656" expanded="true" signature="1402:1735" ph="update first_gg_lezioni... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-2/controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1242,6 +1128,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-2/pdf.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="489">
+          <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/site/models/pdf.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -1250,11 +1144,132 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-2/pdf.php">
+    <entry file="file://$PROJECT_DIR$/site/models/lezioni.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="489">
-          <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+        <state relative-caret-position="799">
+          <caret line="97" column="58" lean-forward="false" selection-start-line="97" selection-start-column="8" selection-end-line="97" selection-end-column="58" />
+          <folding>
+            <marker date="1558515408656" expanded="true" signature="1115:1153" ph="delete from first_gg_lezioni... " />
+            <marker date="1558515408656" expanded="true" signature="1402:1735" ph="update first_gg_lezioni... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/views/corsi/tmpl/default.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3434">
+          <caret line="536" column="0" lean-forward="false" selection-start-line="536" selection-start-column="0" selection-end-line="536" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/views/lezioni/tmpl/default.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="455">
+          <caret line="74" column="65" lean-forward="false" selection-start-line="74" selection-start-column="65" selection-end-line="74" selection-end-column="65" />
+          <folding>
+            <marker date="1558516940537" expanded="true" signature="3181:3411" ph="..." />
+            <marker date="1558516940537" expanded="true" signature="3181:3483" ph="..." />
+            <marker date="1558516940537" expanded="true" signature="3181:3533" ph="..." />
+            <marker date="1558516940537" expanded="true" signature="3181:4322" ph="..." />
+            <marker date="1558516940537" expanded="true" signature="4092:4132" ph="..." />
+            <marker date="1558516940537" expanded="true" signature="4271:4311" ph="..." />
+            <marker date="1558516940537" expanded="true" signature="4834:5140" ph="..." />
+            <marker date="1558516940537" expanded="true" signature="4969:5140" ph="..." />
+            <marker date="1558516940537" expanded="true" signature="6588:6907" ph="..." />
+            <marker date="1558516940537" expanded="true" signature="6955:7231" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/views/attestati/view.html.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-72">
+          <caret line="46" column="49" lean-forward="true" selection-start-line="46" selection-start-column="49" selection-end-line="46" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/views/crediti/tmpl/default.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="259">
+          <caret line="147" column="27" lean-forward="true" selection-start-line="147" selection-start-column="27" selection-end-line="147" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/models/crediti.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-217">
+          <caret line="26" column="79" lean-forward="false" selection-start-line="26" selection-start-column="79" selection-end-line="26" selection-end-column="79" />
+          <folding>
+            <marker date="1558527752578" expanded="true" signature="1007:1045" ph="delete from first_gg_crediti... " />
+            <marker date="1558527752578" expanded="true" signature="1272:1472" ph="update first_gg_crediti... " />
+            <marker date="1558527752578" expanded="true" signature="3860:3908" ph="delete from first_gg_corsi_crediti_map... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/controllers/crediti.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1254">
+          <caret line="98" column="0" lean-forward="true" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/models/attestati.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1275">
+          <caret line="80" column="102" lean-forward="false" selection-start-line="80" selection-start-column="102" selection-end-line="80" selection-end-column="102" />
+          <folding>
+            <marker date="1558528511252" expanded="true" signature="1487:1527" ph="delete from first_gg_attestati... " />
+            <marker date="1558528511252" expanded="true" signature="1767:2011" ph="update first_gg_attestati... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/views/clienti/tmpl/default.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="65" column="27" lean-forward="false" selection-start-line="65" selection-start-column="27" selection-end-line="65" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-2/controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="60" lean-forward="false" selection-start-line="29" selection-start-column="60" selection-end-line="29" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-2/view.html.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="12" column="46" lean-forward="true" selection-start-line="12" selection-start-column="46" selection-end-line="12" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/fz3temp-2/default.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="83" column="16" lean-forward="false" selection-start-line="83" selection-start-column="16" selection-end-line="83" selection-end-column="16" />
+          <folding>
+            <element signature="n#style#0;n#th#9;n#tr#1;n#thead#0;n#table#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/site/views/attestati/tmpl/default.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="658">
+          <caret line="82" column="29" lean-forward="true" selection-start-line="82" selection-start-column="29" selection-end-line="82" selection-end-column="29" />
+          <folding>
+            <element signature="n#style#0;n#th#9;n#tr#1;n#thead#0;n#table#0;n#div#0;n#body#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

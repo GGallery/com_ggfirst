@@ -43,6 +43,10 @@ defined('_JEXEC') or die;
         font-size: smaller;
     }
 
+    .table td, .table th {
+        padding:1%;
+    }
+
 </style>
 </head>
 
@@ -66,20 +70,20 @@ defined('_JEXEC') or die;
             <th style="width: 15%;"><input  id="filtrocertificatore" class="contenitori_filtro" type="text"></th>
             <th style="width: 15%;"><input id="filtrodata_scadenza_minore" class="contenitori_filtro" type="date"><input id="filtrodata_scadenza_maggiore" class="contenitori_filtro" type="date"></th>
 
-            <th colspan="3"><button id="dosearch"><span class="oi oi-magnifying-glass"></span></button></th>
+            <th colspan="3"><button id="dosearch"><span class="oi oi-magnifying-glass"></span></button>&nbsp<button id="deletesearch"><span class="">cancella filtri</span></button></th>
         </tr>
         <tr>
-            <th style="width: 15%;">CREDITO</th>
-            <th style="width: 15%;">CORSO</th>
-            <th style="width: 15%;">STUDENTE</th>
-            <th style="width: 15%;">NUMERO</th>
-            <th style="width: 10%;">DATA</th>
-            <th style="width: 15%;">CERTIFICATORE</th>
-            <th style="width: 20%;">SCADENZA</th>
-            <th style="width: 20%;">SETTORE</th>
-            <th style="width: 20%;">RISCHIO</th>
+            <th >CREDITO</th>
+            <th >CORSO</th>
+            <th >STUDENTE</th>
+            <th >NUMERO</th>
+            <th >DATA</th>
+            <th >CERTIFICATORE</th>
+            <th >SCADENZA</th>
+            <th >SETTORE</th>
+            <th >RISCHIO</th>
             
-            <th ></th>
+            <th style="width: 9%;"></th>
         </tr>
         </thead>
 
@@ -200,7 +204,13 @@ defined('_JEXEC') or die;
 
     }
 
+    jQuery("#deletesearch").click(function (event) {
 
+
+        url="index.php?option=com_ggfirst&view=attestati"
+
+        window.open(url,'_self');
+    })
 
     jQuery("#dosearch").click(function (event) {
 
