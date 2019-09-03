@@ -15,7 +15,7 @@ require_once JPATH_COMPONENT . '/models/studenti.php';
  *
  * @since  1.5.19
  */
-class ggfirstControllerStudenti extends JControllerLegacy
+class ggcmControllerStudenti extends JControllerLegacy
 {
     protected $_db;
     private $_app;
@@ -45,7 +45,7 @@ class ggfirstControllerStudenti extends JControllerLegacy
     }
     public function insert(){
 
-        $model=new ggfirstModelStudenti();
+        $model=new ggcmModelStudenti();
         if($model->insert($this->_filterparam->nome,$this->_filterparam->cognome,$this->_filterparam->codice_fiscale,$this->_filterparam->data_nascita,
             $this->_filterparam->luogo_nascita,$this->_filterparam->prov_nascita,$this->_filterparam->email,$this->_filterparam->titolo,$this->_filterparam->profilo,$this->_filterparam->telefono,$this->_filterparam->cellulare,
             $this->_filterparam->idcliente)) {
@@ -59,7 +59,7 @@ class ggfirstControllerStudenti extends JControllerLegacy
 
     public function delete(){
 
-        $model=new ggfirstModelStudenti();
+        $model=new ggcmModelStudenti();
         if($model->delete($this->_filterparam->id)) {
             echo "1";
         }else{
@@ -70,7 +70,7 @@ class ggfirstControllerStudenti extends JControllerLegacy
     }
     public function modify(){
 
-        $model=new ggfirstModelStudenti();
+        $model=new ggcmModelStudenti();
         if($model->modify($this->_filterparam->id,
             $this->_filterparam->nome,$this->_filterparam->cognome,$this->_filterparam->codice_fiscale,$this->_filterparam->data_nascita,
             $this->_filterparam->luogo_nascita,$this->_filterparam->prov_nascita,$this->_filterparam->email,$this->_filterparam->titolo,$this->_filterparam->profilo,$this->_filterparam->telefono,$this->_filterparam->cellulare,$this->_filterparam->idcliente)) {

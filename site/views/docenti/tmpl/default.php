@@ -81,7 +81,7 @@ defined('_JEXEC') or die;
             <td><div class="pagination">
             <?php $k=1;
             for($i=0; $i<$this->docenti[1];$i=$i+10){
-                echo "<a href=index.php?option=com_ggfirst&view=studenti&offset=".(($k-1)*10)."&limit=10>".$k."</a>";
+                echo "<a href=index.php?option=com_ggcm&view=studenti&offset=".(($k-1)*10)."&limit=10>".$k."</a>";
                 $k++;
             }?>
                 </div>
@@ -127,8 +127,10 @@ defined('_JEXEC') or die;
 
     jQuery("#dosearch").click(function (event) {
 
-        console.log("/index.php?option=com_ggfirst&view=docenti&search="+jQuery("#tosearch").val());
-        window.open("index.php?option=com_ggfirst&view=docenti&search="+jQuery("#tosearch").val(),'_self');
+        var url = window.location.href+"&search="+jQuery("#tosearch").val();
+        window.open(url,'_self');
+        //console.log("/index.php?option=com_ggcm&view=docenti&search="+jQuery("#tosearch").val());
+        //window.open("index.php?option=com_ggcm&view=docenti&search="+jQuery("#tosearch").val(),'_self');
     });
 
     function modifica(id,nome,cognome,indirizzo,cap,citta,provincia,codice_fiscale,data_nascita,luogo_nascita,prov_nascita,telefono,cellulare,email,materie,piva){
@@ -161,7 +163,7 @@ defined('_JEXEC') or die;
          jQuery.ajax({
              method: "POST",
              cache: false,
-             url: 'index.php?option=com_ggfirst&task=docenti.insert'
+             url: 'index.php?option=com_ggcm&task=docenti.insert'
              + '&nome=' + jQuery("#nome").val()
              + '&cognome=' + jQuery("#cognome").val() +
              '&provincia=' + jQuery("#provincia").val()
@@ -192,7 +194,7 @@ defined('_JEXEC') or die;
             jQuery.ajax({
                 method: "POST",
                 cache: false,
-                url: 'index.php?option=com_ggfirst&task=docenti.modify&' +
+                url: 'index.php?option=com_ggcm&task=docenti.modify&' +
                 'id=' + actual_id
                 +'&nome='+jQuery("#nome").val()
                 +'&cognome='+jQuery("#cognome").val()+
@@ -232,7 +234,7 @@ defined('_JEXEC') or die;
         jQuery.ajax({
             method: "POST",
             cache: false,
-            url: 'index.php?option=com_ggfirst&task=docenti.modify&' +
+            url: 'index.php?option=com_ggcm&task=docenti.modify&' +
             'id=' + id
             +'&nome='+jQuery("#nome").val()
             +'&cognome='+jQuery("#cognome").val()+
@@ -269,7 +271,7 @@ defined('_JEXEC') or die;
             jQuery.ajax({
                 method: "POST",
                 cache: false,
-                url: 'index.php?option=com_ggfirst&task=docenti.delete&id=' + id.toString()
+                url: 'index.php?option=com_ggcm&task=docenti.delete&id=' + id.toString()
 
             }).done(function () {
 

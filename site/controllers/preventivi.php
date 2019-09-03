@@ -15,7 +15,7 @@ require_once JPATH_COMPONENT . '/models/preventivi.php';
  *
  * @since  1.5.19
  */
-class ggfirstControllerPreventivi extends JControllerLegacy
+class ggcmControllerPreventivi extends JControllerLegacy
 {
     protected $_db;
     private $_app;
@@ -38,7 +38,7 @@ class ggfirstControllerPreventivi extends JControllerLegacy
     }
     public function insert(){
 
-        $model=new ggfirstModelPreventivi();
+        $model=new ggcmModelPreventivi();
         if($model->insert($this->_filterparam->id_corso,$this->_filterparam->id_cliente,$this->_filterparam->budget,$this->_filterparam->id_stato_preventivo)) {
             echo "1";
         }else{
@@ -50,7 +50,7 @@ class ggfirstControllerPreventivi extends JControllerLegacy
 
     public function delete(){
 
-        $model=new ggfirstModelPreventivi();
+        $model=new ggcmModelPreventivi();
         if($model->delete($this->_filterparam->id)) {
             echo "1";
         }else{
@@ -61,7 +61,7 @@ class ggfirstControllerPreventivi extends JControllerLegacy
     }
     public function modify(){
 
-        $model=new ggfirstModelPreventivi();
+        $model=new ggcmModelPreventivi();
         if($model->modify($this->_filterparam->id,$this->_filterparam->id_corso,$this->_filterparam->id_cliente,$this->_filterparam->budget,$this->_filterparam->id_stato_preventivo)) {
             echo "1";
         }else{

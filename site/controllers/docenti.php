@@ -15,7 +15,7 @@ require_once JPATH_COMPONENT . '/models/docenti.php';
  *
  * @since  1.5.19
  */
-class ggfirstControllerDocenti extends JControllerLegacy
+class ggcmControllerDocenti extends JControllerLegacy
 {
     protected $_db;
     private $_app;
@@ -47,7 +47,7 @@ class ggfirstControllerDocenti extends JControllerLegacy
     }
     public function insert(){
 
-        $model=new ggfirstModelDocenti();
+        $model=new ggcmModelDocenti();
         if($model->insert($this->_filterparam->nome,$this->_filterparam->cognome,$this->_filterparam->provincia,$this->_filterparam->codice_fiscale,$this->_filterparam->data_nascita,
             $this->_filterparam->luogo_nascita,$this->_filterparam->prov_nascita,$this->_filterparam->email,$this->_filterparam->indirizzo,$this->_filterparam->cap,
             $this->_filterparam->citta,$this->_filterparam->telefono,$this->_filterparam->cellulare,$this->_filterparam->materie,$this->_filterparam->piva)) {
@@ -61,7 +61,7 @@ class ggfirstControllerDocenti extends JControllerLegacy
 
     public function delete(){
 
-        $model=new ggfirstModelDocenti();
+        $model=new ggcmModelDocenti();
         if($model->delete($this->_filterparam->id)) {
             echo "1";
         }else{
@@ -72,7 +72,7 @@ class ggfirstControllerDocenti extends JControllerLegacy
     }
     public function modify(){
 
-        $model=new ggfirstModelDocenti();
+        $model=new ggcmModelDocenti();
         if($model->modify($this->_filterparam->id,
             $this->_filterparam->nome,$this->_filterparam->cognome,$this->_filterparam->provincia,$this->_filterparam->codice_fiscale,$this->_filterparam->data_nascita,
             $this->_filterparam->luogo_nascita,$this->_filterparam->prov_nascita,$this->_filterparam->email,$this->_filterparam->indirizzo,$this->_filterparam->cap,

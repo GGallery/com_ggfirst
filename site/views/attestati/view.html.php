@@ -20,15 +20,15 @@ require_once JPATH_COMPONENT . '/models/studenti.php';
 require_once JPATH_COMPONENT . '/models/crediti.php';
 require_once JPATH_COMPONENT . '/models/corsi.php';
 
-class ggfirstViewAttestati extends JViewLegacy {
+class ggcmViewAttestati extends JViewLegacy {
 
     public $attestati,$studenti,$crediti,$corsi,$preselected_id_credito,$preselected_id_corso,$preselected_id_studente;
 
 
     function display($tpl = null)
     {
-        //JHtml::_('stylesheet', 'components/com_ggfirst/libraries/css/bootstrap.min.css');
-        JHtml::_('stylesheet', 'components/com_ggfirst/libraries/open-iconic/font/css/open-iconic-bootstrap.css');
+        //JHtml::_('stylesheet', 'components/com_ggcm/libraries/css/bootstrap.min.css');
+        JHtml::_('stylesheet', 'components/com_ggcm/libraries/open-iconic/font/css/open-iconic-bootstrap.css');
         JHtml::_('stylesheet', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous');
 
         if (JRequest::getVar('id_credito') != null) {
@@ -92,13 +92,13 @@ class ggfirstViewAttestati extends JViewLegacy {
         }
 
         $this->attestati=$this->getModel()->getAttestati(null,$id_studente,$numero,$data_attestato,$certificatore, $id_credito, null,$scadenza_data_minore,$scadenza_data_maggiore);
-        $studentiModel=new ggfirstModelStudenti();
+        $studentiModel=new ggcmModelStudenti();
         $this->studenti=$studentiModel->getStudenti();
-        $creditiModel=new ggfirstModelCrediti();
+        $creditiModel=new ggcmModelCrediti();
         $this->crediti=$creditiModel->getCrediti();
         $this->creditiaggiornamenti=$creditiModel->getCreditiAggiornamento();
 
-        $corsiModel=new ggfirstModelCorsi();
+        $corsiModel=new ggcmModelCorsi();
         $this->corsi=$corsiModel->getCorsi();
         parent::display($tpl);
     }

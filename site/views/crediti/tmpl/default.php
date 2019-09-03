@@ -150,7 +150,7 @@ defined('_JEXEC') or die;
         jQuery.ajax({
             method: "POST",
             cache: false,
-            url: 'index.php?option=com_ggfirst&task=crediti.insert&ruolo='+jQuery("#ruolo").val()+'&rischio='+jQuery("#rischio").val()+'&durata='+jQuery("#durata").val()+'&informazioni='+jQuery("#informazioni").val()+'&aggiornamento='+jQuery("#aggiornamento").val()+'&elearning='+jQuery("#elearning").val()
+            url: 'index.php?option=com_ggcm&task=crediti.insert&ruolo='+jQuery("#ruolo").val()+'&rischio='+jQuery("#rischio").val()+'&durata='+jQuery("#durata").val()+'&informazioni='+jQuery("#informazioni").val()+'&aggiornamento='+jQuery("#aggiornamento").val()+'&elearning='+jQuery("#elearning").val()
 
         }).done(function() {
 
@@ -209,7 +209,7 @@ console.log("modifica");
             jQuery.ajax({
                 method: "POST",
                 cache: false,
-                url: 'index.php?option=com_ggfirst&task=crediti.modify&id=' + id + '&ruolo=' + ruolo + '&rischio=' + rischio + '&durata=' + durata+ '&informazioni=' + informazioni+ '&aggiornamento=' + aqgiornamento  + '&elearning=' + elearning
+                url: 'index.php?option=com_ggcm&task=crediti.modify&id=' + id + '&ruolo=' + ruolo + '&rischio=' + rischio + '&durata=' + durata+ '&informazioni=' + informazioni+ '&aggiornamento=' + aqgiornamento  + '&elearning=' + elearning
 
             }).done(function () {
 
@@ -229,7 +229,7 @@ console.log("modifica");
             jQuery.ajax({
                 method: "POST",
                 cache: false,
-                url: 'index.php?option=com_ggfirst&task=crediti.delete&id=' + id.toString()
+                url: 'index.php?option=com_ggcm&task=crediti.delete&id=' + id.toString()
 
             }).done(function () {
 

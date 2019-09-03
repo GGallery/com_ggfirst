@@ -66,7 +66,7 @@ defined('_JEXEC') or die;
                     <td class="edizioni"><UL id="_edizioni"><?php foreach ($studente["edizioni_iscritto"] as $edizione){echo '<LI>'.$edizione['titolo_corso'].'-'.$edizione['codice_edizione'].'</LI>' ;} ?></UL>
 
                     <td class="bottoni">
-                        <button><span class="modify_button oi oi-pencil" title="modifica cliente" aria-hidden="true" onclick="modifica(<?php echo $studente['id']; ?>,'<?php echo $studente['nome']; ?>',
+                        <button><span class="modify_button oi oi-pencil" title="modifica studente" aria-hidden="true" onclick="modifica(<?php echo $studente['id']; ?>,'<?php echo $studente['nome']; ?>',
                                     '<?php echo $studente['cognome']; ?>','<?php echo $studente['titolo']; ?>','<?php echo $studente['profilo']; ?>','<?php echo $studente['codice_fiscale']; ?>','<?php echo $studente['data_nascita']; ?>','<?php echo $studente['luogo_nascita']; ?>',
                                     '<?php echo $studente['prov_nascita']; ?>','<?php echo $studente['telefono']; ?>','<?php echo $studente['cellulare']; ?>','<?php echo $studente['email']; ?>',
                                     '<?php echo $studente['idcliente']; ?>')"></span></button>
@@ -81,7 +81,7 @@ defined('_JEXEC') or die;
             <td><div class="pagination">
             <?php $k=1;
             for($i=0; $i<$this->studenti[1];$i=$i+10){
-                echo "<a href=index.php?option=com_ggfirst&view=studenti&offset=".(($k-1)*10)."&limit=10>".$k."</a>";
+                echo "<a href=index.php?option=com_ggcm&view=studenti&offset=".(($k-1)*10)."&limit=10>".$k."</a>";
                 $k++;
             }?>
                 </div>
@@ -124,8 +124,11 @@ defined('_JEXEC') or die;
 
     jQuery("#dosearch").click(function (event) {
 
-        console.log("/index.php?option=com_ggfirst&view=studenti&search="+jQuery("#tosearch").val());
-        window.open("index.php?option=com_ggfirst&view=studenti&search="+jQuery("#tosearch").val(),'_self');
+
+        var url = window.location.href+"&search="+jQuery("#tosearch").val();
+        window.open(url,'_self');
+        //console.log("/index.php?option=com_ggcm&view=studenti&search="+jQuery("#tosearch").val());
+        //window.open("index.php?option=com_ggcm&view=studenti&search="+jQuery("#tosearch").val(),'_self');
     });
 
     function modifica(id,nome,cognome,titolo,profilo,codice_fiscale,data_nascita,luogo_nascita,prov_nascita,telefono,cellulare,email,idcliente){
@@ -157,7 +160,7 @@ defined('_JEXEC') or die;
          jQuery.ajax({
              method: "POST",
              cache: false,
-             url: 'index.php?option=com_ggfirst&task=studenti.insert'
+             url: 'index.php?option=com_ggcm&task=studenti.insert'
              + '&nome=' + jQuery("#nome").val()
              + '&cognome=' + jQuery("#cognome").val()
 
@@ -186,7 +189,7 @@ defined('_JEXEC') or die;
             jQuery.ajax({
                 method: "POST",
                 cache: false,
-                url: 'index.php?option=com_ggfirst&task=studenti.modify&' +
+                url: 'index.php?option=com_ggcm&task=studenti.modify&' +
                 'id=' + actual_id
                 +'&nome='+jQuery("#nome").val()
                 +'&cognome='+jQuery("#cognome").val()
@@ -222,7 +225,7 @@ defined('_JEXEC') or die;
         jQuery.ajax({
             method: "POST",
             cache: false,
-            url: 'index.php?option=com_ggfirst&task=studenti.modify&' +
+            url: 'index.php?option=com_ggcm&task=studenti.modify&' +
             'id=' + id
             +'&nome='+jQuery("#nome").val()
             +'&cognome='+jQuery("#cognome").val()
@@ -256,7 +259,7 @@ defined('_JEXEC') or die;
             jQuery.ajax({
                 method: "POST",
                 cache: false,
-                url: 'index.php?option=com_ggfirst&task=studenti.delete&id=' + id.toString()
+                url: 'index.php?option=com_ggcm&task=studenti.delete&id=' + id.toString()
 
             }).done(function () {
 

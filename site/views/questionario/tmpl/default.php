@@ -26,7 +26,7 @@ defined('_JEXEC') or die;
 }
 </style>
 </head>
-<div  class="row"><div class="col-xs-4 col-md-4"><img src="<?php echo JURI::base();?>/components/com_ggfirst/libraries/images/logo_prima.png"></div><div class="col-xs-8 col-md-8">
+<div  class="row"><div class="col-xs-4 col-md-4"><img src="<?php echo JURI::base();?>/components/com_ggcm/libraries/images/logo_prima.png"></div><div class="col-xs-8 col-md-8">
         <div><b><h2>Corso:<?php echo  $this->titolo_corso;?></h2></b></div>
         <div>Data:<?php echo  date('d/m/Y');?></div>
     </div>
@@ -106,7 +106,7 @@ defined('_JEXEC') or die;
                 jQuery.ajax({
                     method: "POST",
                     cache: false,
-                    url: 'index.php?option=com_ggfirst&task=questionario.insert&id_corso=<?php echo $this->id_corso ?>'+'&data=<?php echo  date('Y-m-d');?>'
+                    url: 'index.php?option=com_ggcm&task=questionario.insert&id_corso=<?php echo $this->id_corso ?>'+'&data=<?php echo  date('Y-m-d');?>'
                     <?php $i=1;?>
                     <?php foreach($this->domande as $domanda){?>
                         +"&risposta<?php echo $i ?>="+valore<?php echo $i-1 ?>

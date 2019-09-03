@@ -15,7 +15,7 @@ require_once JPATH_COMPONENT . '/models/corsi.php';
  *
  * @since  1.5.19
  */
-class ggfirstControllerCorsi extends JControllerLegacy
+class ggcmControllerCorsi extends JControllerLegacy
 {
     protected $_db;
     private $_app;
@@ -42,7 +42,7 @@ class ggfirstControllerCorsi extends JControllerLegacy
     }
     public function insert(){
 //var_dump($this->_filterparam->programma);die;
-        $model=new ggfirstModelCorsi();
+        $model=new ggcmModelCorsi();
         if($model->insert($this->_filterparam->titolo,$this->_filterparam->riferimento_legislativo,$this->_filterparam->programma)) {
             echo "1";
         }else{
@@ -54,7 +54,7 @@ class ggfirstControllerCorsi extends JControllerLegacy
 
     public function insertedizione(){
 
-        $model=new ggfirstModelCorsi();
+        $model=new ggcmModelCorsi();
         if($model->insertedizioni($this->_filterparam->id_corso,$this->_filterparam->codice_edizione,$this->_filterparam->stato,$this->_filterparam->minimo_partecipanti)) {
             echo "1";
         }else{
@@ -66,7 +66,7 @@ class ggfirstControllerCorsi extends JControllerLegacy
 
     public function delete(){
 
-        $model=new ggfirstModelCorsi();
+        $model=new ggcmModelCorsi();
         if($model->delete($this->_filterparam->id)) {
             echo "1";
         }else{
@@ -77,7 +77,7 @@ class ggfirstControllerCorsi extends JControllerLegacy
     }
     public function modify(){
 
-        $model=new ggfirstModelCorsi();
+        $model=new ggcmModelCorsi();
         if($model->modify($this->_filterparam->id,
             $this->_filterparam->titolo,$this->_filterparam->riferimento_legislativo,$this->_filterparam->programma)) {
             echo "1";
@@ -90,7 +90,7 @@ class ggfirstControllerCorsi extends JControllerLegacy
 
     public function modify_edizione(){
 
-        $model=new ggfirstModelCorsi();
+        $model=new ggcmModelCorsi();
         if($model->modify_edizione($this->_filterparam->id,$this->_filterparam->codice_edizione,$this->_filterparam->stato,$this->_filterparam->minimo_partecipanti)) {
             echo "1";
         }else{
@@ -102,7 +102,7 @@ class ggfirstControllerCorsi extends JControllerLegacy
 
     public function insert_credito_corso(){
 
-        $model=new ggfirstModelCorsi();
+        $model=new ggcmModelCorsi();
         if($model->insert_credito_corso($this->_filterparam->id,$this->_filterparam->credito)) {
             echo "1";
         }else{

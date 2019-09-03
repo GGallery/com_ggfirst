@@ -159,7 +159,7 @@ defined('_JEXEC') or die;
             <td><div class="pagination">
             <?php $k=1;
             for($i=0; $i<$this->partecipanti[1];$i=$i+10){
-                echo "<a href=index.php?option=com_ggfirst&view=studenti&offset=".(($k-1)*10)."&limit=10>".$k."</a>";
+                echo "<a href=index.php?option=com_ggcm&view=studenti&offset=".(($k-1)*10)."&limit=10>".$k."</a>";
                 $k++;
             }?>
                 </div>
@@ -201,14 +201,14 @@ defined('_JEXEC') or die;
 <script type="text/javascript">
 
     function scaricaverbale() {
-        window.open("index.php?option=com_ggfirst&task=partecipanti.getverbale&id_edizione=<?php echo $this->id_edizione?>");
+        window.open("index.php?option=com_ggcm&task=partecipanti.getverbale&id_edizione=<?php echo $this->id_edizione?>");
     }
 
 
     jQuery("#dosearch").click(function (event) {
 
 
-        window.open("index.php?option=com_ggfirst&view=partecipanti&id_edizione=<?php echo $this->id_edizione?>&search="+jQuery("#tosearch").val(),'_self');
+        window.open("index.php?option=com_ggcm&view=partecipanti&id_edizione=<?php echo $this->id_edizione?>&search="+jQuery("#tosearch").val(),'_self');
     });
 
 
@@ -218,7 +218,7 @@ defined('_JEXEC') or die;
          jQuery.ajax({
              method: "POST",
              cache: false,
-             url: 'index.php?option=com_ggfirst&task=partecipanti.insert'
+             url: 'index.php?option=com_ggcm&task=partecipanti.insert'
              + '&id_edizione=' + <?php echo $this->id_edizione?>
              + '&id_studente=' + jQuery("#studente").val()
              + '&id_credito=' + jQuery("#credito").val()
@@ -242,7 +242,7 @@ defined('_JEXEC') or die;
 
     function openattestati(id_studente,id_credito,id_corso){
 
-        window.open("index.php?option=com_ggfirst&view=attestati&preselected_id_studente="+id_studente+'&preselected_id_credito='+id_credito+'&preselected_id_corso='+id_corso,'_self');
+        window.open("index.php?option=com_ggcm&view=attestati&preselected_id_studente="+id_studente+'&preselected_id_credito='+id_credito+'&preselected_id_corso='+id_corso,'_self');
 
     }
 
@@ -250,7 +250,7 @@ defined('_JEXEC') or die;
                             luogo_data,codice_fiscale,titolo_studio,email,profilo,denominazione,piva,c_codice_fiscale,codice_univoco,
                             pec,indirizzo,citta,telefono,riferimento,email_riferimento,figura,ateco) {
 
-        url="index.php?option=com_ggfirst&task=pdf.generateIscrizione"+
+        url="index.php?option=com_ggcm&task=pdf.generateIscrizione"+
             "&nome="+nome+
             "&cognome="+cognome+
             "&id_template=iscrizione"+
@@ -288,7 +288,7 @@ defined('_JEXEC') or die;
             jQuery.ajax({
                 method: "POST",
                 cache: false,
-                url: 'index.php?option=com_ggfirst&task=partecipanti.delete&id=' + id.toString()
+                url: 'index.php?option=com_ggcm&task=partecipanti.delete&id=' + id.toString()
 
             }).done(function () {
 
@@ -303,7 +303,7 @@ defined('_JEXEC') or die;
     function opencsv() {
         if(confirm('vuoi scaricare il report in csv?')==true) {
             <?php if(isset($this->id_piano_formativo_attivo)){?>
-            window.open("index.php?option=com_ggfirst&task=partecipanti.getVerbale&id_edizione=" + <?php echo $this->id_edizione;?>,'_self');
+            window.open("index.php?option=com_ggcm&task=partecipanti.getVerbale&id_edizione=" + <?php echo $this->id_edizione;?>,'_self');
             <?php }?>
 
         }

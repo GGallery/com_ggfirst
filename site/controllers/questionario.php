@@ -16,7 +16,7 @@ require_once JPATH_COMPONENT . '/models/questionario.php';
  *
  * @since  1.5.19
  */
-class ggfirstControllerQuestionario extends JControllerLegacy
+class ggcmControllerQuestionario extends JControllerLegacy
 {
     protected $_db;
     private $_app;
@@ -52,7 +52,7 @@ class ggfirstControllerQuestionario extends JControllerLegacy
     }
     public function insert(){
 
-        $model=new ggfirstModelQuestionario();
+        $model=new ggcmModelQuestionario();
         if($model->insert($this->_filterparam->id_corso,
             $this->_filterparam->data,
             $this->_filterparam->risposta1,

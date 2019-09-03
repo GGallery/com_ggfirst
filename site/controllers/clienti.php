@@ -15,7 +15,7 @@ require_once JPATH_COMPONENT . '/models/clienti.php';
  *
  * @since  1.5.19
  */
-class ggfirstControllerClienti extends JControllerLegacy
+class ggcmControllerClienti extends JControllerLegacy
 {
     protected $_db;
     private $_app;
@@ -43,7 +43,7 @@ class ggfirstControllerClienti extends JControllerLegacy
     }
     public function insert(){
 
-        $model=new ggfirstModelClienti();
+        $model=new ggcmModelClienti();
         if($model->insert($this->_filterparam->denominazione,$this->_filterparam->riferimento,$this->_filterparam->email,$this->_filterparam->indirizzo,$this->_filterparam->cap,$this->_filterparam->citta,$this->_filterparam->telefono,$this->_filterparam->piva,$this->_filterparam->codice_univoco,$this->_filterparam->codice_fiscale,$this->_filterparam->codice_ateco)) {
             echo "1";
         }else{
@@ -55,7 +55,7 @@ class ggfirstControllerClienti extends JControllerLegacy
 
     public function delete(){
 
-        $model=new ggfirstModelClienti();
+        $model=new ggcmModelClienti();
         if($model->delete($this->_filterparam->id)) {
             echo "1";
         }else{
@@ -66,7 +66,7 @@ class ggfirstControllerClienti extends JControllerLegacy
     }
     public function modify(){
 
-        $model=new ggfirstModelClienti();
+        $model=new ggcmModelClienti();
         if($model->modify($this->_filterparam->id, $this->_filterparam->denominazione,$this->_filterparam->riferimento,$this->_filterparam->email,$this->_filterparam->indirizzo,$this->_filterparam->cap,$this->_filterparam->citta,$this->_filterparam->telefono,$this->_filterparam->piva,$this->_filterparam->codice_univoco,$this->_filterparam->codice_fiscale,$this->_filterparam->codice_ateco)) {
             echo "1";
         }else{
@@ -77,7 +77,7 @@ class ggfirstControllerClienti extends JControllerLegacy
     }
 
     public function getClienti(){
-        $model=new ggfirstModelClienti();
+        $model=new ggcmModelClienti();
         $result=$model->getClienti();
         echo json_encode($result);
         $this->_app->close();

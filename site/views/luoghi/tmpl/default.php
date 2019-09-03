@@ -140,7 +140,7 @@ defined('_JEXEC') or die;
         jQuery.ajax({
             method: "POST",
             cache: false,
-            url: 'index.php?option=com_ggfirst&task=luoghi.insert&denominazione='+jQuery("#denominazione").val()+'&indirizzo='+jQuery("#indirizzo").val()+'&citta='+jQuery("#citta").val()+'&note='+jQuery("#note").val()
+            url: 'index.php?option=com_ggcm&task=luoghi.insert&denominazione='+jQuery("#denominazione").val()+'&indirizzo='+jQuery("#indirizzo").val()+'&citta='+jQuery("#citta").val()+'&note='+jQuery("#note").val()
 
         }).done(function() {
 
@@ -182,7 +182,7 @@ console.log("modifica");
             jQuery.ajax({
                 method: "POST",
                 cache: false,
-                url: 'index.php?option=com_ggfirst&task=luoghi.modify&id=' + id + '&denominazione=' + denominazione + '&indirizzo=' + indirizzo + '&citta=' + citta+ '&note=' + note
+                url: 'index.php?option=com_ggcm&task=luoghi.modify&id=' + id + '&denominazione=' + denominazione + '&indirizzo=' + indirizzo + '&citta=' + citta+ '&note=' + note
 
             }).done(function () {
 
@@ -202,7 +202,7 @@ console.log("modifica");
             jQuery.ajax({
                 method: "POST",
                 cache: false,
-                url: 'index.php?option=com_ggfirst&task=luoghi.delete&id=' + id.toString()
+                url: 'index.php?option=com_ggcm&task=luoghi.delete&id=' + id.toString()
 
             }).done(function () {
 

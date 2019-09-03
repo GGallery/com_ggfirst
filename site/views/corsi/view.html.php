@@ -21,7 +21,7 @@ require_once JPATH_COMPONENT . '/models/docenti.php';
 require_once JPATH_COMPONENT . '/models/aule.php';
 require_once JPATH_COMPONENT . '/models/luoghi.php';
 require_once JPATH_COMPONENT . '/models/lezioni.php';
-class ggfirstViewCorsi extends JViewLegacy {
+class ggcmViewCorsi extends JViewLegacy {
 
     public $corsiAll;
     public $corso;
@@ -35,8 +35,8 @@ class ggfirstViewCorsi extends JViewLegacy {
 
     function display($tpl = null)
     {
-        //JHtml::_('stylesheet', 'components/com_ggfirst/libraries/css/bootstrap.min.css');
-        JHtml::_('stylesheet', 'components/com_ggfirst/libraries/open-iconic/font/css/open-iconic-bootstrap.css');
+        //JHtml::_('stylesheet', 'components/com_ggcm/libraries/css/bootstrap.min.css');
+        JHtml::_('stylesheet', 'components/com_ggcm/libraries/open-iconic/font/css/open-iconic-bootstrap.css');
         JHtml::_('stylesheet', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous');
 
         if(JRequest::getVar('id_corso')!=null) {
@@ -47,7 +47,7 @@ class ggfirstViewCorsi extends JViewLegacy {
             if(JRequest::getVar('id_edizione')!=null){
                 $this->edizione = $this->getModel()->getEdizioni(JRequest::getVar('id_edizione'), null);
 
-                $lezioniModel=new ggfirstModelLezioni();
+                $lezioniModel=new ggcmModelLezioni();
                 $this->lezioni=$lezioniModel->getLezioni(null,JRequest::getVar('id_edizione'),null,null);
             }
         }else{
@@ -57,14 +57,14 @@ class ggfirstViewCorsi extends JViewLegacy {
 
 
         $this->corsiAll=$this->getModel()->getCorsi(null, null);
-        $creditiModel=new ggfirstModelCrediti();
+        $creditiModel=new ggcmModelCrediti();
         $this->crediti=$creditiModel->getCrediti();
         $this->stati = $this->getModel()->getStati();
-        $luoghiModel=new ggfirstModelLuoghi();
+        $luoghiModel=new ggcmModelLuoghi();
         $this->luoghi=$luoghiModel->getLuoghi();
-        $auleModel=new ggfirstModelAule();
+        $auleModel=new ggcmModelAule();
         $this->aule=$auleModel->getAule();
-        $docentiModel=new ggfirstModelDocenti();
+        $docentiModel=new ggcmModelDocenti();
         $this->docenti=$docentiModel->getDocenti();
         parent::display($tpl);
     }

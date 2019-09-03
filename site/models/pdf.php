@@ -14,7 +14,7 @@ jimport('joomla.application.component.model');
  * @author Diego Brondo <diego@ggallery.it>
  * @version 0.9
  */
-class ggfirstModelPdf extends JModelLegacy {
+class ggcmModelPdf extends JModelLegacy {
 
     private $_user_id;
     //    private $_user;

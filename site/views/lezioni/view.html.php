@@ -21,7 +21,7 @@ require_once JPATH_COMPONENT . '/models/aule.php';
 require_once JPATH_COMPONENT . '/models/corsi.php';
 require_once JPATH_COMPONENT . '/models/luoghi.php';
 
-class ggfirstViewLezioni extends JViewLegacy {
+class ggcmViewLezioni extends JViewLegacy {
 
     public $lezioni,$docenti,$aule,$corsi;
 
@@ -31,8 +31,8 @@ class ggfirstViewLezioni extends JViewLegacy {
 
     function display($tpl = null)
     {
-        //JHtml::_('stylesheet', 'components/com_ggfirst/libraries/css/bootstrap.min.css');
-        JHtml::_('stylesheet', 'components/com_ggfirst/libraries/open-iconic/font/css/open-iconic-bootstrap.css');
+        //JHtml::_('stylesheet', 'components/com_ggcm/libraries/css/bootstrap.min.css');
+        JHtml::_('stylesheet', 'components/com_ggcm/libraries/open-iconic/font/css/open-iconic-bootstrap.css');
         JHtml::_('stylesheet', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous');
         $data_iniziale=JRequest::getVar('data_iniziale');
         if($data_iniziale==null)
@@ -42,13 +42,13 @@ class ggfirstViewLezioni extends JViewLegacy {
             $data_finale=date_format(date_add(date_create(date("Y-m-d")),date_interval_create_from_date_string('15 days')),'Y-m-d');
 
         $this->lezioni = $this->getModel()->getLezioni(null,null,null,null,$data_iniziale,$data_finale);
-        $auleModel=new ggfirstModelAule();
+        $auleModel=new ggcmModelAule();
         $this->aule=$auleModel->getAule();
-        $luoghiModel=new ggfirstModelLuoghi();
+        $luoghiModel=new ggcmModelLuoghi();
         $this->luoghi=$luoghiModel->getLuoghi();
-        $docentiModel=new ggfirstModelDocenti();
+        $docentiModel=new ggcmModelDocenti();
         $this->docenti=$docentiModel->getDocenti();
-        $corsiModel=new ggfirstModelCorsi();
+        $corsiModel=new ggcmModelCorsi();
         $this->corsi=$corsiModel->getCorsi();
         $this->edizioni=$corsiModel->getEdizioni();
         $this->calendario=$this->createCalendario();

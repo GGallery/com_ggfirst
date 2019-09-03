@@ -17,7 +17,7 @@ require_once JPATH_COMPONENT . '/models/corsi.php';
  *
  * @since  1.5.19
  */
-class ggfirstControllerPartecipanti extends JControllerLegacy
+class ggcmControllerPartecipanti extends JControllerLegacy
 {
     protected $_db;
     private $_app;
@@ -39,7 +39,7 @@ class ggfirstControllerPartecipanti extends JControllerLegacy
     }
     public function insert(){
 
-        $model=new ggfirstModelPartecipanti();
+        $model=new ggcmModelPartecipanti();
         if($model->insert($this->_filterparam->id_edizione,$this->_filterparam->id_studente,$this->_filterparam->id_credito,$this->_filterparam->id_figura)) {
             echo "1";
         }else{
@@ -51,7 +51,7 @@ class ggfirstControllerPartecipanti extends JControllerLegacy
 
     public function delete(){
 
-        $model=new ggfirstModelPartecipanti();
+        $model=new ggcmModelPartecipanti();
         if($model->delete($this->_filterparam->id)) {
             echo "1";
         }else{
@@ -68,11 +68,11 @@ class ggfirstControllerPartecipanti extends JControllerLegacy
             echo null;
             $this->_app->close();
         }
-        $modelCorsi=new ggfirstModelCorsi();
+        $modelCorsi=new ggcmModelCorsi();
         $edizione=$modelCorsi->getEdizioni($id_edizione);
-        $modelLezioni=new ggfirstModelLezioni();
+        $modelLezioni=new ggcmModelLezioni();
         $date_inizio_fine_edizione=$modelLezioni->getDateInizioFineEdizione($id_edizione);
-        $model=new ggfirstModelPartecipanti();
+        $model=new ggcmModelPartecipanti();
         $partecipanti=$model->getPartecipantiCSV(null,$id_edizione);
         $rows=[];
         array_push($rows,["Organizzazione, gestione e supporto didattico:"]);

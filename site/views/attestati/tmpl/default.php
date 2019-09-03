@@ -193,7 +193,7 @@ defined('_JEXEC') or die;
 
     function openattestato(id_attestato,id_template) {
 
-        url="http://localhost/gglaboratorio/index.php?option=com_ggfirst&task=pdf.generate_attestato&id_attestato="+id_attestato+"&id_template="+id_template
+        url="http://localhost/gglaboratorio/index.php?option=com_ggcm&task=pdf.generate_attestato&id_attestato="+id_attestato+"&id_template="+id_template
         window.open(url,'_self');
 
     }
@@ -207,7 +207,7 @@ defined('_JEXEC') or die;
     jQuery("#deletesearch").click(function (event) {
 
 
-        url="index.php?option=com_ggfirst&view=attestati"
+        url="index.php?option=com_ggcm&view=attestati"
 
         window.open(url,'_self');
     })
@@ -215,7 +215,7 @@ defined('_JEXEC') or die;
     jQuery("#dosearch").click(function (event) {
 
 
-        url="index.php?option=com_ggfirst&view=attestati"+
+        url="index.php?option=com_ggcm&view=attestati"+
             "&id_credito="+jQuery("#filtrocredito").val()+
             "&id_studente="+jQuery("#filtrostudente").val()+
             "&numero="+jQuery("#filtronumero").val()+
@@ -285,7 +285,7 @@ defined('_JEXEC') or die;
                 jQuery.ajax({
                     method: "POST",
                     cache: false,
-                    url: 'index.php?option=com_ggfirst&task=attestati.insert&id_studente='+jQuery("#studente").val()+
+                    url: 'index.php?option=com_ggcm&task=attestati.insert&id_studente='+jQuery("#studente").val()+
                     '&numero='+jQuery("#numero").val()+
                     '&data_attestato='+jQuery("#data_attestato").val()+
                     '&certificatore='+jQuery("#certificatore").val()+
@@ -354,7 +354,7 @@ defined('_JEXEC') or die;
                         jQuery.ajax({
                             method: "POST",
                             cache: false,
-                            url: 'index.php?option=com_ggfirst&task=attestati.modify&id=' + id + '&numero=' + numero + '&data_attestato=' + data_attestato +
+                            url: 'index.php?option=com_ggcm&task=attestati.modify&id=' + id + '&numero=' + numero + '&data_attestato=' + data_attestato +
                             '&certificatore=' + certificatore+ '&scadenza=' + scadenza
 
                         }).done(function () {
@@ -375,7 +375,7 @@ defined('_JEXEC') or die;
                         jQuery.ajax({
                             method: "POST",
                             cache: false,
-                            url: 'index.php?option=com_ggfirst&task=attestati.delete&id=' + id.toString()
+                            url: 'index.php?option=com_ggcm&task=attestati.delete&id=' + id.toString()
 
                         }).done(function () {
 

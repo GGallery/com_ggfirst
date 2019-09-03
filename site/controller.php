@@ -1,36 +1,39 @@
 <?php
 
-// no direct access
-defined('_JEXEC') or die('Restricted access');
+/**
+ * @package		Joomla.Tutorials
+ * @subpackage	Component
+ * @copyright	Copyright (C) 2005 - 2010 Open Source Matters, Inc. All rights reserved.
+ * @license		License GNU General Public License version 2 or later; see LICENSE.txt
+ */
+// No direct access to this file
+defined('_JEXEC') or die;
 
+//require_once 'models/libs/getid3/getid3.php';
+//require_once 'models/libs/debugg/debugg.php';
 
-
-
+//require_once JPATH_COMPONENT.DS.'models'.DS.'libs'.DS.'debugg'.DS.'debugg.php';
 jimport('joomla.application.component.controller');
-jimport('joomla.access.access');
 
+class ggcmController extends JControllerLegacy {
 
-class ggfirstController extends JControllerLegacy {
-
-    private $_user;
-    private $_japp;
-    public  $_params;
-
-    public function __construct($config = array())
-    {
+    public function __construct($config = array()) {
         parent::__construct($config);
-
-        $this->_japp = JFactory::getApplication();
-
-
-        JHtml::_('jquery.framework');
-
-
-        JHtml::script(Juri::base() . 'components/com_ggpm/libraries/js/mediaelement-and-player.js');
-        JHtml::script(Juri::base() . 'components/com_ggpm/libraries/js/bootstrap.min.js');
-
 
 
     }
+
+    public function __destruct() {
+    }
+
+    function display($cachable = false, $urlparams = false) {
+ //       ggcmHelper::addSubmenu('messages');
+//        echo  $this->sidebar = JHtmlSidebar::render();  //RS
+        
+        JRequest::setVar('view', JRequest::getCmd('view', 'contents'));
+        parent::display($cachable);
+    }
+
+
 
 }

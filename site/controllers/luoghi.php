@@ -15,7 +15,7 @@ require_once JPATH_COMPONENT . '/models/luoghi.php';
  *
  * @since  1.5.19
  */
-class ggfirstControllerLuoghi extends JControllerLegacy
+class ggcmControllerLuoghi extends JControllerLegacy
 {
     protected $_db;
     private $_app;
@@ -36,7 +36,7 @@ class ggfirstControllerLuoghi extends JControllerLegacy
     }
     public function insert(){
 
-        $model=new ggfirstModelLuoghi();
+        $model=new ggcmModelLuoghi();
         if($model->insert($this->_filterparam->denominazione,$this->_filterparam->indirizzo,$this->_filterparam->citta,$this->_filterparam->note)) {
             echo "1";
         }else{
@@ -48,7 +48,7 @@ class ggfirstControllerLuoghi extends JControllerLegacy
 
     public function delete(){
 
-        $model=new ggfirstModelLuoghi();
+        $model=new ggcmModelLuoghi();
         if($model->delete($this->_filterparam->id)) {
             echo "1";
         }else{
@@ -59,7 +59,7 @@ class ggfirstControllerLuoghi extends JControllerLegacy
     }
     public function modify(){
 
-        $model=new ggfirstModelLuoghi();
+        $model=new ggcmModelLuoghi();
         if($model->modify($this->_filterparam->id,$this->_filterparam->denominazione,$this->_filterparam->indirizzo,$this->_filterparam->citta,$this->_filterparam->note)) {
             echo "1";
         }else{

@@ -171,8 +171,8 @@ defined('_JEXEC') or die;
 
     jQuery("#dosearch").click(function (event) {
 
-        console.log("/index.php?option=com_ggfirst&view=clienti&search="+jQuery("#tosearch").val());
-        window.open("index.php?option=com_ggfirst&view=clienti&search="+jQuery("#tosearch").val(),'_self');
+        console.log("/index.php?option=com_ggcm&view=clienti&search="+jQuery("#tosearch").val());
+        window.open("index.php?option=com_ggcm&view=clienti&search="+jQuery("#tosearch").val(),'_self');
     });
 
     function insertclick(){
@@ -180,7 +180,7 @@ defined('_JEXEC') or die;
         jQuery.ajax({
             method: "POST",
             cache: false,
-            url: 'index.php?option=com_ggfirst&task=clienti.insert&denominazione='+jQuery("#denominazione").val()+'&riferimento='+jQuery("#riferimento").val()+'&email='+jQuery("#email").val()+'&indirizzo='+jQuery("#indirizzo").val()+'&cap='+jQuery("#cap").val()+'&citta='+jQuery("#citta").val()+'&telefono='+jQuery("#telefono").val()+'&piva='+jQuery("#piva").val()+'&codice_univoco='+jQuery("#codice_univoco").val()+'&codice_fiscale='+jQuery("#codice_fiscale").val()+'&codice_ateco='+jQuery("#codice_ateco").val()
+            url: 'index.php?option=com_ggcm&task=clienti.insert&denominazione='+jQuery("#denominazione").val()+'&riferimento='+jQuery("#riferimento").val()+'&email='+jQuery("#email").val()+'&indirizzo='+jQuery("#indirizzo").val()+'&cap='+jQuery("#cap").val()+'&citta='+jQuery("#citta").val()+'&telefono='+jQuery("#telefono").val()+'&piva='+jQuery("#piva").val()+'&codice_univoco='+jQuery("#codice_univoco").val()+'&codice_fiscale='+jQuery("#codice_fiscale").val()+'&codice_ateco='+jQuery("#codice_ateco").val()
 
         }).done(function() {
 
@@ -251,7 +251,7 @@ defined('_JEXEC') or die;
             jQuery.ajax({
                 method: "POST",
                 cache: false,
-                url: 'index.php?option=com_ggfirst&task=clienti.modify&id=' + id + '&denominazione=' + denominazione + '&riferimento=' + riferimento + '&email=' + email+ '&indirizzo=' + indirizzo+ '&cap=' + cap+ '&citta=' + citta+ '&telefono=' + telefono+ '&piva=' + piva+ '&codice_univoco=' + codice_univoco+ '&codice_fiscale=' + codice_fiscale+ '&codice_ateco=' + codice_ateco
+                url: 'index.php?option=com_ggcm&task=clienti.modify&id=' + id + '&denominazione=' + denominazione + '&riferimento=' + riferimento + '&email=' + email+ '&indirizzo=' + indirizzo+ '&cap=' + cap+ '&citta=' + citta+ '&telefono=' + telefono+ '&piva=' + piva+ '&codice_univoco=' + codice_univoco+ '&codice_fiscale=' + codice_fiscale+ '&codice_ateco=' + codice_ateco
 
             }).done(function () {
 
@@ -271,7 +271,7 @@ defined('_JEXEC') or die;
             jQuery.ajax({
                 method: "POST",
                 cache: false,
-                url: 'index.php?option=com_ggfirst&task=clienti.delete&id=' + id.toString()
+                url: 'index.php?option=com_ggcm&task=clienti.delete&id=' + id.toString()
 
             }).done(function () {
 

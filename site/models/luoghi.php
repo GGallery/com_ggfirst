@@ -7,7 +7,7 @@
  */
 
 
-class ggfirstModelLuoghi  extends JModelLegacy {
+class ggcmModelLuoghi  extends JModelLegacy {
 
     protected $_db;
     private $_params;

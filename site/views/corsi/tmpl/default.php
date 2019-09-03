@@ -179,6 +179,7 @@ defined('_JEXEC') or die;
                 //$editor = JFactory::getEditor();
                 //echo $editor->display('content', '', '550', '400', '60', '20', false,'programma1');
                 ?>
+                <div class="col-xs-4 col-md-4 text-info"></div>
                 <div class="col-xs-5 col-md-5 text-info">
 
                     <button  class="form-control btn btn-outline-secondary btn-sm" id="insertnewcorso" value="conferma" onclick="insertclick()" type="button">CONFERMA</button>
@@ -225,7 +226,7 @@ defined('_JEXEC') or die;
                 <tr>
                     <td class="titolo">
                         <span class="start_span" id="_titolo_corso"><b><?php echo $edizione['titolo_corso']; ?></b>&nbsp<?php echo $edizione['codice_edizione']; ?></span>&nbsp;
-                        <span class="start_span" id="span_codice_edizione_<?php echo $edizione['id_edizione']; ?>"><a href="index.php?option=com_ggfirst&view=partecipanti&id_edizione=<?php echo $edizione['id_edizione']; ?>"<?php echo $edizione['codice_edizione']; ?></a></span><span><?php if($edizione['edizione_attiva']==1) echo '&nbsp;&nbsp;&nbsp;<span class="oi oi-bookmark red"></span>'?>
+                        <span class="start_span" id="span_codice_edizione_<?php echo $edizione['id_edizione']; ?>"><a href="index.php?option=com_ggcm&view=partecipanti&id_edizione=<?php echo $edizione['id_edizione']; ?>"<?php echo $edizione['codice_edizione']; ?></a></span><span><?php if($edizione['edizione_attiva']==1) echo '<span class="oi oi-bookmark red"></span>'?>
                             <input id="input_codice_edizione_<?php echo $edizione['id_edizione']; ?>" class="start_hidden_input form-control form-control-sm" type="text" value="<?php echo $edizione['codice_edizione']; ?>">
                             <span class="start_span" id="_numero_partecipanti_<?php echo $edizione['id_edizione']; ?>"><b><?php echo $edizione['numero_partecipanti']; ?></b></span>/<span class="start_span" id="_numero_partecipanti"><b><?php echo $edizione['minimo_partecipanti']; ?>
 
@@ -358,9 +359,9 @@ defined('_JEXEC') or die;
 
     jQuery("#input_edizione_iniziale").change(function () {
 
-        url="index.php?option=com_ggfirst&view=corsi&id_corso=<?php echo $this->id_corso; ?>&id_edizione="+jQuery("#input_edizione_iniziale").val();
+       // url="index.php?option=com_ggcm&view=corsi&id_corso=<?php echo $this->id_corso; ?>&id_edizione="+jQuery("#input_edizione_iniziale").val();
 
-        window.open(url,'_self');
+       // window.open(url,'_self');
     });
 
     function insertedizioneclick(){
@@ -370,7 +371,7 @@ defined('_JEXEC') or die;
             jQuery.ajax({
                 method: "POST",
                 cache: false,
-                url: 'index.php?option=com_ggfirst&task=corsi.insertedizione'
+                url: 'index.php?option=com_ggcm&task=corsi.insertedizione'
                 + '&id_corso=' + <?php echo $this->id_corso; ?>
                 + '&codice_edizione=' + jQuery("#codice_edizione").val()
                 + '&stato=' + jQuery("#stato").val()
@@ -389,7 +390,7 @@ defined('_JEXEC') or die;
             jQuery.ajax({
                 method: "POST",
                 cache: false,
-                url: 'index.php?option=com_ggfirst&task=corsi.modifyedizione&' +
+                url: 'index.php?option=com_ggcm&task=corsi.modifyedizione&' +
                 'id=' + actual_id
                 + '&titolo=' + jQuery("#titolo").val()
 
@@ -409,8 +410,8 @@ defined('_JEXEC') or die;
 
     jQuery("#input_corso_iniziale").change(function () {
 
-        url="index.php?option=com_ggfirst&view=corsi&id_corso="+jQuery("#input_corso_iniziale").val();
-
+        url="index.php?option=com_ggcm&view=corsi&id_corso="+jQuery("#input_corso_iniziale").val();
+        var url = window.location.href+"&id_corso="+jQuery("#input_corso_iniziale").val();
         window.open(url,'_self');
     });
 
@@ -456,7 +457,7 @@ defined('_JEXEC') or die;
         jQuery.ajax({
             method: "POST",
             cache: false,
-            url: 'index.php?option=com_ggfirst&task=crediti.insert_map&id_corso=' + id.toString() + '&id=' + id_credito
+            url: 'index.php?option=com_ggcm&task=crediti.insert_map&id_corso=' + id.toString() + '&id=' + id_credito
 
         }).done(function () {
             alert("modificata  edizione");
@@ -479,7 +480,7 @@ defined('_JEXEC') or die;
         jQuery.ajax({
             method: "POST",
             cache: false,
-            url: 'index.php?option=com_ggfirst&task=corsi.modify_edizione&id=' + id.toString() + '&codice_edizione=' + nuovo_codice_edizione+'&stato='+nuovo_stato+'&minimo_partecipanti='+nuovo_minimo_partecipanti
+            url: 'index.php?option=com_ggcm&task=corsi.modify_edizione&id=' + id.toString() + '&codice_edizione=' + nuovo_codice_edizione+'&stato='+nuovo_stato+'&minimo_partecipanti='+nuovo_minimo_partecipanti
 
         }).done(function () {
             alert("modificata  edizione");
@@ -499,7 +500,7 @@ defined('_JEXEC') or die;
             jQuery.ajax({
                 method: "POST",
                 cache: false,
-                url: 'index.php?option=com_ggfirst&task=corsi.insert'
+                url: 'index.php?option=com_ggcm&task=corsi.insert'
                 + '&titolo=' + jQuery("#titolo").val()
                 + '&riferimento_legislativo='+jQuery("#riferimento_legislativo").val()
                 + '&programma='+encodeURI(CKEDITOR.instances.programma.getData().replace(/\n|\r/g, ""))//jQuery("#programma1").val()//
@@ -523,7 +524,7 @@ defined('_JEXEC') or die;
             jQuery.ajax({
                 method: "POST",
                 cache: false,
-                url: 'index.php?option=com_ggfirst&task=corsi.modify&id='
+                url: 'index.php?option=com_ggcm&task=corsi.modify&id='
                 + id_corso_in_modify + '&titolo=' + nuovo_titolo+'&riferimento_legislativo='+nuovo_riferimento_legislativo+'&programma='+programma
 
             }).done(function () {
@@ -539,7 +540,22 @@ defined('_JEXEC') or die;
 
 
     function insertlezioneclick(){
-
+        if(!jQuery("#docente").val()){
+            alert ("NON INSERITI DOCENTI!");
+           return;
+        }
+        if(!jQuery("#input_edizione_iniziale").val()){
+            alert("EDIZIONE NON SELEZIONATA");
+            return;
+        }
+        if(!jQuery("#data").val()){
+            alert("DATA NON SELEZIONATA");
+            return;
+        }
+        if(!jQuery("#ora_inizio").val() || !jQuery("#ora_fine").val()){
+            alert("ORA INIZIALE O FINALE MANCANTE");
+            return;
+        }
         var array_docenti=jQuery("#docente").val();
         var docenti_id_string='';
         for(var k=0; k<array_docenti.length;k++){
@@ -550,7 +566,7 @@ defined('_JEXEC') or die;
         jQuery.ajax({
             method: "POST",
             cache: false,
-            url: 'index.php?option=com_ggfirst&task=lezioni.insert'
+            url: 'index.php?option=com_ggcm&task=lezioni.insert'
             + '&id_edizione='+ jQuery("#input_edizione_iniziale").val()
             + '&id_docente=' + docenti_id_string
             + '&id_luogo=' + jQuery("#luogo").val()
@@ -596,7 +612,7 @@ defined('_JEXEC') or die;
             jQuery.ajax({
                 method: "POST",
                 cache: false,
-                url: 'index.php?option=com_ggfirst&task=corsi.delete&id=' + id.toString()
+                url: 'index.php?option=com_ggcm&task=corsi.delete&id=' + id.toString()
 
             }).done(function () {
 
@@ -614,7 +630,7 @@ defined('_JEXEC') or die;
             jQuery.ajax({
                 method: "POST",
                 cache: false,
-                url: 'index.php?option=com_ggfirst&task=crediti.delete_map&id=' + id.toString()
+                url: 'index.php?option=com_ggcm&task=crediti.delete_map&id=' + id.toString()
 
             }).done(function () {
 

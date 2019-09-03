@@ -15,7 +15,7 @@ defined('_JEXEC') or die;
  *
  * @since  1.5.19
  */
-class ggfirstControllerPdf extends JControllerLegacy
+class ggcmControllerPdf extends JControllerLegacy
 {
 
     private $_user;

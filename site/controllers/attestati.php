@@ -15,7 +15,7 @@ require_once JPATH_COMPONENT . '/models/attestati.php';
  *
  * @since  1.5.19
  */
-class ggfirstControllerAttestati extends JControllerLegacy
+class ggcmControllerAttestati extends JControllerLegacy
 {
     protected $_db;
     private $_app;
@@ -41,7 +41,7 @@ class ggfirstControllerAttestati extends JControllerLegacy
     }
     public function insert(){
 
-        $model=new ggfirstModelAttestati();
+        $model=new ggcmModelAttestati();
         if($model->insert($this->_filterparam->id_studente,$this->_filterparam->numero,$this->_filterparam->data_attestato,$this->_filterparam->certificatore,$this->_filterparam->id_credito,$this->_filterparam->id_corso,$this->_filterparam->scadenza,$this->_filterparam->settore,$this->_filterparam->rischio_attestato)) {
             echo "1";
         }else{
@@ -53,7 +53,7 @@ class ggfirstControllerAttestati extends JControllerLegacy
 
     public function delete(){
 
-        $model=new ggfirstModelAttestati();
+        $model=new ggcmModelAttestati();
         if($model->delete($this->_filterparam->id)) {
             echo "1";
         }else{
@@ -64,7 +64,7 @@ class ggfirstControllerAttestati extends JControllerLegacy
     }
     public function modify(){
 
-        $model=new ggfirstModelAttestati();
+        $model=new ggcmModelAttestati();
         if($model->modify($this->_filterparam->id, $this->_filterparam->numero,$this->_filterparam->data_attestato,$this->_filterparam->certificatore,$this->_filterparam->scadenza,$this->_filterparam->settore,$this->_filterparam->rischio_attestato)) {
             echo "1";
         }else{

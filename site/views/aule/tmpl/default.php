@@ -127,7 +127,7 @@ defined('_JEXEC') or die;
         jQuery.ajax({
             method: "POST",
             cache: false,
-            url: 'index.php?option=com_ggfirst&task=aule.insert&denominazione='+jQuery("#denominazione").val()
+            url: 'index.php?option=com_ggcm&task=aule.insert&denominazione='+jQuery("#denominazione").val()
 
         }).done(function() {
 
@@ -165,7 +165,7 @@ console.log("modifica");
             jQuery.ajax({
                 method: "POST",
                 cache: false,
-                url: 'index.php?option=com_ggfirst&task=aule.modify&id=' + id + '&denominazione=' + denominazione
+                url: 'index.php?option=com_ggcm&task=aule.modify&id=' + id + '&denominazione=' + denominazione
 
             }).done(function () {
 
@@ -185,7 +185,7 @@ console.log("modifica");
             jQuery.ajax({
                 method: "POST",
                 cache: false,
-                url: 'index.php?option=com_ggfirst&task=aule.delete&id=' + id.toString()
+                url: 'index.php?option=com_ggcm&task=aule.delete&id=' + id.toString()
 
             }).done(function () {
 

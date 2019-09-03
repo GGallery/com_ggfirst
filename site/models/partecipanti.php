@@ -7,7 +7,7 @@
  */
 
 
-class ggfirstModelPartecipanti  extends JModelLegacy {
+class ggcmModelPartecipanti  extends JModelLegacy {
 
     protected $_db;
     private $_params;
@@ -58,7 +58,7 @@ class ggfirstModelPartecipanti  extends JModelLegacy {
     public function getPartecipanti($id=null, $id_edizione,$cognome=null, $offset=0, $limit=10){
 
         $query=$this->_db->getQuery(true);
-        $query->select('f.figura as figura, p.id as id,s.nome as nome, s.cognome as cognome, e.codice_edizione as codice_edizione,s.luogo_nascita as luogo_nascita,s.data_nascita as data_nascita,s.profilo as profilo,
+        $query->select('f.figura as figura, p.id as id,s.nome as nome, s.cognome as cognome, e.codice_edizione as codice_edizione,s.luogo_nascita as luogo_nascita,date_format(s.data_nascita,\'%d-%m-%Y\') as data_nascita,s.profilo as profilo,
                          s.codice_fiscale as codice_fiscale, s.titolo as titolo_studio,s.email as email,cli.denominazione as denominazione,cli.piva as piva,cli.codice_fiscale as c_codice_fiscale,
                          cli.codice_univoco,cli.email as email,cli.indirizzo as indirizzo,cli.citta as citta,cli.riferimento as riferimento,cli.codice_ateco as ateco,cli.telefono as telefono,
                          c.riferimento_legislativo as riferimento_legislativo, c.id as id_corso,
@@ -91,7 +91,7 @@ class ggfirstModelPartecipanti  extends JModelLegacy {
 
         $query=$this->_db->getQuery(true);
         $query->select("s.cognome as cognome,s.nome as nome,s.luogo_nascita as luogo_nascita,s.data_nascita as data_nascita,s.profilo as profilo, s.codice_fiscale as codice_fiscale,' ' as giudizio ,
-                      ' ' as frequenza,(select numero from first_gg_attestati where id_studente=s.id and id_corsi_crediti_map=
+                      ' ' as frequenza,(select numero from first_gg_attestati where id_studente=s.id and id_corsi_crediti_map in
             (select id from first_gg_corsi_crediti_map where id_corso=(select id_corso from first_gg_edizioni where id=p.id_edizione)) ) as numero");
         $query->from('first_gg_studenti as s');
         $query->join('inner','first_gg_partecipanti as p on s.id=p.id_studente');

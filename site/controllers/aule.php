@@ -15,7 +15,7 @@ require_once JPATH_COMPONENT . '/models/aule.php';
  *
  * @since  1.5.19
  */
-class ggfirstControllerAule extends JControllerLegacy
+class ggcmControllerAule extends JControllerLegacy
 {
     protected $_db;
     private $_app;
@@ -34,7 +34,7 @@ class ggfirstControllerAule extends JControllerLegacy
     }
     public function insert(){
 
-        $model=new ggfirstModelAule();
+        $model=new ggcmModelAule();
         if($model->insert($this->_filterparam->denominazione)) {
             echo "1";
         }else{
@@ -46,7 +46,7 @@ class ggfirstControllerAule extends JControllerLegacy
 
     public function delete(){
 
-        $model=new ggfirstModelAule();
+        $model=new ggcmModelAule();
         if($model->delete($this->_filterparam->id)) {
             echo "1";
         }else{
@@ -57,7 +57,7 @@ class ggfirstControllerAule extends JControllerLegacy
     }
     public function modify(){
 
-        $model=new ggfirstModelAule();
+        $model=new ggcmModelAule();
         if($model->modify($this->_filterparam->id,$this->_filterparam->denominazione)) {
             echo "1";
         }else{

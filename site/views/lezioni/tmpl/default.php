@@ -152,7 +152,7 @@ defined('_JEXEC') or die;
 
     jQuery("#cambia_data").click(function(){
 
-        url="index.php?option=com_ggfirst&view=lezioni&data_iniziale="+jQuery("#data_iniziale").val()+"&data_finale="+jQuery("#data_finale").val();
+        url="index.php?option=com_ggcm&view=lezioni&data_iniziale="+jQuery("#data_iniziale").val()+"&data_finale="+jQuery("#data_finale").val();
 
         window.open(url,'_self');
     });
@@ -181,7 +181,7 @@ defined('_JEXEC') or die;
          jQuery.ajax({
              method: "POST",
              cache: false,
-             url: 'index.php?option=com_ggfirst&task=lezioni.insert'
+             url: 'index.php?option=com_ggcm&task=lezioni.insert'
              + '&id_corso=' + jQuery("#corso").val()
              + '&id_docente=' + jQuery("#docente").val()
              + '&id_aula=' + jQuery("#aula").val()
@@ -205,7 +205,7 @@ defined('_JEXEC') or die;
             jQuery.ajax({
                 method: "POST",
                 cache: false,
-                url: 'index.php?option=com_ggfirst&task=lezioni.modify&' +
+                url: 'index.php?option=com_ggcm&task=lezioni.modify&' +
                 'id=' + actual_id
                 + '&id_edizione=' + jQuery("#edizione").val()
                 + '&id_docente=' + jQuery("#docente").val()
@@ -236,7 +236,7 @@ defined('_JEXEC') or die;
             jQuery.ajax({
                 method: "POST",
                 cache: false,
-                url: 'index.php?option=com_ggfirst&task=lezioni.delete&id=' + id.toString()
+                url: 'index.php?option=com_ggcm&task=lezioni.delete&id=' + id.toString()
 
             }).done(function () {
 
@@ -249,7 +249,7 @@ defined('_JEXEC') or die;
     }
 
     function openregistro(l_id,data_lezione,id_edizione,tipo) {
-        window.open("index.php?option=com_ggfirst&task=pdf.generateregistro&l_id="+l_id+"&data_lezione="+data_lezione+"&id_edizione="+id_edizione+"&tipo="+tipo);
+        window.open("index.php?option=com_ggcm&task=pdf.generateregistro&l_id="+l_id+"&data_lezione="+data_lezione+"&id_edizione="+id_edizione+"&tipo="+tipo);
     }
 
 </script>

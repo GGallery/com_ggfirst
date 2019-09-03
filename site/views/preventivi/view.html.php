@@ -19,7 +19,7 @@ jimport('joomla.application.component.helper');
 require_once JPATH_COMPONENT . '/models/clienti.php';
 require_once JPATH_COMPONENT . '/models/corsi.php';
 
-class ggfirstViewPreventivi extends JViewLegacy {
+class ggcmViewPreventivi extends JViewLegacy {
 
     public $preventivi;
     public $clienti;
@@ -32,8 +32,8 @@ class ggfirstViewPreventivi extends JViewLegacy {
 
     function display($tpl = null)
     {
-        //JHtml::_('stylesheet', 'components/com_ggfirst/libraries/css/bootstrap.min.css');
-        JHtml::_('stylesheet', 'components/com_ggfirst/libraries/open-iconic/font/css/open-iconic-bootstrap.css');
+        //JHtml::_('stylesheet', 'components/com_ggcm/libraries/css/bootstrap.min.css');
+        JHtml::_('stylesheet', 'components/com_ggcm/libraries/open-iconic/font/css/open-iconic-bootstrap.css');
         JHtml::_('stylesheet', 'https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous');
 
         if(JRequest::getVar('offset')!=null) {
@@ -65,9 +65,9 @@ class ggfirstViewPreventivi extends JViewLegacy {
 
         }
 
-        $clientiModel=new ggfirstModelClienti();
+        $clientiModel=new ggcmModelClienti();
         $this->clienti=$clientiModel->getClienti();
-        $corsiModel=new ggfirstModelCorsi();
+        $corsiModel=new ggcmModelCorsi();
         $this->corsi=$corsiModel->getCorsi();
         $this->stati=$this->getModel()->getStati();
 

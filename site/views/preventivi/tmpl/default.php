@@ -100,7 +100,7 @@ defined('_JEXEC') or die;
             <td><div class="pagination">
             <?php $k=1;
             for($i=0; $i<$this->preventivi[1];$i=$i+10){
-                echo "<a href=index.php?option=com_ggfirst&view=preventivi&offset=".(($k-1)*10)."&limit=10>".$k."</a>";
+                echo "<a href=index.php?option=com_ggcm&view=preventivi&offset=".(($k-1)*10)."&limit=10>".$k."</a>";
                 $k++;
             }?>
                 </div>
@@ -136,14 +136,14 @@ defined('_JEXEC') or die;
 
     jQuery("#dosearch_cliente").click(function (event) {
 
-        console.log("/index.php?option=com_ggfirst&view=preventivi&search="+jQuery("#tosearch").val());
-        window.open("index.php?option=com_ggfirst&view=preventivi&search_cliente="+jQuery("#tosearch_cliente").val(),'_self');
+        console.log("/index.php?option=com_ggcm&view=preventivi&search="+jQuery("#tosearch").val());
+        window.open("index.php?option=com_ggcm&view=preventivi&search_cliente="+jQuery("#tosearch_cliente").val(),'_self');
     });
 
     jQuery("#dosearch").click(function (event) {
 
-        console.log("/index.php?option=com_ggfirst&view=preventivi&search="+jQuery("#tosearch").val());
-        window.open("index.php?option=com_ggfirst&view=preventivi&search="+jQuery("#tosearch").val(),'_self');
+        console.log("/index.php?option=com_ggcm&view=preventivi&search="+jQuery("#tosearch").val());
+        window.open("index.php?option=com_ggcm&view=preventivi&search="+jQuery("#tosearch").val(),'_self');
     });
     //questa funzione intercetta l'evento click sui pulsanti di modifica, e trasforma i campi testo della riga in campi input. Prima però riporta tutti a testo
     jQuery(".modify_button").click(function (event) {
@@ -171,7 +171,7 @@ defined('_JEXEC') or die;
          jQuery.ajax({
              method: "POST",
              cache: false,
-             url: 'index.php?option=com_ggfirst&task=preventivi.insert'
+             url: 'index.php?option=com_ggcm&task=preventivi.insert'
              + '&id_corso=' + jQuery("#corso").val()
              + '&id_cliente=' + jQuery("#cliente").val()
 
@@ -192,7 +192,7 @@ defined('_JEXEC') or die;
 
     jQuery("#filter_stato").change(function(){
 
-        window.open("index.php?option=com_ggfirst&view=preventivi&search_stato="+jQuery("#filter_stato").val(),'_self');
+        window.open("index.php?option=com_ggcm&view=preventivi&search_stato="+jQuery("#filter_stato").val(),'_self');
 
     });
 
@@ -207,7 +207,7 @@ defined('_JEXEC') or die;
         jQuery.ajax({
             method: "POST",
             cache: false,
-            url: 'index.php?option=com_ggfirst&task=preventivi.modify&' +
+            url: 'index.php?option=com_ggcm&task=preventivi.modify&' +
             'id=' + id
             +'&id_corso='+jQuery("#input_corso_"+id).val()
             +'&id_cliente='+jQuery("#input_cliente_"+id).val()
@@ -237,7 +237,7 @@ defined('_JEXEC') or die;
             jQuery.ajax({
                 method: "POST",
                 cache: false,
-                url: 'index.php?option=com_ggfirst&task=preventivi.delete&id=' + id.toString()
+                url: 'index.php?option=com_ggcm&task=preventivi.delete&id=' + id.toString()
 
             }).done(function () {
 
